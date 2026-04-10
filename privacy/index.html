@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Phlix</title>
+    <style>
+        :root { --dark-bg: #0F0F0F; --surface: #1A1A1A; --text: #F0F0F0; --text-secondary: #888888; --gold: #F0B429; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; background: var(--dark-bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 700px; margin: 0 auto; padding: 60px 24px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; }
+        .updated { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 32px; }
+        h2 { font-size: 1.2rem; margin: 32px 0 12px; color: var(--gold); }
+        p, li { color: var(--text-secondary); margin-bottom: 12px; }
+        ul { padding-left: 24px; }
+        a { color: var(--gold); }
+        .back { display: inline-block; margin-bottom: 24px; color: var(--text-secondary); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back">&larr; Back to Phlix</a>
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: April 10, 2026</p>
+
+        <h2>Overview</h2>
+        <p>Phlix ("the App") is a photo and video browser that connects to your personal Plex Media Server. Your privacy is important to us. This policy explains what data the App accesses, how it is used, and your rights.</p>
+
+        <h2>Data We Do Not Collect</h2>
+        <p>Phlix does not collect, store, transmit, or share any personal data with us or any third parties. We do not operate servers, analytics services, or tracking infrastructure. Specifically:</p>
+        <ul>
+            <li>No analytics or crash reporting SDKs are included.</li>
+            <li>No advertising frameworks are included.</li>
+            <li>No data is sent to our servers (we do not operate any).</li>
+            <li>No user accounts are created with us.</li>
+        </ul>
+
+        <h2>Data That Stays on Your Device</h2>
+        <p>The following data is stored locally on your device and never transmitted to us:</p>
+        <ul>
+            <li><strong>Plex Authentication Token</strong> &mdash; Stored securely in the iOS Keychain. Used to authenticate with your Plex Media Server. Obtained via Plex's official OAuth flow directly between your device and Plex, Inc.'s servers.</li>
+            <li><strong>Server Connection Details</strong> &mdash; Your Plex server address and name, stored in the iOS Keychain.</li>
+            <li><strong>App Preferences</strong> &mdash; Settings such as selected libraries, slideshow defaults, and display preferences, stored in UserDefaults on your device.</li>
+            <li><strong>Favorites</strong> &mdash; A list of media item identifiers you have favorited, stored in a local file on your device.</li>
+            <li><strong>Image Cache</strong> &mdash; Thumbnails and images from your server are cached locally for performance. You can clear this cache in Settings.</li>
+            <li><strong>Trial Start Date</strong> &mdash; The date you first opened the App is stored in the iOS Keychain to manage the free trial period.</li>
+            <li><strong>Purchase Status</strong> &mdash; Managed entirely by Apple's StoreKit framework. We do not have access to your payment information.</li>
+        </ul>
+
+        <h2>Network Communication</h2>
+        <p>Phlix communicates directly with:</p>
+        <ul>
+            <li><strong>Plex, Inc.</strong> (plex.tv) &mdash; For authentication via Plex's OAuth PIN flow and server discovery. This communication is between your device and Plex's servers. Plex's own <a href="https://www.plex.tv/about/privacy-legal/">privacy policy</a> governs their handling of your data.</li>
+            <li><strong>Your Plex Media Server</strong> &mdash; To browse, search, stream, and download your media. This communication stays on your local network or goes directly to your server's address.</li>
+            <li><strong>Apple</strong> &mdash; For in-app purchase transactions via StoreKit. Apple's <a href="https://www.apple.com/legal/privacy/">privacy policy</a> applies.</li>
+        </ul>
+
+        <h2>Photo Library Access</h2>
+        <p>If you choose to save downloaded media to your photo library, the App will request permission to add photos. This permission is used solely to save media you explicitly download. The App does not read or access your existing photo library.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>Phlix is not directed at children under 13. We do not knowingly collect data from children.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date.</p>
+
+        <h2>Contact</h2>
+        <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:support@phlix.app">support@phlix.app</a>.</p>
+    </div>
+</body>
+</html>
