@@ -22,51 +22,75 @@
     <div class="container">
         <a href="/" class="back">&larr; Back to Phlix</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: April 10, 2026</p>
+        <p class="updated">Last updated: May 22, 2026</p>
 
         <h2>Overview</h2>
-        <p>Phlix ("the App") is a photo and video browser that connects to your personal Plex Media Server. Your privacy is important to us. This policy explains what data the App accesses, how it is used, and your rights.</p>
+        <p>Phlix ("the App") is an independent, third-party photo and video browser that connects to a Plex Media Server that you own, operate, or are authorized to access. This Privacy Policy explains what information the App processes, how it is processed, and what choices you have. By using the App you agree to the processing described below; if you do not agree, do not use the App.</p>
 
-        <h2>Data We Do Not Collect</h2>
-        <p>Phlix does not collect, store, transmit, or share any personal data with us or any third parties. We do not operate servers, analytics services, or tracking infrastructure. Specifically:</p>
-        <ul>
-            <li>No analytics or crash reporting SDKs are included.</li>
-            <li>No advertising frameworks are included.</li>
-            <li>No data is sent to our servers (we do not operate any).</li>
-            <li>No user accounts are created with us.</li>
-        </ul>
+        <h2>The Short Version</h2>
+        <p>Phlix does not collect, store, transmit, or sell personal data. The developer does not operate servers, analytics, advertising, or tracking infrastructure of any kind. Everything the App needs to function is stored on your device or exchanged directly between your device and (a) your Plex Media Server, (b) Plex, Inc.'s authentication endpoints, and (c) Apple's App Store.</p>
 
-        <h2>Data That Stays on Your Device</h2>
-        <p>The following data is stored locally on your device and never transmitted to us:</p>
+        <h2>Information We Do Not Collect</h2>
+        <p>The App does not collect, log, transmit, or share any of the following with the developer:</p>
         <ul>
-            <li><strong>Plex Authentication Token</strong> &mdash; Stored securely in the iOS Keychain. Used to authenticate with your Plex Media Server. Obtained via Plex's official OAuth flow directly between your device and Plex, Inc.'s servers.</li>
-            <li><strong>Server Connection Details</strong> &mdash; Your Plex server address and name, stored in the iOS Keychain.</li>
-            <li><strong>App Preferences</strong> &mdash; Settings such as selected libraries, slideshow defaults, and display preferences, stored in UserDefaults on your device.</li>
-            <li><strong>Favorites</strong> &mdash; A list of media item identifiers you have favorited, stored in a local file on your device.</li>
-            <li><strong>Image Cache</strong> &mdash; Thumbnails and images from your server are cached locally for performance. You can clear this cache in Settings.</li>
-            <li><strong>Trial Start Date</strong> &mdash; The date you first opened the App is stored in the iOS Keychain to manage the free trial period.</li>
-            <li><strong>Purchase Status</strong> &mdash; Managed entirely by Apple's StoreKit framework. We do not have access to your payment information.</li>
+            <li>Your name, email address, phone number, mailing address, or any other contact information.</li>
+            <li>Your IP address, device identifiers, advertising identifiers (IDFA), or other persistent identifiers.</li>
+            <li>Crash reports, telemetry, performance metrics, or diagnostic data.</li>
+            <li>Behavioral analytics, usage statistics, feature engagement, or session data.</li>
+            <li>Your Plex account credentials, authentication tokens, or any content from your Plex Media Server.</li>
+            <li>Photos, videos, or other media you view, download, or favorite.</li>
+            <li>Payment information, billing details, or transaction history.</li>
         </ul>
+        <p>The App contains no third-party analytics SDKs, no advertising frameworks, no tracking pixels, and no remote-logging libraries. The developer operates no backend services that the App communicates with.</p>
+
+        <h2>Information Stored Locally on Your Device</h2>
+        <p>The following information is stored on your device only and is never transmitted to the developer:</p>
+        <ul>
+            <li><strong>Plex Authentication Token</strong> &mdash; Stored securely in the iOS Keychain. Obtained directly from Plex, Inc. via Plex's official OAuth PIN flow. Used to authenticate API requests to your Plex Media Server.</li>
+            <li><strong>Server Connection Details</strong> &mdash; The address(es), display name, and identifier of your Plex Media Server, stored in the iOS Keychain.</li>
+            <li><strong>App Preferences</strong> &mdash; Selected library, slideshow defaults, mobile-data preferences, and similar settings, stored in UserDefaults on your device.</li>
+            <li><strong>Favorites</strong> &mdash; A list of media-item identifiers you have favorited within the App, stored in a local file on your device.</li>
+            <li><strong>Image and Metadata Cache</strong> &mdash; Thumbnails, full-resolution images, and library indexes are cached on your device to improve performance. You can clear the image cache at any time in the App's Settings, or by uninstalling the App.</li>
+        </ul>
+        <p>This information is deleted from your device when you uninstall the App. It is not backed up or transmitted to the developer.</p>
 
         <h2>Network Communication</h2>
-        <p>Phlix communicates directly with:</p>
+        <p>While running, the App communicates directly with the following third parties. The developer is not party to and does not intercept these communications.</p>
         <ul>
-            <li><strong>Plex, Inc.</strong> (plex.tv) &mdash; For authentication via Plex's OAuth PIN flow and server discovery. This communication is between your device and Plex's servers. Plex's own <a href="https://www.plex.tv/about/privacy-legal/">privacy policy</a> governs their handling of your data.</li>
-            <li><strong>Your Plex Media Server</strong> &mdash; To browse, search, stream, and download your media. This communication stays on your local network or goes directly to your server's address.</li>
-            <li><strong>Apple</strong> &mdash; For in-app purchase transactions via StoreKit. Apple's <a href="https://www.apple.com/legal/privacy/">privacy policy</a> applies.</li>
+            <li><strong>Plex, Inc.</strong> (plex.tv) &mdash; Used for authentication via Plex's OAuth PIN flow and for discovering Plex Media Servers associated with your Plex account. Communication is between your device and Plex's servers. Plex's handling of your data is governed by <a href="https://www.plex.tv/about/privacy-legal/">Plex's Privacy Policy</a>.</li>
+            <li><strong>Your Plex Media Server</strong> &mdash; Used to browse, search, stream, and download media stored on that server. Communication is between your device and the server's address (which may be on your local network or reached over the internet, depending on how you configure your Plex Media Server).</li>
+            <li><strong>Apple, Inc.</strong> &mdash; The App is sold through the Apple App Store; Apple processes the purchase, distributes the App, and may collect data about App downloads and use in accordance with Apple's standard policies. Apple's handling of that data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The developer does not receive your name, email address, billing information, or any other identifying purchase data from Apple.</li>
         </ul>
 
         <h2>Photo Library Access</h2>
-        <p>If you choose to save downloaded media to your photo library, the App will request permission to add photos. This permission is used solely to save media you explicitly download. The App does not read or access your existing photo library.</p>
+        <p>If you choose to save downloaded media to your device's Photo Library, the App will request the iOS "Add Photos Only" permission. That permission is used solely to save media you explicitly choose to download. The App does not request, read, or access your existing Photo Library content.</p>
 
         <h2>Children's Privacy</h2>
-        <p>Phlix is not directed at children under 13. We do not knowingly collect data from children.</p>
+        <p>The App is not directed to children under the age of 13. The App does not knowingly collect personal information from children. Because the App does not collect personal information from anyone, no special procedures are required for users of any age. Parents and guardians should be aware that the App requires a Plex account and access to a Plex Media Server, and should ensure that content accessible via that server is appropriate for any child using the App.</p>
+
+        <h2>Your Choices and Your Rights</h2>
+        <p>Because the developer does not collect or store any personal information about you, there is nothing for the developer to access, correct, export, or delete on your behalf. To exercise the equivalent of access, correction, deletion, or portability rights with respect to data stored on your device:</p>
+        <ul>
+            <li><strong>Delete all local data:</strong> Uninstall the App. iOS will remove all of the App's local storage, including the Keychain entries and image caches it created.</li>
+            <li><strong>Clear caches without uninstalling:</strong> Open the App, then Settings, and use the cache-clearing controls.</li>
+            <li><strong>Log out:</strong> The App's logout flow removes Plex authentication tokens and server connection details from the Keychain.</li>
+        </ul>
+        <p>Data stored on your own Plex Media Server is under your control, not the developer's. Data Plex, Inc. and Apple, Inc. hold about you is governed by their respective policies linked above; please contact them directly to exercise any rights with respect to that data.</p>
+
+        <h2>California Residents (CCPA/CPRA)</h2>
+        <p>The developer does not "sell" or "share" your personal information as those terms are defined under the California Consumer Privacy Act, as amended by the California Privacy Rights Act. The developer does not collect personal information from California residents through the App.</p>
+
+        <h2>EEA / UK Residents (GDPR / UK GDPR)</h2>
+        <p>The developer does not collect or process personal data of EEA or UK residents through the App. Where Plex, Inc. or Apple, Inc. acts as a data controller in connection with your use of their services, their respective privacy policies and data-controller obligations apply.</p>
+
+        <h2>Security</h2>
+        <p>The App uses the iOS Keychain to store sensitive credentials (Plex authentication tokens and server connection details). Network requests use HTTPS where supported by your Plex Media Server. No transmission over the internet or storage on any device can be guaranteed to be completely secure, and you assume the residual risk of using the App.</p>
 
         <h2>Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date.</p>
+        <p>The developer may update this Privacy Policy from time to time. Material changes will be posted on this page with an updated "Last updated" date. Your continued use of the App after the effective date constitutes acceptance of the updated Policy.</p>
 
         <h2>Contact</h2>
-        <p>If you have questions about this Privacy Policy, please visit our <a href="/support">support page</a>.</p>
+        <p>For questions about this Privacy Policy, please visit the <a href="/support">support page</a>.</p>
     </div>
 </body>
 </html>
