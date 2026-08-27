@@ -22,26 +22,33 @@
     <div class="container">
         <a href="/" class="back">&larr; Back to Phlix</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: May 22, 2026</p>
+        <p class="updated">Last updated: August 27, 2026</p>
 
         <h2>Overview</h2>
         <p>Phlix ("the App") is an independent, third-party photo and video browser that connects to a Plex Media Server that you own, operate, or are authorized to access. This Privacy Policy explains what information the App processes, how it is processed, and what choices you have. By using the App you agree to the processing described below; if you do not agree, do not use the App.</p>
 
         <h2>The Short Version</h2>
-        <p>Phlix does not collect, store, transmit, or sell personal data. The developer does not operate servers, analytics, advertising, or tracking infrastructure of any kind. Everything the App needs to function is stored on your device or exchanged directly between your device and (a) your Plex Media Server, (b) Plex, Inc.'s authentication endpoints, and (c) Apple's App Store.</p>
+        <p>Phlix collects anonymous product-interaction data (which features are used, where things break) to improve the app. This data is not linked to your identity and is not used for advertising or tracking. Phlix does not collect your name, email, photos, library contents, server name, server address, or Plex account information. You can opt out of analytics entirely in Settings &rarr; Privacy.</p>
 
-        <h2>Information We Do Not Collect</h2>
-        <p>The App does not collect, log, transmit, or share any of the following with the developer:</p>
+        <h2>Anonymous Analytics Data We Collect</h2>
+        <p>Phlix collects anonymous product-interaction data to understand which features are used, where users encounter problems, and how to improve the app. This data is sent to <a href="https://posthog.com">PostHog</a> (US Cloud). The analytics implementation is a custom, dependency-free client &mdash; no third-party SDK is embedded in the app.</p>
+        <p>What is collected:</p>
         <ul>
-            <li>Your name, email address, phone number, mailing address, or any other contact information.</li>
-            <li>Your IP address, device identifiers, advertising identifiers (IDFA), or other persistent identifiers.</li>
-            <li>Crash reports, telemetry, performance metrics, or diagnostic data.</li>
-            <li>Behavioral analytics, usage statistics, feature engagement, or session data.</li>
-            <li>Your Plex account credentials, authentication tokens, or any content from your Plex Media Server.</li>
-            <li>Photos, videos, or other media you view, download, or favorite.</li>
+            <li>Which features are used (e.g. timeline viewed, slideshow started, search performed) and where errors occur (e.g. connection failed, image load failed).</li>
+            <li>App version, build number, iOS version, device model (e.g. "iPhone16,2"), and locale.</li>
+            <li>A randomly generated device identifier (UUID) that is not linked to your Apple ID, Plex account, or any personal information.</li>
+            <li>Purchase tier (free, trial, yearly, or lifetime) &mdash; but not transaction IDs, prices paid, or payment details.</li>
+        </ul>
+        <p>What is <strong>never</strong> collected:</p>
+        <ul>
+            <li>Your name, email address, phone number, or any contact information.</li>
+            <li>Your Plex username, authentication tokens, server name, server address, or any server configuration.</li>
+            <li>Photos, videos, filenames, album names, or any content from your Plex library.</li>
+            <li>Apple advertising identifiers (IDFA), IP addresses logged by the developer, or cross-app tracking data.</li>
             <li>Payment information, billing details, or transaction history.</li>
         </ul>
-        <p>The App contains no third-party analytics SDKs, no advertising frameworks, no tracking pixels, and no remote-logging libraries. The developer operates no backend services that the App communicates with.</p>
+        <p>You can opt out of analytics entirely in the App under Settings &rarr; Privacy &rarr; "Share anonymous usage data." When opted out, no data is sent and any queued data is deleted.</p>
+        <p>The App contains no advertising frameworks, no tracking pixels, and no session-replay tools. No ATT (App Tracking Transparency) prompt is required because no tracking occurs.</p>
 
         <h2>Information Stored Locally on Your Device</h2>
         <p>The following information is stored on your device only and is never transmitted to the developer:</p>
@@ -59,7 +66,8 @@
         <ul>
             <li><strong>Plex, Inc.</strong> (plex.tv) &mdash; Used for authentication via Plex's OAuth PIN flow and for discovering Plex Media Servers associated with your Plex account. Communication is between your device and Plex's servers. Plex's handling of your data is governed by <a href="https://www.plex.tv/about/privacy-legal/">Plex's Privacy Policy</a>.</li>
             <li><strong>Your Plex Media Server</strong> &mdash; Used to browse, search, stream, and download media stored on that server. Communication is between your device and the server's address (which may be on your local network or reached over the internet, depending on how you configure your Plex Media Server).</li>
-            <li><strong>Apple, Inc.</strong> &mdash; The App is sold through the Apple App Store; Apple processes the purchase, distributes the App, and may collect data about App downloads and use in accordance with Apple's standard policies. Apple's handling of that data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The developer does not receive your name, email address, billing information, or any other identifying purchase data from Apple.</li>
+            <li><strong>Apple, Inc.</strong> &mdash; The App is distributed through the Apple App Store; Apple processes purchases and subscriptions, distributes the App, and may collect data about App downloads and use in accordance with Apple's standard policies. Apple's handling of that data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The developer does not receive your name, email address, billing information, or any other identifying purchase data from Apple.</li>
+            <li><strong>PostHog, Inc.</strong> (us.posthog.com) &mdash; Anonymous product-interaction events are sent to PostHog's US Cloud infrastructure for analytics. No personal data, Plex credentials, server addresses, or media content is included. See "Anonymous Analytics Data We Collect" above for the full list. You can opt out in the App's Settings. PostHog's handling of data is governed by <a href="https://posthog.com/privacy">PostHog's Privacy Policy</a>.</li>
         </ul>
 
         <h2>Photo Library Access</h2>
@@ -78,10 +86,10 @@
         <p>Data stored on your own Plex Media Server is under your control, not the developer's. Data Plex, Inc. and Apple, Inc. hold about you is governed by their respective policies linked above; please contact them directly to exercise any rights with respect to that data.</p>
 
         <h2>California Residents (CCPA/CPRA)</h2>
-        <p>The developer does not "sell" or "share" your personal information as those terms are defined under the California Consumer Privacy Act, as amended by the California Privacy Rights Act. The developer does not collect personal information from California residents through the App.</p>
+        <p>The developer does not "sell" or "share" your personal information as those terms are defined under the California Consumer Privacy Act, as amended by the California Privacy Rights Act. The anonymous analytics data collected by the App is not linked to any individual and does not constitute personal information under the CCPA/CPRA.</p>
 
         <h2>EEA / UK Residents (GDPR / UK GDPR)</h2>
-        <p>The developer does not collect or process personal data of EEA or UK residents through the App. Where Plex, Inc. or Apple, Inc. acts as a data controller in connection with your use of their services, their respective privacy policies and data-controller obligations apply.</p>
+        <p>The anonymous analytics data collected by the App uses a randomly generated device identifier that cannot be linked to an identifiable person. Where Plex, Inc., Apple, Inc., or PostHog, Inc. acts as a data controller or processor in connection with your use of their services, their respective privacy policies and data-controller obligations apply. You can opt out of analytics at any time in Settings.</p>
 
         <h2>Security</h2>
         <p>The App uses the iOS Keychain to store sensitive credentials (Plex authentication tokens and server connection details). Network requests use HTTPS where supported by your Plex Media Server. No transmission over the internet or storage on any device can be guaranteed to be completely secure, and you assume the residual risk of using the App.</p>
