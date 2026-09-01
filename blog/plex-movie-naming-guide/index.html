@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Movie Naming Guide — Get Perfect Matches Every Time | Phlix Blog</title>
+    <meta name="description" content="The definitive guide to naming movie files for Plex. Folder structure, year tags, edition labels, and multi-version support.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-movie-naming-guide/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-movie-naming-guide/">
+    <meta property="og:title" content="Plex Movie Naming Guide — Get Perfect Matches Every Time">
+    <meta property="og:description" content="The definitive guide to naming movie files for Plex. Folder structure, year tags, edition labels, and multi-version support.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Plex Movie Naming Guide — Get Perfect Matches Every Time","description":"The definitive guide to naming movie files for Plex. Folder structure, year tags, edition labels, and multi-version support.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Movie Naming Guide</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>Plex Movie Naming Guide — Get Perfect Matches Every Time</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Getting metadata wrong is the most common frustration for new Plex users. You add a movie library, scan it, and half your films show up with wrong posters, missing descriptions, or do not appear at all. The fix is almost always the same: rename your files to match the format Plex expects. This guide covers the exact naming conventions that produce perfect matches, from basic single-movie setups to complex multi-version and extras collections.</p>
+
+        <h2>The Golden Rule: Movie Name (Year)</h2>
+
+        <p>Every movie file should follow this pattern:</p>
+
+        <pre><code>Movie Name (Year)/Movie Name (Year).ext</code></pre>
+
+        <p>That means each movie lives in its own folder, and both the folder and the file share the same name including the release year in parentheses. Here are real examples:</p>
+
+        <pre><code>The Matrix (1999)/The Matrix (1999).mkv
+Inception (2010)/Inception (2010).mp4
+Blade Runner 2049 (2017)/Blade Runner 2049 (2017).mkv</code></pre>
+
+        <p>The year is critical. Without it, Plex often matches the wrong film. Consider "Dune" — there is a 1984 version and a 2021 version. Without the year, Plex has to guess, and it frequently guesses wrong.</p>
+
+        <h2>Why Folders Matter</h2>
+
+        <p>Technically, Plex can match movies that are loose files without individual folders. However, using per-movie folders is strongly recommended for several reasons:</p>
+
+        <ul>
+            <li><strong>Extras support:</strong> Trailers, behind-the-scenes featurettes, and deleted scenes go inside the movie folder in a subfolder. Without a movie folder, there is nowhere to put them.</li>
+            <li><strong>Subtitle files:</strong> External subtitle files (<code>.srt</code>, <code>.ass</code>, <code>.sub</code>) need to sit alongside the movie file. A per-movie folder keeps them organized.</li>
+            <li><strong>Multi-version support:</strong> If you have both a 1080p and 4K version of a film, both files go in the same folder and Plex groups them together.</li>
+            <li><strong>Cleanliness:</strong> A flat directory with hundreds of movie files becomes impossible to manage manually.</li>
+        </ul>
+
+        <h2>Edition Tags</h2>
+
+        <p>If you have a specific cut of a film — Director's Cut, Extended Edition, Theatrical Release — Plex supports edition tags in curly braces:</p>
+
+        <pre><code>Blade Runner (1982)/Blade Runner (1982) {edition-Final Cut}.mkv
+The Lord of the Rings - The Return of the King (2003)/The Lord of the Rings - The Return of the King (2003) {edition-Extended}.mkv
+Apocalypse Now (1979)/Apocalypse Now (1979) {edition-Redux}.mkv</code></pre>
+
+        <p>The <code>{edition-Name}</code> tag tells Plex to display the edition label in the interface. Without this tag, Plex has no way to distinguish between different cuts of the same film. The edition tag goes after the year and before the file extension.</p>
+
+        <h2>Multi-Version Files</h2>
+
+        <p>Want to keep both a 4K HDR version and a 1080p SDR version of the same movie? Place both files in the same folder. Plex will detect them as versions of the same film and let users choose during playback:</p>
+
+        <pre><code>Interstellar (2014)/Interstellar (2014) - 2160p.mkv
+Interstellar (2014)/Interstellar (2014) - 1080p.mkv</code></pre>
+
+        <p>Plex recognizes common resolution and quality tags like <code>2160p</code>, <code>1080p</code>, <code>720p</code>, <code>4K</code>, <code>HDR</code>, and <code>SDR</code>. These labels appear in the playback version selector. If your files do not include these tags, Plex will still group them but label them generically as "Version 1" and "Version 2."</p>
+
+        <h2>Extras and Bonus Content</h2>
+
+        <p>Plex supports several types of extras stored in subfolders within the movie folder:</p>
+
+        <pre><code>The Dark Knight (2008)/The Dark Knight (2008).mkv
+The Dark Knight (2008)/Behind The Scenes/making-of.mkv
+The Dark Knight (2008)/Deleted Scenes/hospital-extended.mkv
+The Dark Knight (2008)/Trailers/theatrical-trailer.mkv
+The Dark Knight (2008)/Featurettes/imax-sequence.mkv</code></pre>
+
+        <p>Plex recognizes these subfolder names for extras: <code>Behind The Scenes</code>, <code>Deleted Scenes</code>, <code>Featurettes</code>, <code>Interviews</code>, <code>Scenes</code>, <code>Shorts</code>, <code>Trailers</code>, and <code>Other</code>. The subfolder name must match exactly (case-insensitive). Files inside these subfolders appear in the Extras section of the movie detail page.</p>
+
+        <h2>3D Movie Tags</h2>
+
+        <p>For 3D content, append the 3D format to the filename:</p>
+
+        <pre><code>Avatar (2009)/Avatar (2009) - 3D-SBS.mkv
+Avatar (2009)/Avatar (2009) - 3D-OU.mkv
+Avatar (2009)/Avatar (2009) - 3D-HSBS.mkv</code></pre>
+
+        <p>Supported 3D tags include <code>3D-SBS</code> (side-by-side), <code>3D-OU</code> (over-under), <code>3D-HSBS</code> (half side-by-side), and <code>3D-HOU</code> (half over-under). Plex uses these tags to flag the content as 3D so compatible players can enable the correct display mode.</p>
+
+        <h2>Using TMDB and IMDB IDs</h2>
+
+        <p>When Plex cannot match a movie by name alone — perhaps the title is very common, non-English, or abbreviated — you can include the TMDB or IMDB ID directly in the folder or filename:</p>
+
+        <pre><code>Saw (2004) {tmdb-176}/Saw (2004) {tmdb-176}.mkv
+Ran (1985) {imdb-tt0089881}/Ran (1985) {imdb-tt0089881}.mkv</code></pre>
+
+        <p>To find the TMDB ID, search for the movie on <code>themoviedb.org</code> and look at the URL. The number at the end is the ID. For IMDB, use the <code>tt</code> identifier from the URL on <code>imdb.com</code>. Including the database ID guarantees Plex matches the correct entry, regardless of naming ambiguity.</p>
+
+        <h2>Common Naming Mistakes</h2>
+
+        <p>These are the errors that cause the most matching failures:</p>
+
+        <h3>Missing Year</h3>
+        <pre><code>Bad:  The Thing/The Thing.mkv
+Good: The Thing (1982)/The Thing (1982).mkv</code></pre>
+        <p>"The Thing" has multiple versions across different decades. Without the year, Plex picks one at random.</p>
+
+        <h3>Extra Information in the Filename</h3>
+        <pre><code>Bad:  The.Matrix.1999.BluRay.1080p.x264-GROUP.mkv
+Good: The Matrix (1999)/The Matrix (1999).mkv</code></pre>
+        <p>Release group tags, codec info, and source labels confuse Plex's scanner. Strip everything except the movie name, year, and optionally an edition or resolution tag.</p>
+
+        <h3>Using Dots or Underscores Instead of Spaces</h3>
+        <pre><code>Bad:  The_Dark_Knight_2008.mkv
+Good: The Dark Knight (2008).mkv</code></pre>
+        <p>While Plex can sometimes parse dots and underscores as spaces, it is not reliable. Use actual spaces in your filenames.</p>
+
+        <h3>Wrong Year</h3>
+        <p>Double-check the year, especially for movies released near the end of a calendar year. A film may have premiered at a festival in December 2023 but received its wide release in January 2024. Use the year that TMDB lists for the movie, not your personal recollection.</p>
+
+        <h3>Articles in the Wrong Position</h3>
+        <pre><code>Bad:  Matrix, The (1999)/Matrix, The (1999).mkv
+Good: The Matrix (1999)/The Matrix (1999).mkv</code></pre>
+        <p>Always use the full title as it appears on TMDB, including leading articles like "The," "A," or "An." Plex handles alphabetical sorting internally.</p>
+
+        <h2>Bulk Renaming Tools</h2>
+
+        <p>Renaming hundreds of poorly named files by hand is tedious. These tools automate the process:</p>
+
+        <ul>
+            <li><strong>FileBot:</strong> The gold standard for media file renaming. It matches files against TMDB and TVDB, renames them in Plex format, and can move them into the correct folder structure. Available for Windows, Mac, and Linux (paid license).</li>
+            <li><strong>Tiny Media Manager:</strong> A free alternative that handles movies and TV shows. It downloads metadata and renames files according to customizable patterns.</li>
+            <li><strong>Bulk Rename Utility (Windows):</strong> A free tool for pattern-based renaming. Less intelligent than FileBot but useful for simple search-and-replace operations across many files.</li>
+        </ul>
+
+        <h2>After Renaming: Refresh Your Library</h2>
+
+        <p>After renaming files, go to your Plex movie library, click the three-dot menu, and select "Scan Library Files." If individual movies still show wrong metadata, click the movie, select "Fix Match," and search manually by title and year. For persistent issues, select "Unmatch" first, then "Fix Match" to start the matching process from scratch.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-tv-show-naming-guide/" class="related-card">
+                <h3>Plex TV Show Naming Guide</h3>
+                <p>Season folders, episode numbering, specials, and multi-episode files.</p>
+            </a>
+            <a href="/blog/organize-media-library-plex/" class="related-card">
+                <h3>Organize Your Media Library for Plex</h3>
+                <p>Complete file naming and folder structure best practices.</p>
+            </a>
+            <a href="/blog/plex-not-finding-media/" class="related-card">
+                <h3>Plex Not Finding Your Media?</h3>
+                <p>Troubleshoot missing files, wrong matches, and scan failures.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

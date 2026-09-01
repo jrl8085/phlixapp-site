@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Media Server Hardware Requirements — What You Actually Need | Phlix Blog</title>
+    <meta name="description" content="CPU, RAM, storage, and network requirements for Plex. From basic setups to 4K HDR transcoding rigs.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-hardware-requirements/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-hardware-requirements/">
+    <meta property="og:title" content="Plex Media Server Hardware Requirements — What You Actually Need">
+    <meta property="og:description" content="CPU, RAM, storage, and network requirements for Plex. From basic setups to 4K HDR transcoding rigs.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Plex Media Server Hardware Requirements — What You Actually Need","description":"CPU, RAM, storage, and network requirements for Plex. From basic setups to 4K HDR transcoding rigs.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Hardware Requirements</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>Plex Media Server Hardware Requirements — What You Actually Need</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>The hardware you need for Plex depends almost entirely on one question: will your clients transcode, or will they Direct Play? A server that only handles Direct Play can run on a Raspberry Pi. A server that transcodes 4K HDR for multiple remote users needs serious CPU or GPU power. This guide breaks down the actual requirements for CPU, RAM, storage, and network at every level.</p>
+
+        <h2>Understanding Direct Play vs Transcoding</h2>
+
+        <p>Before diving into hardware specs, you need to understand why they matter. Plex streams media to clients in one of three ways:</p>
+
+        <ul>
+            <li><strong>Direct Play:</strong> The client plays the original file as-is. No CPU usage on the server beyond reading the file from disk. This is the ideal scenario.</li>
+            <li><strong>Direct Stream:</strong> The video or audio is repackaged into a different container format without re-encoding. Minimal CPU usage.</li>
+            <li><strong>Transcode:</strong> The video and/or audio are converted to a different codec, resolution, or bitrate in real time. This is CPU-intensive and is the primary driver of hardware requirements.</li>
+        </ul>
+
+        <p>Transcoding happens when a client does not support the file's codec, when bandwidth is limited (remote streaming over a slow connection), or when subtitles are burned into the video stream (common with image-based subtitle formats like PGS).</p>
+
+        <h2>CPU Requirements</h2>
+
+        <h3>Plex's PassMark Guideline</h3>
+        <p>Plex recommends approximately 2,000 PassMark points per 1080p software transcode stream. For 4K transcode, they recommend around 12,000 PassMark points. These are guidelines for software (CPU-only) transcoding without hardware acceleration.</p>
+
+        <h3>Hardware Transcoding Changes Everything</h3>
+        <p>With hardware-accelerated transcoding (requires Plex Pass), the CPU's integrated GPU or a discrete GPU handles the encoding and decoding. Intel Quick Sync, available on most Intel CPUs from the 7th generation onward, can handle multiple 1080p transcode streams on a low-power Celeron that would struggle with even one software transcode.</p>
+
+        <p>An Intel N100, a $100 chip with a TDP of 6 watts, can hardware-transcode three to four simultaneous 1080p HEVC streams. A dedicated NVIDIA GPU can handle even more. Hardware transcoding makes the PassMark number far less relevant.</p>
+
+        <h3>CPU Recommendations by Use Case</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Use Case</th>
+                    <th>CPU Class</th>
+                    <th>Examples</th>
+                    <th>PassMark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Direct Play only</td>
+                    <td>Any modern CPU</td>
+                    <td>RPi 4, ARM NAS, old laptop</td>
+                    <td>500+</td>
+                </tr>
+                <tr>
+                    <td>1-2 HW transcodes</td>
+                    <td>Intel with Quick Sync</td>
+                    <td>Celeron J4125, N100</td>
+                    <td>3,000+</td>
+                </tr>
+                <tr>
+                    <td>3-5 HW transcodes</td>
+                    <td>Intel mid-range</td>
+                    <td>i3-12100, i5-12400</td>
+                    <td>10,000+</td>
+                </tr>
+                <tr>
+                    <td>4K HDR transcode</td>
+                    <td>Intel 10th gen+ or NVIDIA</td>
+                    <td>i5-10400+, RTX 3060</td>
+                    <td>12,000+</td>
+                </tr>
+                <tr>
+                    <td>Heavy multi-user</td>
+                    <td>NVIDIA GPU</td>
+                    <td>RTX 3060, A2000</td>
+                    <td>N/A (GPU)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>RAM Requirements</h2>
+
+        <p>Plex itself is not memory-hungry. A typical Plex Media Server process uses 200 to 500 MB of RAM during normal operation. However, you need to account for the operating system and any other services running on the same machine.</p>
+
+        <h3>Recommendations</h3>
+
+        <ul>
+            <li><strong>4 GB:</strong> Minimum for a dedicated Plex server with no other services. Works for small libraries and a few simultaneous streams.</li>
+            <li><strong>8 GB:</strong> Recommended for most setups. Provides headroom for large libraries (50,000+ items), concurrent streams, and the operating system.</li>
+            <li><strong>16 GB:</strong> Ideal if you run other services alongside Plex (Docker containers, databases, file sharing). Also recommended for very large libraries with 100,000+ items, including photo libraries.</li>
+            <li><strong>32 GB:</strong> Only necessary if Plex is one of many services on a busy home server.</li>
+        </ul>
+
+        <p>Library size affects memory usage because Plex loads metadata into memory for browsing. A library with 100,000 photos and their EXIF data will use noticeably more RAM than a library with 500 movies.</p>
+
+        <h2>Storage Requirements</h2>
+
+        <h3>Media Storage</h3>
+        <p>Your media files are the biggest storage consumers. A typical 1080p movie (H.264, good quality) runs 8 to 15 GB. A 4K HDR Blu-ray remux can be 50 to 80 GB. TV series vary widely. A photo library with 100,000 images (mix of JPEGs and RAW files) might use 500 GB to 2 TB.</p>
+
+        <p>Traditional spinning hard drives (HDDs) are the cost-effective choice for media storage. Plex's workload is sequential reads, which HDDs handle well. A single 7200 RPM drive can saturate a gigabit Ethernet connection. Buy NAS-rated drives (WD Red Plus, Seagate IronWolf) if the drives will run 24/7.</p>
+
+        <h3>Metadata and Thumbnails</h3>
+        <p>Plex stores metadata, posters, thumbnails, and chapter images in its application data directory. For a large library, this can grow to 20-50 GB. Storing this on an SSD significantly improves browsing responsiveness, especially for photo libraries where thumbnail generation is intensive.</p>
+
+        <h3>Transcode Cache</h3>
+        <p>When Plex transcodes, it writes temporary files to disk. An SSD for the transcode directory prevents I/O bottlenecks that cause buffering during transcoded playback. You do not need a large SSD for this — 50 to 100 GB is more than enough, as Plex cleans up transcode files after playback.</p>
+
+        <h3>Storage Recommendations</h3>
+
+        <ul>
+            <li><strong>Budget:</strong> Single HDD for everything (media, metadata, transcode). Works, but browsing and transcoding will be slower.</li>
+            <li><strong>Recommended:</strong> HDD(s) for media, small SSD (120-250 GB) for Plex metadata and transcode cache.</li>
+            <li><strong>Optimal:</strong> HDD array (RAID 5 or SHR) for media, NVMe SSD for metadata and transcode, separate backup solution.</li>
+        </ul>
+
+        <h2>Network Requirements</h2>
+
+        <h3>Local Streaming</h3>
+        <p>For local (LAN) streaming, a wired gigabit Ethernet connection is ideal. Gigabit provides 1,000 Mbps of bandwidth — more than enough for multiple 4K HDR streams simultaneously (a 4K remux typically peaks at 80-100 Mbps). Reliable 5 GHz Wi-Fi can also work for one or two streams, but wired is always more consistent.</p>
+
+        <h3>Remote Streaming</h3>
+        <p>Remote streaming depends on your upload speed. General guidelines:</p>
+
+        <ul>
+            <li><strong>10 Mbps upload:</strong> One remote stream at reduced quality (720p or 1080p at low bitrate). Transcoding will be triggered.</li>
+            <li><strong>25 Mbps upload:</strong> One high-quality 1080p remote stream, possibly Direct Play depending on settings.</li>
+            <li><strong>50+ Mbps upload:</strong> Multiple remote streams or a single 4K stream.</li>
+            <li><strong>100+ Mbps upload:</strong> 4K Direct Play to remote clients, multiple simultaneous remote streams.</li>
+        </ul>
+
+        <p>If your upload bandwidth is limited, Plex will transcode remote streams to fit the available bandwidth, which loops back to CPU requirements.</p>
+
+        <h2>Build Recommendations</h2>
+
+        <h3>Budget Build (Under $200)</h3>
+        <p>Use an old desktop or laptop with an Intel CPU (6th generation or newer for Quick Sync). Add a 4 TB HDD for media. This costs almost nothing if you already have the hardware. Pair with Plex Pass ($5/month) for hardware transcoding, and even an old Core i3 becomes a capable server.</p>
+
+        <h3>Mid-Range Build ($300-600)</h3>
+        <p>A mini PC with an Intel N100 (like the Beelink S12 Pro or ASUS PN42), 8-16 GB RAM, and a 256 GB SSD for the operating system and Plex metadata. Attach external USB drives or a USB HDD dock for media storage. The N100's Quick Sync handles multiple simultaneous transcodes while drawing under 15 watts.</p>
+
+        <h3>High-End Build ($800+)</h3>
+        <p>A purpose-built server or NAS with an Intel i5 or i7 (12th generation or newer), 32 GB RAM, NVMe SSD for the OS, and a multi-bay HDD enclosure. Add an NVIDIA GPU if you need to serve many simultaneous transcoded streams. This level of hardware is for shared servers with ten or more users.</p>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Most people overthink Plex hardware requirements. If you set up your library with widely compatible codecs (H.264 in MKV or MP4 containers) and your clients are modern devices, Direct Play handles 90% of playback and your server barely breaks a sweat. Invest in an Intel CPU with Quick Sync to cover the remaining 10%, add enough HDD storage for your library, and put Plex metadata on an SSD. That combination works for the vast majority of home setups.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/best-nas-for-plex/" class="related-card">
+                <h3>Best NAS for Plex in 2026</h3>
+                <p>Synology, QNAP, and Asustor compared for Plex streaming.</p>
+            </a>
+            <a href="/blog/plex-docker-setup/" class="related-card">
+                <h3>Plex in Docker — Step-by-Step</h3>
+                <p>Run Plex in a container with persistent storage and HW transcoding.</p>
+            </a>
+            <a href="/blog/plex-raspberry-pi-setup/" class="related-card">
+                <h3>Plex on Raspberry Pi</h3>
+                <p>Budget server under $100 with limitations and optimization tips.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

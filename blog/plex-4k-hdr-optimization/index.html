@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Optimize Plex for 4K HDR Content | Phlix Blog</title>
+    <meta name="description" content="Stream 4K HDR without transcoding. Client compatibility, bandwidth requirements, tone mapping, and the separate library strategy.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-4k-hdr-optimization/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-4k-hdr-optimization/">
+    <meta property="og:title" content="How to Optimize Plex for 4K HDR Content">
+    <meta property="og:description" content="Stream 4K HDR without transcoding. Client compatibility, bandwidth requirements, tone mapping, and the separate library strategy.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Optimize Plex for 4K HDR Content","description":"Stream 4K HDR without transcoding. Client compatibility, bandwidth requirements, tone mapping, and the separate library strategy.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Optimize Plex for 4K HDR</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat" style="color:#FFA726">Advanced</span>
+                <h1>How to Optimize Plex for 4K HDR Content</h1>
+                <p class="subtitle">Stream 4K HDR without transcoding. Client compatibility, bandwidth requirements, and the separate library strategy.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>4K HDR content looks spectacular -- when it plays correctly. But 4K HDR on Plex is also the single most common source of buffering, washed-out colors, and server meltdowns. The core problem is simple: transcoding 4K HDR content is brutally expensive, and most of the time it destroys the HDR metadata in the process, producing a dull, gray image. The solution is to avoid transcoding 4K HDR entirely. This guide explains how.</p>
+
+            <h2>Why Direct Play Is Non-Negotiable for 4K HDR</h2>
+
+            <p>When a Plex client Direct Plays a file, the server sends the raw file as-is. No CPU usage, no re-encoding, no metadata loss. For standard 1080p content, transcoding is an acceptable fallback. For 4K HDR, it is not.</p>
+
+            <p>HDR metadata (the brightness mapping information embedded in the video stream) gets stripped during a standard transcode. The result is a flat, washed-out picture that looks worse than a good 1080p encode. Server-side tone mapping can preserve some of the HDR information when downscaling to SDR, but it requires significant GPU resources and the output is still a compromise. The goal should always be Direct Play.</p>
+
+            <h2>Bandwidth Requirements</h2>
+
+            <p>4K HDR files are large, and they demand sustained high throughput. Here are typical bitrate ranges for common 4K formats:</p>
+
+            <table>
+                <thead>
+                    <tr><th>Content Type</th><th>Typical Bitrate</th><th>Network Requirement</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>4K Blu-ray Remux (HEVC HDR)</td><td>60-80 Mbps</td><td>100+ Mbps sustained</td></tr>
+                    <tr><td>4K Streaming Encode (high quality)</td><td>25-40 Mbps</td><td>50+ Mbps sustained</td></tr>
+                    <tr><td>4K Web-DL</td><td>15-25 Mbps</td><td>30+ Mbps sustained</td></tr>
+                    <tr><td>1080p Blu-ray Remux (reference)</td><td>20-40 Mbps</td><td>50+ Mbps sustained</td></tr>
+                </tbody>
+            </table>
+
+            <p>Your network needs to sustain these speeds consistently, not just peak at them. A WiFi connection that benchmarks at 200 Mbps may only deliver 60 Mbps of sustained throughput due to interference and contention. For 4K HDR, a wired Ethernet connection between the server and the playback device is strongly recommended. Gigabit Ethernet provides 1000 Mbps of dedicated, consistent bandwidth, which eliminates the network as a variable entirely.</p>
+
+            <h2>Client Compatibility</h2>
+
+            <p>Not every Plex client can Direct Play 4K HDR content. The client must support the video codec (usually HEVC/H.265), the HDR format, and the container format. Here is how the most common clients stack up:</p>
+
+            <table>
+                <thead>
+                    <tr><th>Client</th><th>4K HEVC</th><th>HDR10</th><th>Dolby Vision</th><th>HLG</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Apple TV 4K</td><td>Yes</td><td>Yes</td><td>Yes (Profile 5)</td><td>Yes</td></tr>
+                    <tr><td>NVIDIA Shield Pro</td><td>Yes</td><td>Yes</td><td>Yes (Profile 5, 7, 8)</td><td>Yes</td></tr>
+                    <tr><td>Amazon Fire TV Stick 4K Max</td><td>Yes</td><td>Yes</td><td>Yes (Profile 5)</td><td>Yes</td></tr>
+                    <tr><td>LG WebOS (2020+)</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Samsung Tizen (2020+)</td><td>Yes</td><td>Yes</td><td>Limited</td><td>Yes</td></tr>
+                    <tr><td>Roku Ultra (2022+)</td><td>Yes</td><td>Yes</td><td>Yes (Profile 5)</td><td>Yes</td></tr>
+                    <tr><td>Plex Web (Chrome)</td><td>Limited</td><td>No</td><td>No</td><td>No</td></tr>
+                    <tr><td>Plex Web (Edge)</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+                    <tr><td>iOS (iPhone/iPad)</td><td>Yes</td><td>Yes</td><td>Yes (Profile 5)</td><td>Yes</td></tr>
+                </tbody>
+            </table>
+
+            <p>The key takeaway: dedicated streaming devices like Apple TV 4K and NVIDIA Shield Pro are the gold standard for 4K HDR Direct Play. The Plex web player is the worst option for 4K HDR and should be avoided entirely for this content.</p>
+
+            <h2>HDR Formats Explained</h2>
+
+            <h3>HDR10</h3>
+            <p>The baseline HDR standard. Static metadata that applies a single brightness curve to the entire film. Supported by virtually all 4K-capable clients and TVs. This is the most common HDR format you will encounter.</p>
+
+            <h3>HDR10+</h3>
+            <p>Samsung's dynamic metadata extension of HDR10. Adjusts brightness on a scene-by-scene or frame-by-frame basis. Limited client support outside Samsung devices. Falls back to HDR10 gracefully on unsupported hardware.</p>
+
+            <h3>Dolby Vision</h3>
+            <p>Dolby's premium dynamic HDR format. Uses proprietary metadata layers (Profiles 5, 7, and 8 are most relevant for streaming). Profile 5 is the most widely supported on streaming devices. Profile 7 includes a backwards-compatible HDR10 base layer. Client support varies significantly -- check your specific device.</p>
+
+            <h3>HLG (Hybrid Log-Gamma)</h3>
+            <p>Designed for broadcast TV. HLG is backwards-compatible with SDR displays, meaning it looks acceptable even without HDR processing. Less common in movie files but used in some live content and broadcasts.</p>
+
+            <h2>Tone Mapping -- The Fallback</h2>
+
+            <p>When a client cannot handle HDR but you want to play a 4K HDR file, Plex can perform server-side tone mapping. This converts the HDR color space to SDR while attempting to preserve the visual intent of the grading. Plex supports hardware-accelerated tone mapping via Intel Quick Sync (10th generation and newer) and NVIDIA NVENC (GTX 1050 and newer with Plex Pass).</p>
+
+            <p>Tone mapping is computationally expensive. A single 4K HDR-to-SDR transcode with tone mapping will consume significant GPU resources. It is a valid fallback for occasional use, but if you find yourself tone mapping regularly, the better solution is to maintain separate 4K and 1080p copies of your content.</p>
+
+            <h2>The Separate Library Strategy</h2>
+
+            <p>The most reliable approach for mixed-capability households is to maintain two separate libraries: one for 4K HDR content and one for 1080p SDR content. This avoids a scenario where a phone user browsing your library accidentally triggers a 4K transcode that bogs down the entire server.</p>
+
+            <h3>How to Set It Up</h3>
+
+            <ol>
+                <li>Create a folder structure like <code>/media/movies-4k/</code> and <code>/media/movies/</code>.</li>
+                <li>In Plex, create two separate Movie libraries: "Movies" pointing to the 1080p folder and "Movies (4K)" pointing to the 4K folder.</li>
+                <li>For users with 4K-capable clients, share both libraries. For users on phones, tablets, or web browsers, share only the 1080p library.</li>
+            </ol>
+
+            <p>This strategy ensures that 4K content is only served to clients that can Direct Play it. It doubles your storage requirements for titles you keep in both formats, but it eliminates transcoding problems entirely.</p>
+
+            <h2>Server Settings to Lock In</h2>
+
+            <ul>
+                <li><strong>Disable "Allow Transcoding" for 4K library (optional).</strong> Under the library's sharing settings for each user, you can restrict transcoding. This prevents accidental transcodes but also means the content simply will not play on unsupported clients.</li>
+                <li><strong>Set remote quality limits.</strong> If your upload speed cannot sustain 80+ Mbps for a 4K remux, cap remote streaming quality or disable remote access for the 4K library.</li>
+                <li><strong>Enable hardware transcoding.</strong> If tone mapping must happen, ensure it runs on the GPU, not the CPU. See our <a href="/blog/plex-gpu-transcoding/">GPU transcoding guide</a> for setup instructions.</li>
+            </ul>
+
+            <p>4K HDR on Plex is not plug-and-play, but with the right client hardware, a wired network, and a thoughtful library structure, it can be flawless. Invest in a capable streaming device, wire it to your network, and let Direct Play do the rest.</p>
+
+            <div class="cta-box">
+                <h3>Phlix -- The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-gpu-transcoding/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>GPU Transcoding -- Hardware Acceleration</h3><p>Intel Quick Sync, NVIDIA NVENC, AMD VCE setup and benchmarks.</p></a>
+                <a href="/blog/fix-plex-buffering/" class="blog-card"><span class="cat" style="color:#EF5350">Troubleshooting</span><h3>Fix Plex Buffering Once and For All</h3><p>Network optimization, transcoding settings, and client-side fixes.</p></a>
+                <a href="/blog/plex-transcoding-explained/" class="blog-card"><span class="cat" style="color:#EF5350">Troubleshooting</span><h3>Plex Transcoding Explained</h3><p>Direct Play vs Direct Stream vs Transcode. Optimize for less CPU usage.</p></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

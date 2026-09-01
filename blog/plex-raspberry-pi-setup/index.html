@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Plex on Raspberry Pi — Budget Server Guide | Phlix Blog</title>
+    <meta name="description" content="Run Plex Media Server on a Raspberry Pi for under $100. Hardware needs, limitations, and optimization.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-raspberry-pi-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-raspberry-pi-setup/">
+    <meta property="og:title" content="How to Set Up Plex on Raspberry Pi — Budget Server Guide">
+    <meta property="og:description" content="Run Plex Media Server on a Raspberry Pi for under $100. Hardware needs, limitations, and optimization.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Plex on Raspberry Pi — Budget Server Guide","description":"Run Plex Media Server on a Raspberry Pi for under $100. Hardware needs, limitations, and optimization.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex on Raspberry Pi</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Set Up Plex on Raspberry Pi — Budget Server Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>A Raspberry Pi is one of the cheapest ways to run a Plex Media Server. For under $100 in total hardware costs, you can have a silent, low-power server that streams your movies, music, and photos to devices on your home network. But there are real limitations you need to understand before committing. This guide covers which Pi models work, how to install Plex, what you can and cannot do, and how to optimize performance.</p>
+
+        <h2>Which Raspberry Pi Should You Use?</h2>
+
+        <h3>Raspberry Pi 5 (Recommended)</h3>
+        <p>The Raspberry Pi 5, released in late 2023, is the first Pi that handles Plex reasonably well. It features a Broadcom BCM2712 quad-core Cortex-A76 CPU clocked at 2.4 GHz, which is a significant upgrade over the Pi 4. It comes in 4 GB and 8 GB RAM configurations. The 8 GB model is recommended for Plex.</p>
+
+        <p>The Pi 5 also adds a PCIe 2.0 interface, enabling NVMe SSD storage through an adapter board. This is a game-changer for Plex because it eliminates the I/O bottleneck of USB-attached storage and MicroSD cards.</p>
+
+        <p><strong>Price:</strong> Approximately $60 (4 GB) or $80 (8 GB), plus case, power supply, and storage.</p>
+
+        <h3>Raspberry Pi 4 Model B (Budget Option)</h3>
+        <p>The Pi 4 has a Broadcom BCM2711 quad-core Cortex-A72 CPU at 1.8 GHz. It is available in 2 GB, 4 GB, and 8 GB configurations. The 4 GB or 8 GB models are suitable for Plex.</p>
+
+        <p>The Pi 4 is slower than the Pi 5 and lacks the PCIe interface, but it is cheaper and widely available. It handles Direct Play streaming for one or two simultaneous users adequately.</p>
+
+        <p><strong>Price:</strong> Approximately $35-55 depending on RAM configuration.</p>
+
+        <h3>Older Models (Not Recommended)</h3>
+        <p>The Raspberry Pi 3 and earlier models have insufficient CPU power and RAM for Plex. They struggle with even basic library scanning and metadata downloads. Do not attempt to run Plex on anything older than a Pi 4.</p>
+
+        <h2>What You Need</h2>
+
+        <p>Here is a complete shopping list for a Raspberry Pi Plex server:</p>
+
+        <ul>
+            <li><strong>Raspberry Pi 5 (8 GB)</strong> — approximately $80</li>
+            <li><strong>Official Pi 5 power supply (27W USB-C)</strong> — approximately $12. Do not skimp on the power supply. An underpowered supply causes throttling and instability under load.</li>
+            <li><strong>MicroSD card (32 GB+) or NVMe SSD with adapter</strong> — $10-40. An NVMe SSD is strongly recommended for Plex metadata and the operating system.</li>
+            <li><strong>External USB hard drive</strong> — for media storage. A 4 TB USB 3.0 drive costs around $80-100.</li>
+            <li><strong>Case with active cooling</strong> — approximately $10-15. The Pi 5 runs warm under load. A case with a fan prevents thermal throttling.</li>
+            <li><strong>Ethernet cable</strong> — wired networking is essential for reliable streaming.</li>
+        </ul>
+
+        <p><strong>Total cost:</strong> Approximately $90-150 depending on your storage choices, not counting the external hard drive you may already own.</p>
+
+        <h2>Step 1 — Install the Operating System</h2>
+
+        <p>Download the Raspberry Pi Imager from <code>raspberrypi.com</code> on your computer. Insert your MicroSD card (or NVMe SSD via a USB adapter) and use the Imager to write Raspberry Pi OS (64-bit, Lite edition). The Lite edition is recommended because it does not include a desktop environment, saving RAM and CPU for Plex.</p>
+
+        <p>Before writing, click the gear icon in the Imager to configure:</p>
+        <ul>
+            <li>Set a hostname (e.g., <code>plexpi</code>).</li>
+            <li>Enable SSH (so you can manage the Pi remotely without a monitor).</li>
+            <li>Set a username and password.</li>
+            <li>Configure Wi-Fi if you are not using Ethernet (but Ethernet is strongly recommended).</li>
+        </ul>
+
+        <p>Write the image, insert the card into your Pi, connect Ethernet and power, and wait a minute for it to boot. Then SSH into it from your computer:</p>
+
+        <pre><code>ssh username@plexpi.local</code></pre>
+
+        <h2>Step 2 — Install Plex Media Server</h2>
+
+        <p>Plex provides official ARM64 packages for Raspberry Pi. Update your system and install Plex:</p>
+
+        <pre><code>sudo apt update && sudo apt upgrade -y
+
+# Add the Plex repository
+echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/plex.gpg
+
+# Install Plex
+sudo apt update
+sudo apt install plexmediaserver -y</code></pre>
+
+        <p>Plex will install and start automatically as a system service. Verify it is running:</p>
+
+        <pre><code>sudo systemctl status plexmediaserver</code></pre>
+
+        <p>Access the setup wizard by navigating to <code>http://plexpi.local:32400/web</code> in a browser on your computer. Sign in with your Plex account to claim the server.</p>
+
+        <h2>Step 3 — Mount Your External Drive</h2>
+
+        <p>Plug your external USB drive into one of the Pi's USB 3.0 ports (the blue ports). Identify the drive:</p>
+
+        <pre><code>sudo fdisk -l</code></pre>
+
+        <p>Look for your external drive (usually <code>/dev/sda1</code>). Create a mount point and mount it:</p>
+
+        <pre><code>sudo mkdir -p /mnt/media
+sudo mount /dev/sda1 /mnt/media</code></pre>
+
+        <p>To mount automatically on boot, add an entry to <code>/etc/fstab</code>. First, find the drive's UUID:</p>
+
+        <pre><code>sudo blkid /dev/sda1</code></pre>
+
+        <p>Then add a line to <code>/etc/fstab</code>:</p>
+
+        <pre><code>UUID=your-uuid-here /mnt/media auto defaults,nofail 0 2</code></pre>
+
+        <p>The <code>nofail</code> option ensures the Pi still boots if the drive is not connected. Set permissions so Plex can read the drive:</p>
+
+        <pre><code>sudo chown -R plex:plex /mnt/media</code></pre>
+
+        <h2>Step 4 — Add Libraries</h2>
+
+        <p>In the Plex web interface, add libraries pointing to folders on your mounted external drive (e.g., <code>/mnt/media/movies</code>, <code>/mnt/media/photos</code>). Plex will begin scanning and downloading metadata.</p>
+
+        <p>The initial scan is the most CPU-intensive operation you will run on the Pi. For large libraries, expect this to take several hours. Let it run without interruption — scanning in the background while trying to stream will result in poor performance on both tasks.</p>
+
+        <h2>Understanding the Limitations</h2>
+
+        <h3>No Transcoding</h3>
+        <p>This is the biggest limitation. The Raspberry Pi's ARM CPU cannot transcode video in real time. There is no hardware transcoding support (no Intel Quick Sync, no NVIDIA GPU). Even a single 1080p software transcode will overwhelm the CPU and result in unwatchable buffering.</p>
+
+        <p>This means every client must Direct Play your media. In practice, this works well if:</p>
+        <ul>
+            <li>Your media is in H.264 (AVC) format, which nearly every modern device supports natively.</li>
+            <li>Your clients are capable devices like Apple TV 4K, modern smart TVs, or phones and tablets from the last few years.</li>
+            <li>You do not use image-based subtitles (PGS, VOBSUB), which force transcoding. Use text-based SRT subtitles instead.</li>
+        </ul>
+
+        <p>If any of your clients regularly require transcoding, a Raspberry Pi is not the right choice. Consider a mini PC with an Intel CPU instead (see our <a href="/blog/plex-hardware-requirements/">hardware requirements guide</a>).</p>
+
+        <h3>Limited Simultaneous Streams</h3>
+        <p>Even with Direct Play, the Pi 5 can comfortably handle two to three simultaneous streams. The bottleneck is not CPU (since Direct Play requires minimal processing) but rather USB bandwidth for the external drive and network I/O. A fourth or fifth simultaneous stream may cause buffering.</p>
+
+        <h3>Slow Library Scanning</h3>
+        <p>Adding large amounts of new media triggers a library scan that is noticeably slower on a Pi than on a desktop computer or NAS. Thumbnail generation for photo libraries is particularly slow. Budget extra time after adding new content.</p>
+
+        <h2>Optimization Tips</h2>
+
+        <h3>Use an NVMe SSD for the OS and Plex Data</h3>
+        <p>An NVMe SSD connected via the Pi 5's PCIe interface (using a HAT or adapter board) dramatically improves Plex responsiveness. Boot the OS from the SSD and store the Plex application data (metadata, thumbnails, database) on it. Keep your media files on the external USB drive. This separates metadata I/O from media I/O and eliminates MicroSD card bottlenecks.</p>
+
+        <h3>Enable Active Cooling</h3>
+        <p>Under sustained load (library scanning, multiple simultaneous streams), the Pi 5 can reach temperatures that trigger thermal throttling. A case with an active fan keeps the CPU at full speed. The official Raspberry Pi Active Cooler or any case with a 5V fan works well.</p>
+
+        <h3>Use Ethernet</h3>
+        <p>The Pi 5 has a true gigabit Ethernet port. Use it. Wi-Fi adds latency, variability, and bandwidth limitations that are especially noticeable with high-bitrate 4K content.</p>
+
+        <h3>Optimize Your Media for Direct Play</h3>
+        <p>Since you cannot transcode, optimize your media library for maximum compatibility:</p>
+        <ul>
+            <li>Use H.264 (AVC) codec in MKV or MP4 containers.</li>
+            <li>Use AAC or AC3 audio (avoid DTS and TrueHD unless your clients definitely support them).</li>
+            <li>Use SRT subtitles instead of PGS or VOBSUB.</li>
+            <li>Keep 4K files only if your clients can Direct Play them — the Pi cannot downscale 4K to 1080p.</li>
+        </ul>
+
+        <h3>Set Client Quality to Maximum/Original</h3>
+        <p>On every Plex client that connects to your Pi server, set streaming quality to "Original" or "Maximum." Any quality setting lower than original forces Plex to transcode, which the Pi cannot handle.</p>
+
+        <h2>Is a Raspberry Pi Right for You?</h2>
+
+        <p>A Raspberry Pi Plex server is ideal if you want the cheapest possible always-on server, your media is in Direct Play-friendly formats, you have one or two simultaneous viewers, and you value low power consumption (the Pi 5 draws about 5-10 watts under load).</p>
+
+        <p>It is not ideal if you need transcoding for any reason, you share your server with many remote users (who may have limited bandwidth and trigger transcoding), or you have a very large library (100,000+ items) that needs frequent scanning.</p>
+
+        <p>For many solo users or small families with compatible clients and well-organized media, a Raspberry Pi is a surprisingly capable and cost-effective Plex server.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-hardware-requirements/" class="related-card">
+                <h3>Plex Hardware Requirements</h3>
+                <p>CPU, RAM, and storage recommendations for every use case.</p>
+            </a>
+            <a href="/blog/how-to-set-up-plex-media-server/" class="related-card">
+                <h3>How to Set Up Plex Media Server</h3>
+                <p>Complete beginner's guide for Windows, Mac, Linux, and NAS.</p>
+            </a>
+            <a href="/blog/best-nas-for-plex/" class="related-card">
+                <h3>Best NAS for Plex in 2026</h3>
+                <p>Dedicated NAS alternatives with hardware transcoding support.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Manage Plex Bandwidth — Stream Limits and Quality Control | Phlix Blog</title>
+    <meta name="description" content="Control bandwidth usage for local and remote Plex streams. Per-user limits, quality restrictions, and monitoring.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-bandwidth-management/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-bandwidth-management/">
+    <meta property="og:title" content="How to Manage Plex Bandwidth — Stream Limits and Quality Control">
+    <meta property="og:description" content="Control bandwidth usage for local and remote Plex streams. Per-user limits, quality restrictions, and monitoring.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Manage Plex Bandwidth — Stream Limits and Quality Control","description":"Control bandwidth usage for local and remote Plex streams. Per-user limits, quality restrictions, and monitoring.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Bandwidth Management</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Manage Plex Bandwidth -- Stream Limits and Quality Control</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Bandwidth is the invisible constraint that governs your Plex experience. A single 4K HDR stream can consume 80 Mbps or more, while a 1080p transcode might use 8 to 12 Mbps. If you share your server with multiple users streaming simultaneously, bandwidth demands stack up quickly. Without management, a few concurrent streams can saturate your internet upload, causing buffering for everyone -- including you and your household's non-Plex internet usage.</p>
+
+        <p>This guide covers every bandwidth-related setting in Plex, strategies for limiting usage without degrading quality unnecessarily, and tools for monitoring actual consumption.</p>
+
+        <h2>Understanding Plex Bandwidth Usage</h2>
+
+        <p>Before configuring limits, it helps to understand how much bandwidth different stream types actually consume.</p>
+
+        <h3>Direct Play and Direct Stream</h3>
+        <p>When a client Direct Plays or Direct Streams a file, the bandwidth consumed equals the bitrate of the media file. There is no compression or transcoding -- the file is sent as-is. Common bitrates:</p>
+
+        <table>
+            <tr><th>Content Type</th><th>Typical Bitrate</th></tr>
+            <tr><td>4K HDR Remux</td><td>60 to 80 Mbps</td></tr>
+            <tr><td>4K SDR (compressed)</td><td>15 to 30 Mbps</td></tr>
+            <tr><td>1080p Blu-ray Remux</td><td>30 to 40 Mbps</td></tr>
+            <tr><td>1080p (compressed)</td><td>5 to 15 Mbps</td></tr>
+            <tr><td>720p</td><td>3 to 8 Mbps</td></tr>
+            <tr><td>SD (480p)</td><td>1 to 3 Mbps</td></tr>
+        </table>
+
+        <h3>Transcoded Streams</h3>
+        <p>When Plex transcodes a stream, the output bitrate is determined by the quality setting chosen by the server or client. Common transcode output bitrates:</p>
+        <ul>
+            <li><strong>Original quality:</strong> Matches the source bitrate (same as Direct Play)</li>
+            <li><strong>Maximum (20 Mbps):</strong> High quality 1080p transcode</li>
+            <li><strong>10 Mbps:</strong> Good quality 1080p</li>
+            <li><strong>4 Mbps:</strong> Acceptable 720p</li>
+            <li><strong>2 Mbps:</strong> Lower quality 720p</li>
+            <li><strong>720 Kbps:</strong> Mobile quality 480p</li>
+        </ul>
+
+        <p>Transcoding reduces bandwidth consumption compared to Direct Play of high-bitrate files, but it costs CPU power on the server.</p>
+
+        <h2>Server-Side Bandwidth Settings</h2>
+
+        <p>Plex provides several server-level settings that control bandwidth usage for all users.</p>
+
+        <h3>Total Bandwidth Limit</h3>
+        <p>In Settings, Network, find "Limit remote stream bitrate." This sets a maximum bitrate for each individual remote stream. If you set it to 8 Mbps, no remote user can stream above 8 Mbps regardless of their client settings. Plex will transcode down to the limit if necessary.</p>
+
+        <p>This is the most effective single control for managing upload bandwidth. Calculate your maximum based on your internet upload speed:</p>
+
+        <pre><code>Per-stream limit = (Upload speed * 0.8) / Max concurrent remote streams</code></pre>
+
+        <p>The 0.8 factor reserves 20 percent of your upload for non-Plex traffic (web browsing, video calls, other services). If you have 50 Mbps upload and want to support 4 concurrent remote streams:</p>
+
+        <pre><code>(50 * 0.8) / 4 = 10 Mbps per stream</code></pre>
+
+        <h3>LAN Bandwidth</h3>
+        <p>Local network (LAN) streams are typically not bandwidth-constrained because modern home networks operate at 1 Gbps (gigabit Ethernet) or at least 300 Mbps (WiFi). Plex's default setting allows LAN streams to play at original quality without any bitrate limit, which is the correct configuration for most users.</p>
+
+        <p>If your local network is congested (many devices on a slow WiFi access point), you can set a LAN bandwidth limit, but the better solution is to improve your local network infrastructure -- a wired Ethernet connection to your streaming device eliminates local bandwidth as a concern entirely.</p>
+
+        <h2>Per-User Bandwidth Restrictions</h2>
+
+        <p>Plex allows you to set bandwidth limits on a per-user basis when sharing your library. When you manage a shared user's settings, you can restrict:</p>
+
+        <ul>
+            <li><strong>Remote streaming quality:</strong> Set a maximum quality level for remote streams. Options range from Original to 720 Kbps (0.7 Mbps).</li>
+            <li><strong>Home streaming quality:</strong> Set a maximum quality for local network streams (usually left at Original).</li>
+        </ul>
+
+        <p>To configure per-user limits, go to Settings, Users and Sharing, click on a shared user, and adjust the "Restrictions" section. These limits override whatever the user sets in their Plex client -- if you limit a user to 4 Mbps, they cannot override it to Original quality even if their client requests it.</p>
+
+        <p>This is particularly useful for managing bandwidth across many shared users. You might give your household members Original quality (since they are on the LAN) while limiting remote friends to 8 or 10 Mbps.</p>
+
+        <h2>LAN vs. WAN Detection</h2>
+
+        <p>Plex differentiates between local (LAN) and remote (WAN) connections to apply different bandwidth policies. By default, Plex considers connections from your local subnet as LAN and everything else as WAN. You can customize this in Settings, Network:</p>
+
+        <ul>
+            <li><strong>"LAN Networks":</strong> Enter additional subnets that should be treated as local. This is useful if you have multiple VLANs, a VPN, or a complex network topology. For example, adding <code>10.0.0.0/8</code> would treat any device on a 10.x.x.x address as a LAN connection.</li>
+            <li><strong>"Treat WAN IP as LAN bandwidth":</strong> If your LAN has a public IP range (uncommon in home networks but possible in some setups), this setting ensures those connections get LAN treatment.</li>
+        </ul>
+
+        <p>Correct LAN detection matters because it determines whether the local or remote quality limit applies. If Plex incorrectly treats a LAN connection as remote, users on your local network may get unnecessarily transcoded streams.</p>
+
+        <h2>Client-Side Quality Settings</h2>
+
+        <p>Users can set their preferred streaming quality in their Plex client app. These settings determine what the client requests from the server, subject to any server-side limits:</p>
+
+        <ul>
+            <li><strong>Remote streaming quality:</strong> How much bandwidth to use when streaming remotely. Setting this lower reduces buffering on slow connections.</li>
+            <li><strong>Home streaming quality:</strong> Quality for local network streams. Should generally be set to Maximum or Original.</li>
+            <li><strong>Automatically adjust quality:</strong> Some Plex clients can dynamically adjust quality based on current network conditions. This reduces buffering but can cause quality fluctuations during playback.</li>
+        </ul>
+
+        <p>Educate your shared users about these settings. Many buffering complaints can be resolved by having the user lower their remote streaming quality to match their actual internet download speed rather than leaving it at Maximum.</p>
+
+        <h2>Reducing Transcoding to Save Bandwidth</h2>
+
+        <p>Transcoding and bandwidth are closely related. When Plex transcodes, it is usually to reduce the bitrate (and thus bandwidth) of a stream. But transcoding also consumes server CPU. Here are strategies to minimize both:</p>
+
+        <h3>Optimize Media Files</h3>
+        <p>If your library contains many high-bitrate files (remuxes, uncompressed rips), consider creating optimized versions. Plex's "Optimize" feature (under a library's three-dot menu) can pre-transcode files to a lower bitrate. The originals are preserved, and Plex automatically serves the optimized version to clients that would otherwise require real-time transcoding.</p>
+
+        <h3>Use Compatible Formats</h3>
+        <p>Direct Play eliminates the need for transcoding entirely. Most modern streaming devices support H.264 in MP4 containers with AAC or AC3 audio. If you encode or acquire media in this format, most clients will Direct Play without any transcoding or bandwidth reduction.</p>
+
+        <h3>Match Client Capabilities</h3>
+        <p>Different clients have different codec support. The Plex Web player, for instance, cannot play H.265 (HEVC) natively in most browsers, forcing a transcode. Native apps on Apple TV, Roku, and Fire TV handle HEVC well. Know your users' devices and optimize your library format accordingly.</p>
+
+        <h2>Upload Speed Requirements</h2>
+
+        <p>Your internet upload speed is the ultimate limit on remote streaming quality. Here are minimum upload speed recommendations:</p>
+
+        <table>
+            <tr><th>Upload Speed</th><th>Comfortable Capacity</th></tr>
+            <tr><td>10 Mbps</td><td>1 stream at 8 Mbps (1080p transcoded)</td></tr>
+            <tr><td>20 Mbps</td><td>2 streams at 8 Mbps or 1 at 15 Mbps</td></tr>
+            <tr><td>50 Mbps</td><td>4 streams at 10 Mbps or 2 at 20 Mbps</td></tr>
+            <tr><td>100 Mbps</td><td>5+ streams at original quality (most content)</td></tr>
+            <tr><td>500+ Mbps</td><td>Effectively unlimited for typical libraries</td></tr>
+        </table>
+
+        <p>If your upload speed is below 20 Mbps and you share with multiple users, bandwidth management is not optional -- it is essential. Without limits, a single user streaming a high-bitrate file can consume your entire upload pipe.</p>
+
+        <h2>Monitoring Bandwidth with Tautulli</h2>
+
+        <p>Plex's built-in dashboard shows current streams but provides limited historical data. Tautulli gives you detailed bandwidth monitoring:</p>
+
+        <ul>
+            <li><strong>Per-stream bandwidth:</strong> See exactly how much bandwidth each active stream is consuming in real time.</li>
+            <li><strong>Historical bandwidth usage:</strong> Track bandwidth consumption over days, weeks, and months to identify patterns and peak usage times.</li>
+            <li><strong>Per-user statistics:</strong> See which users consume the most bandwidth and at what quality levels they stream.</li>
+            <li><strong>Transcode vs. Direct Play ratio:</strong> Understand how often transcoding occurs and whether bandwidth limits are being hit.</li>
+            <li><strong>Alerts:</strong> Configure notifications when bandwidth exceeds thresholds or when too many concurrent streams are active.</li>
+        </ul>
+
+        <p>With Tautulli data, you can make informed decisions about bandwidth limits rather than guessing. If you see that peak usage never exceeds 30 Mbps and you have 50 Mbps upload, you know you have headroom. If you see regular spikes to 45 Mbps, you know limits are needed.</p>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>Photo browsing uses minimal bandwidth compared to video streaming. Phlix efficiently loads thumbnails from your Plex server and supports offline downloads so your photos are always available. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/fix-plex-buffering/" class="related-card">
+                <h3>Fix Plex Buffering</h3>
+                <p>Diagnose and resolve buffering issues for smooth playback.</p>
+            </a>
+            <a href="/blog/plex-transcoding-explained/" class="related-card">
+                <h3>Plex Transcoding Explained</h3>
+                <p>Understand when and why Plex transcodes your media.</p>
+            </a>
+            <a href="/blog/plex-tautulli-monitoring/" class="related-card">
+                <h3>Monitor Plex with Tautulli</h3>
+                <p>Track streams, usage, and server health in real time.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create Smart Playlists in Plex | Phlix Blog</title>
+    <meta name="description" content="Create dynamic Plex playlists that auto-update by genre, rating, year, and more. Smart vs manual playlists, filter criteria, sharing, and limitations.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-smart-playlists/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-smart-playlists/">
+    <meta property="og:title" content="How to Create Smart Playlists in Plex">
+    <meta property="og:description" content="Create dynamic Plex playlists that auto-update by genre, rating, year, and more. Smart vs manual playlists, filter criteria, sharing, and limitations.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Create Smart Playlists in Plex",
+        "description": "Create dynamic Plex playlists that auto-update by genre, rating, year, and more. Smart vs manual playlists, filter criteria, sharing, and limitations.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Smart Playlists in Plex</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Create Smart Playlists in Plex</h1>
+        <p class="meta">By Jason Loomis &middot; September 1, 2026 &middot; 9 min read</p>
+
+        <p>Playlists in Plex let you create custom queues of movies, TV episodes, music tracks, or photos that play in a specific order. Smart playlists go a step further -- they use filters to automatically populate and update themselves as your library changes. Add a new action movie? It appears in your "Action Movies" smart playlist automatically. Rate a movie 5 stars? It joins your "Top Rated" playlist without any manual work.</p>
+
+        <p>This guide covers both manual and smart playlists, the full range of filter criteria available, practical playlist ideas, sharing options, and the limitations you should know about.</p>
+
+        <h2>Smart Playlists vs Manual Playlists</h2>
+
+        <table>
+            <thead>
+                <tr><th>Feature</th><th>Manual Playlist</th><th>Smart Playlist</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Content selection</td><td>You add items by hand</td><td>Items are added automatically based on filters</td></tr>
+                <tr><td>Updates</td><td>Only changes when you edit it</td><td>Updates automatically as library content changes</td></tr>
+                <tr><td>Custom order</td><td>Yes -- drag and drop</td><td>Sort order only (title, date, rating, etc.)</td></tr>
+                <tr><td>Mixed media types</td><td>Yes (movies + episodes)</td><td>One media type per playlist</td></tr>
+                <tr><td>Max items</td><td>No limit</td><td>Optional limit (e.g., top 50)</td></tr>
+                <tr><td>Best for</td><td>Curated lists, watch order</td><td>Dynamic discovery, category browsing</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Creating a Manual Playlist</h2>
+
+        <h3>From the library</h3>
+        <ol>
+            <li>Navigate to your movie or TV library in Plex Web</li>
+            <li>Select one or more items using the checkbox selection mode</li>
+            <li>Click <strong>Add to Playlist</strong> from the selection menu</li>
+            <li>Create a new playlist or add to an existing one</li>
+            <li>Repeat for additional items</li>
+        </ol>
+
+        <h3>From an item's detail page</h3>
+        <ol>
+            <li>Open any movie, episode, or album</li>
+            <li>Click the three-dot menu</li>
+            <li>Select <strong>Add to Playlist</strong></li>
+            <li>Choose or create a playlist</li>
+        </ol>
+
+        <h3>Reordering items</h3>
+        <p>Open the playlist, enter edit mode, and drag items to reorder them. This is useful for watch-order playlists where chronological or thematic order matters more than release date.</p>
+
+        <h2>Creating a Smart Playlist</h2>
+
+        <h3>Step by step</h3>
+        <ol>
+            <li>In Plex Web, navigate to the library you want to create a playlist from</li>
+            <li>Click <strong>All</strong> to access the advanced filter bar</li>
+            <li>Set your filter criteria (see the full list below)</li>
+            <li>When your filtered results appear, click the <strong>+</strong> icon or <strong>Save as Playlist</strong></li>
+            <li>Name the playlist and save</li>
+        </ol>
+
+        <p>The playlist will now automatically include any items that match your filter criteria. When new content is added to your library that matches, it appears in the playlist without any action on your part.</p>
+
+        <h2>Available Filter Criteria</h2>
+
+        <h3>Movies</h3>
+        <ul>
+            <li><strong>Genre:</strong> Action, Comedy, Drama, Horror, Sci-Fi, etc.</li>
+            <li><strong>Year:</strong> Released before, after, or between specific years</li>
+            <li><strong>Decade:</strong> 1980s, 1990s, 2000s, etc.</li>
+            <li><strong>Rating:</strong> Audience rating, critic rating, or content rating (PG, R, etc.)</li>
+            <li><strong>Resolution:</strong> 4K, 1080p, 720p, SD</li>
+            <li><strong>Studio:</strong> Filter by production studio</li>
+            <li><strong>Director:</strong> Filter by director name</li>
+            <li><strong>Actor:</strong> Filter by cast member</li>
+            <li><strong>Country:</strong> Filter by country of origin</li>
+            <li><strong>Duration:</strong> Shorter or longer than a specified time</li>
+            <li><strong>Added date:</strong> Added to library within a time range</li>
+            <li><strong>Played status:</strong> Watched, unwatched, or partially watched</li>
+            <li><strong>Play count:</strong> Played more or fewer than a specified number of times</li>
+            <li><strong>Last played:</strong> Played before or after a specific date</li>
+            <li><strong>Collection:</strong> Filter by collection membership</li>
+            <li><strong>Label:</strong> Custom labels you have assigned</li>
+        </ul>
+
+        <h3>TV Shows</h3>
+        <p>TV shows support most of the same filters as movies, plus:</p>
+        <ul>
+            <li><strong>Episode count:</strong> Shows with more or fewer episodes</li>
+            <li><strong>Season count:</strong> Shows with more or fewer seasons</li>
+            <li><strong>Network:</strong> Filter by broadcasting network</li>
+            <li><strong>Show status:</strong> Continuing or ended</li>
+        </ul>
+
+        <h3>Music</h3>
+        <ul>
+            <li><strong>Genre:</strong> Rock, Jazz, Electronic, Classical, etc.</li>
+            <li><strong>Artist:</strong> Filter by artist name</li>
+            <li><strong>Album:</strong> Filter by album name</li>
+            <li><strong>Year:</strong> Release year range</li>
+            <li><strong>Rating:</strong> Track or album rating</li>
+            <li><strong>Mood:</strong> Metadata mood tags (Happy, Energetic, Melancholy, etc.)</li>
+            <li><strong>Style:</strong> Metadata style tags</li>
+            <li><strong>Play count:</strong> Most or least played tracks</li>
+            <li><strong>Bitrate:</strong> Filter by audio quality</li>
+            <li><strong>Duration:</strong> Track length range</li>
+        </ul>
+
+        <h3>Combining filters</h3>
+        <p>You can combine multiple filters to create highly specific playlists. Filters use AND logic by default -- all criteria must be met. Some examples:</p>
+        <ul>
+            <li>"Unwatched sci-fi from the 2020s rated 7+" requires all four criteria to match</li>
+            <li>"Action OR Comedy movies" uses the genre filter with multiple values selected</li>
+        </ul>
+
+        <h2>Practical Smart Playlist Ideas</h2>
+
+        <h3>For movies</h3>
+        <ul>
+            <li><strong>Weekend Queue:</strong> Unwatched movies, rating 7+, added in last 90 days, limited to 20 items</li>
+            <li><strong>Date Night:</strong> Romance OR Comedy, rating 7+, duration under 2 hours</li>
+            <li><strong>Award Winners:</strong> Rating 8+, year 2020-2026</li>
+            <li><strong>4K Showcase:</strong> Resolution 4K, sorted by rating</li>
+            <li><strong>Rainy Day Classics:</strong> Year before 2000, rating 8+, genre Drama</li>
+            <li><strong>Short and Sweet:</strong> Duration under 90 minutes, rating 7+, unwatched</li>
+        </ul>
+
+        <h3>For TV shows</h3>
+        <ul>
+            <li><strong>Binge-Ready:</strong> Completed shows (status: ended), rating 8+, episodes 10-30</li>
+            <li><strong>New Episodes:</strong> Added in last 7 days, unplayed</li>
+            <li><strong>Comfort Rewatches:</strong> Play count 3+, sorted by last played</li>
+        </ul>
+
+        <h3>For music</h3>
+        <ul>
+            <li><strong>Most Played:</strong> Play count 10+, sorted by play count descending</li>
+            <li><strong>Discover:</strong> Play count 0, rating 4+, added in last 60 days</li>
+            <li><strong>Workout:</strong> Genre Electronic OR Hip-Hop, mood Energetic</li>
+            <li><strong>High-Fi:</strong> Bitrate above 1000 kbps (for FLAC/lossless tracks)</li>
+        </ul>
+
+        <h2>Photo Playlists</h2>
+
+        <p>Plex supports photo playlists, but the functionality is limited in the official apps. You can create manual photo playlists by adding individual photos, but there are no smart photo playlists with dynamic filters.</p>
+
+        <p>For a better photo browsing and presentation experience, <a href="https://phlixapp.com">Phlix</a> provides a chronological timeline with year scrubber, search, favorites, and 4K AirPlay slideshows. If you want to display a curated set of photos on your TV, Phlix's slideshow functionality is far more capable than Plex's native photo playlist support.</p>
+
+        <h2>Sharing Playlists</h2>
+
+        <p>Plex playlists are user-specific by default -- only the user who creates a playlist can see it. To share a playlist with other users on your server:</p>
+
+        <ol>
+            <li>Open the playlist in Plex Web</li>
+            <li>Click the three-dot menu</li>
+            <li>Select <strong>Share</strong></li>
+            <li>Choose which users should receive a copy of the playlist</li>
+        </ol>
+
+        <p>Shared playlists are copies, not linked. If you update the original playlist, shared users will not see the changes unless you share it again. Smart playlists, however, will update dynamically for all users who have a copy, since the filter criteria is shared.</p>
+
+        <h2>Playlist Limitations</h2>
+
+        <p>Plex playlists have several limitations worth knowing:</p>
+
+        <ul>
+            <li><strong>No cross-library smart playlists:</strong> A smart playlist can only pull from a single library. You cannot create a smart playlist that combines movies and TV episodes.</li>
+            <li><strong>No shared editing:</strong> Shared playlists are copies. There is no collaborative editing.</li>
+            <li><strong>No OR logic across fields:</strong> You can select multiple values within a single filter (Action OR Comedy in genre), but you cannot use OR logic across different filter fields (genre = Action OR year = 2025).</li>
+            <li><strong>No playlist folders:</strong> There is no way to organize playlists into folders or categories. If you create many playlists, the list can become unwieldy.</li>
+            <li><strong>Limited photo playlist support:</strong> Photo playlists are manual only, with no smart filters and limited client support.</li>
+            <li><strong>Client app support varies:</strong> Some features (shuffle, repeat, limit) work differently across Plex clients. The web player has the most complete playlist support.</li>
+        </ul>
+
+        <h2>Playlists vs Collections</h2>
+
+        <p>Playlists and collections serve different purposes:</p>
+
+        <ul>
+            <li><strong>Collections</strong> are for organizing your library visually. They group related items and can hide individual items from the main view. They appear as entries in your library.</li>
+            <li><strong>Playlists</strong> are for playback queues. They define a sequence of items to play in order. They appear in the Playlists section, separate from the library.</li>
+        </ul>
+
+        <p>Use collections for organization (franchise groupings, genre categories). Use playlists for playback (movie night queue, workout music, background slideshow). See our <a href="/blog/plex-collections-guide/">Plex Collections Guide</a> for more on collections.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-collections-guide/" class="related-card"><h3>Plex Collections Guide</h3><p>Automatic and manual collections, smart filters, and custom artwork.</p></a>
+            <a href="/blog/organize-media-library-plex/" class="related-card"><h3>Organize Your Media Library for Plex</h3><p>File naming, folder structure, and metadata best practices.</p></a>
+            <a href="/blog/plex-discover-guide/" class="related-card"><h3>Plex Discover Guide</h3><p>Universal search across your library and streaming services.</p></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

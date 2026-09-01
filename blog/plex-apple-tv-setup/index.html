@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Plex on Apple TV — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="Install and configure Plex on Apple TV for the best streaming experience.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-apple-tv-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-apple-tv-setup/">
+    <meta property="og:title" content="How to Set Up Plex on Apple TV — Complete Guide">
+    <meta property="og:description" content="Install and configure Plex on Apple TV for the best streaming experience.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Plex on Apple TV — Complete Guide","description":"Install and configure Plex on Apple TV for the best streaming experience.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Set Up Plex on Apple TV</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Set Up Plex on Apple TV — Complete Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Apple TV is one of the best clients for Plex. The hardware is powerful enough to Direct Play nearly every video format, the remote is intuitive, and the display output supports 4K HDR with Dolby Vision and Dolby Atmos. Whether you have an Apple TV 4K (current generation) or an older Apple TV HD, this guide covers installation, configuration, and optimization for the best Plex experience on your TV.</p>
+
+        <h2>Which Apple TV Do You Need?</h2>
+
+        <p>Plex runs on any Apple TV that supports tvOS 15 or later, which includes:</p>
+
+        <ul>
+            <li><strong>Apple TV HD (4th generation):</strong> Supports 1080p output. Can Direct Play most H.264 and HEVC content at 1080p. Limited to SDR.</li>
+            <li><strong>Apple TV 4K (1st generation, 2017):</strong> Supports 4K HDR10 and Dolby Vision. A52 chip handles HEVC decoding well.</li>
+            <li><strong>Apple TV 4K (2nd generation, 2021):</strong> A12 Bionic chip. Faster UI, Thread support, HDMI 2.1.</li>
+            <li><strong>Apple TV 4K (3rd generation, 2022+):</strong> A15 Bionic chip. Most capable model, excellent for 4K HDR content with Dolby Vision and Dolby Atmos.</li>
+        </ul>
+
+        <p>For the best 4K HDR experience with Plex, the 2022 or later Apple TV 4K is recommended. It supports the widest range of codecs natively, reducing the need for server-side transcoding.</p>
+
+        <h2>Step 1 — Install the Plex App</h2>
+
+        <p>Open the App Store on your Apple TV. Search for "Plex" using the on-screen keyboard or Siri (hold the microphone button and say "Plex"). Download and install the free Plex app.</p>
+
+        <p>After installation, open the app. You will be prompted to sign in. Plex uses a code-based sign-in flow: the Apple TV displays a four-character code, and you enter it on <code>plex.tv/link</code> from any browser (phone, laptop, etc.). This links the Apple TV to your Plex account without having to type your password with the remote.</p>
+
+        <h2>Step 2 — Connect to Your Server</h2>
+
+        <p>Once signed in, Plex will automatically discover any servers on your local network that are associated with your account. Your server should appear in the sidebar. If you have multiple servers, select the one you want to use as default.</p>
+
+        <p>If your server does not appear, verify that the Apple TV and the Plex server are on the same local network, that Plex Media Server is running, and that both are signed into the same Plex account.</p>
+
+        <h2>Step 3 — Configure Video Quality Settings</h2>
+
+        <p>The most important setting for Apple TV is ensuring Direct Play is enabled so your server does not transcode unnecessarily. In the Plex app on Apple TV, go to Settings (gear icon), then Video Quality.</p>
+
+        <h3>Local Quality</h3>
+        <p>Set "Home Streaming" quality to <strong>Maximum</strong> or <strong>Original</strong>. This tells Plex to stream the original file without any conversion when you are on your home network. Since the Apple TV and your server are connected via your LAN (ideally with gigabit Ethernet), there is no bandwidth constraint.</p>
+
+        <h3>Remote Quality</h3>
+        <p>If you use the Apple TV remotely (at a second home, for example), set "Remote Streaming" quality based on your server's upload speed. "Original" works if your upload exceeds the bitrate of your media. Otherwise, cap it at a level your connection can sustain (e.g., 8 Mbps for a 10 Mbps upload).</p>
+
+        <h3>Direct Play and Direct Stream</h3>
+        <p>Under Advanced settings, ensure "Allow Direct Play" and "Allow Direct Stream" are both enabled. Direct Play means the Apple TV receives and decodes the original file. Direct Stream repackages the file into a different container without re-encoding, which uses minimal server CPU.</p>
+
+        <h2>Step 4 — Configure Audio Settings</h2>
+
+        <p>Apple TV supports advanced audio formats, but proper configuration is necessary to pass them through to your receiver or soundbar.</p>
+
+        <h3>Apple TV System Settings</h3>
+        <p>Go to Apple TV Settings (not Plex), then Video and Audio. Under Audio Format, select "Best Quality Available." This allows the Apple TV to pass through Dolby Atmos, Dolby Digital Plus, and other surround sound formats to your AV receiver.</p>
+
+        <h3>Plex Audio Settings</h3>
+        <p>In Plex Settings on the Apple TV, check audio playback settings. If you have a surround sound setup, ensure Plex is not downmixing to stereo. The default settings usually work correctly, but if you notice audio is only in stereo when it should be surround, verify the Apple TV's audio output settings match your receiver's capabilities.</p>
+
+        <h3>Audio Passthrough</h3>
+        <p>For lossless audio formats like TrueHD and DTS-HD MA, the Apple TV cannot pass these through natively. It will transcode lossless audio to a lossy format (typically Dolby Digital Plus or AAC). If lossless audio passthrough is critical to you, Infuse (a third-party player) can handle it better than the official Plex app on Apple TV.</p>
+
+        <h2>Ethernet vs Wi-Fi</h2>
+
+        <p>For the most reliable streaming experience, connect your Apple TV via Ethernet. This eliminates Wi-Fi variability, buffering caused by signal interference, and bandwidth competition with other devices.</p>
+
+        <p>The Apple TV 4K (2022) and later support gigabit Ethernet. For older models with 100 Mbps Ethernet, wired is still preferable to Wi-Fi for consistency, even though Wi-Fi 6 on newer models is technically faster. Ethernet is especially important for 4K HDR content, which can have bitrates of 80-100 Mbps for high-quality remuxes.</p>
+
+        <p>If Ethernet is not practical, position your router and Apple TV for the strongest possible 5 GHz Wi-Fi signal. Avoid 2.4 GHz for media streaming.</p>
+
+        <h2>The Infuse Alternative</h2>
+
+        <p>Infuse is a third-party media player available on Apple TV that can connect to your Plex server as a media source. It offers some advantages over the official Plex app:</p>
+
+        <ul>
+            <li><strong>Broader codec support:</strong> Infuse decodes more formats natively on the Apple TV, reducing server transcoding.</li>
+            <li><strong>Lossless audio:</strong> Better passthrough support for TrueHD and DTS-HD MA.</li>
+            <li><strong>Player quality:</strong> Many users prefer Infuse's playback engine for HDR tone mapping and subtitle rendering.</li>
+        </ul>
+
+        <p>However, Infuse has drawbacks:</p>
+
+        <ul>
+            <li>It costs $14.99/year or $94.99 lifetime for the Pro version.</li>
+            <li>It uses Plex only as a media source — the browsing interface is Infuse's own, not Plex's.</li>
+            <li>Plex-specific features like Watch Together, playlists, and some metadata views are not available.</li>
+        </ul>
+
+        <p>For most users, the official Plex app works well. Consider Infuse if you have a demanding library (lots of 4K HDR with lossless audio) or if you experience playback issues the Plex app cannot resolve.</p>
+
+        <h2>Tips for the Best Experience</h2>
+
+        <h3>Use the Plex Widget</h3>
+        <p>On tvOS, you can add a Plex widget to the Apple TV home screen that shows recently added and continue watching items. This gives you quick access to your content without opening the full app.</p>
+
+        <h3>Siri Integration</h3>
+        <p>Plex integrates with Siri on Apple TV. You can say things like "Play Breaking Bad on Plex" or "Search for Inception on Plex" using the Siri button on your remote. This works best for content with common, easily recognized titles.</p>
+
+        <h3>Subtitle Appearance</h3>
+        <p>Customize subtitle font, size, and background in the Plex app's settings. Apple TV also has system-level subtitle settings under Settings, then Accessibility, then Subtitles &amp; Captioning, which override app-level settings for closed captions.</p>
+
+        <h3>Sleep Timer</h3>
+        <p>If you fall asleep watching Plex, the Apple TV's built-in sleep timer (Settings, then General, then Sleep After) will turn off the display after a period of inactivity. This prevents your server from streaming all night.</p>
+
+        <h2>Troubleshooting</h2>
+
+        <p><strong>Buffering during playback:</strong> Check if the stream is being transcoded (visible in the Plex dashboard). If so, adjust quality settings to enable Direct Play. If already Direct Playing, check your network connection — switch to Ethernet if on Wi-Fi.</p>
+
+        <p><strong>No audio or wrong audio format:</strong> Verify Apple TV system audio settings match your speaker setup. Try toggling "Best Quality Available" off and on. Restart both the Apple TV and your AV receiver.</p>
+
+        <p><strong>App crashes or freezes:</strong> Force-close the Plex app (double-tap the TV button, swipe up on Plex). If persistent, delete and reinstall the app from the App Store.</p>
+
+        <p>Apple TV paired with Plex is one of the best home theater combinations available. With the right settings, you get Direct Play for nearly everything, surround sound, 4K HDR, and a polished interface that family members of all ages can navigate.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/how-to-set-up-plex-media-server/" class="related-card">
+                <h3>How to Set Up Plex Media Server</h3>
+                <p>Complete beginner's guide to installing and configuring PMS.</p>
+            </a>
+            <a href="/blog/plex-remote-access-setup/" class="related-card">
+                <h3>Set Up Plex Remote Access</h3>
+                <p>Port forwarding, dynamic DNS, and streaming from anywhere.</p>
+            </a>
+            <a href="/blog/plex-hardware-requirements/" class="related-card">
+                <h3>Plex Hardware Requirements</h3>
+                <p>CPU, RAM, and storage recommendations for every use case.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

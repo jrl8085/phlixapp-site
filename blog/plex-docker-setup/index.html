@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Plex in Docker — Step-by-Step Guide | Phlix Blog</title>
+    <meta name="description" content="Run Plex Media Server in a Docker container with persistent storage, hardware transcoding, and automatic updates.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-docker-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-docker-setup/">
+    <meta property="og:title" content="How to Set Up Plex in Docker — Step-by-Step Guide">
+    <meta property="og:description" content="Run Plex Media Server in a Docker container with persistent storage, hardware transcoding, and automatic updates.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Plex in Docker — Step-by-Step Guide","description":"Run Plex Media Server in a Docker container with persistent storage, hardware transcoding, and automatic updates.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Set Up Plex in Docker</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Set Up Plex in Docker — Step-by-Step Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Running Plex Media Server in Docker gives you clean separation from your host operating system, easy updates, and the ability to run Plex alongside other containerized services like Sonarr, Radarr, and Tautulli. Docker also makes it simple to migrate your entire Plex installation to new hardware by moving a few folders. This guide covers everything from pulling the image to enabling hardware transcoding.</p>
+
+        <h2>Prerequisites</h2>
+
+        <p>Before starting, make sure you have:</p>
+
+        <ul>
+            <li><strong>Docker installed.</strong> On Ubuntu, install with <code>sudo apt install docker.io docker-compose</code>. On other distributions, follow Docker's official installation guide. macOS and Windows users can install Docker Desktop.</li>
+            <li><strong>A Plex account.</strong> Sign up at <code>plex.tv</code> if you have not already.</li>
+            <li><strong>A claim token.</strong> Get one from <code>plex.tv/claim</code>. This token expires after four minutes, so grab it right before you start the container for the first time.</li>
+            <li><strong>Media files</strong> stored on the host machine or a mounted network share.</li>
+        </ul>
+
+        <h2>Step 1 — Pull the Plex Docker Image</h2>
+
+        <p>The official Plex image is maintained by Plex, Inc. and available on Docker Hub:</p>
+
+        <pre><code>docker pull plexinc/pms-docker</code></pre>
+
+        <p>Alternatively, the LinuxServer.io community image (<code>lscr.io/linuxserver/plex</code>) is widely used and offers consistent environment variable conventions across all their images. Either image works well. This guide uses the official image.</p>
+
+        <h2>Step 2 — Create a Docker Compose File</h2>
+
+        <p>Create a directory for your Plex configuration and a <code>docker-compose.yml</code> file:</p>
+
+        <pre><code>mkdir -p /opt/plex
+cd /opt/plex</code></pre>
+
+        <p>Create <code>docker-compose.yml</code> with the following content:</p>
+
+        <pre><code>version: "3.8"
+services:
+  plex:
+    image: plexinc/pms-docker:latest
+    container_name: plex
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=America/New_York
+      - PLEX_CLAIM=claim-xxxxxxxxxxxxxxxxxxxx
+    volumes:
+      - /opt/plex/config:/config
+      - /opt/plex/transcode:/transcode
+      - /mnt/media/movies:/data/movies
+      - /mnt/media/tv:/data/tv
+      - /mnt/media/music:/data/music
+      - /mnt/media/photos:/data/photos</code></pre>
+
+        <p>Replace the timezone, claim token, and volume paths with your own values. The key volume mounts are:</p>
+
+        <ul>
+            <li><strong>/config</strong> — Plex database, metadata, settings. This is the most important volume. Back it up regularly.</li>
+            <li><strong>/transcode</strong> — Temporary directory for transcoded files. Point this to an SSD if possible for better performance.</li>
+            <li><strong>/data/*</strong> — Your media libraries. Mount as many as you need, using read-only (<code>:ro</code>) if you want to prevent Plex from modifying your media files.</li>
+        </ul>
+
+        <h2>Step 3 — Understand Network Mode</h2>
+
+        <p>The compose file above uses <code>network_mode: host</code>, which gives the container direct access to the host's network interfaces. This is the recommended approach for Plex because it simplifies discovery (GDM), DLNA, and remote access. The container will listen on port 32400 directly on the host IP.</p>
+
+        <p>If you cannot use host networking (for example, on macOS Docker Desktop), you can use bridge networking with explicit port mappings instead:</p>
+
+        <pre><code>    ports:
+      - "32400:32400/tcp"
+      - "1900:1900/udp"
+      - "3005:3005/tcp"
+      - "5353:5353/udp"
+      - "8324:8324/tcp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "32469:32469/tcp"</code></pre>
+
+        <p>Bridge mode works but may require additional configuration for local discovery and remote access.</p>
+
+        <h2>Step 4 — Start the Container</h2>
+
+        <pre><code>cd /opt/plex
+docker-compose up -d</code></pre>
+
+        <p>Check that the container is running:</p>
+
+        <pre><code>docker ps</code></pre>
+
+        <p>You should see the <code>plex</code> container listed with status "Up." Access the setup wizard by navigating to <code>http://your-server-ip:32400/web</code> in a browser. If you provided a valid claim token, the server will already be linked to your Plex account.</p>
+
+        <h2>Step 5 — Enable Hardware Transcoding</h2>
+
+        <p>Hardware transcoding requires a Plex Pass subscription and a compatible GPU or integrated graphics. For Intel Quick Sync (the most common on Linux servers), you need to pass the render device into the container.</p>
+
+        <p>Add the following to your compose file under the <code>plex</code> service:</p>
+
+        <pre><code>    devices:
+      - /dev/dri:/dev/dri</code></pre>
+
+        <p>For NVIDIA GPUs, install the NVIDIA Container Toolkit on the host, then add:</p>
+
+        <pre><code>    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility</code></pre>
+
+        <p>After restarting the container, go to Plex Settings, then Transcoder, and enable "Use hardware acceleration when available." Run a test transcode to confirm it is working — you should see significantly lower CPU usage compared to software transcoding.</p>
+
+        <h2>Step 6 — Set Up Automatic Updates with Watchtower</h2>
+
+        <p>Plex releases frequent updates with bug fixes and new features. Watchtower monitors your running containers and automatically pulls updated images. Add a Watchtower service to your compose file:</p>
+
+        <pre><code>  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE=0 0 4 * * *</code></pre>
+
+        <p>This configuration checks for updates daily at 4 AM and automatically removes old images after updating. If you prefer manual control, skip Watchtower and update manually with:</p>
+
+        <pre><code>docker-compose pull
+docker-compose up -d</code></pre>
+
+        <h2>Step 7 — Verify and Configure</h2>
+
+        <p>With the container running, finish your setup through the Plex web interface:</p>
+
+        <ol>
+            <li>Add your media libraries by pointing them to the <code>/data/movies</code>, <code>/data/tv</code>, and other paths inside the container.</li>
+            <li>Enable remote access under Settings if you want to stream outside your home network.</li>
+            <li>Set your transcoder temporary directory to <code>/transcode</code> (which maps to your host SSD mount).</li>
+            <li>Configure scheduled library scans or enable filesystem monitoring.</li>
+        </ol>
+
+        <h2>Backup and Migration</h2>
+
+        <p>The beauty of Docker is that your entire Plex installation lives in the <code>/opt/plex/config</code> directory. To migrate to new hardware:</p>
+
+        <ol>
+            <li>Stop the container: <code>docker-compose down</code></li>
+            <li>Copy the <code>/opt/plex</code> directory to the new machine.</li>
+            <li>Install Docker on the new machine.</li>
+            <li>Run <code>docker-compose up -d</code>.</li>
+        </ol>
+
+        <p>Your libraries, watch history, user accounts, and all settings transfer with the config volume. Update your media volume paths in the compose file if they differ on the new machine.</p>
+
+        <h2>Common Issues</h2>
+
+        <p><strong>Container starts but web UI is unreachable:</strong> Check that port 32400 is not blocked by a firewall. If using bridge networking, verify your port mappings. Run <code>docker logs plex</code> to check for errors.</p>
+
+        <p><strong>Claim token expired:</strong> If the server is not linked to your account, stop the container, get a fresh claim token from <code>plex.tv/claim</code>, update the environment variable, and restart.</p>
+
+        <p><strong>Permission errors on media files:</strong> The Plex container runs as a specific user (UID/GID). Ensure your media directories are readable by that user. You can set <code>PLEX_UID</code> and <code>PLEX_GID</code> environment variables to match your host user's ID.</p>
+
+        <p>Docker is the cleanest way to run Plex on Linux. Once configured, it requires almost no maintenance, and updates are a single command away.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/how-to-set-up-plex-media-server/" class="related-card">
+                <h3>How to Set Up Plex Media Server</h3>
+                <p>Complete beginner's guide for Windows, Mac, Linux, and NAS.</p>
+            </a>
+            <a href="/blog/plex-hardware-requirements/" class="related-card">
+                <h3>Plex Hardware Requirements</h3>
+                <p>CPU, RAM, and storage recommendations for every use case.</p>
+            </a>
+            <a href="/blog/plex-remote-access-setup/" class="related-card">
+                <h3>Set Up Plex Remote Access</h3>
+                <p>Port forwarding, dynamic DNS, and streaming from anywhere.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Plex Parental Controls | Phlix Blog</title>
+    <meta name="description" content="Content restrictions, managed users for children, and PIN-protected access in Plex. Keep your media library family-friendly.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-parental-controls/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-parental-controls/">
+    <meta property="og:title" content="How to Set Up Plex Parental Controls">
+    <meta property="og:description" content="Content restrictions, managed users for children, and PIN-protected access in Plex. Keep your media library family-friendly.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Plex Parental Controls","description":"Content restrictions, managed users for children, and PIN-protected access in Plex. Keep your media library family-friendly.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Parental Controls</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Set Up Plex Parental Controls</h1>
+        <p class="meta">Published September 1, 2026 &middot; 8 min read</p>
+
+        <p>A well-stocked Plex library is a wonderful thing, right up until your six-year-old discovers the horror movie collection. Plex includes a parental control system that lets you create restricted profiles for children, limit content by rating, lock certain libraries behind PINs, and prevent young users from accessing anything you deem inappropriate. This guide walks through every layer of protection Plex offers and how to configure them properly.</p>
+
+        <h2>The Foundation: Plex Home and Managed Users</h2>
+
+        <p>Plex's parental control system is built on top of Plex Home, which lets you create multiple user profiles under a single account. These are called "managed users" and they are the key to age-appropriate access.</p>
+
+        <h3>Creating a Managed User</h3>
+        <ol>
+            <li>Open the Plex Web app and click your avatar in the top right.</li>
+            <li>Go to "Users &amp; Sharing."</li>
+            <li>Under "Plex Home," click "Create Managed User."</li>
+            <li>Enter a name for the user (for example, your child's name).</li>
+            <li>Optionally set an avatar so they can identify their profile on the user selection screen.</li>
+        </ol>
+
+        <p>Managed users do not need their own email or Plex account. They exist entirely under your account and are fully controlled by you. When anyone in your household opens a Plex client, they see a profile selection screen where each managed user can choose their own profile.</p>
+
+        <h3>How Many Managed Users Can You Have?</h3>
+        <p>Plex Home supports up to 15 managed users on a Plex Pass account. Without Plex Pass, you get one managed user plus the main account. For most families, the Plex Pass limit is more than enough.</p>
+
+        <h2>Content Rating Restrictions</h2>
+
+        <p>The most powerful parental control is content rating filtering. You can restrict a managed user to only see content at or below a specific rating level.</p>
+
+        <h3>Setting Rating Limits</h3>
+        <ol>
+            <li>Go to "Users &amp; Sharing" and select the managed user you want to restrict.</li>
+            <li>Under "Restrictions," find the content rating settings.</li>
+            <li>Set maximum allowed ratings for movies and TV shows independently.</li>
+        </ol>
+
+        <p>For movies, the US rating system goes: G, PG, PG-13, R, NC-17. For TV, it uses: TV-Y, TV-Y7, TV-G, TV-PG, TV-14, TV-MA. You can set a managed user's maximum to PG for movies and TV-Y7 for television, for example. Anything above those thresholds becomes invisible to that user. They will not see it in search results, browse views, or recommendations.</p>
+
+        <h3>What About Unrated Content?</h3>
+        <p>This is an important edge case. If a file in your library does not have a content rating (because it was not matched or because the metadata source does not provide one), you can choose whether to allow or block unrated content for each managed user. The safe choice is to block unrated content for children's profiles, since the absence of a rating does not guarantee the content is appropriate.</p>
+
+        <h3>International Ratings</h3>
+        <p>Plex supports multiple rating systems. If your metadata uses UK ratings (U, PG, 12A, 15, 18) or other regional systems, you can configure restrictions accordingly. Make sure your library's metadata agent is set to the correct country so ratings are consistent.</p>
+
+        <h2>Library Access Restrictions</h2>
+
+        <p>Beyond content ratings, you can control which entire libraries a managed user can access. This is useful when rating-based filtering is not granular enough.</p>
+
+        <h3>Restricting Library Access</h3>
+        <ol>
+            <li>In the managed user's settings, look for "Library Access" or "Restrict Access."</li>
+            <li>Uncheck any libraries you do not want the user to see.</li>
+        </ol>
+
+        <p>For example, you might have a "Kids Movies" library and an "Adult Movies" library. Instead of relying purely on content ratings, you can give children access only to the Kids Movies library. They will never see the Adult Movies library in the sidebar, search, or anywhere else in the interface.</p>
+
+        <p>This approach is especially useful for content that does not have standardized ratings, such as home videos, music, or photos. You may not want your children browsing your entire photo library, for instance, so you can create a separate "Family Photos" library and restrict their access to just that one.</p>
+
+        <h2>PIN Protection</h2>
+
+        <p>Library restrictions and content ratings only work if people actually use the correct profile. Without further protection, a child could simply switch to the unrestricted admin profile. PINs prevent this.</p>
+
+        <h3>Setting a PIN on Your Admin Account</h3>
+        <p>Go to your account settings and set a PIN. This is a four-digit code required to switch to your profile on any Plex client in your Plex Home. Without the PIN, nobody can access your unrestricted view.</p>
+
+        <h3>Setting PINs on Other Profiles</h3>
+        <p>You can also set PINs on any managed user profile. This is useful for older teenagers who should not be able to switch to a younger sibling's profile (and vice versa), or for any profile that should not be casually accessible.</p>
+
+        <h3>Requiring PIN for Profile Switching</h3>
+        <p>When PIN protection is enabled, the Plex client's user selection screen will prompt for the PIN before switching to a protected profile. Unprotected profiles (like your child's restricted profile) can be selected without a PIN, making it easy for young kids to get to their content without help.</p>
+
+        <h2>Sharing Restrictions</h2>
+
+        <p>If you share your Plex library with friends or extended family, you can set restrictions on their access as well. When sharing a library with another Plex user, you can:</p>
+
+        <ul>
+            <li><strong>Limit which libraries they can access.</strong> Share only your Movies library but not your TV or Photos library.</li>
+            <li><strong>Set content rating restrictions.</strong> Apply the same rating filters you would use for a managed user.</li>
+            <li><strong>Control simultaneous streams.</strong> Limit how many concurrent streams a shared user can have.</li>
+            <li><strong>Disable downloads.</strong> Prevent shared users from downloading content for offline viewing.</li>
+        </ul>
+
+        <p>These restrictions are set per-user when you create or edit a sharing invitation under "Users &amp; Sharing."</p>
+
+        <h2>Building Age-Appropriate Profiles</h2>
+
+        <p>Here is a practical setup for a family with children of different ages:</p>
+
+        <h3>Profile: Young Child (ages 3 to 7)</h3>
+        <ul>
+            <li>Content rating cap: G for movies, TV-Y or TV-Y7 for TV</li>
+            <li>Library access: Kids Movies, Kids TV, Family Photos only</li>
+            <li>Block unrated content: Yes</li>
+            <li>PIN: None (make it easy for them to select their profile)</li>
+        </ul>
+
+        <h3>Profile: Older Child (ages 8 to 12)</h3>
+        <ul>
+            <li>Content rating cap: PG for movies, TV-PG for TV</li>
+            <li>Library access: Kids Movies, Kids TV, Family Movies, Family Photos</li>
+            <li>Block unrated content: Yes</li>
+            <li>PIN: Optional</li>
+        </ul>
+
+        <h3>Profile: Teenager (ages 13 to 17)</h3>
+        <ul>
+            <li>Content rating cap: PG-13 for movies, TV-14 for TV</li>
+            <li>Library access: All libraries except explicitly adult content</li>
+            <li>Block unrated content: No (teenagers can handle ambiguity)</li>
+            <li>PIN: Yes (prevent switching to admin profile)</li>
+        </ul>
+
+        <h3>Profile: Parent (admin)</h3>
+        <ul>
+            <li>No restrictions</li>
+            <li>PIN: Yes (four-digit lock to prevent children from accessing)</li>
+        </ul>
+
+        <h2>Limitations to Be Aware Of</h2>
+
+        <p><strong>Metadata accuracy matters.</strong> Plex's rating-based filtering only works if your media has correct ratings in its metadata. If a movie is missing its rating or tagged incorrectly, it may appear in (or be hidden from) the wrong profile. Periodically review your libraries for unrated or misrated content.</p>
+
+        <p><strong>Plex's free ad-supported content.</strong> Plex Discover and the free streaming catalog can show content that is not part of your personal library. Managed user restrictions apply to these as well, but it is worth checking that the restrictions behave as expected for ad-supported content.</p>
+
+        <p><strong>Third-party apps.</strong> Parental controls apply to the official Plex app. Third-party Plex clients may not respect managed user restrictions, since they authenticate differently. If your family uses a third-party player to access your Plex server, verify that it enforces the same content restrictions.</p>
+
+        <p><strong>Profiles are not passwords.</strong> A technically savvy teenager who knows your Plex account credentials can access the admin panel through the web interface, bypassing managed user restrictions entirely. For true security, do not share your Plex account password with anyone.</p>
+
+        <h2>Testing Your Setup</h2>
+
+        <p>After configuring parental controls, always test them from the child's perspective:</p>
+
+        <ol>
+            <li>Switch to the restricted managed user profile in a Plex client app.</li>
+            <li>Browse the library and verify that restricted content is not visible.</li>
+            <li>Search for a specific R-rated movie or TV-MA show by name. It should return no results.</li>
+            <li>Attempt to switch to the admin profile and confirm that the PIN prompt appears.</li>
+            <li>Check the Discover tab to confirm that recommendations respect the content rating limits.</li>
+        </ol>
+
+        <p>If anything appears that should not, revisit the managed user settings and double-check the content rating caps and library access permissions.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>Keep your family photos accessible and organized. Phlix gives you a chronological timeline of your Plex photo library, 4K AirPlay slideshows, and offline downloads. Free to browse.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/share-plex-library/" class="related-card">
+                <h3>Share Plex Library with Friends</h3>
+                <p>Invite users, manage permissions, and control bandwidth.</p>
+            </a>
+            <a href="/blog/plex-watch-together/" class="related-card">
+                <h3>How to Use Plex Watch Together</h3>
+                <p>Host synchronized watch parties with friends and family.</p>
+            </a>
+            <a href="/blog/plex-family-photo-slideshow/" class="related-card">
+                <h3>Create a Family Photo Slideshow with Plex</h3>
+                <p>Turn your Plex photo library into a beautiful slideshow on your TV.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

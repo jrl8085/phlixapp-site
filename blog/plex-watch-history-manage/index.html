@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Manage Plex Watch History and On Deck | Phlix Blog</title>
+    <meta name="description" content="Control your watch history, On Deck queue, and Continue Watching in Plex. Mark watched, reset progress, and clean up.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-watch-history-manage/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-watch-history-manage/">
+    <meta property="og:title" content="How to Manage Plex Watch History and On Deck">
+    <meta property="og:description" content="Control your watch history, On Deck queue, and Continue Watching in Plex. Mark watched, reset progress, and clean up.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Manage Plex Watch History and On Deck","description":"Control your watch history, On Deck queue, and Continue Watching in Plex. Mark watched, reset progress, and clean up.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Manage Plex Watch History and On Deck</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Manage Plex Watch History and On Deck</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>Plex tracks everything you watch, from the exact timestamp where you stopped a movie to which TV episodes you have completed. This data powers features like On Deck, Continue Watching, and the watched/unwatched badges on your library. Most of the time it works seamlessly, but there are situations where you need to take manual control: clearing out a cluttered On Deck row, marking a show as watched so you can focus on new content, or syncing your history with an external service like Trakt.tv. This guide covers every aspect of managing your Plex watch history.</p>
+
+        <h2>Understanding Watch States</h2>
+
+        <p>Every media item in Plex has one of three watch states:</p>
+
+        <ul>
+            <li><strong>Unwatched:</strong> The item has never been played, or has been manually marked as unwatched. Displayed with a colored badge (orange dot or blue banner depending on the client).</li>
+            <li><strong>In Progress:</strong> Playback started but was not completed. Plex stores the exact resume position. The item appears in Continue Watching.</li>
+            <li><strong>Watched:</strong> The item has been played past the watch threshold. For movies, this is typically around 90% of the runtime. For TV episodes, it is similar. The unwatched badge disappears.</li>
+        </ul>
+
+        <p>These states are tracked per user. If you share your server with family or friends, each person has their own independent watch history.</p>
+
+        <h2>Marking Items as Watched or Unwatched</h2>
+
+        <h3>Individual Items</h3>
+
+        <p>To mark a movie or episode as watched, find it in your library, click the three-dot menu (or right-click on desktop), and select "Mark as Played." To reverse this, select "Mark as Unplayed." This immediately updates the watch state and removes the item from Continue Watching if it was in progress.</p>
+
+        <h3>Bulk Operations</h3>
+
+        <p>You can mark entire seasons or shows at once. Navigate to a show's page and click the three-dot menu on the show itself (not an individual episode). Select "Mark as Played" to mark every episode in every season as watched. Do the same at the season level to mark all episodes in a specific season.</p>
+
+        <p>This is particularly useful when you re-add a show you have already seen, or when you want to start tracking from a specific season forward. Mark the show as played, then mark the season you want to start watching as unplayed.</p>
+
+        <h2>On Deck and Continue Watching</h2>
+
+        <h3>How On Deck Works</h3>
+
+        <p>On Deck is a curated row on your Plex home screen that shows what to watch next. For TV shows, it displays the next unwatched episode of shows you have started watching. For movies, it shows films you partially watched. The algorithm considers recency (recently watched shows appear first) and progress (partially watched items are prioritized).</p>
+
+        <h3>Removing Items from On Deck</h3>
+
+        <p>An item stays on On Deck until you finish watching it, mark it as played, or remove it manually. To remove a specific item, hover over it in the On Deck row, click the three-dot menu, and select "Remove from Continue Watching" or "Mark as Played."</p>
+
+        <p>If your On Deck row is cluttered with old shows you started but lost interest in, the fastest cleanup method is: go to each stale show, mark the entire show as played, then mark it as unplayed again if you want to preserve the unwatched state for a future rewatch. The "mark as played" step clears the in-progress state that keeps it on On Deck.</p>
+
+        <h3>Shows Not Appearing on On Deck</h3>
+
+        <p>If you are watching a show but the next episode does not appear on On Deck, check these common causes:</p>
+
+        <ul>
+            <li>The next episode file might be missing from your library. Check that it scanned correctly.</li>
+            <li>The current episode might not have passed the watch threshold. Play it again and let it finish, or mark it as played manually.</li>
+            <li>On Deck has a limit on how many items it displays. If you have many active shows, older ones may be pushed off the visible list.</li>
+        </ul>
+
+        <h2>Clearing Watch History</h2>
+
+        <p>Sometimes you want a clean slate. Maybe you are rewatching your entire library, or a shared user account accumulated history from a previous occupant. You can clear watch history at various levels:</p>
+
+        <h3>Per Item</h3>
+
+        <p>Mark any movie, episode, season, or show as unplayed using the three-dot menu. This resets its watch state and removes any resume position.</p>
+
+        <h3>Per Library</h3>
+
+        <p>There is no single "clear all history" button in the Plex interface for an entire library. The workaround is to select all items in a library (some clients support "Select All"), then mark them as unplayed. In the web interface, you can also use the filter options to show only watched items, select them all, and mark them as unplayed.</p>
+
+        <h3>Per User</h3>
+
+        <p>Server administrators can manage watch history for other users through the Plex dashboard. Go to Settings, then Manage Users, select a user, and you can reset their watch history. This is useful when onboarding a new family member who is taking over an existing managed user account.</p>
+
+        <h2>Syncing with Trakt.tv</h2>
+
+        <p>Trakt.tv is a popular service for tracking watch history across multiple platforms. If you watch on Plex at home but also use Netflix, HBO, or other services, Trakt.tv provides a unified watch history. Syncing Plex with Trakt.tv gives you a backup of your watch data and cross-platform tracking.</p>
+
+        <h3>PlexTraktSync</h3>
+
+        <p>The best tool for bidirectional sync between Plex and Trakt.tv is PlexTraktSync, an open-source Python tool. It runs as a scheduled job on your server and synchronizes watch history, ratings, and watchlists in both directions. Setup involves:</p>
+
+        <ol>
+            <li>Install Python 3.8 or newer on your Plex server.</li>
+            <li>Install PlexTraktSync via pip: <code>pip install PlexTraktSync</code></li>
+            <li>Run the initial setup to authorize both your Plex and Trakt.tv accounts.</li>
+            <li>Run a full sync: <code>plextraktsync sync</code></li>
+            <li>Set up a cron job or scheduled task to run the sync periodically (every 30 minutes is a reasonable interval).</li>
+        </ol>
+
+        <p>PlexTraktSync handles the mapping between Plex's internal IDs and Trakt's database. It syncs both watched status and individual ratings if you rate content in either system.</p>
+
+        <h3>Trakt VIP Scrobbling</h3>
+
+        <p>With a Trakt VIP subscription and the Trakt Plex webhook integration, you can enable real-time scrobbling. This uses Plex webhooks (Plex Pass required) to notify Trakt.tv the moment you finish watching something. It is faster than periodic sync but requires both Plex Pass and Trakt VIP subscriptions.</p>
+
+        <h2>Managing Continue Watching</h2>
+
+        <p>The Continue Watching row shows items with a saved resume position. It is separate from On Deck, which focuses on the next unwatched episode. Continue Watching appears on the Plex home screen and on individual library pages.</p>
+
+        <p>To remove an item from Continue Watching without marking it as fully watched:</p>
+
+        <ol>
+            <li>Open the item's detail page.</li>
+            <li>Click the three-dot menu and select "Mark as Unplayed." This removes the resume position entirely.</li>
+        </ol>
+
+        <p>If you want to keep the watched status but clear the resume position (for example, you finished a movie but it did not quite register as complete), mark it as played. This clears the resume point and removes it from Continue Watching.</p>
+
+        <h2>Watch History and Multiple Devices</h2>
+
+        <p>Plex syncs watch state across all devices automatically. Watch half a movie on your phone, then open the Plex app on your TV, and it offers to resume from where you left off. This sync happens through your Plex account and does not require any special configuration.</p>
+
+        <p>If watch state is not syncing between devices, check that both devices are signed into the same Plex account and connected to the same server. Also verify that you are not using a different user profile (managed user vs main account) on one device.</p>
+
+        <h2>Privacy Considerations</h2>
+
+        <p>Watch history is visible to the server administrator through the Plex dashboard and tools like Tautulli. If you are a user on someone else's server and prefer privacy, be aware that the server owner can see what you watch, when you watch it, and on what device. There is no way for a non-admin user to hide their watch activity from the server administrator. This is an inherent aspect of how Plex's client-server architecture works.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-multiple-users-setup/" class="related-card">
+                <h3>Set Up Multiple Users on Plex</h3>
+                <p>Managed users, Plex Home, and per-user permissions.</p>
+            </a>
+            <a href="/blog/plex-intro-skip-setup/" class="related-card">
+                <h3>Set Up Plex Skip Intro</h3>
+                <p>Auto-detect and skip TV show intros during binge sessions.</p>
+            </a>
+            <a href="/blog/plex-tautulli-monitoring/" class="related-card">
+                <h3>Monitor Plex with Tautulli</h3>
+                <p>Track usage statistics and viewing history for all users.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

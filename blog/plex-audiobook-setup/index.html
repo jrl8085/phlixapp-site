@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Audiobooks in Plex — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="Listen to audiobooks through Plex with proper metadata, chapter support, and the best client apps.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-audiobook-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-audiobook-setup/">
+    <meta property="og:title" content="How to Set Up Audiobooks in Plex — Complete Guide">
+    <meta property="og:description" content="Listen to audiobooks through Plex with proper metadata, chapter support, and the best client apps.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Audiobooks in Plex — Complete Guide","description":"Listen to audiobooks through Plex with proper metadata, chapter support, and the best client apps.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Audiobooks in Plex</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Set Up Audiobooks in Plex -- Complete Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Plex is best known as a video streaming platform, but it handles audiobooks surprisingly well once you get the setup right. The challenge is that Plex does not have a dedicated audiobook library type, so you need to work within its existing library structures and use the right tools to get proper metadata, chapter navigation, and progress tracking.</p>
+
+        <p>This guide covers the complete audiobook setup process: choosing the right library type, organizing your files, tagging metadata, selecting the best playback app, and configuring progress tracking so you never lose your place.</p>
+
+        <h2>Choosing the Right Library Type</h2>
+
+        <p>This is the most important decision, and the source of the most confusion. You have two options for audiobooks in Plex: a Music library or an Other Videos / Other library. Each has trade-offs.</p>
+
+        <h3>Music Library (Recommended)</h3>
+        <p>A Music library treats each audiobook as an "album" and each chapter or file as a "track." This approach works well because:</p>
+        <ul>
+            <li>Music libraries understand multi-track albums, which maps naturally to multi-chapter audiobooks</li>
+            <li>The Plex music player supports gapless playback between tracks</li>
+            <li>Third-party audiobook apps like Prologue connect to Plex Music libraries</li>
+            <li>Metadata agents can match audiobook-specific data when configured correctly</li>
+        </ul>
+
+        <p>The downside is that your audiobooks will appear alongside your music if you use the same library. The solution is to create a separate Music library specifically for audiobooks. Name it "Audiobooks" and point it to a dedicated audiobook folder. This keeps audiobooks out of your regular music library.</p>
+
+        <h3>Other Library</h3>
+        <p>An "Other" type library in Plex does minimal processing -- it does not try to match metadata from online agents. This can be useful if your audiobooks have unique or non-standard metadata that causes matching problems. However, "Other" libraries do not work with most third-party audiobook apps, and you lose features like automatic metadata matching.</p>
+
+        <p>For most users, a dedicated Music library is the better choice.</p>
+
+        <h2>Folder Structure</h2>
+
+        <p>Organize your audiobook files following Plex's music folder structure. Each audiobook should be in its own folder, nested under the author name:</p>
+
+        <pre><code>Audiobooks/
+  Author Name/
+    Book Title (Year)/
+      01 - Chapter One.mp3
+      02 - Chapter Two.mp3
+      03 - Chapter Three.mp3
+      cover.jpg</code></pre>
+
+        <p>If your audiobook is a single file (common with M4B format), the structure is simpler:</p>
+
+        <pre><code>Audiobooks/
+  Author Name/
+    Book Title (Year)/
+      Book Title.m4b
+      cover.jpg</code></pre>
+
+        <p>Key points about folder structure:</p>
+        <ul>
+            <li>Keep each book in its own folder to prevent Plex from merging files from different books</li>
+            <li>Use the author name as the top-level folder (Plex treats this as the "artist")</li>
+            <li>Number your chapter files with zero-padded track numbers (01, 02, 03) to ensure correct ordering</li>
+            <li>Include a <code>cover.jpg</code> in the book folder for artwork</li>
+        </ul>
+
+        <h2>Audio File Formats</h2>
+
+        <p>Plex supports all common audio formats for audiobooks:</p>
+
+        <ul>
+            <li><strong>M4B:</strong> The standard audiobook format. Supports embedded chapters within a single file, making it the cleanest option. M4B is essentially an M4A file with a different extension, so Plex handles it natively.</li>
+            <li><strong>MP3:</strong> Universally compatible. Multi-chapter audiobooks use one MP3 per chapter. Lacks single-file chapter support, so you need a separate file for each chapter.</li>
+            <li><strong>M4A/AAC:</strong> Same codec as M4B but without the audiobook-specific container. Works fine in Plex.</li>
+            <li><strong>FLAC:</strong> Lossless audio. Overkill for spoken word but works if that is what you have.</li>
+        </ul>
+
+        <p>M4B is the best format for audiobooks in Plex because it supports chapters within a single file. This means you do not need dozens of individual files per book, and chapter navigation works within the file itself.</p>
+
+        <h2>Tagging Metadata with MP3Tag</h2>
+
+        <p>Proper metadata tags are critical for Plex to display your audiobooks correctly. MP3Tag (available for Windows, with a macOS version available) is the standard tool for editing audio file tags. Here are the fields that matter for audiobooks:</p>
+
+        <table>
+            <tr><th>Tag Field</th><th>What to Enter</th><th>Plex Mapping</th></tr>
+            <tr><td>Title</td><td>Chapter name or number</td><td>Track title</td></tr>
+            <tr><td>Album</td><td>Book title</td><td>Album name</td></tr>
+            <tr><td>Artist / Album Artist</td><td>Author name</td><td>Artist name</td></tr>
+            <tr><td>Track Number</td><td>Chapter number (1, 2, 3...)</td><td>Track order</td></tr>
+            <tr><td>Year</td><td>Publication year</td><td>Release year</td></tr>
+            <tr><td>Genre</td><td>"Audiobook" or specific genre</td><td>Genre filter</td></tr>
+            <tr><td>Comment</td><td>Narrator name (optional)</td><td>Visible in details</td></tr>
+            <tr><td>Cover Art</td><td>Book cover image</td><td>Album artwork</td></tr>
+        </table>
+
+        <p>In MP3Tag, select all files for a single audiobook, then set the Album, Artist, Album Artist, Year, and Genre fields consistently across all files. Set individual track numbers and titles for each chapter file.</p>
+
+        <p>Setting the Genre to "Audiobook" across all your audiobook files lets you use Plex's genre filter to separate audiobooks from music if they ever end up in the same library.</p>
+
+        <h2>Prologue: The Best iOS Audiobook App for Plex</h2>
+
+        <p>The standard Plex app works for audiobook playback, but it lacks audiobook-specific features like bookmarking, sleep timers, and playback speed control. Prologue is a dedicated iOS audiobook player that connects directly to your Plex server.</p>
+
+        <h3>Why Prologue</h3>
+        <ul>
+            <li><strong>Designed for audiobooks:</strong> The interface is built around books, not albums. It shows book covers, author names, and reading progress.</li>
+            <li><strong>Chapter navigation:</strong> Jump between chapters with a tap. For M4B files with embedded chapters, Prologue displays each chapter individually.</li>
+            <li><strong>Playback speed:</strong> Speed up or slow down narration (0.5x to 3x) without affecting pitch.</li>
+            <li><strong>Sleep timer:</strong> Set a timer to stop playback after a specified duration or at the end of the current chapter.</li>
+            <li><strong>Offline downloads:</strong> Download audiobooks to your device for offline listening without using the Plex Sync feature.</li>
+            <li><strong>Progress sync:</strong> Syncs your listening position back to Plex, so you can pick up where you left off on any device.</li>
+        </ul>
+
+        <h3>Setting Up Prologue</h3>
+        <p>Install Prologue from the App Store, sign in with your Plex account, and select the Music library that contains your audiobooks. Prologue will display your audiobooks with cover art and let you browse by author, title, or recently added. It only shows content from the library you select, so your music library remains separate.</p>
+
+        <h2>Chapter Support</h2>
+
+        <p>Chapter navigation depends on your file format:</p>
+
+        <ul>
+            <li><strong>M4B with embedded chapters:</strong> Plex and Prologue both recognize the chapter markers. You can jump to any chapter within the single file. This is the ideal setup.</li>
+            <li><strong>Multiple MP3/M4A files (one per chapter):</strong> Each file appears as a separate track. Navigation between chapters means switching tracks. This works but is less elegant than embedded chapters.</li>
+            <li><strong>Single MP3 without chapters:</strong> No chapter navigation is possible. You can only scrub through the file manually. Avoid this format if your audiobook is more than a few hours long.</li>
+        </ul>
+
+        <p>If you have audiobooks as single MP3 files without chapters, consider converting them to M4B with chapter markers using a tool like m4b-tool (a command-line utility) or Audiobookshelf (which can merge and chapter-mark files automatically).</p>
+
+        <h2>Progress Tracking and Bookmarking</h2>
+
+        <p>Plex tracks playback position for audio tracks, but its implementation is designed for music (where you typically listen to entire songs) rather than audiobooks (where you stop mid-chapter and resume later). Here is how to make progress tracking reliable:</p>
+
+        <ul>
+            <li><strong>Use Prologue or a dedicated audiobook app.</strong> These apps manage bookmarks more carefully than the standard Plex music player.</li>
+            <li><strong>Do not shuffle.</strong> Make sure shuffle is turned off in whatever player you use. Shuffled audiobook chapters are a nightmare.</li>
+            <li><strong>Use M4B files when possible.</strong> Single-file audiobooks with chapters have simpler progress tracking than multi-file audiobooks where the position spans both a track number and a timestamp within that track.</li>
+        </ul>
+
+        <h2>Audible Audiobook Considerations</h2>
+
+        <p>If you have purchased audiobooks from Audible, those files are in Audible's proprietary AAX or AAXC format with DRM. Plex cannot play DRM-protected files directly. Audible's terms of service restrict how you can use purchased content, so check your local laws and Audible's policies regarding format conversion before proceeding.</p>
+
+        <p>If you determine that converting your purchased Audible files for personal use is permitted in your jurisdiction, tools like OpenAudible or AAXtoMP3 can convert AAX files to standard M4B or MP3 format while preserving chapter markers. The converted files can then be added to your Plex audiobook library like any other audio file.</p>
+
+        <h2>Alternative: Audiobookshelf</h2>
+
+        <p>If audiobooks are a major part of your media consumption, consider running Audiobookshelf alongside Plex. Audiobookshelf is a self-hosted audiobook server purpose-built for the format. It handles chapters, bookmarks, progress tracking, and metadata matching natively. You can run both Plex (for video, music, and photos) and Audiobookshelf (for audiobooks) on the same machine, each serving the content type it handles best.</p>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>Just as audiobooks deserve a dedicated player, your Plex photos deserve a dedicated browser. Phlix offers a chronological timeline, offline downloads, and 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-smart-playlists/" class="related-card">
+                <h3>Plex Smart Playlists Guide</h3>
+                <p>Create dynamic playlists for music, audiobooks, and video content.</p>
+            </a>
+            <a href="/blog/organize-media-library-plex/" class="related-card">
+                <h3>Organize Your Plex Media Library</h3>
+                <p>Folder structure and naming conventions for every media type.</p>
+            </a>
+            <a href="/blog/best-plex-client-apps/" class="related-card">
+                <h3>Best Plex Client Apps</h3>
+                <p>Find the right Plex player for every device and use case.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

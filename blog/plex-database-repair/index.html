@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Repair a Corrupted Plex Database | Phlix Blog</title>
+    <meta name="description" content="Fix Plex database corruption, recover from crashes, and restore your server when things go wrong.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-database-repair/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-database-repair/">
+    <meta property="og:title" content="How to Repair a Corrupted Plex Database">
+    <meta property="og:description" content="Fix Plex database corruption, recover from crashes, and restore your server when things go wrong.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Repair a Corrupted Plex Database","description":"Fix Plex database corruption, recover from crashes, and restore your server when things go wrong.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Repair Plex Database</div>
+
+    <article>
+        <span class="category advanced">Advanced</span>
+        <h1>How to Repair a Corrupted Plex Database</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>A corrupted Plex database is one of the most stressful problems a server owner can face. Your watch history, metadata edits, collections, playlists, and user data all live in a single SQLite database file. When that file becomes corrupted, you may see symptoms ranging from minor annoyances (slow browsing, missing thumbnails) to total server failure (Plex refuses to start).</p>
+
+        <p>The good news is that SQLite databases are remarkably recoverable. Even heavily corrupted databases can often be repaired, and if repair is not possible, Plex maintains automatic backups you may not know about. This guide walks you through every recovery option, from quick fixes to a full rebuild.</p>
+
+        <h2>Signs of Database Corruption</h2>
+
+        <p>Database corruption does not always announce itself with an error message. Often it manifests as subtle degradation that worsens over time. Watch for these symptoms:</p>
+
+        <ul>
+            <li><strong>Progressively slower browsing.</strong> Library pages that used to load instantly now take several seconds. Search results are delayed. The home screen is sluggish.</li>
+            <li><strong>Missing items.</strong> Movies, shows, or episodes that exist on disk do not appear in the library, even after rescanning.</li>
+            <li><strong>Duplicate entries.</strong> The same movie appears multiple times despite only having one file on disk.</li>
+            <li><strong>Watch status resets.</strong> Items you have watched revert to unwatched, or entire users lose their watch history.</li>
+            <li><strong>Plex crashes or hangs.</strong> The server process crashes periodically or becomes unresponsive. Check the Plex logs for SQLite error messages like "database disk image is malformed" or "SQLITE_CORRUPT."</li>
+            <li><strong>Metadata disappears.</strong> Posters, descriptions, or ratings vanish and cannot be re-fetched by refreshing metadata.</li>
+            <li><strong>Plex refuses to start.</strong> The server process starts but immediately exits. The log file shows database errors on startup.</li>
+        </ul>
+
+        <h2>What Causes Corruption</h2>
+
+        <p>Understanding the cause helps prevent recurrence:</p>
+
+        <ul>
+            <li><strong>Power loss.</strong> If the server loses power while the database is being written to, the write-ahead log (WAL) and the main database file can become inconsistent.</li>
+            <li><strong>Disk failure.</strong> Bad sectors on a hard drive, failing SSD cells, or unreliable USB drives can corrupt any file, including the database.</li>
+            <li><strong>Network storage issues.</strong> Running the Plex database on a network share (NAS via SMB/NFS) can cause corruption if the network connection is interrupted during a write. This is one reason why running the database on local storage is recommended.</li>
+            <li><strong>Forced shutdowns.</strong> Killing the Plex process without a graceful shutdown can leave the database in a partially written state.</li>
+            <li><strong>Out of disk space.</strong> If the disk runs out of space during a database write, the operation fails mid-way and can leave the database inconsistent.</li>
+            <li><strong>Software bugs.</strong> Rare, but occasionally a Plex update introduces a bug that can damage the database under specific conditions.</li>
+        </ul>
+
+        <h2>Step 1: Back Up the Current Database</h2>
+
+        <p>Before attempting any repair, make a copy of the current database files. Even a corrupted database is valuable -- you do not want to make things worse by modifying the only copy.</p>
+
+        <ol>
+            <li>Stop Plex Media Server.</li>
+            <li>Navigate to the database directory: <code>Plug-in Support/Databases/</code> inside your Plex data directory.</li>
+            <li>Copy these three files to a safe location:
+                <ul>
+                    <li><code>com.plexapp.plugins.library.db</code> (the main database)</li>
+                    <li><code>com.plexapp.plugins.library.db-wal</code> (write-ahead log)</li>
+                    <li><code>com.plexapp.plugins.library.db-shm</code> (shared memory file)</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>Keep these copies untouched. If your repair attempts make things worse, you can always start over from this backup.</p>
+
+        <h2>Step 2: Try the Built-in Database Repair</h2>
+
+        <p>Plex includes a built-in database repair option. In the Plex Web interface (if the server is running well enough to access it), go to Settings, Troubleshooting, and click "Repair Library." This runs Plex's internal repair routines, which include integrity checks and recovery from the write-ahead log.</p>
+
+        <p>If Plex will not start at all, this option is obviously unavailable. Proceed to manual repair.</p>
+
+        <h2>Step 3: SQLite Manual Repair</h2>
+
+        <p>SQLite includes built-in integrity checking and recovery commands. You need the <code>sqlite3</code> command-line tool, which is pre-installed on macOS and most Linux distributions. On Windows, download it from the SQLite website.</p>
+
+        <h3>Check Integrity</h3>
+        <p>First, check whether the database is actually corrupted:</p>
+        <pre><code>sqlite3 com.plexapp.plugins.library.db "PRAGMA integrity_check;"</code></pre>
+
+        <p>If the database is healthy, this returns "ok." If it is corrupted, it returns a list of errors describing what is wrong. This tells you the severity of the corruption.</p>
+
+        <h3>Export and Re-Import</h3>
+        <p>The most reliable SQLite repair method is to dump the database to SQL text and reimport it into a new file. This process skips over corrupted pages and recovers everything that is still readable:</p>
+
+        <pre><code># Export the database to a SQL dump
+sqlite3 com.plexapp.plugins.library.db ".dump" > plex-dump.sql
+
+# Create a new database from the dump
+sqlite3 com.plexapp.plugins.library.db-repaired < plex-dump.sql</code></pre>
+
+        <p>If the dump command encounters errors, it may skip some data. Check the output file for ERROR lines. Any skipped data is lost, but the remaining data forms a consistent, uncorrupted database.</p>
+
+        <h3>Replace the Database</h3>
+        <p>After creating the repaired database:</p>
+        <ol>
+            <li>Ensure Plex is stopped.</li>
+            <li>Rename the old database: <code>mv com.plexapp.plugins.library.db com.plexapp.plugins.library.db.corrupt</code></li>
+            <li>Rename the repaired database: <code>mv com.plexapp.plugins.library.db-repaired com.plexapp.plugins.library.db</code></li>
+            <li>Delete the old WAL and SHM files (they belong to the old database): <code>rm com.plexapp.plugins.library.db-wal com.plexapp.plugins.library.db-shm</code></li>
+            <li>Start Plex and verify that your library appears correctly.</li>
+        </ol>
+
+        <h2>Step 4: Plex DB Repair Tool</h2>
+
+        <p>The community-developed Plex DB Repair tool automates the SQLite repair process and includes Plex-specific fixes that go beyond basic SQLite recovery. It handles WAL file integration, index rebuilding, and other operations specific to the Plex database schema.</p>
+
+        <p>The tool is available on GitHub and runs on Linux and macOS. It typically performs these operations in sequence:</p>
+        <ol>
+            <li>Stops the Plex service</li>
+            <li>Creates a backup of the current database</li>
+            <li>Integrates the WAL file into the main database</li>
+            <li>Runs integrity checks</li>
+            <li>Performs the dump-and-reimport repair if needed</li>
+            <li>Rebuilds indexes</li>
+            <li>Optimizes the repaired database</li>
+            <li>Restarts Plex</li>
+        </ol>
+
+        <p>For most users, this tool is the easiest path to repairing a corrupted database. It handles the technical details and provides clear output about what was found and fixed.</p>
+
+        <h2>Step 5: Restore from Backup</h2>
+
+        <p>If manual repair fails or the corruption is too severe, your next option is restoring from a backup. Plex automatically backs up the database as part of its scheduled tasks (if you have not disabled that task). These backups are stored in:</p>
+
+        <pre><code>Plug-in Support/Databases/</code></pre>
+
+        <p>Look for files named like <code>com.plexapp.plugins.library.db-YYYY-MM-DD</code> or compressed backup files. The most recent backup before the corruption occurred is what you want.</p>
+
+        <p>To restore:</p>
+        <ol>
+            <li>Stop Plex.</li>
+            <li>Move the corrupted database files aside.</li>
+            <li>Copy or decompress the backup file and rename it to <code>com.plexapp.plugins.library.db</code>.</li>
+            <li>Delete any WAL and SHM files.</li>
+            <li>Start Plex.</li>
+        </ol>
+
+        <p>The restored database will reflect the state of your library at the time the backup was made. Any changes since then (new media added, watch status updates, metadata edits) will be lost. After restoring, run a full library scan to pick up any media files added since the backup.</p>
+
+        <h2>The Nuclear Option: Full Rebuild</h2>
+
+        <p>If no backup exists and the database is unrecoverable, the last resort is a complete rebuild. This means starting with a fresh database and rescanning all your media. Here is what you lose and what you keep:</p>
+
+        <h3>What You Lose</h3>
+        <ul>
+            <li>All watch history and play counts across all users</li>
+            <li>All ratings and reviews</li>
+            <li>All playlists and collections</li>
+            <li>All custom metadata edits (manually changed titles, descriptions, posters you uploaded)</li>
+            <li>All user accounts and sharing permissions</li>
+            <li>All server settings and preferences</li>
+        </ul>
+
+        <h3>What You Keep</h3>
+        <ul>
+            <li>All media files (movies, shows, music, photos) -- these are on disk, not in the database</li>
+            <li>File organization and naming -- Plex will re-match based on your filenames</li>
+            <li>Automatic metadata from online agents -- re-fetched during the scan</li>
+        </ul>
+
+        <h3>How to Rebuild</h3>
+        <ol>
+            <li>Stop Plex.</li>
+            <li>Rename the entire Plex data directory (do not delete it -- you may want to recover metadata artwork later).</li>
+            <li>Start Plex. It will create a fresh data directory with a new empty database.</li>
+            <li>Claim the server with your Plex account.</li>
+            <li>Re-create your libraries pointing to the same media folders.</li>
+            <li>Let Plex scan and match everything. This can take hours for large libraries.</li>
+            <li>Re-invite shared users and reconfigure permissions.</li>
+            <li>Reconfigure server settings (remote access, transcoding, network, etc.).</li>
+        </ol>
+
+        <h2>Preventing Future Corruption</h2>
+
+        <p>Once you have recovered from database corruption, take steps to prevent it from happening again:</p>
+
+        <ul>
+            <li><strong>Use a UPS.</strong> An uninterruptible power supply protects against power outages, the most common cause of database corruption. Even a small UPS that provides 10 minutes of runtime gives the server enough time for a clean shutdown.</li>
+            <li><strong>Run the database on local storage.</strong> Avoid network shares (SMB, NFS) for the database. Local SSD is ideal.</li>
+            <li><strong>Keep Plex's scheduled database backup enabled.</strong> This is your automatic safety net. Never disable it.</li>
+            <li><strong>Monitor disk health.</strong> Use SMART monitoring tools to detect failing drives before they corrupt your data.</li>
+            <li><strong>Shut down gracefully.</strong> Always stop Plex through the proper channels (service stop, menu bar quit, systemctl stop) rather than killing the process or pulling the power.</li>
+            <li><strong>Maintain free disk space.</strong> Keep at least 10 percent of your system drive free at all times. A full disk during a database write almost guarantees corruption.</li>
+        </ul>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>A healthy Plex database means a smooth photo browsing experience. Phlix gives your Plex photos a dedicated chronological timeline, offline downloads, and 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/backup-plex-server/" class="related-card">
+                <h3>Back Up Your Plex Server</h3>
+                <p>Automated backups, restore process, and disaster recovery planning.</p>
+            </a>
+            <a href="/blog/plex-server-crashing/" class="related-card">
+                <h3>Plex Server Keeps Crashing</h3>
+                <p>Log analysis, resource monitoring, and crash recovery.</p>
+            </a>
+            <a href="/blog/plex-ssd-cache-setup/" class="related-card">
+                <h3>SSD Cache for Plex</h3>
+                <p>Move your database to SSD for better performance and reliability.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

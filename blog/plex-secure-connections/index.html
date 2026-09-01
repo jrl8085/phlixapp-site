@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Secure Your Plex Server — SSL, Authentication, and Best Practices | Phlix Blog</title>
+    <meta name="description" content="Lock down your Plex server with secure connections, two-factor authentication, and network hardening.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-secure-connections/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-secure-connections/">
+    <meta property="og:title" content="How to Secure Your Plex Server — SSL, Authentication, and Best Practices">
+    <meta property="og:description" content="Lock down your Plex server with secure connections, two-factor authentication, and network hardening.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Secure Your Plex Server — SSL, Authentication, and Best Practices","description":"Lock down your Plex server with secure connections, two-factor authentication, and network hardening.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Secure Your Plex Server</div>
+
+    <article>
+        <span class="category advanced">Advanced</span>
+        <h1>How to Secure Your Plex Server -- SSL, Authentication, and Best Practices</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>A Plex server with remote access enabled is a service exposed to the internet. Even though Plex handles authentication through plex.tv, there are layers of security you should configure to protect your server, your data, and your network. An unsecured Plex server can leak metadata about your library to anyone who discovers the IP address, serve as an entry point for network attacks, or be abused as part of amplification attacks.</p>
+
+        <p>This guide covers every security measure available for Plex: encrypted connections, two-factor authentication, network isolation, and operational best practices that reduce your attack surface.</p>
+
+        <h2>Plex's Built-in SSL</h2>
+
+        <p>Plex includes built-in SSL/TLS encryption for connections between clients and the server. This is managed through Plex's own certificate infrastructure and does not require you to obtain or manage certificates.</p>
+
+        <h3>How It Works</h3>
+        <p>When your Plex server connects to plex.tv, it receives a certificate that is signed for a subdomain of <code>plex.direct</code>. This subdomain resolves to your server's IP address. Clients connect to this subdomain using HTTPS, and the connection is encrypted end-to-end. The certificate is automatically renewed, and you do not need to configure anything for this to work.</p>
+
+        <h3>Secure Connection Settings</h3>
+        <p>In Settings, Network, you will find the "Secure connections" dropdown with three options:</p>
+        <ul>
+            <li><strong>Preferred (default):</strong> Plex attempts a secure connection first. If it fails (due to network conditions or client limitations), it falls back to an insecure HTTP connection. This is the best balance for most users.</li>
+            <li><strong>Required:</strong> All connections must use HTTPS. If a client cannot establish a secure connection, it is denied access. This is the most secure option but may cause connectivity issues on some networks, particularly those with restrictive firewalls or proxies that interfere with SSL.</li>
+            <li><strong>Disabled:</strong> All connections use unencrypted HTTP. Never use this option unless you are debugging a specific connectivity problem, and switch back immediately afterward.</li>
+        </ul>
+
+        <p><strong>Recommendation:</strong> Use "Required" if all your users have modern Plex apps and reliable network connections. Use "Preferred" if you share with users on varied networks where you cannot guarantee SSL will work. Never leave it on "Disabled" in production.</p>
+
+        <h2>Custom Domain with Reverse Proxy SSL</h2>
+
+        <p>For users who want additional control over their SSL configuration, you can place Plex behind a reverse proxy (such as Nginx or Caddy) with your own domain and Let's Encrypt certificate. This approach offers several advantages:</p>
+
+        <ul>
+            <li>Use your own domain name (e.g., <code>plex.yourdomain.com</code>) instead of the <code>plex.direct</code> subdomain</li>
+            <li>Centralize SSL termination for multiple self-hosted services</li>
+            <li>Apply additional security headers and rate limiting at the proxy level</li>
+            <li>Use wildcard certificates or certificates from your preferred certificate authority</li>
+        </ul>
+
+        <p>If you use a reverse proxy, configure Plex's custom connection URL in Settings, Network, "Custom server access URLs" to point to your proxy's address. This tells Plex to advertise your custom domain to clients instead of the default plex.direct address.</p>
+
+        <p>For a detailed reverse proxy setup, see our <a href="/blog/plex-reverse-proxy-nginx/">Nginx reverse proxy guide</a>.</p>
+
+        <h2>Two-Factor Authentication</h2>
+
+        <p>Two-factor authentication (2FA) adds a second layer of verification to your Plex account login. Even if someone obtains your password, they cannot access your account without the second factor.</p>
+
+        <h3>Enabling 2FA</h3>
+        <ol>
+            <li>Log in to your Plex account at <a href="https://app.plex.tv">app.plex.tv</a>.</li>
+            <li>Go to Account Settings, then Security.</li>
+            <li>Select "Enable Two-Factor Authentication."</li>
+            <li>Scan the QR code with an authenticator app (Google Authenticator, Authy, 1Password, or any TOTP-compatible app).</li>
+            <li>Enter the verification code to confirm.</li>
+            <li>Save the backup codes in a secure location. These codes let you regain access if you lose your authenticator device.</li>
+        </ol>
+
+        <h3>Important Considerations</h3>
+        <ul>
+            <li>2FA protects your plex.tv account login. It does not add a second factor to individual server connections -- those are authenticated via tokens issued after the initial login.</li>
+            <li>Shared users should enable 2FA on their own Plex accounts independently. You cannot force 2FA on users you have shared your library with.</li>
+            <li>If you lose access to your authenticator and your backup codes, recovering your account requires contacting Plex support. This process can take time, during which your server is inaccessible for administration.</li>
+        </ul>
+
+        <h2>Network Isolation</h2>
+
+        <p>Your Plex server does not need full access to your home network, and your home network does not need unrestricted access to the server. Isolating the server reduces the impact of a potential compromise.</p>
+
+        <h3>VLAN Segmentation</h3>
+        <p>If your router supports VLANs, place the Plex server on a separate VLAN from your personal devices. Configure firewall rules to allow:</p>
+        <ul>
+            <li>Inbound connections to port 32400 (or your custom port) from the internet and your LAN</li>
+            <li>Outbound connections from the server to the internet (for plex.tv communication, metadata downloads, and remote streaming)</li>
+            <li>Access to your NAS or media storage from the server VLAN</li>
+        </ul>
+        <p>Block all other traffic between the server VLAN and your personal devices. If the Plex server is compromised, the attacker cannot pivot to your computers, phones, or other devices.</p>
+
+        <h3>Firewall Rules</h3>
+        <p>At minimum, configure your router's firewall to:</p>
+        <ul>
+            <li>Only forward port 32400 (or your custom port) to the Plex server. Do not open additional ports unless you have a specific need.</li>
+            <li>Block inbound access to the Plex server's SSH port (22) from the internet. SSH should only be accessible from your LAN.</li>
+            <li>If your Plex server runs on an OS with its own firewall (Linux iptables/nftables, Windows Firewall, macOS pf), configure it to accept connections only on port 32400.</li>
+        </ul>
+
+        <h2>Disable DLNA</h2>
+
+        <p>Plex includes a DLNA (Digital Living Network Alliance) server that broadcasts media to DLNA-compatible devices on your local network. DLNA has no authentication -- any device on the same network can browse and play your content without logging in to Plex.</p>
+
+        <p>Unless you have specific DLNA devices that you actively use (some older smart TVs, some media players), disable the DLNA server in Settings, DLNA, "Enable the DLNA server." This removes an unauthenticated access path to your media.</p>
+
+        <h2>Signed-Out User Restrictions</h2>
+
+        <p>By default, Plex allows local network users to access the server without signing in. This is convenient for devices on your home network but means anyone who connects to your WiFi can browse your library.</p>
+
+        <p>In Settings, Network, find the "List of IP addresses and networks that are allowed without auth" field. By default, your local subnet is included. Remove it if you want every connection to require Plex authentication, even on your local network. This is particularly important if you have guests on your WiFi or if your network is not well-secured.</p>
+
+        <h2>Server Administration Best Practices</h2>
+
+        <h3>Keep Plex Updated</h3>
+        <p>Plex regularly releases security patches. Run the latest stable version and enable automatic updates if your platform supports it. Check for updates at least monthly if you update manually.</p>
+
+        <h3>Use Strong Passwords</h3>
+        <p>Your Plex account password should be unique (not reused from other services), long (at least 16 characters), and generated by a password manager. This password protects not just your media library but also your server's administrative controls, your sharing permissions, and your payment information if you have a Plex Pass.</p>
+
+        <h3>Audit Shared Users Regularly</h3>
+        <p>Review who has access to your server periodically. Go to Settings, Users and Sharing, and remove anyone who no longer needs access. Each shared user is a potential entry point -- if their Plex account is compromised, the attacker gains access to your server (though only with the permissions you have granted to that user).</p>
+
+        <h3>Monitor Access Logs</h3>
+        <p>Use Tautulli or Plex's built-in dashboard to monitor who is accessing your server, from where, and when. Unusual patterns -- such as access from unexpected countries, login attempts at odd hours, or streams from devices you do not recognize -- may indicate a compromised account.</p>
+
+        <h3>Disable Unused Features</h3>
+        <p>Every enabled feature is potential attack surface. If you do not use Plex's web hooks, disable them. If you do not use the built-in news or podcast features, disable them. If you do not share your server remotely, disable remote access entirely. Each disabled feature is one less thing that can be exploited.</p>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>Phlix connects to your Plex server securely using the same authentication tokens as the official app. Browse your photos with a chronological timeline, download for offline viewing, and enjoy 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-reverse-proxy-nginx/" class="related-card">
+                <h3>Plex Reverse Proxy with Nginx</h3>
+                <p>Set up SSL termination and custom domains for your Plex server.</p>
+            </a>
+            <a href="/blog/fix-plex-remote-access/" class="related-card">
+                <h3>Fix Plex Remote Access</h3>
+                <p>Troubleshoot remote access issues with port forwarding and relay.</p>
+            </a>
+            <a href="/blog/share-plex-library/" class="related-card">
+                <h3>Share Your Plex Library</h3>
+                <p>Manage user access, permissions, and sharing controls.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Plex with AirPlay — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="Stream Plex content to Apple TV and AirPlay-compatible displays. AirPlay vs native app, screen mirroring vs extended display, and troubleshooting.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-airplay-guide/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-airplay-guide/">
+    <meta property="og:title" content="How to Use Plex with AirPlay — Complete Guide">
+    <meta property="og:description" content="Stream Plex content to Apple TV and AirPlay-compatible displays. AirPlay vs native app, screen mirroring vs extended display, and troubleshooting.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Use Plex with AirPlay — Complete Guide","description":"Stream Plex content to Apple TV and AirPlay-compatible displays. AirPlay vs native app, screen mirroring vs extended display, and troubleshooting.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex with AirPlay</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Use Plex with AirPlay — Complete Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>AirPlay is Apple's wireless streaming protocol, and it is one of the most common ways to get content from an iPhone, iPad, or Mac onto a television. If you use Plex on an Apple device, you have two options for getting that content onto your TV: AirPlay or the native Plex app on your streaming device. Each has trade-offs. This guide explains when to use AirPlay, when the native app is better, how screen mirroring differs from extended display, and how to troubleshoot the issues that come up.</p>
+
+        <h2>AirPlay vs. the Native Plex App</h2>
+
+        <p>If your TV has an Apple TV connected to it (or is an AirPlay 2-compatible smart TV), you almost certainly also have access to the native Plex app on that device. So when should you AirPlay, and when should you use the native app directly?</p>
+
+        <h3>When the Native App Is Better</h3>
+        <ul>
+            <li><strong>Video quality.</strong> The native Plex app on Apple TV communicates directly with your Plex server. It can direct play most formats without transcoding, supports HDR10 and Dolby Vision, and handles surround sound (Dolby Atmos, DTS) natively. AirPlay introduces an additional encoding step that can reduce quality.</li>
+            <li><strong>Audio formats.</strong> The native app passes through lossless audio codecs. AirPlay compresses audio to AAC stereo in many configurations, losing surround sound information.</li>
+            <li><strong>Reliability.</strong> The native app maintains a direct connection to your server. AirPlay depends on your phone staying connected, awake, and on the same network.</li>
+            <li><strong>Battery life.</strong> Using the native app on your Apple TV does not drain your phone battery. AirPlay keeps your phone active as the streaming source.</li>
+        </ul>
+
+        <h3>When AirPlay Makes Sense</h3>
+        <ul>
+            <li><strong>No native app available.</strong> Some older AirPlay-compatible TVs (Samsung, LG, Vizio) support AirPlay but do not have the Plex app, or the Plex app on that TV is outdated and poorly maintained.</li>
+            <li><strong>Quick sharing.</strong> When you want to quickly show someone something on your phone without navigating the TV interface. AirPlay starts instantly from the share sheet.</li>
+            <li><strong>Photos and slideshows.</strong> The native Plex apps on TVs have limited photo functionality. AirPlay can be a faster way to display photos from your Plex library on the big screen.</li>
+            <li><strong>Guest access.</strong> A guest with the Plex app on their phone can AirPlay to your TV without needing to sign into Plex on the TV itself.</li>
+        </ul>
+
+        <h2>Screen Mirroring vs. AirPlay Streaming</h2>
+
+        <p>AirPlay has two distinct modes, and the difference matters significantly for Plex playback.</p>
+
+        <h3>Screen Mirroring</h3>
+        <p>Screen mirroring duplicates your iPhone or iPad's entire screen on the TV. Everything you see on your phone appears on the TV, including the Plex interface, notifications, and anything else on screen. The TV becomes a mirror of your device display.</p>
+
+        <p>Screen mirroring is limited by your phone's screen resolution and refresh rate. It compresses the video feed to transmit it wirelessly, which introduces visual artifacts and reduces quality compared to direct playback. It is also limited to stereo audio. Screen mirroring should be your last resort for video playback.</p>
+
+        <h3>AirPlay Streaming (Direct AirPlay)</h3>
+        <p>When you tap the AirPlay icon from within a supported app (including Plex), the app sends the video directly to the AirPlay receiver without mirroring the screen. Your phone acts as a remote control while the video streams independently. This produces better quality than screen mirroring because the video does not need to be compressed through the screen capture pipeline.</p>
+
+        <p>However, AirPlay streaming still has limitations compared to native playback. The video is re-encoded for AirPlay transmission, and some HDR formats may not survive the conversion. Audio is typically downmixed to stereo AAC unless both the source app and the receiver support AirPlay 2's enhanced audio features.</p>
+
+        <h2>AirPlay 2 and Extended Display</h2>
+
+        <p>AirPlay 2 is the current generation of Apple's streaming protocol, supported by Apple TV 4K, Apple TV HD, and many smart TVs manufactured since 2019. It offers improved reliability, multi-room audio, and better buffering compared to the original AirPlay.</p>
+
+        <h3>Extended Display Mode</h3>
+        <p>One of the more interesting capabilities of AirPlay 2 is extended display mode, where the TV acts as a second screen rather than a mirror. Your phone shows one thing (like controls) while the TV shows different content (like a full-screen image or video). This is different from mirroring and is significantly more useful for certain use cases.</p>
+
+        <p>For Plex photos, extended display mode is particularly powerful. An app can show photos full-screen on the TV at the TV's native resolution (up to 4K) while displaying controls, thumbnails, or other information on the phone screen. This avoids the quality loss of screen mirroring and gives you a dedicated control interface.</p>
+
+        <p><strong>Phlix uses AirPlay 2 extended display for its slideshow feature.</strong> When you start a Phlix slideshow with an AirPlay 2 display connected, the TV shows your photos at full 4K resolution with hard cuts between images, while your iPhone shows playback controls and upcoming photo thumbnails. You can adjust timing, shuffle, or skip photos from your phone without interrupting the TV display. This approach produces dramatically better results than screen mirroring your phone to the TV.</p>
+
+        <h2>Setting Up AirPlay with Plex</h2>
+
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>Your Apple device (iPhone, iPad, Mac) and your AirPlay receiver (Apple TV or AirPlay 2 TV) must be on the same Wi-Fi network.</li>
+            <li>AirPlay must be enabled on the receiver. On Apple TV, go to Settings, then AirPlay and HomeKit, and ensure AirPlay is turned on.</li>
+            <li>For smart TVs, check the TV's settings for AirPlay options. Some TVs require you to enable AirPlay explicitly.</li>
+        </ul>
+
+        <h3>Streaming Video via AirPlay</h3>
+        <ol>
+            <li>Open the Plex app on your iPhone or iPad.</li>
+            <li>Start playing a movie or episode.</li>
+            <li>During playback, look for the AirPlay icon (a rectangle with a triangle at the bottom) in the player controls.</li>
+            <li>Tap it and select your Apple TV or AirPlay-compatible TV from the list.</li>
+            <li>Playback transfers to the TV. Your phone becomes the remote.</li>
+        </ol>
+
+        <h3>Screen Mirroring</h3>
+        <ol>
+            <li>Open Control Center on your iPhone (swipe down from the top-right corner).</li>
+            <li>Tap "Screen Mirroring."</li>
+            <li>Select your Apple TV or AirPlay receiver.</li>
+            <li>Your phone's screen appears on the TV. Open Plex and play content as normal.</li>
+        </ol>
+
+        <h2>Audio Considerations</h2>
+
+        <p>Audio is where AirPlay shows its biggest limitations compared to native playback:</p>
+
+        <ul>
+            <li><strong>Stereo only in most cases.</strong> Standard AirPlay transmits stereo AAC audio. Surround sound information from 5.1 or 7.1 tracks is downmixed to two channels.</li>
+            <li><strong>Dolby Atmos.</strong> Apple TV supports Atmos natively through the Plex app, but AirPlay does not pass through Atmos metadata. If surround sound matters to you, use the native app.</li>
+            <li><strong>AirPlay 2 multi-room.</strong> AirPlay 2 can send audio to multiple speakers simultaneously (HomePod, AirPlay 2 speakers). This is useful for music but less relevant for video.</li>
+        </ul>
+
+        <h2>Troubleshooting AirPlay Issues</h2>
+
+        <p><strong>AirPlay receiver not appearing in the list.</strong> Confirm both devices are on the same Wi-Fi network. Restart the Apple TV or smart TV. On the receiver, check that AirPlay is enabled and not restricted to specific devices. On your router, ensure that multicast and Bonjour traffic are not blocked.</p>
+
+        <p><strong>Playback stutters or drops.</strong> AirPlay is sensitive to Wi-Fi quality. If your network is congested, playback can stutter. Move closer to your Wi-Fi router, switch to a 5 GHz band, or reduce the streaming quality in Plex settings. If possible, connect your Apple TV to the router via Ethernet for a more stable connection on the receiving end.</p>
+
+        <p><strong>Audio out of sync.</strong> AirPlay can occasionally introduce audio delay. Try pausing and resuming playback. If the issue persists, disconnect from AirPlay and reconnect. On some TVs, you may need to adjust the TV's audio delay setting.</p>
+
+        <p><strong>Black screen with audio.</strong> This sometimes happens when AirPlay cannot handle the video format. The Plex server may need to transcode the video to a format compatible with AirPlay (H.264 in an MP4 container is the safest). Check your Plex server settings for transcoding options.</p>
+
+        <p><strong>Phone screen stays on during AirPlay.</strong> With direct AirPlay streaming (not mirroring), your phone screen should dim and lock normally. If it does not, force-close the Plex app and reopen it. The phone should not need to stay awake once AirPlay streaming is established.</p>
+
+        <h2>When to Use Each Approach</h2>
+
+        <table>
+            <tr><th>Scenario</th><th>Best Option</th></tr>
+            <tr><td>Watching a movie in 4K HDR with Atmos</td><td>Native Plex app on Apple TV</td></tr>
+            <tr><td>Quick photo display on TV</td><td>AirPlay or Phlix extended display</td></tr>
+            <tr><td>4K photo slideshow</td><td>Phlix AirPlay 2 extended display</td></tr>
+            <tr><td>Guest wants to show a video</td><td>AirPlay from their phone</td></tr>
+            <tr><td>Everyday TV and movie watching</td><td>Native Plex app</td></tr>
+            <tr><td>Music to multiple rooms</td><td>AirPlay 2 multi-room audio</td></tr>
+        </table>
+
+        <div class="cta-box">
+            <h3>Phlix — 4K AirPlay Slideshows from Plex</h3>
+            <p>Phlix uses AirPlay 2 extended display to show your Plex photos at full 4K resolution on your TV while you control the slideshow from your iPhone. Shuffle, timing controls, and a chronological timeline for browsing. Free to browse, Pro for external-display slideshows.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-airplay-slideshow/" class="related-card">
+                <h3>AirPlay Slideshow from Plex</h3>
+                <p>Display your Plex photos as a slideshow on your TV via AirPlay.</p>
+            </a>
+            <a href="/blog/plex-apple-tv-setup/" class="related-card">
+                <h3>Plex on Apple TV — Complete Guide</h3>
+                <p>Install, configure, and optimize Plex for Apple TV.</p>
+            </a>
+            <a href="/blog/plex-family-photo-slideshow/" class="related-card">
+                <h3>Create a Family Photo Slideshow with Plex</h3>
+                <p>Turn your Plex photo library into a beautiful slideshow on your TV.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

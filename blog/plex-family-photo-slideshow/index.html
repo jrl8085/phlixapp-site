@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create a Family Photo Slideshow with Plex | Phlix Blog</title>
+    <meta name="description" content="Turn your Plex photo library into a beautiful slideshow on your TV. Native Plex options, limitations, and how Phlix delivers 4K AirPlay slideshows.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-family-photo-slideshow/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-family-photo-slideshow/">
+    <meta property="og:title" content="How to Create a Family Photo Slideshow with Plex">
+    <meta property="og:description" content="Turn your Plex photo library into a beautiful slideshow on your TV. Native Plex options, limitations, and how Phlix delivers 4K AirPlay slideshows.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Create a Family Photo Slideshow with Plex","description":"Turn your Plex photo library into a beautiful slideshow on your TV. Native Plex options, limitations, and how Phlix delivers 4K AirPlay slideshows.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Family Photo Slideshow with Plex</div>
+
+    <article>
+        <span class="category photos">Photos</span>
+        <h1>How to Create a Family Photo Slideshow with Plex</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>There is something special about seeing your family photos on a big screen. Holiday gatherings, birthday parties, vacations, everyday moments -- they all feel more vivid when displayed at full size rather than squinting at them on a phone. If your photos live on a Plex server, you already have the infrastructure for a family slideshow. The question is how to get the best experience, because Plex's native slideshow capabilities have real limitations.</p>
+
+        <p>This guide covers how to set up a photo library in Plex, the slideshow options available natively, the frustrations you are likely to encounter, and how Phlix solves those problems with a purpose-built photo browsing and slideshow experience.</p>
+
+        <h2>Setting Up Your Photo Library in Plex</h2>
+
+        <p>Before you can run a slideshow, your photos need to be in Plex. If you have not set this up yet, here is the quick version:</p>
+
+        <ol>
+            <li><strong>Organize your photos on disk.</strong> Plex works best with photos organized into folders by date or event. A structure like <code>Photos/2025/2025-12 Christmas/</code> keeps things clean and browsable. Plex reads EXIF data from your image files, so dates, camera info, and GPS coordinates are pulled in automatically.</li>
+            <li><strong>Create a Photo library in Plex.</strong> In the Plex Web app, go to Settings, then Manage Libraries, then Add Library. Choose "Photos" as the library type and point it at your photo folder.</li>
+            <li><strong>Let Plex scan.</strong> Plex will index your photos and generate thumbnails. For large libraries (tens of thousands of images), this initial scan can take several hours. Let it complete before trying to browse or create slideshows.</li>
+        </ol>
+
+        <h3>Supported Formats</h3>
+        <p>Plex supports JPEG, PNG, TIFF, and several RAW formats (CR2, NEF, ARW, DNG, and others). JPEG is the most efficient for slideshows. RAW files work but generate larger thumbnails and take longer to process. HEIF/HEIC files from iPhones are also supported on most platforms.</p>
+
+        <h2>Native Plex Slideshow Options</h2>
+
+        <p>Plex has built-in slideshow functionality, but the experience varies dramatically depending on which client you use.</p>
+
+        <h3>Plex Web App</h3>
+        <p>In the web browser, navigate to a photo album and click the "Slideshow" button. Photos advance automatically at a fixed interval. You can pause, skip forward, and skip back. The web app slideshow is functional but basic. Photo resolution is limited by your browser window size, and there are no shuffle or timing controls.</p>
+
+        <h3>Plex for Apple TV</h3>
+        <p>The Apple TV app has a slideshow mode accessible from photo albums. It displays photos at the TV's native resolution, which is an improvement over the web app. However, the controls are limited. You cannot shuffle photos, adjust the display duration per slide, or easily navigate large libraries. The Apple TV Plex app is primarily built for video, and the photo experience feels like an afterthought.</p>
+
+        <h3>Plex for iOS (iPhone and iPad)</h3>
+        <p>The official Plex iOS app can display photos and has a basic slideshow function. For getting photos onto a TV, you would need to AirPlay or screen mirror from your phone, which introduces quality loss and ties up your phone for the duration. The app does not have dedicated slideshow controls for external display output.</p>
+
+        <h2>The Limitations of Native Plex Slideshows</h2>
+
+        <p>If you have tried to use Plex's built-in slideshow for a family gathering, you have probably encountered these frustrations:</p>
+
+        <ul>
+            <li><strong>No shuffle.</strong> Most Plex clients do not offer a shuffle option for slideshows. Photos play in the order they appear in the album, which is usually chronological. If you want a random mix of memories, you are out of luck.</li>
+            <li><strong>No timing controls.</strong> You cannot adjust how long each photo displays. Some clients show each image for a fixed five or eight seconds, and that is not always the right pace. A detailed landscape might deserve fifteen seconds; a blurry action shot deserves three.</li>
+            <li><strong>Limited library browsing.</strong> Plex's photo browsing interface on TV clients is clunky for large libraries. Scrolling through thousands of thumbnails with a TV remote is painfully slow. There is no year scrubber, no timeline view, and no fast way to jump to photos from a specific date or event.</li>
+            <li><strong>No on-This-Day or smart selections.</strong> Plex does not surface photos from past years on the current date, which is one of the most beloved features in Apple Photos and Google Photos.</li>
+            <li><strong>Screen mirroring quality loss.</strong> If you resort to screen mirroring your phone to show photos, the image quality is significantly reduced. A 24-megapixel photo gets compressed to your phone's screen resolution and then further compressed for wireless transmission. The result is noticeably softer than the original.</li>
+        </ul>
+
+        <h2>How Phlix Solves These Problems</h2>
+
+        <p>Phlix is a dedicated photo browser for Plex that was built from the ground up to solve exactly these limitations. Here is how it handles each one:</p>
+
+        <h3>4K AirPlay 2 Extended Display Slideshows</h3>
+        <p>This is the headline feature and the biggest differentiator. When you connect an AirPlay 2 display (Apple TV 4K or a compatible smart TV), Phlix uses extended display mode -- not screen mirroring. The TV becomes a dedicated photo display running at its full native resolution, up to 4K. Your iPhone shows slideshow controls and upcoming photos.</p>
+
+        <p>The difference in quality compared to screen mirroring is dramatic. Photos appear tack-sharp on the TV because they are rendered at 4K resolution directly, not compressed through the screen mirroring pipeline. This is the closest you can get to plugging a camera directly into your TV.</p>
+
+        <h3>Shuffle and Timing Controls</h3>
+        <p>Phlix lets you shuffle your slideshow so photos appear in random order. You can also set the display duration per slide. Want each photo to linger for fifteen seconds during a relaxed family dinner? Set it to fifteen. Want a faster pace for a party? Set it to five. These controls are adjustable during playback, so you can change the pace on the fly.</p>
+
+        <h3>Chronological Timeline with Year Scrubber</h3>
+        <p>Instead of scrolling through flat grids of thumbnails, Phlix presents your entire Plex photo library as a chronological timeline. A year scrubber along the edge of the screen lets you jump instantly to any year. Tap 2019, and you are looking at photos from 2019. This makes it practical to browse libraries with tens of thousands of photos. Finding "the photos from that vacation three years ago" takes seconds, not minutes.</p>
+
+        <h3>On-Device Slideshow (Free)</h3>
+        <p>Even without an external display, Phlix offers a full-screen slideshow on your iPhone or iPad. This is included in the free version. Browse to a date or album, tap play, and your device becomes a digital photo frame. Useful for a bedside table or a propped-up iPad on a shelf.</p>
+
+        <h3>Offline Downloads</h3>
+        <p>Phlix lets you download photos from your Plex server to your iPhone's Photo Library. This is useful for sharing photos, setting wallpapers, or accessing your favorites when your server is not reachable. Free accounts get 25 downloads, and Phlix Pro offers unlimited downloads.</p>
+
+        <h2>Setting Up a Phlix Slideshow</h2>
+
+        <p>Getting a slideshow running with Phlix takes about sixty seconds:</p>
+
+        <ol>
+            <li><strong>Download Phlix</strong> from the App Store. It is free.</li>
+            <li><strong>Sign in</strong> with your Plex account. Phlix discovers your servers automatically.</li>
+            <li><strong>Browse</strong> to the photos you want to display. Use the timeline and year scrubber to find the right date or event.</li>
+            <li><strong>Start the slideshow.</strong> Tap the slideshow button. If an AirPlay 2 display is available, Phlix will use extended display mode automatically.</li>
+            <li><strong>Adjust controls.</strong> Set timing, enable shuffle, and let it run. Your phone remains free as a remote control.</li>
+        </ol>
+
+        <p>The external-display slideshow is a Phlix Pro feature ($6.99/yr or $19.99 lifetime). On-device slideshows and all browsing features are free forever.</p>
+
+        <h2>Tips for the Best Family Slideshow</h2>
+
+        <ol>
+            <li><strong>Curate an album first.</strong> Rather than playing your entire library, create a folder on your Plex server with your best photos from a trip, year, or event. A curated set of 50 to 100 photos makes a much better slideshow than 10,000 unsorted images.</li>
+            <li><strong>Use landscape photos for TV.</strong> Television screens are landscape (16:9). Portrait photos displayed on a TV have large black bars on the sides. Landscapes fill the screen edge to edge. If possible, favor landscape-oriented photos for TV slideshows.</li>
+            <li><strong>Set the right pace.</strong> Five to eight seconds per photo works well for gatherings where people are chatting. Ten to fifteen seconds works better for a focused viewing session where people are paying attention to each image.</li>
+            <li><strong>Run it during dinner.</strong> A slow photo slideshow on the TV during a family dinner is an effortless conversation starter. Set the timing to twelve or fifteen seconds, enable shuffle, and let it run in the background. People will naturally glance at the photos and share memories.</li>
+            <li><strong>Keep your Plex library organized.</strong> Good folder organization on the server translates to easier browsing in any client. Date-based folders (<code>2024-07 Beach Trip</code>) make it easy to find the right photos quickly.</li>
+        </ol>
+
+        <h2>Comparison: Native Plex vs. Phlix for Slideshows</h2>
+
+        <table>
+            <tr><th>Feature</th><th>Native Plex</th><th>Phlix</th></tr>
+            <tr><td>TV output method</td><td>Screen mirroring or TV app</td><td>AirPlay 2 extended display (4K)</td></tr>
+            <tr><td>Photo resolution on TV</td><td>Limited by mirroring quality</td><td>Full 4K native resolution</td></tr>
+            <tr><td>Shuffle</td><td>Not available on most clients</td><td>Yes, toggleable during playback</td></tr>
+            <tr><td>Timing controls</td><td>Fixed interval</td><td>Adjustable per-session</td></tr>
+            <tr><td>Year scrubber / timeline</td><td>No</td><td>Yes</td></tr>
+            <tr><td>Library browsing speed</td><td>Slow for large libraries</td><td>Fast, optimized for 100k+ photos</td></tr>
+            <tr><td>Offline photo downloads</td><td>Limited</td><td>Yes (25 free, unlimited with Pro)</td></tr>
+            <tr><td>Price</td><td>Included with Plex</td><td>Free to browse; Pro $6.99/yr or $19.99 lifetime</td></tr>
+        </table>
+
+        <div class="cta-box">
+            <h3>Phlix — The Slideshow Your Family Photos Deserve</h3>
+            <p>Stop squinting at phone screens and fighting with screen mirroring. Phlix delivers your Plex photos at full 4K resolution on your TV with shuffle, timing controls, and a timeline that makes browsing 100,000+ photos effortless. Free to browse, Pro for external-display slideshows.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-airplay-slideshow/" class="related-card">
+                <h3>AirPlay Slideshow from Plex</h3>
+                <p>Display your Plex photos as a slideshow on your TV via AirPlay.</p>
+            </a>
+            <a href="/blog/ultimate-guide-plex-photos/" class="related-card">
+                <h3>The Ultimate Guide to Plex Photos</h3>
+                <p>Everything about Plex's photo features, limitations, and alternatives.</p>
+            </a>
+            <a href="/blog/plex-airplay-guide/" class="related-card">
+                <h3>How to Use Plex with AirPlay</h3>
+                <p>AirPlay vs native app, screen mirroring vs extended display.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

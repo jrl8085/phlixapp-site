@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Migrate Your Plex Server to a New Machine | Phlix Blog</title>
+    <meta name="description" content="Move Plex to new hardware without losing metadata, watch history, or user accounts. Pre-migration checklist, backup steps, and common pitfalls.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/migrate-plex-server/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/migrate-plex-server/">
+    <meta property="og:title" content="How to Migrate Your Plex Server to a New Machine">
+    <meta property="og:description" content="Move Plex to new hardware without losing metadata, watch history, or user accounts. Pre-migration checklist, backup steps, and common pitfalls.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Migrate Your Plex Server to a New Machine","description":"Move Plex to new hardware without losing metadata, watch history, or user accounts. Pre-migration checklist, backup steps, and common pitfalls.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Migrate Plex Server</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Migrate Your Plex Server to a New Machine</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Hardware upgrades happen. Maybe your current Plex server is underpowered, running out of storage, or you are moving from a desktop to a dedicated NAS. Whatever the reason, migrating Plex to a new machine is straightforward if you follow the right steps. Done correctly, your new server picks up exactly where the old one left off: same libraries, same watch history, same user accounts, same everything. Done incorrectly, you lose years of metadata and watched statuses.</p>
+
+        <p>This guide walks through the complete migration process, from pre-migration planning to post-migration verification.</p>
+
+        <h2>Pre-Migration Checklist</h2>
+
+        <p>Before touching anything, gather this information and confirm these prerequisites:</p>
+
+        <ul>
+            <li><strong>Document your current library paths.</strong> Open Plex Web, go to each library's settings, and note the exact folder paths. You will need to update these if the paths are different on the new machine.</li>
+            <li><strong>Note your current Plex version.</strong> Install the same version or newer on the new machine. Restoring a database from a newer version into an older one can cause problems.</li>
+            <li><strong>Verify your Plex account credentials.</strong> You will need to sign in on the new machine to claim the server.</li>
+            <li><strong>Plan your media file transfer.</strong> If media files are on the same drive as the server (not a separate NAS or network share), you need to transfer them to the new machine too. For large libraries, this can take hours or days over the network.</li>
+            <li><strong>Check the new machine's OS compatibility.</strong> If migrating between operating systems (for example, Windows to Linux), the process works but file paths will be different and require updating.</li>
+        </ul>
+
+        <h2>Step 1 — Back Up the Old Server</h2>
+
+        <p>A proper backup is the safety net for the entire migration. If anything goes wrong, you can restore the old server to its original state. See our detailed <a href="/blog/backup-plex-server/">Plex backup guide</a> for the full process. Here is the abbreviated version:</p>
+
+        <ol>
+            <li><strong>Stop Plex Media Server</strong> on the old machine.</li>
+            <li><strong>Copy the entire Plex data directory.</strong> This includes the database, preferences, metadata, and plugin data. The location varies by platform:
+                <ul>
+                    <li>Windows: <code>%LOCALAPPDATA%\Plex Media Server\</code></li>
+                    <li>macOS: <code>~/Library/Application Support/Plex Media Server/</code></li>
+                    <li>Linux: <code>/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/</code></li>
+                    <li>Synology: <code>/volume1/PlexMediaServer/AppData/Plex Media Server/</code></li>
+                </ul>
+            </li>
+            <li><strong>Store the backup safely.</strong> Copy it to an external drive, a network share, or cloud storage. Do not rely solely on the old machine's drive.</li>
+        </ol>
+
+        <p>The data directory can be large (10 GB to 50 GB or more for libraries with extensive metadata). If you want to save time and space, the absolute minimum you need is the <code>Plug-in Support/Databases/</code> folder and <code>Preferences.xml</code>. However, copying the full directory preserves custom posters, cached artwork, and plugin configurations.</p>
+
+        <h2>Step 2 — Install Plex on the New Machine</h2>
+
+        <ol>
+            <li><strong>Download the latest Plex Media Server</strong> from <code>plex.tv/media-server-downloads</code> for your new machine's operating system.</li>
+            <li><strong>Install it</strong> following the normal installation process. On Linux, use the package manager; on macOS, drag to Applications; on Windows, run the installer.</li>
+            <li><strong>Start Plex once</strong> to let it create the default data directory structure. This generates empty database files and default configuration that you will replace in the next step.</li>
+            <li><strong>Stop Plex immediately.</strong> Do not run the setup wizard. Do not claim the server. Just confirm it starts, then shut it down.</li>
+        </ol>
+
+        <h2>Step 3 — Copy the Data Directory</h2>
+
+        <p>This is the core of the migration. You are replacing the fresh data directory on the new machine with the backed-up data from the old machine.</p>
+
+        <ol>
+            <li><strong>Make sure Plex is stopped</strong> on the new machine.</li>
+            <li><strong>Delete or rename</strong> the default data directory that Plex just created on the new machine.</li>
+            <li><strong>Copy the backed-up data directory</strong> from the old machine into the same location on the new machine. The folder name must be "Plex Media Server" and it must be in the correct parent directory for your OS.</li>
+            <li><strong>Verify file permissions.</strong> On Linux, the Plex user (usually <code>plex</code>) must own the data directory. Run <code>sudo chown -R plex:plex /var/lib/plexmediaserver/</code> to fix ownership. On macOS, permissions usually transfer correctly if you are using the same user account.</li>
+        </ol>
+
+        <h3>Cross-Platform Migration</h3>
+        <p>If you are moving between operating systems (for example, Windows to Linux), the database and preferences files are platform-independent. Copy them the same way. The main complication is file paths, which you will update in the next step.</p>
+
+        <h2>Step 4 — Update Library Paths</h2>
+
+        <p>If your media files are in different locations on the new machine (different drive letters, different mount points, different directory structure), you need to update every library's folder paths.</p>
+
+        <ol>
+            <li><strong>Start Plex</strong> on the new machine.</li>
+            <li><strong>Open the Plex Web interface</strong> at <code>localhost:32400/web</code>.</li>
+            <li><strong>Go to Settings, then Manage Libraries.</strong></li>
+            <li>For each library, click "Edit" and update the folder path to the new location on the new machine.</li>
+        </ol>
+
+        <p>For example, if your movies were at <code>D:\Movies</code> on Windows and are now at <code>/mnt/media/movies</code> on Linux, update each library path accordingly. Plex will verify the new path is accessible and contains media files.</p>
+
+        <p>If your media files are on a NAS or network share that both machines can access, and the mount path is the same on both machines, you may not need to change anything. This is one of the advantages of storing media on network-attached storage rather than local drives.</p>
+
+        <h2>Step 5 — Re-Claim the Server</h2>
+
+        <p>This step is critical and is where many migrations go wrong. Your Plex server is tied to your Plex account through a "claim" process. The old machine's server was claimed by your account. The new machine needs to be claimed too.</p>
+
+        <h3>If the Data Directory Includes Preferences.xml</h3>
+        <p>If you copied the full data directory including <code>Preferences.xml</code>, the server should recognize your account automatically. Open the Plex Web interface and check if it shows your libraries and your account name. If it does, you are claimed and can skip ahead.</p>
+
+        <h3>If You Need to Re-Claim</h3>
+        <p>If the server appears unclaimed (you see the setup wizard instead of your libraries), you need to claim it. Sign in with your Plex account at <code>plex.tv/claim</code> to get a claim token. Alternatively, access the Plex Web interface on the new machine's local network (<code>localhost:32400/web</code>) and sign in there. Plex will prompt you to claim the server.</p>
+
+        <p>If you are accessing the new server remotely (not on the local network), you may need to set up an SSH tunnel to reach <code>localhost:32400</code> on the new machine. Claiming only works when accessed from the local network or localhost.</p>
+
+        <h2>Step 6 — Verify Remote Access</h2>
+
+        <p>Remote access settings from the old machine may not carry over cleanly, especially if the new machine has a different local IP address or is behind a different router.</p>
+
+        <ol>
+            <li>Go to Settings, then Remote Access.</li>
+            <li>Check if the green checkmark appears. If it does, remote access is working.</li>
+            <li>If you see a red indicator, click "Retry." Plex will attempt to configure UPnP on your router.</li>
+            <li>If automatic configuration fails, manually forward port 32400 on your router to the new machine's local IP address. See our <a href="/blog/plex-remote-access-setup/">remote access guide</a> for details.</li>
+        </ol>
+
+        <p>Test remote access by connecting from a client on a different network (for example, your phone on cellular data) to confirm everything works end-to-end.</p>
+
+        <h2>Step 7 — Verify Everything Works</h2>
+
+        <p>Run through this checklist after migration:</p>
+
+        <ul>
+            <li><strong>Libraries load correctly.</strong> All your libraries should appear in the sidebar with their content intact.</li>
+            <li><strong>Watch history is preserved.</strong> Check a few titles and confirm that previously watched items show as watched (with the orange progress indicator or checkmark).</li>
+            <li><strong>Playlists and collections exist.</strong> Open your playlists and collections to verify they transferred.</li>
+            <li><strong>User accounts work.</strong> If you have managed users or shared users, verify they can connect and see their appropriate libraries.</li>
+            <li><strong>Metadata and posters are correct.</strong> Spot-check a few titles to ensure posters, descriptions, and ratings are present. If you skipped the Metadata folder during backup, you may need to run a metadata refresh.</li>
+            <li><strong>Remote access works.</strong> Test from an external network.</li>
+            <li><strong>Hardware transcoding works</strong> (if applicable). If your new machine has a different GPU or CPU, verify that hardware-accelerated transcoding is configured and functional under Settings, then Transcoder.</li>
+        </ul>
+
+        <h2>Common Pitfalls</h2>
+
+        <p><strong>Claiming fails because old server is still running.</strong> If the old Plex server is still running and claimed, the new server may conflict. Stop (or ideally uninstall) Plex on the old machine before claiming the new one. A Plex account can have multiple servers, but if both are claiming the same server identity, things get confused.</p>
+
+        <p><strong>File permission errors on Linux.</strong> The most common Linux migration issue. The copied files are owned by your user account or root, but Plex runs as the <code>plex</code> system user. Always run <code>chown -R plex:plex</code> on the data directory after copying.</p>
+
+        <p><strong>Database version mismatch.</strong> If the old server was running a much newer version of Plex than what you installed on the new machine, the database may not be compatible. Always install the same version or newer on the new machine.</p>
+
+        <p><strong>Forgetting to update library paths.</strong> If paths are wrong, Plex shows empty libraries. It does not delete your metadata; it just cannot find the media files. Update the paths, and everything reappears.</p>
+
+        <p><strong>Loss of custom DNS or reverse proxy configuration.</strong> If you access Plex through a custom domain with Nginx or Caddy, you need to update the proxy configuration to point to the new machine's IP address. This is outside of Plex itself but easy to forget.</p>
+
+        <p><strong>Synology-to-Linux or vice versa.</strong> NAS platforms sometimes store the Plex data directory in non-standard locations. Double-check the source and destination paths for your specific platforms.</p>
+
+        <h2>After Migration: Decommissioning the Old Server</h2>
+
+        <p>Once you have verified everything works on the new machine, you can safely decommission the old one:</p>
+
+        <ol>
+            <li>Stop Plex on the old machine.</li>
+            <li>Uninstall Plex Media Server.</li>
+            <li>Keep the old data directory backup for at least a few weeks in case you discover a migration issue after the fact.</li>
+            <li>If you kept media files on the old machine's local drives, make sure they have been fully transferred to the new machine or NAS before wiping the old drives.</li>
+        </ol>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>Migrated your Plex server? Phlix connects to your new server automatically. Browse your photo library with a chronological timeline, 4K AirPlay slideshows, and offline downloads. Free to browse.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/backup-plex-server/" class="related-card">
+                <h3>Back Up Your Plex Server</h3>
+                <p>Database, metadata, settings, and disaster recovery planning.</p>
+            </a>
+            <a href="/blog/best-nas-for-plex/" class="related-card">
+                <h3>Best NAS for Plex in 2026</h3>
+                <p>Synology, QNAP, and Asustor compared for Plex streaming.</p>
+            </a>
+            <a href="/blog/plex-remote-access-setup/" class="related-card">
+                <h3>Set Up Plex Remote Access</h3>
+                <p>Port forwarding, dynamic DNS, and streaming from anywhere.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

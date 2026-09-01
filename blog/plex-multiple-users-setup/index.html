@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Multiple Users on Plex — Profiles and Permissions | Phlix Blog</title>
+    <meta name="description" content="Create managed users, home users, and friend accounts on Plex with per-user restrictions and profiles.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-multiple-users-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-multiple-users-setup/">
+    <meta property="og:title" content="How to Set Up Multiple Users on Plex — Profiles and Permissions">
+    <meta property="og:description" content="Create managed users, home users, and friend accounts on Plex with per-user restrictions and profiles.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Multiple Users on Plex — Profiles and Permissions","description":"Create managed users, home users, and friend accounts on Plex with per-user restrictions and profiles.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Set Up Multiple Users on Plex</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Set Up Multiple Users on Plex — Profiles and Permissions</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>If more than one person uses your Plex server, setting up individual user accounts is essential. Without separate profiles, everyone shares the same watch history, On Deck queue, and recommendations. One person's horror movie marathon influences everyone else's suggestions. Plex offers several types of user accounts to handle different scenarios, from family members in the same household to friends accessing your server remotely. This guide explains each type and walks through configuration.</p>
+
+        <h2>Types of Plex Users</h2>
+
+        <p>Plex has three distinct user types, each suited to different situations:</p>
+
+        <h3>Managed Users</h3>
+
+        <p>Managed users are sub-accounts under your Plex account. They do not require a separate Plex account or email address. You create them, name them, and control their permissions entirely. Managed users are ideal for children and family members who do not need (or want) their own Plex account.</p>
+
+        <p>Key characteristics of managed users:</p>
+
+        <ul>
+            <li>No email address required — you create the account and set the name.</li>
+            <li>Cannot access your server remotely unless you specifically enable it.</li>
+            <li>Content restrictions are controlled by you (rating limits, library access).</li>
+            <li>Appear on the user-selection screen alongside your main account on any Plex app connected to your server.</li>
+            <li>Have their own watch history, On Deck, and watchlists, separate from your account.</li>
+        </ul>
+
+        <h3>Plex Home Users</h3>
+
+        <p>Plex Home is a feature (Plex Pass required) that lets you add existing Plex account holders to your home. These are people with their own Plex accounts (their own email and password) who appear on the user-selection screen alongside managed users. This is ideal for adult family members who want their own Plex account for features like syncing watchlists across servers or using Discover.</p>
+
+        <p>Plex Home users differ from managed users in that they have full Plex accounts. They can access other servers, manage their own settings, and their account is independent of yours if they ever leave your Plex Home.</p>
+
+        <h3>Friends (Shared Users)</h3>
+
+        <p>Friends are people you share your library with who are not part of your Plex Home. They have their own Plex accounts, access your server remotely using their own credentials, and manage their own watch history. Unlike Plex Home users, friends do not appear on the user-selection screen on local devices — they connect to your server from their own Plex apps.</p>
+
+        <p>Sharing with friends is free and does not require Plex Pass. You can share with as many friends as you want, though stream limits may apply.</p>
+
+        <h2>Creating Managed Users</h2>
+
+        <p>To create a managed user, open the Plex web interface and go to Settings, then Users and Sharing, then Plex Home. Click "Add Managed User" and choose a name and avatar. You can also set a PIN for the user (recommended for older children who should not have access to other profiles).</p>
+
+        <p>After creating the user, configure their permissions:</p>
+
+        <ul>
+            <li><strong>Library access:</strong> Choose which libraries this user can see. Hide adult-content libraries from children's accounts.</li>
+            <li><strong>Content ratings:</strong> Set a maximum content rating (G, PG, PG-13, R, etc.). The user will not see content rated above this threshold.</li>
+            <li><strong>Allow downloads:</strong> Enable or disable the ability to sync content for offline viewing.</li>
+        </ul>
+
+        <h2>Setting Up Plex Home</h2>
+
+        <p>Plex Home requires Plex Pass. To add someone with an existing Plex account to your home:</p>
+
+        <ol>
+            <li>Go to Settings, then Users and Sharing, then Plex Home.</li>
+            <li>Click "Add User" and enter their Plex username or email address.</li>
+            <li>They receive an invitation that they must accept from their Plex account.</li>
+            <li>Once accepted, their profile appears on the user-selection screen alongside your managed users.</li>
+        </ol>
+
+        <p>Plex Home supports up to 15 users (managed and home combined) on a single server. Each user gets independent watch history, watchlists, and recommendations. The server owner retains full control over library access and content restrictions for all home users.</p>
+
+        <h2>Sharing with Friends</h2>
+
+        <p>To share your library with a friend:</p>
+
+        <ol>
+            <li>Go to Settings, then Users and Sharing.</li>
+            <li>Click "Share Your Libraries" or the invite icon.</li>
+            <li>Enter your friend's Plex username or email address.</li>
+            <li>Select which libraries to share. You can choose individual libraries — for example, share Movies but not your private Photo library.</li>
+            <li>Send the invitation. Your friend accepts it from their Plex account.</li>
+        </ol>
+
+        <p>Friends access your server through their own Plex app. Your server appears in their server list alongside any other servers they use. They have their own watch history on your server, separate from yours and from other shared users.</p>
+
+        <h2>PIN Protection</h2>
+
+        <p>PINs prevent unauthorized profile switching on shared devices. Without PINs, anyone using a Plex app on your TV can switch to any profile in your Plex Home. PINs add a four-digit code requirement before switching.</p>
+
+        <h3>Setting a PIN for Your Account</h3>
+
+        <p>Go to your Plex account settings at <code>plex.tv/users/edit</code>, scroll to the PIN section, and set a four-digit PIN. This protects your admin account from being accessed by other household members on shared devices.</p>
+
+        <h3>Setting PINs for Managed Users</h3>
+
+        <p>When creating or editing a managed user in Settings, you can assign a PIN. This is useful for older children who should only access their own profile. Younger children can have profiles without PINs for easier access.</p>
+
+        <h3>Requiring PINs on Specific Devices</h3>
+
+        <p>You can configure devices to always require a PIN when switching users. In the Plex app settings on a specific device, look for the "Require PIN for profile switching" option. This is especially useful for shared TVs in common areas.</p>
+
+        <h2>Library Permissions</h2>
+
+        <p>Plex gives you granular control over which libraries each user can access. This is configured per user in Settings, then Users and Sharing:</p>
+
+        <ul>
+            <li><strong>Managed users:</strong> Select libraries during account creation or edit the user later to add or remove library access.</li>
+            <li><strong>Home users:</strong> Configure library access after the user joins your Plex Home.</li>
+            <li><strong>Friends:</strong> Choose libraries at the time of sharing. You can update shared libraries later from the Users and Sharing settings.</li>
+        </ul>
+
+        <p>Common configurations include: children seeing only a "Kids Movies" and "Kids TV" library with age-appropriate content; a spouse seeing all libraries; friends seeing Movies and TV Shows but not Photos or personal Home Videos.</p>
+
+        <h2>Simultaneous Stream Limits</h2>
+
+        <p>By default, Plex does not impose a hard limit on simultaneous streams. However, your server's hardware and internet bandwidth create practical limits. A typical home server can handle 2-5 simultaneous streams depending on whether transcoding is needed.</p>
+
+        <p>Plex Pass subscribers can set explicit stream limits per user in Settings, then Users and Sharing. Click on a user and configure "Simultaneous Streams" to limit how many concurrent streams that specific user can have. This is particularly useful for friends: you might allow your household unlimited streams but limit each friend to one or two simultaneous streams to prevent any single user from overwhelming your server.</p>
+
+        <h2>Remote Access for Users</h2>
+
+        <p>Managed users can only access your server locally by default. To let managed users stream remotely, the server must have remote access enabled (Settings, Remote Access) and you must allow remote access for that specific managed user in their profile settings.</p>
+
+        <p>Friends and Plex Home users with their own accounts can access your server remotely automatically once remote access is enabled on the server. No per-user configuration is needed beyond the initial library sharing.</p>
+
+        <h2>Managing User Activity</h2>
+
+        <p>As the server administrator, you can monitor active streams in the Plex dashboard. The Activity section shows who is watching what, on which device, and whether the stream is direct playing or transcoding. For more detailed analytics, tools like Tautulli provide per-user history, most-watched content, and usage patterns over time.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-parental-controls/" class="related-card">
+                <h3>Set Up Plex Parental Controls</h3>
+                <p>Content rating filters and library restrictions for children.</p>
+            </a>
+            <a href="/blog/share-plex-library/" class="related-card">
+                <h3>Share Your Plex Library</h3>
+                <p>Invite friends and family to stream from your server.</p>
+            </a>
+            <a href="/blog/plex-watch-history-manage/" class="related-card">
+                <h3>Manage Plex Watch History</h3>
+                <p>Control per-user watch history, On Deck, and Continue Watching.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

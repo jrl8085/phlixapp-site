@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Plex Skip Intro — Never Watch Another Intro Again | Phlix Blog</title>
+    <meta name="description" content="Enable and configure Plex's automatic intro detection and skip feature. Plex Pass required.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-intro-skip-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-intro-skip-setup/">
+    <meta property="og:title" content="How to Set Up Plex Skip Intro — Never Watch Another Intro Again">
+    <meta property="og:description" content="Enable and configure Plex's automatic intro detection and skip feature. Plex Pass required.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Plex Skip Intro — Never Watch Another Intro Again","description":"Enable and configure Plex's automatic intro detection and skip feature. Plex Pass required.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Set Up Plex Skip Intro</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Set Up Plex Skip Intro — Never Watch Another Intro Again</h1>
+        <p class="meta">Published September 1, 2026 &middot; 8 min read</p>
+
+        <p>Binge-watching a TV series means sitting through the same opening credits sequence dozens of times. Plex's intro detection feature solves this by identifying the intro in each episode and offering a "Skip Intro" button — or automatically skipping it entirely. Once enabled, it works across all your TV libraries and all connected clients. Here is how to set it up, what it requires, and how to fix detection when it does not work correctly.</p>
+
+        <h2>Requirements</h2>
+
+        <p>Before you begin, confirm these prerequisites:</p>
+
+        <ul>
+            <li><strong>Plex Pass:</strong> Intro detection is a Plex Pass exclusive feature. Free Plex accounts cannot use it. Any tier of Plex Pass works — monthly, yearly, or lifetime.</li>
+            <li><strong>Plex Media Server version:</strong> Intro detection was introduced in server version 1.25. Make sure your server is running a current version. Check Settings, then General, for your server version.</li>
+            <li><strong>TV show library:</strong> Intro detection only works on TV show libraries. It does not apply to movies, music, or photos.</li>
+            <li><strong>Multiple episodes:</strong> The detection algorithm works by comparing audio across episodes in a season to find repeating segments. A season needs at least two episodes for comparison. Single-episode seasons or one-off specials cannot be analyzed.</li>
+        </ul>
+
+        <h2>How Intro Detection Works</h2>
+
+        <p>Plex's intro detection uses audio fingerprinting. It analyzes the audio track of every episode in a season and looks for a repeating segment that appears in most or all episodes. The repeating audio pattern is typically the theme song or opening credits sequence.</p>
+
+        <p>The algorithm works in two passes. First, it generates audio fingerprints for each episode — a compact mathematical representation of the audio content. Then it cross-references these fingerprints across all episodes in the season to find matching segments. When it finds a segment that repeats with high confidence, it marks the start and end timestamps as the intro.</p>
+
+        <p>This approach is language-independent and works regardless of whether the intro has music, dialogue, or both. It also handles intros of varying lengths, since it detects the actual boundaries of the repeating audio rather than assuming a fixed duration.</p>
+
+        <h2>Enabling Intro Detection</h2>
+
+        <h3>Step 1 — Enable in Server Settings</h3>
+
+        <p>Open the Plex web interface and go to Settings. Under Library, find the "Detect intro and credits" option and enable it. This tells Plex to analyze TV episodes for intros during library scans and as a background task.</p>
+
+        <h3>Step 2 — Trigger Analysis</h3>
+
+        <p>Intro detection runs as part of Plex's scheduled tasks and during library scans. For existing libraries, the initial analysis runs during the next scheduled task window. You can force it to start immediately by going to Settings, Scheduled Tasks, and clicking "Run" next to the detection task. Alternatively, scan your TV library manually (three-dot menu on the library, "Scan Library Files") — this also triggers intro detection for any unanalyzed episodes.</p>
+
+        <h3>Step 3 — Wait for Processing</h3>
+
+        <p>Intro detection is CPU-intensive. Analyzing a season with 20 episodes can take several minutes on a modern CPU, or much longer on older hardware. For a large TV library with hundreds of seasons, the initial analysis may take hours or even days. Let it run in the background. Plex prioritizes analysis during low-activity periods by default.</p>
+
+        <p>You can monitor progress in the Plex dashboard. Active analysis tasks appear under "Background Processing" on the server status page. There is no per-episode progress indicator, but you can check individual episodes by clicking on them and looking for intro marker timestamps in the metadata.</p>
+
+        <h2>Skip Intro Button vs Auto-Skip</h2>
+
+        <p>Once intros are detected, Plex offers two behaviors:</p>
+
+        <h3>Skip Intro Button (Default)</h3>
+
+        <p>When an episode reaches the detected intro, a "Skip Intro" button appears in the player interface. Clicking or tapping it jumps past the intro to where regular content resumes. The button disappears after a few seconds if you do not interact with it. This is the default behavior and requires no additional configuration.</p>
+
+        <h3>Auto-Skip (Optional)</h3>
+
+        <p>For a fully hands-free experience, you can enable auto-skip. Go to Settings, then Library, and look for the auto-skip option. When enabled, Plex automatically jumps past the intro without showing the button or requiring any user interaction. This is per-user — each user on your Plex Home can independently choose whether to auto-skip or use the button.</p>
+
+        <p>Auto-skip is ideal for binge sessions. For a first-time watch of a new show, you might prefer the button so you can enjoy the opening credits when you want to.</p>
+
+        <h2>Credits Detection</h2>
+
+        <p>In addition to intros, Plex can detect end credits. When enabled, Plex identifies where the closing credits begin and can automatically start the next episode, skip the credits entirely, or display a "Next Episode" prompt.</p>
+
+        <p>Credits detection works similarly to intro detection but looks for the transition from regular content to the credits sequence. It uses a combination of audio analysis (the credits usually have different audio — theme music, silence, or a different mix) and timing heuristics (credits typically appear in the last few minutes of an episode).</p>
+
+        <p>Enable credits detection in the same Settings page as intro detection. Both features run during the same analysis pass, so there is no additional processing overhead for enabling both.</p>
+
+        <h2>Troubleshooting Detection Failures</h2>
+
+        <p>Intro detection works well for most shows but can fail in certain situations. Here are common issues and fixes:</p>
+
+        <h3>No Intro Detected</h3>
+
+        <ul>
+            <li><strong>Too few episodes:</strong> Plex needs at least two episodes in a season to compare. Single-episode specials or miniseries with unique intros per episode will not be detected.</li>
+            <li><strong>Inconsistent intros:</strong> Some shows change their opening sequence every episode (cold opens of varying length, different pre-credits scenes). If the repeating audio segment is too short or inconsistent, Plex may not identify it with enough confidence.</li>
+            <li><strong>Audio format issues:</strong> Rarely, certain audio codecs or channel configurations can interfere with fingerprinting. If a specific season fails to detect, try converting one episode to a standard audio format (AAC or AC3) and reanalyzing.</li>
+        </ul>
+
+        <h3>Wrong Intro Boundaries</h3>
+
+        <p>Sometimes Plex detects the intro but marks the wrong start or end point. This can happen with shows that have a cold open (pre-intro scene) of varying length. Plex may mark the cold open's start instead of the intro's start, or miss the transition from intro back to the episode.</p>
+
+        <p>Currently, Plex does not provide a manual override for intro markers in the standard interface. If boundaries are consistently wrong for a show, the issue usually resolves itself if the show has enough episodes for the algorithm to refine its detection. For shows where auto-detection simply does not work, third-party tools can inject manual chapter markers.</p>
+
+        <h3>Re-Analyzing a Show</h3>
+
+        <p>If detection results seem wrong, you can force Plex to reanalyze. Delete the existing intro markers by going to the show settings and refreshing metadata. Then trigger a new library scan. Plex will re-run intro detection from scratch for that show. This is also useful after updating Plex Media Server, as newer versions may include improvements to the detection algorithm.</p>
+
+        <h2>Client Compatibility</h2>
+
+        <p>The Skip Intro button works on all modern Plex clients: web browser, iOS, Android, Apple TV, Roku, Fire TV, smart TV apps, and desktop apps. The button appearance may vary slightly between platforms (some show a text button, others show an icon), but the functionality is consistent. Auto-skip works on all clients as well, since it is a server-side decision.</p>
+
+        <p>Older client versions may not display the Skip Intro button even when intros are detected server-side. Update your Plex client apps to the latest version to ensure compatibility.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/is-plex-pass-worth-it/" class="related-card">
+                <h3>Is Plex Pass Worth It?</h3>
+                <p>Skip Intro, hardware transcoding, and every Plex Pass perk explained.</p>
+            </a>
+            <a href="/blog/plex-tv-show-naming-guide/" class="related-card">
+                <h3>Plex TV Show Naming Guide</h3>
+                <p>Name your TV show files correctly for perfect metadata matches.</p>
+            </a>
+            <a href="/blog/plex-watch-history-manage/" class="related-card">
+                <h3>Manage Plex Watch History</h3>
+                <p>Control On Deck, Continue Watching, and watch history across users.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

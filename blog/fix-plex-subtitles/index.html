@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Fix Plex Subtitle Issues — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="Fix missing, out-of-sync, or incorrectly formatted subtitles in Plex.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/fix-plex-subtitles/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/fix-plex-subtitles/">
+    <meta property="og:title" content="How to Fix Plex Subtitle Issues — Complete Guide">
+    <meta property="og:description" content="Fix missing, out-of-sync, or incorrectly formatted subtitles in Plex.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Fix Plex Subtitle Issues — Complete Guide",
+        "description": "Fix missing, out-of-sync, or incorrectly formatted subtitles in Plex.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Fix Plex Subtitle Issues</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat">Troubleshooting</span>
+                <h1>How to Fix Plex Subtitle Issues — Complete Guide</h1>
+                <p class="subtitle">Fix missing, out-of-sync, or incorrectly formatted subtitles in Plex.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>Subtitles in Plex can be deceptively complex. They can be embedded inside the media file or stored as separate files alongside it. They come in half a dozen formats, each with different rendering behavior. Some formats play smoothly on every client while others force your server into heavy transcoding. This guide covers everything you need to know to get subtitles working correctly in Plex.</p>
+
+            <h2>Understanding Subtitle Formats</h2>
+
+            <p>Not all subtitle formats are created equal. The format you use directly affects playback performance, compatibility, and visual quality. There are two fundamental categories: text-based and image-based.</p>
+
+            <h3>Text-Based Subtitles</h3>
+
+            <p><strong>SRT (SubRip)</strong> is the most common and most compatible text subtitle format. SRT files contain plain text with timestamps, nothing more. Every Plex client can render SRT subtitles natively without any server-side processing. They are lightweight, easy to edit, and never trigger transcoding. If you have a choice, SRT is always the best option.</p>
+
+            <p><strong>ASS/SSA (Advanced SubStation Alpha)</strong> is a richer text format that supports positioning, fonts, colors, and animation effects. It is popular in anime fansubs where styled subtitles are part of the viewing experience. ASS subtitles are supported by most Plex clients, but complex styling may not render correctly on all devices. On some clients, ASS subtitles trigger transcoding to ensure the styling is preserved.</p>
+
+            <p><strong>WebVTT</strong> is a web-standard format similar to SRT with optional styling. It is used primarily in web-based playback and is supported by the Plex web player.</p>
+
+            <h3>Image-Based Subtitles</h3>
+
+            <p><strong>PGS (Presentation Graphic Stream)</strong> is the subtitle format used on Blu-ray discs. PGS subtitles are bitmap images, not text. Because they are images, Plex cannot send them to the client as a separate overlay on most devices. Instead, the server must burn them into the video stream, which triggers a full video transcode. PGS subtitles are the single most common cause of unexpected transcoding.</p>
+
+            <p><strong>VOBSUB</strong> is the DVD equivalent of PGS. It also contains bitmap images and triggers the same burn-in transcoding behavior.</p>
+
+            <h2>Embedded vs. External Subtitles</h2>
+
+            <p>Subtitles can be embedded inside the media container (MKV files commonly have multiple embedded subtitle tracks) or stored as separate files alongside the media file. Plex supports both approaches.</p>
+
+            <p>For external subtitle files, Plex requires them to follow a specific naming convention. The subtitle file must have the same base name as the media file, with a language code and format extension appended:</p>
+
+            <p><code>Movie Name (2024).en.srt</code> for English SRT subtitles<br>
+            <code>Movie Name (2024).es.srt</code> for Spanish SRT subtitles<br>
+            <code>Movie Name (2024).en.forced.srt</code> for forced English subtitles</p>
+
+            <p>The language code uses ISO 639-1 two-letter codes. If Plex is not detecting your external subtitle files, incorrect naming is almost always the cause. The base name must match the media file exactly, including capitalization on case-sensitive file systems (Linux, most NAS devices).</p>
+
+            <h2>Fixing Missing Subtitles</h2>
+
+            <p>If subtitles exist in your file but do not appear in Plex, start by checking whether Plex has detected them. Open the media item in Plex, click the three-dot menu, select <strong>Get Info</strong>, and look at the <strong>Media Info</strong> section. All detected subtitle tracks should be listed there with their format and language.</p>
+
+            <p>If embedded subtitles are not listed, the container may not be properly formatted. Remuxing the file with MKVToolNix can sometimes resolve detection issues. If external subtitles are not listed, verify the file naming as described above, then run a <strong>Refresh Metadata</strong> on the item.</p>
+
+            <h3>Subtitle Agents</h3>
+
+            <p>Plex can automatically download subtitles using subtitle agents. The most popular is <strong>OpenSubtitles</strong>, which requires a free account. Configure it in <strong>Settings &gt; Agents</strong> and ensure OpenSubtitles (or your preferred agent) is enabled and ranked in the agent priority list for your library type.</p>
+
+            <p>Third-party tools like <strong>Bazarr</strong> offer more sophisticated automatic subtitle management. Bazarr monitors your library and automatically downloads subtitles from multiple sources, scores them for quality, and keeps them updated. It integrates with Sonarr and Radarr for a fully automated workflow.</p>
+
+            <h2>Fixing Out-of-Sync Subtitles</h2>
+
+            <p>When subtitles appear at the wrong time — either ahead of or behind the dialog — you have a sync issue. This commonly happens when subtitles were created for a different version of the media (a different cut, a different frame rate, or with a different starting offset).</p>
+
+            <p>Some Plex clients offer a real-time <strong>subtitle offset</strong> adjustment during playback. Look for a subtitle settings icon during playback that allows you to shift subtitles forward or backward in milliseconds. This is a quick temporary fix.</p>
+
+            <p>For a permanent fix, you need to adjust the subtitle file itself. Tools like <strong>Subtitle Edit</strong> (Windows) or <strong>Aegisub</strong> (cross-platform) let you shift all timestamps by a fixed offset or resync specific lines. If the sync drifts over time (getting progressively more out of sync), the frame rate of the subtitle does not match the video. Subtitle Edit can convert between frame rates (23.976fps to 25fps is the most common conversion needed).</p>
+
+            <h2>Forced Subtitles</h2>
+
+            <p>Forced subtitles are a special category that display only when characters speak in a foreign language. For example, in a primarily English film, forced subtitles would appear for scenes where characters speak French or Elvish, but not for the English dialog.</p>
+
+            <p>To set up forced subtitles in Plex, name the external file with <code>.forced</code> in the name: <code>Movie (2024).en.forced.srt</code>. For embedded subtitle tracks, you can mark them as forced using MKVToolNix. In Plex settings, you can enable "Always show forced subtitles" to automatically display them without manually selecting a subtitle track each time.</p>
+
+            <h2>Burn-In vs. Overlay</h2>
+
+            <p>Plex handles subtitles in one of two ways during playback. <strong>Overlay</strong> means the client renders the subtitles on top of the video locally. This requires no server processing and preserves full video quality. Text-based subtitles (SRT, ASS) are typically handled as overlays.</p>
+
+            <p><strong>Burn-in</strong> means the server composites the subtitles directly into the video pixels before sending the stream to the client. This requires a video transcode and degrades quality slightly. Image-based subtitles (PGS, VOBSUB) always require burn-in on most clients.</p>
+
+            <p>You can control this behavior in <strong>Settings &gt; Languages</strong> on the server. The "Burn Subtitles" option has three settings: "Only image formats" (recommended, only burns in PGS/VOBSUB), "Always" (burns in all subtitles, wastes server resources), and "Never" (may cause display issues with image formats).</p>
+
+            <h2>Best Practices</h2>
+
+            <p>To avoid subtitle headaches, follow these guidelines. Use SRT format whenever possible. If you have PGS subtitles and want to avoid transcoding, use SubtitleEdit or other OCR-based tools to convert them to SRT. Keep external subtitles in the same folder as the media file with matching names. Set "Burn Subtitles" to "Only image formats" in server settings. And if you stream to multiple devices with varying capabilities, test subtitle playback on each device to identify any client-specific issues early.</p>
+
+            <div class="cta-box">
+                <h3>Phlix — The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-transcoding-explained/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Transcoding Explained — Direct Play vs Direct Stream vs Transcode</h3></a>
+                <a href="/blog/fix-plex-buffering/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Buffering? Here's How to Fix It Once and For All</h3></a>
+                <a href="/blog/fix-plex-audio-sync/" class="blog-card"><span class="cat">Troubleshooting</span><h3>How to Fix Plex Audio Sync Issues</h3></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

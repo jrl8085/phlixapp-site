@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Add Pre-Roll Videos and Trailers in Plex | Phlix Blog</title>
+    <meta name="description" content="Add custom pre-roll intros and trailers before your movies in Plex. Seasonal intros, studio logos, and configuration.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-preroll-trailers/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-preroll-trailers/">
+    <meta property="og:title" content="How to Add Pre-Roll Videos and Trailers in Plex">
+    <meta property="og:description" content="Add custom pre-roll intros and trailers before your movies in Plex. Seasonal intros, studio logos, and configuration.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Add Pre-Roll Videos and Trailers in Plex","description":"Add custom pre-roll intros and trailers before your movies in Plex. Seasonal intros, studio logos, and configuration.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Pre-Roll Videos and Trailers</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Add Pre-Roll Videos and Trailers in Plex</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>One of the most beloved features among dedicated Plex users is the ability to play custom pre-roll videos before movies begin. These short clips play automatically when you hit play on a movie, recreating the theater experience of watching studio logos, intro sequences, or "feature presentation" bumpers before the main event. Combined with Plex's trailer support, you can build a complete cinema-like experience from your own living room.</p>
+
+        <p>This guide covers everything about pre-rolls and trailers in Plex: how to set them up, how to rotate them seasonally, where to find great pre-roll content, and the technical requirements for smooth playback.</p>
+
+        <h2>What Are Pre-Roll Videos</h2>
+
+        <p>Pre-rolls are short video clips that play before a movie starts. They are not part of the movie file itself -- they are separate video files that Plex inserts into the playback sequence. When a user presses play on a movie, Plex plays the pre-roll first, then seamlessly transitions to the movie.</p>
+
+        <p>Common pre-roll content includes:</p>
+        <ul>
+            <li>Custom "Welcome to [Your Server Name]" intros</li>
+            <li>Classic theater bumpers ("Feature Presentation," "Coming Attractions")</li>
+            <li>Seasonal intros (Halloween, Christmas, summer themes)</li>
+            <li>Studio logo animations</li>
+            <li>Custom-made animations or motion graphics</li>
+            <li>Humorous "please silence your phones" reminders</li>
+        </ul>
+
+        <h2>Requirements</h2>
+
+        <p>Pre-roll videos require a Plex Pass subscription (monthly, annual, or lifetime). This is one of the Plex Pass exclusive features that is not available on free accounts. Trailers, by contrast, are available to all Plex users.</p>
+
+        <p>The pre-roll feature works in movie libraries only. It does not apply to TV show episodes, music, or photos.</p>
+
+        <h2>Setting Up Pre-Roll Videos</h2>
+
+        <h3>Step 1: Prepare Your Video Files</h3>
+        <p>Create or download your pre-roll videos and save them to a folder accessible by your Plex server. The folder does not need to be inside a Plex library -- it just needs to be a path the server can read. A common location is a dedicated folder like <code>/media/prerolls/</code> or <code>C:\PreRolls\</code>.</p>
+
+        <h3>Step 2: Configure the Pre-Roll Path</h3>
+        <p>In the Plex Web interface, go to Settings, Server, Extras. Find the "Cinema Trailers pre-roll video" field. Enter the full path to your pre-roll video file:</p>
+        <pre><code>/media/prerolls/welcome.mp4</code></pre>
+
+        <p>That is all it takes for a single pre-roll. Every time someone plays a movie, the welcome video plays first.</p>
+
+        <h3>Step 3: Test It</h3>
+        <p>Play any movie on your server. The pre-roll should play before the movie begins. If it does not appear, verify that the file path is correct and that the Plex server process has read permissions on the file.</p>
+
+        <h2>Multiple Pre-Rolls with Random Selection</h2>
+
+        <p>A single pre-roll gets repetitive quickly. Plex supports multiple pre-rolls with random selection, so a different intro plays each time. Separate multiple file paths with semicolons:</p>
+
+        <pre><code>/media/prerolls/welcome1.mp4;/media/prerolls/welcome2.mp4;/media/prerolls/welcome3.mp4</code></pre>
+
+        <p>Plex randomly selects one of the listed files each time a movie starts. This keeps the experience fresh without any manual intervention.</p>
+
+        <p>You can also use commas instead of semicolons, but the behavior is different. Comma-separated paths play sequentially (all of them, in order), while semicolon-separated paths play one at random. For most users, semicolons (random selection) is the better choice.</p>
+
+        <h2>Seasonal Pre-Rolls with Date Ranges</h2>
+
+        <p>One of the most popular uses of pre-rolls is seasonal theming. Play a spooky intro during October, a holiday-themed intro in December, and a standard intro the rest of the year. Plex supports this through date-range syntax in the pre-roll path field.</p>
+
+        <p>The format uses the <code>daterange()</code> function:</p>
+
+        <pre><code>/media/prerolls/halloween1.mp4;/media/prerolls/halloween2.mp4:daterange(10/01-10/31)
+/media/prerolls/christmas1.mp4;/media/prerolls/christmas2.mp4:daterange(12/01-12/31)
+/media/prerolls/summer.mp4:daterange(06/01-08/31)
+/media/prerolls/default1.mp4;/media/prerolls/default2.mp4</code></pre>
+
+        <p>Each line (entered on a new line in the settings field) defines a set of pre-rolls with an optional date range. During October, Plex randomly selects from the Halloween pre-rolls. During December, it uses the Christmas ones. In summer, the summer intro plays. The last line has no date range, so it serves as the fallback for any dates not covered by the other ranges.</p>
+
+        <p>Date ranges use MM/DD format. The year is not specified -- ranges repeat annually. If multiple date ranges overlap, Plex selects from all matching ranges combined.</p>
+
+        <h2>Video Format Requirements</h2>
+
+        <p>Pre-roll videos should match the general format of your movie library to avoid transcoding. If your movies are mostly 1080p H.264 with AAC audio, your pre-rolls should be the same. Mismatched formats force Plex to transcode either the pre-roll or the movie (or both) to maintain a consistent stream, which introduces a delay between the pre-roll and the movie.</p>
+
+        <p>Recommended specifications:</p>
+        <ul>
+            <li><strong>Resolution:</strong> Match your most common movie resolution (1080p or 4K)</li>
+            <li><strong>Codec:</strong> H.264 for maximum compatibility, H.265 if your clients support it</li>
+            <li><strong>Audio:</strong> AAC stereo or AC3 5.1, depending on your typical setup</li>
+            <li><strong>Container:</strong> MP4 or MKV</li>
+            <li><strong>Duration:</strong> Keep pre-rolls under 30 seconds. Longer intros test viewers' patience, especially for repeat viewings.</li>
+            <li><strong>Frame rate:</strong> Match your movie library (typically 24fps for film content)</li>
+        </ul>
+
+        <p>If you use 4K HDR movies, creating matching 4K HDR pre-rolls requires more effort. Many community pre-rolls are available in 4K SDR, which will cause a format switch when the HDR movie starts. This is noticeable on some displays as a brief flash or mode switch. If this bothers you, either find or create HDR pre-rolls or use 1080p SDR pre-rolls and accept the resolution change.</p>
+
+        <h2>Trailers Before Movies</h2>
+
+        <p>Separate from pre-rolls, Plex can play movie trailers before the feature. This is configured in the same Settings, Server, Extras section:</p>
+
+        <ul>
+            <li><strong>Number of trailers to play before a movie:</strong> Set to 0 to disable, or 1 through 5 to play that many trailers.</li>
+            <li><strong>Include trailers from movies in my library:</strong> Plays trailers for movies already in your library.</li>
+            <li><strong>Include trailers from new and upcoming movies from The Movie Database:</strong> Plays trailers for theatrical releases you do not own.</li>
+            <li><strong>Include trailers from movies in a similar genre to what I am watching:</strong> Filters trailers to match the genre of the selected movie.</li>
+        </ul>
+
+        <p>The playback order is: pre-roll first, then trailers (if enabled), then the movie. This sequence mirrors the traditional cinema experience of studio bumper, coming attractions, then the feature presentation.</p>
+
+        <h2>Where to Find Pre-Roll Videos</h2>
+
+        <p>The Plex community has created a wealth of pre-roll content. Here are the best sources:</p>
+
+        <ul>
+            <li><strong>r/PlexPrerolls subreddit:</strong> A dedicated community for sharing pre-roll videos. You will find seasonal intros, custom animations, retro theater bumpers, and creative originals. Quality varies, but the best submissions are outstanding.</li>
+            <li><strong>Prerolls.video:</strong> A curated collection of pre-roll videos organized by theme and season.</li>
+            <li><strong>YouTube and Vimeo:</strong> Search for "Plex pre-roll" or "home theater intro" to find creators who share their work. Download using legitimate methods where the creator permits it.</li>
+            <li><strong>Create your own:</strong> Tools like Adobe After Effects, DaVinci Resolve (free), or even Canva can produce simple motion graphics intros. A text animation with your server name over a background makes an effective personalized pre-roll.</li>
+        </ul>
+
+        <h2>Automating Pre-Roll Rotation</h2>
+
+        <p>Manually updating the pre-roll path for each season is tedious. Community tools can automate this process. Plex Meta Manager includes pre-roll management features that can automatically swap pre-rolls based on date ranges, holidays, or custom schedules. It modifies the Plex server settings via the API, so you configure it once and it handles the rotation.</p>
+
+        <p>Another approach is a simple cron job or scheduled task that uses the Plex API to update the pre-roll path. The API endpoint is <code>/:/prefs</code>, and the preference key is <code>CinemaTrailersPrerollID</code>. A script can check the current date and update the value accordingly.</p>
+
+        <h2>Troubleshooting</h2>
+
+        <p>If your pre-rolls are not playing:</p>
+        <ul>
+            <li><strong>Verify Plex Pass:</strong> Pre-rolls require an active Plex Pass subscription.</li>
+            <li><strong>Check the file path:</strong> The path must be accessible from the server process, not just from your browser. On Docker, this means the path must be inside a mounted volume.</li>
+            <li><strong>Check file permissions:</strong> The Plex user (often <code>plex</code> on Linux) must have read access to the pre-roll files.</li>
+            <li><strong>Verify the format:</strong> Try a simple MP4 file first to rule out codec issues.</li>
+            <li><strong>Check Extras settings:</strong> Ensure "Cinema Trailers" is not set to "Disabled" in the library's advanced settings.</li>
+        </ul>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>Pre-rolls bring the cinema experience to movies. Phlix brings a dedicated experience to your Plex photos with a chronological timeline, offline downloads, and 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/is-plex-pass-worth-it/" class="related-card">
+                <h3>Is Plex Pass Worth It?</h3>
+                <p>Every Plex Pass feature explained and whether the price is justified.</p>
+            </a>
+            <a href="/blog/plex-collections-guide/" class="related-card">
+                <h3>Plex Collections Guide</h3>
+                <p>Organize your library with smart collections and custom groupings.</p>
+            </a>
+            <a href="/blog/plex-custom-posters/" class="related-card">
+                <h3>Custom Posters in Plex</h3>
+                <p>Upload custom artwork and manage poster collections for your library.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

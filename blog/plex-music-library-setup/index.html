@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up a Plex Music Library — Tags, Playlists, and Lyrics | Phlix Blog</title>
+    <meta name="description" content="Configure Plex for your music collection. Tagging, folder structure, PlexAmp, lyrics, and smart playlists.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-music-library-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-music-library-setup/">
+    <meta property="og:title" content="How to Set Up a Plex Music Library — Tags, Playlists, and Lyrics">
+    <meta property="og:description" content="Configure Plex for your music collection. Tagging, folder structure, PlexAmp, lyrics, and smart playlists.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Music Library — Tags, Playlists, and Lyrics","description":"Configure Plex for your music collection. Tagging, folder structure, PlexAmp, lyrics, and smart playlists.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Set Up a Plex Music Library</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Set Up a Plex Music Library — Tags, Playlists, and Lyrics</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Plex handles music differently from movies and TV shows. While video libraries rely heavily on file naming and online metadata, music libraries depend primarily on embedded tags within your audio files. Get the tags right and Plex delivers a beautiful, richly organized music experience. Get them wrong and you end up with duplicate albums, misattributed tracks, and missing artwork. This guide covers everything from folder structure to smart playlists.</p>
+
+        <h2>Creating a Music Library in Plex</h2>
+
+        <p>In the Plex web interface, click the plus icon next to your libraries and select "Music" as the library type. Point it to the folder containing your music collection. Before clicking "Add Library," open the Advanced settings and configure these options:</p>
+
+        <ul>
+            <li><strong>Scanner:</strong> Plex Music Scanner (the default and recommended choice).</li>
+            <li><strong>Agent:</strong> Plex Music (uses a combination of sources for metadata). The older "Last.fm" agent is deprecated.</li>
+            <li><strong>Prefer local metadata:</strong> Enable this if you have carefully tagged your files and want Plex to use your embedded tags over online data. Disable it if your tags are incomplete and you want Plex to fill in gaps from online sources.</li>
+        </ul>
+
+        <h2>Folder Structure</h2>
+
+        <p>The ideal folder structure for a Plex music library mirrors the standard music organization convention:</p>
+
+        <pre><code>Music/
+  Artist Name/
+    Album Name (Year)/
+      01 - Track Title.flac
+      02 - Track Title.flac
+      cover.jpg</code></pre>
+
+        <p>Each artist gets a top-level folder. Within each artist folder, individual albums get their own subfolders. Track files should include the track number at the beginning of the filename, separated by a dash from the title. This structure is optional if your embedded tags are correct, but it makes manual browsing and backup much easier.</p>
+
+        <h3>Compilations and Various Artists</h3>
+
+        <p>Albums with tracks from multiple artists (soundtracks, compilation albums, "Now That's What I Call Music" collections) should go in a "Various Artists" folder or have their album artist tag set to "Various Artists":</p>
+
+        <pre><code>Music/
+  Various Artists/
+    Pulp Fiction OST (1994)/
+      01 - Misirlou.flac
+      02 - Royale With Cheese.flac</code></pre>
+
+        <p>The key is the album artist tag, not the folder name. If each track has a different artist tag but they all share the same album artist tag of "Various Artists," Plex groups them correctly as a single compilation album.</p>
+
+        <h2>Tagging Your Music Files</h2>
+
+        <p>Embedded tags are the backbone of a Plex music library. These are metadata fields stored inside the audio file itself (ID3 tags for MP3, Vorbis comments for FLAC/OGG, MP4 atoms for AAC/M4A). The essential tags are:</p>
+
+        <ul>
+            <li><strong>Title:</strong> The track name.</li>
+            <li><strong>Artist:</strong> The performing artist for this specific track.</li>
+            <li><strong>Album Artist:</strong> The primary artist for the entire album. For solo albums, this matches the artist. For compilations, use "Various Artists."</li>
+            <li><strong>Album:</strong> The album name. Must be identical across all tracks in the album.</li>
+            <li><strong>Track Number:</strong> The track position on the album (e.g., 3 of 12).</li>
+            <li><strong>Disc Number:</strong> For multi-disc albums, the disc number (e.g., 1 of 2).</li>
+            <li><strong>Year:</strong> The album release year.</li>
+            <li><strong>Genre:</strong> One or more genre labels.</li>
+        </ul>
+
+        <h3>MusicBrainz Picard</h3>
+
+        <p>The best free tool for tagging music files is MusicBrainz Picard. It fingerprints your audio files acoustically and matches them against the MusicBrainz database, then writes correct tags and can even download album artwork. Here is how to use it:</p>
+
+        <ol>
+            <li>Download and install Picard from <code>picard.musicbrainz.org</code>.</li>
+            <li>Drag an album folder into the Picard window.</li>
+            <li>Click "Scan" to fingerprint the files and match them to the MusicBrainz database.</li>
+            <li>Review the matches. Green entries are confident matches; yellow entries need manual verification.</li>
+            <li>Click "Save" to write the corrected tags to your files.</li>
+        </ol>
+
+        <p>Picard can process your entire library in batches. For the first pass, process one album at a time to verify the matches are correct. Once you trust the results, you can drag in larger batches.</p>
+
+        <h3>Other Tagging Tools</h3>
+
+        <ul>
+            <li><strong>Mp3tag (Windows):</strong> Powerful tag editor with scripting support. Great for batch editing specific fields across many files.</li>
+            <li><strong>Kid3 (cross-platform):</strong> Free tag editor that handles all common audio formats. Less automated than Picard but more precise for manual edits.</li>
+            <li><strong>beets (command-line):</strong> A Python-based music organizer that auto-tags, renames, and moves files. Ideal for automation-minded users.</li>
+        </ul>
+
+        <h2>PlexAmp — The Dedicated Music Player</h2>
+
+        <p>While Plex's main app handles music, PlexAmp is a purpose-built music player that provides a far superior listening experience. Available for iOS, Android, Windows, Mac, and Linux, PlexAmp offers features that the main Plex app lacks:</p>
+
+        <ul>
+            <li><strong>Gapless playback:</strong> Essential for live albums and classical music where tracks blend into each other.</li>
+            <li><strong>Sonic Adventure features:</strong> Artist radio, mood mixes, decade mixes, and a "Sonic Exploration" mode that creates playlists based on audio similarity rather than just genre tags.</li>
+            <li><strong>Loudness normalization:</strong> Automatically adjusts volume across tracks so quiet songs and loud songs play at consistent levels.</li>
+            <li><strong>Offline sync:</strong> Download albums and playlists for offline listening on mobile.</li>
+            <li><strong>Visualizations:</strong> Animated waveform and spectrum visualizations during playback.</li>
+        </ul>
+
+        <p>PlexAmp requires a Plex Pass subscription. If you are serious about using Plex for music, it is the single strongest reason to subscribe.</p>
+
+        <h2>Lyrics Support</h2>
+
+        <p>Plex can display synchronized lyrics (karaoke-style, timed to the music) and plain-text lyrics. There are three ways to get lyrics into Plex:</p>
+
+        <h3>Embedded Lyrics</h3>
+
+        <p>The most reliable method. Store lyrics in the <code>LYRICS</code> or <code>USLT</code> tag within the audio file. Picard and Mp3tag can both write lyrics tags. For synchronized lyrics, use the LRC format embedded in the tag:</p>
+
+        <pre><code>[00:12.00]First line of the song
+[00:17.50]Second line of the song</code></pre>
+
+        <h3>Sidecar LRC Files</h3>
+
+        <p>Place an <code>.lrc</code> file alongside the audio file with the same filename:</p>
+
+        <pre><code>01 - Bohemian Rhapsody.flac
+01 - Bohemian Rhapsody.lrc</code></pre>
+
+        <p>Plex reads the LRC file and displays synchronized lyrics during playback.</p>
+
+        <h3>Online Lyrics</h3>
+
+        <p>Plex can fetch lyrics from online sources automatically. This requires the lyrics agent to be enabled in your music library settings. The coverage is not complete, so embedded or sidecar lyrics are more reliable for your favorite tracks.</p>
+
+        <h2>Smart Playlists</h2>
+
+        <p>Plex supports smart playlists that automatically populate based on rules. Go to Playlists in the Plex web interface, click the plus icon, and select "Smart Playlist." You can build rules based on:</p>
+
+        <ul>
+            <li>Genre, artist, album, or year</li>
+            <li>Play count (most played, never played)</li>
+            <li>Date added to library</li>
+            <li>Rating (if you rate tracks)</li>
+            <li>Audio format or bitrate</li>
+        </ul>
+
+        <p>Example smart playlists that work well: "Added This Month" for new music discovery, "Top 50 Most Played" for your favorites, "Unplayed Albums" to surface music you have not listened to yet, and genre-specific mixes like "Jazz added in the last year."</p>
+
+        <h2>Audio Formats and Quality</h2>
+
+        <p>Plex supports virtually every audio format: FLAC, ALAC, MP3, AAC, OGG, WAV, AIFF, WMA, and more. For the best experience:</p>
+
+        <ul>
+            <li><strong>Lossless (FLAC, ALAC):</strong> Preserves full audio quality. Use FLAC for broad compatibility or ALAC if you are in an Apple ecosystem.</li>
+            <li><strong>Lossy (MP3, AAC):</strong> Smaller files with some quality loss. 320kbps MP3 or 256kbps AAC are transparent to most listeners.</li>
+            <li><strong>High-resolution:</strong> Plex and PlexAmp support 24-bit and even DSD audio. If you have hi-res files, Plex will stream them at full quality when the client supports it.</li>
+        </ul>
+
+        <p>When a client cannot play the original format natively, Plex transcodes the audio on the server. For music, transcoding is lightweight and even a low-powered server can handle dozens of simultaneous music streams.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-smart-playlists/" class="related-card">
+                <h3>Plex Smart Playlists Guide</h3>
+                <p>Create auto-updating playlists based on genre, play count, and more.</p>
+            </a>
+            <a href="/blog/organize-media-library-plex/" class="related-card">
+                <h3>Organize Your Media Library for Plex</h3>
+                <p>Complete file naming and folder structure best practices.</p>
+            </a>
+            <a href="/blog/is-plex-pass-worth-it/" class="related-card">
+                <h3>Is Plex Pass Worth It?</h3>
+                <p>What you get with Plex Pass including PlexAmp, hardware transcoding, and more.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

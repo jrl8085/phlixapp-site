@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Clean Up Your Plex Library — Remove Duplicates and Fix Mismatches | Phlix Blog</title>
+    <meta name="description" content="Keep your Plex library tidy. Find duplicates, fix mismatches, clean bundles, and reclaim disk space.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-library-cleanup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-library-cleanup/">
+    <meta property="og:title" content="How to Clean Up Your Plex Library — Remove Duplicates and Fix Mismatches">
+    <meta property="og:description" content="Keep your Plex library tidy. Find duplicates, fix mismatches, clean bundles, and reclaim disk space.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Clean Up Your Plex Library — Remove Duplicates and Fix Mismatches","description":"Keep your Plex library tidy. Find duplicates, fix mismatches, clean bundles, and reclaim disk space.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Clean Up Your Plex Library</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Clean Up Your Plex Library -- Remove Duplicates and Fix Mismatches</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Plex libraries accumulate clutter over time. Duplicate files sneak in when you acquire a better version of something you already have. Metadata mismatches cause the wrong poster or description to appear. Deleted media leaves behind orphaned metadata and thumbnails. And the database itself grows bloated with stale entries. None of this is harmful in isolation, but collectively it degrades the browsing experience and wastes disk space.</p>
+
+        <p>A periodic cleanup keeps your library organized, your server responsive, and your disk usage under control. This guide covers every cleanup operation available in Plex, from built-in tools to third-party automation.</p>
+
+        <h2>Empty Trash</h2>
+
+        <p>When you delete a media file from disk, Plex does not automatically remove the corresponding entry from its database. Instead, the entry becomes an orphan -- it still appears in your library but shows as unavailable when you try to play it. "Empty Trash" removes these orphaned entries.</p>
+
+        <p>To empty the trash for a specific library, open the Plex Web interface, click the three-dot menu next to the library name, and select "Empty Trash." You can also enable automatic trash emptying: go to Settings, Library, and enable "Empty trash automatically after every scan." This ensures that deleted files are cleaned up as soon as Plex notices they are gone.</p>
+
+        <p><strong>When to use it:</strong> After deleting or moving media files outside of Plex. If you reorganized your folder structure or removed unwanted content, empty the trash to sync Plex's database with what is actually on disk.</p>
+
+        <p><strong>Caution:</strong> If your media is on a network share that becomes temporarily unavailable, Plex may treat all files as deleted. Automatic trash emptying would then wipe your entire library metadata. If your media is on unreliable storage, consider disabling automatic trash emptying and running it manually when you know the share is mounted.</p>
+
+        <h2>Clean Bundles</h2>
+
+        <p>Plex stores metadata for each library item in a "bundle" -- a folder containing artwork images, XML metadata, and other cached data. When a library item is removed (via trash emptying) or re-matched to a different metadata entry, the old bundle becomes orphaned. Clean Bundles removes these orphaned folders.</p>
+
+        <p>Access it from the same three-dot menu next to the library name, or find it under Settings, Troubleshooting, "Clean Bundles." This operation scans the Metadata directory and cross-references each bundle against the database. Any bundle without a matching database entry is deleted.</p>
+
+        <p><strong>Space savings:</strong> Orphaned bundles can accumulate to several gigabytes on large libraries, especially if you frequently re-match content or rebuild libraries. Cleaning bundles reclaims that space.</p>
+
+        <h2>Optimize Database</h2>
+
+        <p>The Plex database is a SQLite file that grows and fragments over time as entries are added, modified, and deleted. The "Optimize Database" operation runs SQLite maintenance commands (VACUUM, REINDEX, ANALYZE) that compact the file, rebuild indexes, and update query statistics.</p>
+
+        <p>You can run it manually from Settings, Troubleshooting, "Optimize Database," or let it run as part of the scheduled tasks. After a major cleanup (deleting hundreds of items, emptying trash, cleaning bundles), run an optimization to consolidate the freed space.</p>
+
+        <p><strong>Performance impact:</strong> An optimized database responds faster to queries, which means snappier library browsing and search results. The improvement is most noticeable on large libraries (over 5,000 items) and when the database is on a spinning hard drive.</p>
+
+        <h2>Finding and Handling Duplicates</h2>
+
+        <p>Duplicates in Plex come in two forms: true duplicate files (two copies of the same content on disk) and duplicate database entries (one file matched to multiple items or appearing in multiple libraries).</p>
+
+        <h3>Using Plex's Built-in Duplicate View</h3>
+        <p>Plex has a built-in way to find duplicate files within a movie library. In the Plex Web interface, navigate to your movie library and use the filter options. Select "Duplicates" from the filter dropdown. This shows all movies that have more than one file associated with them.</p>
+
+        <p>For each duplicate, click into the movie and look at the "Play Version" option to see all associated files with their quality details (resolution, bitrate, codec, file size). You can then delete the inferior version while keeping the better one.</p>
+
+        <h3>Identifying True Duplicates on Disk</h3>
+        <p>The Plex duplicate filter only catches files that matched to the same metadata entry. If two copies of the same movie matched under slightly different names (one as the original title, one as a localized title), they will not appear as duplicates. For a more thorough duplicate check, use a filesystem-level tool:</p>
+
+        <ul>
+            <li><strong>fdupes (Linux):</strong> Scans directories for files with identical content based on checksums.</li>
+            <li><strong>jdupes:</strong> A faster, more feature-rich fork of fdupes.</li>
+            <li><strong>DupeGuru (cross-platform):</strong> A GUI tool that finds duplicates by name, content, or fuzzy matching.</li>
+        </ul>
+
+        <p>After removing filesystem-level duplicates, rescan the library and empty the trash to update Plex.</p>
+
+        <h3>Merging Split Entries</h3>
+        <p>Sometimes Plex splits a single movie into multiple entries -- for example, if you have the theatrical cut and director's cut as separate files with slightly different names. If you want them grouped under one entry, select both items in the library view, right-click, and choose "Merge." This combines them into a single entry with multiple playback versions.</p>
+
+        <p>Conversely, if Plex incorrectly merged two different movies into one entry, select the item, click the three-dot menu, and choose "Split Apart."</p>
+
+        <h2>Fixing Metadata Mismatches</h2>
+
+        <p>A metadata mismatch occurs when Plex identifies a file as the wrong title. This is common with short or generic filenames, foreign films, or when files lack a release year. Signs of a mismatch include wrong poster art, incorrect descriptions, mismatched episode numbers, or completely wrong titles.</p>
+
+        <h3>Manual Fix Match</h3>
+        <p>Click the three-dot menu on the mismatched item and select "Fix Match." Search for the correct title, optionally including the year to narrow results. Select the correct match and Plex will re-download the appropriate metadata and artwork. For TV shows, you may need to fix the match at the show level, then verify that individual episodes are correctly matched.</p>
+
+        <h3>Preventing Future Mismatches</h3>
+        <p>The most effective prevention is correct file naming. Follow Plex's naming conventions:</p>
+        <ul>
+            <li><strong>Movies:</strong> <code>Movie Title (Year).ext</code> in its own folder</li>
+            <li><strong>TV Shows:</strong> <code>Show Name/Season 01/Show Name - S01E01 - Episode Title.ext</code></li>
+            <li><strong>Music:</strong> <code>Artist/Album/01 - Track Title.ext</code></li>
+        </ul>
+        <p>Including the year in movie filenames dramatically reduces mismatches, especially for remakes and common titles.</p>
+
+        <h2>Bulk Cleanup with Plex Meta Manager</h2>
+
+        <p>For large libraries, manual cleanup is tedious. Plex Meta Manager (PMM) is a community tool that automates metadata management, collection creation, and library cleanup tasks. It can:</p>
+
+        <ul>
+            <li>Automatically create and maintain collections based on genres, decades, studios, or custom criteria</li>
+            <li>Standardize metadata across your library (consistent genres, content ratings, sort titles)</li>
+            <li>Remove orphaned collections that no longer contain any items</li>
+            <li>Sync ratings from external sources like IMDb or Trakt</li>
+            <li>Mass-update labels and tags</li>
+        </ul>
+
+        <p>PMM runs as a scheduled script and can be configured to perform specific cleanup operations on a regular basis. It connects to your Plex server via the API and makes changes programmatically.</p>
+
+        <h2>Establishing a Maintenance Schedule</h2>
+
+        <p>Regular maintenance prevents clutter from accumulating in the first place. Here is a practical schedule:</p>
+
+        <ul>
+            <li><strong>Weekly:</strong> Let Plex's built-in scheduled tasks handle database backup, optimization, and cache cleanup.</li>
+            <li><strong>Monthly:</strong> Manually check for duplicates in movie libraries. Clean bundles. Review recently added items for mismatches.</li>
+            <li><strong>Quarterly:</strong> Run a full library scan with "Refresh All Metadata" to catch any stale entries. Check disk usage in the Plex data directory and clean up if the Metadata or Cache folders have grown excessively.</li>
+            <li><strong>After major changes:</strong> Any time you reorganize your folder structure, add a large batch of content, or move media between drives, follow up with a library scan, trash emptying, bundle cleaning, and database optimization -- in that order.</li>
+        </ul>
+
+        <p>This schedule takes minimal effort but keeps your library in excellent shape. The key is consistency: small regular cleanups are far easier than a massive cleanup after months of neglect.</p>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>A clean Plex library means a better photo browsing experience. Phlix gives your Plex photos a dedicated chronological timeline, offline downloads, and 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/organize-media-library-plex/" class="related-card">
+                <h3>Organize Your Plex Media Library</h3>
+                <p>Folder structure, naming conventions, and library organization best practices.</p>
+            </a>
+            <a href="/blog/plex-metadata-wrong/" class="related-card">
+                <h3>Fix Wrong Metadata in Plex</h3>
+                <p>Fix mismatched posters, descriptions, and episode ordering.</p>
+            </a>
+            <a href="/blog/plex-scheduled-tasks-guide/" class="related-card">
+                <h3>Plex Scheduled Tasks Explained</h3>
+                <p>Understand background maintenance and optimize timing for your hardware.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

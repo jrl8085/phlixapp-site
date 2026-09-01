@@ -1,27 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://phlixapp.com/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://phlixapp.com/privacy</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://phlixapp.com/terms</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://phlixapp.com/support</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <url><loc>https://phlixapp.com/</loc><lastmod>2026-09-01</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://phlixapp.com/blog/</loc><lastmod>2026-09-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://phlixapp.com/privacy</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://phlixapp.com/terms</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://phlixapp.com/support</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <!-- Photos -->
+  <url><loc>https://phlixapp.com/blog/ultimate-guide-plex-photos/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/browse-large-plex-photo-library/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-airplay-slideshow/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/download-plex-photos-iphone/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-photos-vs-apple-google/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-photo-library-setup/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-family-photo-slideshow/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-vs-apple-photos/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Getting Started -->
+  <url><loc>https://phlixapp.com/blog/how-to-set-up-plex-media-server/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/best-nas-for-plex/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-docker-setup/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-hardware-requirements/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/organize-media-library-plex/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-remote-access-setup/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/share-plex-library/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-apple-tv-setup/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-raspberry-pi-setup/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- Troubleshooting -->
+  <url><loc>https://phlixapp.com/blog/fix-plex-buffering/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-not-finding-media/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/fix-plex-remote-access/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-transcoding-explained/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/fix-plex-subtitles/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-performance-optimization/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-server-crashing/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/fix-plex-audio-sync/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-metadata-wrong/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-app-not-connecting/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- Comparisons -->
+  <url><loc>https://phlixapp.com/blog/plex-vs-jellyfin-vs-emby/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/is-plex-pass-worth-it/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-free-vs-paid/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/best-plex-client-apps/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-lifetime-pass-price-history/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/best-third-party-plex-apps/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-vs-infuse/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- Features -->
+  <url><loc>https://phlixapp.com/blog/plex-collections-guide/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-smart-playlists/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-watch-together/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-live-tv-dvr/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-discover-guide/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/backup-plex-server/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-offline-downloads/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-parental-controls/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-custom-posters/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-airplay-guide/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/migrate-plex-server/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- Advanced -->
+  <url><loc>https://phlixapp.com/blog/plex-reverse-proxy-nginx/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-gpu-transcoding/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-4k-hdr-optimization/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-api-guide/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://phlixapp.com/blog/plex-tautulli-monitoring/</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

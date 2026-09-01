@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Metadata Wrong? How to Fix Incorrect Matches | Phlix Blog</title>
+    <meta name="description" content="Fix incorrectly matched movies, shows, and albums. Manual matching and naming conventions.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-metadata-wrong/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-metadata-wrong/">
+    <meta property="og:title" content="Plex Metadata Wrong? How to Fix Incorrect Matches">
+    <meta property="og:description" content="Fix incorrectly matched movies, shows, and albums. Manual matching and naming conventions.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Plex Metadata Wrong? How to Fix Incorrect Matches",
+        "description": "Fix incorrectly matched movies, shows, and albums. Manual matching and naming conventions.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Metadata Wrong? How to Fix Incorrect Matches</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat">Troubleshooting</span>
+                <h1>Plex Metadata Wrong? How to Fix Incorrect Matches</h1>
+                <p class="subtitle">Fix incorrectly matched movies, shows, and albums. Manual matching and naming conventions.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>You scan your library and discover that Plex has matched your copy of "The Office" to a completely different show. Or a movie has the wrong poster, wrong year, wrong plot description. Incorrect metadata matching is a common annoyance, but it is almost always fixable. This guide covers how to correct wrong matches, prevent them from happening in the first place, and understand why Plex sometimes gets confused.</p>
+
+            <h2>Why Plex Gets Matches Wrong</h2>
+
+            <p>Plex identifies your media by extracting a title and year from the file and folder names, then searching online databases for a match. The process sounds simple, but several factors can trip it up.</p>
+
+            <p><strong>Ambiguous titles.</strong> Dozens of films share the same or similar titles. "Crash" could be the 2004 ensemble drama, the 1996 Cronenberg film, or several others. Without a year to disambiguate, Plex picks the most popular match, which may not be the one you have.</p>
+
+            <p><strong>Non-standard file names.</strong> If your files use abbreviations, shorthand, release group tags, or codec information in place of the actual title, Plex cannot parse them correctly. A file named <code>LOTR.EE.2003.BluRay.x264.mkv</code> gives Plex very little to work with compared to <code>The Lord of the Rings - The Return of the King (2003).mkv</code>.</p>
+
+            <p><strong>Wrong content type.</strong> If your library is configured as a "Movies" library but contains TV show episodes (or vice versa), the scanner will try to match files against the wrong database entirely. A TV episode matched as a movie will inevitably get incorrect metadata.</p>
+
+            <p><strong>Regional variations.</strong> Some content is known by different titles in different countries. The metadata databases may list the title you used as an alternate title for a different film in another language, causing a cross-match.</p>
+
+            <h2>Using Fix Match</h2>
+
+            <p>The Fix Match feature is your primary tool for correcting wrong matches. Navigate to the incorrectly matched item in your Plex library, click the three-dot menu (or right-click), and select <strong>Fix Match</strong>.</p>
+
+            <p>A search dialog appears where you can type the correct title and year. Plex will show results from its metadata agent (typically TheMovieDB for movies or TheTVDB for shows). Select the correct match from the results.</p>
+
+            <h3>Using Database IDs for Precision</h3>
+
+            <p>When the title search returns too many results or the correct match is buried, you can search by the exact database ID. Go to TheMovieDB (themoviedb.org) or TheTVDB (thetvdb.com) and find your content. Note the numerical ID from the URL. In the Fix Match search box, enter the ID as:</p>
+
+            <p><code>tmdb://12345</code> for TheMovieDB movie IDs<br>
+            <code>tvdb://67890</code> for TheTVDB series IDs<br>
+            <code>imdb://tt1234567</code> for IMDb IDs</p>
+
+            <p>Using a database ID guarantees an exact match with no ambiguity. This is especially useful for obscure titles, foreign-language content, or items with very common names.</p>
+
+            <h2>Manual Search and Selection</h2>
+
+            <p>For more control, you can manually edit an item's metadata. Click on the item, select the three-dot menu, and choose <strong>Edit</strong>. The edit dialog lets you change the title, year, tagline, content rating, studio, and other fields. You can also upload a custom poster and background image.</p>
+
+            <p>Manual edits override the metadata agent's data. If Plex re-scans or refreshes the item later, your manual edits should be preserved (they are "locked" by default when you edit manually). However, an Unmatch-and-Rematch operation will overwrite manual edits, so be cautious.</p>
+
+            <h2>Metadata Agents and Priority</h2>
+
+            <p>Plex uses metadata agents to fetch information from online databases. The agent determines which database is used for matching and what metadata is pulled. Understanding the agent stack helps you control matching behavior.</p>
+
+            <p>Navigate to <strong>Settings &gt; Agents</strong> to see and configure the agent priority for each library type. For movies, TheMovieDB is the default primary agent. For TV shows, TheTVDB is the default. You can reorder agents to change which database takes priority, add secondary agents for supplemental data (like Rotten Tomatoes ratings), or disable agents you do not want.</p>
+
+            <p>The <strong>Plex Movie</strong> and <strong>Plex TV Series</strong> agents (sometimes called the "New Plex Agents") combine multiple data sources automatically and are generally more accurate than the legacy agents. If you are still using the older agents (labeled "Freebase" or individual database names), consider switching to the new Plex agents for better matching.</p>
+
+            <h3>TMDB, TVDB, and MusicBrainz</h3>
+
+            <p><strong>TheMovieDB (TMDB)</strong> is the primary database for movies. It has excellent coverage of mainstream and international films, with user-contributed data that is regularly updated. If a movie exists, TMDB almost certainly has an entry for it.</p>
+
+            <p><strong>TheTVDB (TVDB)</strong> is the primary database for TV shows. It covers an enormous range of series from around the world. However, TVDB has undergone changes in recent years that have affected some data accuracy, leading some users to prefer TMDB for TV matching as well (TMDB also maintains TV show data).</p>
+
+            <p><strong>MusicBrainz</strong> is the primary database for music. It relies on acoustic fingerprinting and user-contributed metadata. Music matching is inherently more challenging due to the vast number of releases, remasters, and re-issues that share similar titles.</p>
+
+            <h2>File Naming Best Practices</h2>
+
+            <p>The single most effective way to prevent incorrect matches is to name your files correctly before scanning. Follow these conventions consistently.</p>
+
+            <p><strong>Movies:</strong> <code>/Movies/Title (Year)/Title (Year).ext</code>. Example: <code>/Movies/Blade Runner (1982)/Blade Runner (1982).mkv</code>. Always include the year. Always use the official English title as listed on TMDB (or the title in your preferred language if your agent is configured accordingly).</p>
+
+            <p><strong>TV Shows:</strong> <code>/TV Shows/Show Name/Season XX/Show Name - SXXEXX - Episode Title.ext</code>. Example: <code>/TV Shows/The Expanse/Season 03/The Expanse - S03E01 - Fight or Flight.mkv</code>. The episode title is optional but helps with verification. The SXXEXX pattern is required.</p>
+
+            <p><strong>Edition tags:</strong> If you have multiple versions of the same movie (theatrical, director's cut, extended, 4K), use Plex's edition tag syntax: <code>Movie Title (Year) {edition-Director's Cut}.mkv</code>. This tells Plex these are different editions of the same movie, not different movies.</p>
+
+            <p><strong>Year in the filename:</strong> Cannot be overstated. The year is the single most important disambiguation tool. "Dune (1984)" and "Dune (2021)" are completely different films. Without the year, Plex will match to whichever is more popular at the time of scanning, which changes over time.</p>
+
+            <h2>Preventing Future Mismatches</h2>
+
+            <p>Beyond file naming, these practices reduce the chances of incorrect matches. Keep different media types in separate libraries (do not mix movies and TV shows). Avoid putting unrelated files (samples, extras, trailers) in the same folder as your main media unless they follow Plex's naming conventions for extras. Run manual scans after adding new content rather than relying solely on automatic scanning, so you can catch mismatches immediately.</p>
+
+            <p>After scanning new content, browse through the recently added items to spot-check the matches. A few seconds of verification when adding content prevents the frustration of discovering a mismatch weeks later when you sit down to watch.</p>
+
+            <p>For large libraries or initial imports, consider using a tool like <strong>FileBot</strong> or <strong>Tiny Media Manager</strong> to bulk-rename your files according to Plex's conventions before scanning. These tools look up each file against TMDB or TVDB and rename them to the correct format automatically, dramatically reducing mismatches on the initial scan.</p>
+
+            <div class="cta-box">
+                <h3>Phlix — The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-not-finding-media/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Not Finding Your Media? Fix Scan and Match Issues</h3></a>
+                <a href="/blog/plex-performance-optimization/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Performance Optimization — Speed Up Your Server</h3></a>
+                <a href="/blog/plex-server-crashing/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Server Keeps Crashing — How to Diagnose and Fix It</h3></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

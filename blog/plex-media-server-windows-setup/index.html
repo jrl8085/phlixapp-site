@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Install Plex Media Server on Windows — Step-by-Step | Phlix Blog</title>
+    <meta name="description" content="Complete guide to installing and configuring Plex Media Server on Windows 10 and 11. Firewall, startup, and optimization tips.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-media-server-windows-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-media-server-windows-setup/">
+    <meta property="og:title" content="How to Install Plex Media Server on Windows — Step-by-Step">
+    <meta property="og:description" content="Complete guide to installing and configuring Plex Media Server on Windows 10 and 11. Firewall, startup, and optimization tips.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Install Plex Media Server on Windows — Step-by-Step","description":"Complete guide to installing and configuring Plex Media Server on Windows 10 and 11. Firewall, startup, and optimization tips.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Install Plex Media Server on Windows</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Install Plex Media Server on Windows — Step-by-Step</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>Windows remains the most popular platform for running Plex Media Server at home. Whether you are repurposing an old desktop or dedicating a new machine, Windows 10 and 11 both make excellent hosts for Plex. This guide covers every step from downloading the installer to fine-tuning performance settings so your server runs reliably around the clock.</p>
+
+        <h2>System Requirements</h2>
+
+        <p>Before you begin, confirm your Windows machine meets these minimums:</p>
+
+        <ul>
+            <li><strong>Operating system:</strong> Windows 10 (64-bit) or Windows 11. Older versions like Windows 7 and 8.1 are no longer supported by Plex.</li>
+            <li><strong>Processor:</strong> An Intel Core i3 or AMD Ryzen 3 handles direct-play streaming easily. For transcoding, you want an Intel Core i5 or better with Quick Sync support, or a discrete NVIDIA GPU.</li>
+            <li><strong>RAM:</strong> 4 GB minimum, 8 GB recommended. If you plan to run other applications alongside Plex, 16 GB gives you comfortable headroom.</li>
+            <li><strong>Storage:</strong> Plex itself uses minimal disk space, but metadata and thumbnails for large libraries can consume 10 to 50 GB. An SSD for the Plex database and an HDD or NAS for media files is the ideal combination.</li>
+            <li><strong>Network:</strong> A wired Ethernet connection is strongly recommended for the server. Wi-Fi works but introduces latency and potential dropouts during streaming.</li>
+        </ul>
+
+        <h2>Step 1 — Download the Installer</h2>
+
+        <p>Navigate to <code>plex.tv/media-server-downloads</code> in your browser. Select Windows from the platform list and download the <code>.exe</code> installer. The file is typically around 200 MB. Always download from the official Plex website to ensure you get the latest stable version with current security patches.</p>
+
+        <h2>Step 2 — Run the Setup Wizard</h2>
+
+        <p>Double-click the downloaded installer. If Windows SmartScreen displays a warning, click "More info" and then "Run anyway." The installer is digitally signed by Plex, Inc., so this warning is simply because the file was downloaded from the internet.</p>
+
+        <p>The setup wizard is straightforward. Accept the license agreement and choose your installation directory. The default location in <code>C:\Program Files\Plex\Plex Media Server</code> works well for most people. Click Install and wait for the process to complete. It usually takes under a minute.</p>
+
+        <p>When installation finishes, the wizard offers to launch Plex Media Server immediately. Leave this checked. Plex will start and automatically open the first-time setup in your default web browser at <code>http://localhost:32400/web</code>.</p>
+
+        <h2>Step 3 — Claim Your Server</h2>
+
+        <p>The first-time setup wizard prompts you to sign in with your Plex account. If you do not have one, create a free account at <code>plex.tv</code>. Signing in "claims" the server, linking it to your account so only you can administer it.</p>
+
+        <p>Give your server a recognizable name. This name appears in all client apps when selecting which server to connect to. Something like "Home Server" or "Office PC" works well. You can change it later in Settings under General.</p>
+
+        <h2>Step 4 — Add Your First Library</h2>
+
+        <p>The wizard walks you through adding media libraries. Click "Add Library," choose a type (Movies, TV Shows, Music, or Photos), and point it to the folder where your media files live. A few tips for this step:</p>
+
+        <ul>
+            <li>Create separate libraries for each media type. Do not mix movies and TV shows in the same library.</li>
+            <li>If your files are on an external drive, make sure the drive letter is consistent. Windows sometimes reassigns drive letters after reboots, which breaks library paths.</li>
+            <li>For network drives, use a UNC path like <code>\\NAS\Media\Movies</code> rather than a mapped drive letter. UNC paths persist more reliably across reboots and service restarts.</li>
+        </ul>
+
+        <p>After adding libraries, Plex begins scanning your files and downloading metadata. This initial scan can take anywhere from a few minutes to several hours depending on library size. Let it finish before judging results.</p>
+
+        <h2>Step 5 — Configure Windows Firewall</h2>
+
+        <p>Plex needs network access to serve content to your devices. The installer usually creates a Windows Firewall rule automatically, but it is worth verifying. Open Windows Security, go to Firewall and network protection, then click "Allow an app through firewall."</p>
+
+        <p>Look for "Plex Media Server" in the list. Make sure both Private and Public checkboxes are enabled. If Plex is not listed, click "Allow another app," browse to <code>C:\Program Files\Plex\Plex Media Server\Plex Media Server.exe</code>, and add it manually.</p>
+
+        <p>For remote access, you also need to forward port 32400 on your router. Log in to your router's admin panel and create a port-forwarding rule that directs external TCP traffic on port 32400 to your server's local IP address. After configuring this, go to Plex Settings, Remote Access, and click "Enable Remote Access." A green checkmark confirms it is working.</p>
+
+        <h2>Step 6 — Run Plex as a Windows Service</h2>
+
+        <p>By default, the Plex installer configures Plex Media Server to run as a Windows service. This means it starts automatically when Windows boots, even before anyone logs in. This is the recommended configuration for a dedicated server.</p>
+
+        <p>To verify, press <code>Win + R</code>, type <code>services.msc</code>, and press Enter. Find "Plex Media Server" in the list. Confirm that Startup type is set to "Automatic" and Status shows "Running." If it shows "Automatic (Delayed Start)," Plex will start a short time after boot, which is fine and can actually help avoid conflicts with other services during startup.</p>
+
+        <h3>Running as a Desktop Application Instead</h3>
+
+        <p>If you prefer to run Plex only when you are logged in, you can switch from service mode to application mode. Stop the Plex service in <code>services.msc</code>, set Startup type to Disabled, and then launch Plex Media Server from the Start menu. It will run as a tray application. To start automatically at login, add a shortcut to your Startup folder (<code>shell:startup</code> in the Run dialog).</p>
+
+        <p>Service mode is better for always-on servers. Application mode is better if you only want Plex running during specific sessions or if you have permission issues with network shares.</p>
+
+        <h2>Step 7 — Prevent Sleep and Automatic Updates</h2>
+
+        <p>A sleeping computer cannot serve media. Open Settings, then System, then Power and sleep. Set "When plugged in, put my device to sleep" to Never. For desktops, this is the only setting you need. For laptops acting as servers, also set the screen timeout separately since the screen can turn off without the system sleeping.</p>
+
+        <h3>Handle Windows Updates Gracefully</h3>
+
+        <p>Windows Update can restart your machine without warning, interrupting streams. To manage this, go to Settings, Windows Update, Advanced options, and configure Active hours to cover the times your household typically streams. Windows will avoid restarting during those hours. You cannot disable updates entirely on Home editions, but setting a broad active-hours window helps.</p>
+
+        <h2>Performance Tips for Windows</h2>
+
+        <h3>Move the Database to an SSD</h3>
+
+        <p>Plex stores its database, metadata, and thumbnail cache in <code>%LOCALAPPDATA%\Plex Media Server</code>. If this folder is on a slow HDD, browsing your library will feel sluggish. Move it to an SSD for significantly faster library loading and search. To relocate it, stop the Plex service, move the entire folder to your SSD, and then set the <code>PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR</code> environment variable to the new path.</p>
+
+        <h3>Enable Hardware Transcoding</h3>
+
+        <p>If you have a Plex Pass subscription and a compatible Intel CPU (6th generation or newer) or NVIDIA GPU, enable hardware-accelerated transcoding in Settings under Transcoder. This offloads video conversion to dedicated hardware, dropping CPU usage from near 100% to under 10% during transcoding. It is the single biggest performance improvement you can make on Windows.</p>
+
+        <h3>Exclude Plex from Antivirus Scanning</h3>
+
+        <p>Real-time antivirus scanning can slow down library scans and metadata downloads. Add the Plex data directory (<code>%LOCALAPPDATA%\Plex Media Server</code>) and the Plex installation directory to your antivirus exclusion list. In Windows Security, go to Virus and threat protection, Manage settings, Exclusions, and add both folder paths.</p>
+
+        <h3>Disable Power Throttling</h3>
+
+        <p>Windows 11 may throttle background processes to save energy. If Plex is running as a service, this can impact transcoding performance. Open Task Manager, find Plex Media Server in the Details tab, right-click it, and set Efficiency mode to Off. For a permanent fix, create a Power plan set to High Performance in the classic Control Panel.</p>
+
+        <h2>Verifying Your Installation</h2>
+
+        <p>Open a browser on another device on your network and navigate to <code>http://YOUR-SERVER-IP:32400/web</code>. If the Plex web interface loads and your libraries appear, your Windows installation is working correctly. Try playing a file to confirm streaming works end to end.</p>
+
+        <p>From here, install the Plex app on your phone, tablet, or TV and sign in with the same account. Your server should appear automatically on the local network. For photos specifically, the Phlix app provides a faster, more focused browsing experience with a chronological timeline that Plex's own apps lack.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-media-server-mac-setup/" class="related-card">
+                <h3>Install Plex Media Server on Mac</h3>
+                <p>Complete macOS setup guide with energy settings and remote access.</p>
+            </a>
+            <a href="/blog/plex-network-optimization/" class="related-card">
+                <h3>Optimize Your Network for Plex</h3>
+                <p>Ethernet, QoS, VLANs, and bandwidth management tips.</p>
+            </a>
+            <a href="/blog/plex-movie-naming-guide/" class="related-card">
+                <h3>Plex Movie Naming Guide</h3>
+                <p>Get perfect metadata matches with proper file naming.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

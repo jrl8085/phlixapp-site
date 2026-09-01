@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Run Multiple Plex Servers — Multi-Server Setup Guide | Phlix Blog</title>
+    <meta name="description" content="Run multiple Plex Media Servers for different locations, content types, or redundancy.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-multi-server-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-multi-server-setup/">
+    <meta property="og:title" content="How to Run Multiple Plex Servers — Multi-Server Setup Guide">
+    <meta property="og:description" content="Run multiple Plex Media Servers for different locations, content types, or redundancy.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Run Multiple Plex Servers — Multi-Server Setup Guide","description":"Run multiple Plex Media Servers for different locations, content types, or redundancy.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Multiple Plex Servers</div>
+
+    <article>
+        <span class="category advanced">Advanced</span>
+        <h1>How to Run Multiple Plex Servers -- Multi-Server Setup Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Most Plex users run a single server. But there are legitimate reasons to run more than one: a home server and an offsite server for redundancy, separate servers for different content types, servers at different physical locations for family members, or a dedicated server for testing and development. Plex supports multiple servers on the same account, and you can also use separate accounts if complete isolation is needed.</p>
+
+        <p>This guide covers the practical aspects of running multiple Plex servers: why you might want to, how to configure them, how clients switch between servers, and how to handle the inevitable complications.</p>
+
+        <h2>Why Run Multiple Servers</h2>
+
+        <h3>Geographic Distribution</h3>
+        <p>If you have family in another city or country, a local server at their location provides a dramatically better experience than streaming remotely. Local playback means no transcoding for bandwidth reduction, no buffering from internet congestion, and no upload speed limitations. You can sync content between servers manually or use tools to automate the process.</p>
+
+        <h3>Content Separation</h3>
+        <p>Some users prefer a dedicated server for each content type: one for movies and TV, one for music, one for photos. This keeps each server's database smaller and focused. It also allows different hardware allocations -- a powerful machine for video transcoding and a lightweight NAS for music and photos.</p>
+
+        <h3>Redundancy</h3>
+        <p>Running a second server as a backup means you always have access to your media even if the primary server goes down. This is especially valuable for users who depend on Plex daily or share with many users who expect reliability. The backup server can be at the same location (protecting against hardware failure) or offsite (protecting against disasters).</p>
+
+        <h3>Testing</h3>
+        <p>If you experiment with Plex settings, plugins, or beta versions, a separate test server lets you try things without risking your production setup. You can run the test server in a Docker container or virtual machine alongside your main server.</p>
+
+        <h2>Same Account vs. Separate Accounts</h2>
+
+        <p>You have two approaches for managing multiple servers, and the choice affects how users access them.</p>
+
+        <h3>Same Plex Account (Recommended)</h3>
+        <p>Claiming multiple servers with the same Plex account is the simplest approach. All servers appear in the server selector dropdown in every Plex client app. Users can switch between servers with a single tap or click. Shared users who you have invited from your account can be given access to any or all of your servers independently.</p>
+
+        <p>Benefits of the same-account approach:</p>
+        <ul>
+            <li>One Plex Pass covers all servers (if you have a lifetime or annual pass)</li>
+            <li>Shared users see all servers they have been granted access to in one place</li>
+            <li>Server switching is seamless in Plex apps</li>
+            <li>A single plex.tv account to manage</li>
+        </ul>
+
+        <h3>Separate Plex Accounts</h3>
+        <p>Using different Plex accounts for different servers provides complete isolation. Each server has its own admin, its own sharing lists, and its own settings. This is useful when different people are responsible for different servers, or when you want to keep servers entirely independent.</p>
+
+        <p>The downsides are significant: users need to switch Plex accounts to access different servers (not just switch servers within the app), each account may need its own Plex Pass, and there is no unified server list. For most multi-server setups, staying on a single account is simpler.</p>
+
+        <h2>Port Configuration</h2>
+
+        <p>If you run multiple Plex servers on the same machine or the same local network, you need to handle port conflicts. By default, every Plex server uses port 32400 for its web interface and API.</p>
+
+        <h3>Multiple Servers on One Machine</h3>
+        <p>If you are running two Plex instances on the same physical or virtual machine (common with Docker), each instance needs a unique port. Change the port in Plex settings under Settings, Network, "Custom server access URLs" or by modifying the <code>Preferences.xml</code> file before starting the second instance.</p>
+
+        <p>For Docker, map different host ports to the container's internal port 32400:</p>
+        <pre><code># Server 1
+docker run -p 32400:32400 plexinc/pms-docker
+
+# Server 2
+docker run -p 32401:32400 plexinc/pms-docker</code></pre>
+
+        <h3>Multiple Servers on the Same Network</h3>
+        <p>If each server is on a separate machine within the same network, they can each use port 32400 internally since they have different IP addresses. However, for remote access, you need to configure port forwarding on your router for each server using different external ports:</p>
+
+        <ul>
+            <li>Server 1 (192.168.1.100): External port 32400 forwards to internal port 32400</li>
+            <li>Server 2 (192.168.1.101): External port 32401 forwards to internal port 32400</li>
+        </ul>
+
+        <p>Then configure each server's "Manually Specify Public Port" setting (under Settings, Network) to match the external port assigned to it. This tells Plex's relay service which port to advertise for remote connections.</p>
+
+        <h2>Library Splitting Strategies</h2>
+
+        <p>How you divide content across servers depends on your goals. Here are common approaches:</p>
+
+        <h3>By Content Type</h3>
+        <ul>
+            <li><strong>Server A:</strong> Movies and TV shows (needs powerful CPU for transcoding)</li>
+            <li><strong>Server B:</strong> Music, photos, and audiobooks (lightweight, can run on a NAS)</li>
+        </ul>
+        <p>This makes hardware allocation efficient. Video transcoding demands far more CPU than music streaming or photo browsing.</p>
+
+        <h3>By Location</h3>
+        <ul>
+            <li><strong>Home Server:</strong> Full library, primary server</li>
+            <li><strong>Remote Server:</strong> Curated subset of content for family at another location</li>
+        </ul>
+        <p>The remote server gets a copy of the most-watched content rather than the entire library. This reduces storage requirements at the remote location.</p>
+
+        <h3>By Access Level</h3>
+        <ul>
+            <li><strong>Family Server:</strong> Family-friendly content with parental controls</li>
+            <li><strong>Personal Server:</strong> Full library without restrictions</li>
+        </ul>
+        <p>While Plex has built-in parental controls through managed users, some parents prefer the certainty of a separate server where restricted content simply does not exist.</p>
+
+        <h2>Client Switching Between Servers</h2>
+
+        <p>Plex client apps handle multi-server environments well when all servers are on the same account. In the Plex app, look for the server name in the sidebar or settings. Tapping it reveals a dropdown or list of all available servers. Select a different server to switch to it. The switch is immediate -- libraries, home screen, and all content reflect the selected server.</p>
+
+        <p>Some important behaviors to understand:</p>
+        <ul>
+            <li><strong>Watch history is per-server.</strong> Watching a movie on Server A does not mark it as watched on Server B. There is no built-in cross-server sync for watch status.</li>
+            <li><strong>Playlists are per-server.</strong> Playlists created on one server are not visible on another.</li>
+            <li><strong>Search is per-server.</strong> Searching only returns results from the currently selected server.</li>
+            <li><strong>Home screen can aggregate.</strong> Plex's home screen can show "Continue Watching" and "Recently Added" rows from multiple servers simultaneously, even though library browsing is per-server.</li>
+        </ul>
+
+        <h2>Syncing Content Between Servers</h2>
+
+        <p>Plex does not offer built-in server-to-server content synchronization. If you want the same media available on multiple servers, you need to handle the file copying yourself. Several approaches work:</p>
+
+        <ul>
+            <li><strong>rsync (Linux/macOS):</strong> The standard tool for one-way or two-way file synchronization over SSH. Schedule it with cron to run nightly.</li>
+            <li><strong>Syncthing:</strong> A decentralized file synchronization tool that keeps folders in sync across multiple machines in real time. It works across platforms and handles conflicts.</li>
+            <li><strong>Rclone:</strong> Supports syncing to and from cloud storage, remote servers, and many other backends. Useful when servers are in different locations connected over the internet.</li>
+            <li><strong>Network attached storage:</strong> If both servers are on the same network, they can point to the same NAS for media files. Each server has its own database and metadata, but they share the underlying media storage.</li>
+        </ul>
+
+        <p>After syncing files, each server needs to scan its library to pick up the new content. You can trigger scans automatically using Plex webhooks or the Plex API.</p>
+
+        <h2>Syncing Watch History</h2>
+
+        <p>Cross-server watch history synchronization requires a third-party tool. Trakt is the most common solution. Install the Trakt plugin or use Tautulli's Trakt integration on each server. When you watch something on any server, the watch status is reported to Trakt. Other servers can then pull that status from Trakt and mark the item as watched locally.</p>
+
+        <p>This is not instant synchronization -- there is usually a delay of minutes to hours depending on how you configure the sync interval. But it ensures that your watch history stays roughly consistent across servers without manual effort.</p>
+
+        <h2>Resource Considerations</h2>
+
+        <p>Running multiple servers means multiplying resource usage. Each Plex instance maintains its own database, metadata cache, and transcode process. On a single machine:</p>
+
+        <ul>
+            <li><strong>RAM:</strong> Each Plex instance uses 200 MB to 1 GB or more depending on library size. Two instances means roughly double the RAM usage.</li>
+            <li><strong>CPU:</strong> Idle instances use negligible CPU. Transcoding uses as much CPU as you give it regardless of how many instances are running.</li>
+            <li><strong>Disk:</strong> Each instance has its own metadata and thumbnail cache. A large library can have 20 GB or more of metadata per instance.</li>
+            <li><strong>Network:</strong> Each instance registers independently with plex.tv and maintains its own remote access tunnel.</li>
+        </ul>
+
+        <p>If resources are tight, run the secondary server in a Docker container with CPU and memory limits applied. This ensures the primary server always has priority access to hardware resources.</p>
+
+        <div class="cta-box">
+            <h3>Phlix -- The Photo Browser for Plex</h3>
+            <p>Running multiple Plex servers with photo libraries? Phlix lets you switch between servers and browse photos with a dedicated chronological timeline, offline downloads, and 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/share-plex-library/" class="related-card">
+                <h3>Share Your Plex Library</h3>
+                <p>Invite friends and family with managed users and sharing controls.</p>
+            </a>
+            <a href="/blog/plex-remote-access-setup/" class="related-card">
+                <h3>Set Up Plex Remote Access</h3>
+                <p>Port forwarding, relay fallback, and troubleshooting remote connections.</p>
+            </a>
+            <a href="/blog/plex-docker-setup/" class="related-card">
+                <h3>Run Plex in Docker</h3>
+                <p>Container setup, volume mapping, and hardware transcoding in Docker.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

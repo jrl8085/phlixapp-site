@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Plex Offline Downloads (Mobile Sync) | Phlix Blog</title>
+    <meta name="description" content="Download media from Plex for offline viewing on your phone or tablet. Quality settings, storage management, and troubleshooting sync issues.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-offline-downloads/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-offline-downloads/">
+    <meta property="og:title" content="How to Use Plex Offline Downloads (Mobile Sync)">
+    <meta property="og:description" content="Download media from Plex for offline viewing on your phone or tablet. Quality settings, storage management, and troubleshooting sync issues.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Use Plex Offline Downloads (Mobile Sync)","description":"Download media from Plex for offline viewing on your phone or tablet. Quality settings, storage management, and troubleshooting sync issues.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Offline Downloads</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Use Plex Offline Downloads (Mobile Sync)</h1>
+        <p class="meta">Published September 1, 2026 &middot; 8 min read</p>
+
+        <p>Streaming is great until you are on a plane, a road trip through a dead zone, or somewhere with metered data. Plex's offline download feature (historically called Mobile Sync) lets you download movies, TV episodes, music, and photos from your server to your phone or tablet for playback without an internet connection. This guide covers everything you need to know: requirements, quality settings, storage management, and fixing sync when it does not work.</p>
+
+        <h2>Requirements</h2>
+
+        <p>Before you can download content for offline viewing, you need:</p>
+
+        <ul>
+            <li><strong>Plex Pass.</strong> Offline downloads are a Plex Pass feature. The server owner must have an active Plex Pass subscription (monthly, yearly, or lifetime). Shared users can download if the server owner's Plex Pass is active.</li>
+            <li><strong>A supported mobile client.</strong> The Plex app on iOS (iPhone and iPad) and Android supports downloads. The web app and most TV clients do not.</li>
+            <li><strong>The server must be reachable.</strong> Downloads happen over your network. The server needs to be online and accessible (locally or remotely) when you initiate the download. Once downloaded, the content plays without any server connection.</li>
+            <li><strong>Sufficient device storage.</strong> Downloaded content lives on your device. A two-hour movie at decent quality takes 1 to 4 GB depending on your settings.</li>
+        </ul>
+
+        <h2>How to Download Content</h2>
+
+        <h3>Downloading a Movie</h3>
+        <ol>
+            <li>Open the Plex app on your iPhone, iPad, or Android device.</li>
+            <li>Navigate to the movie you want to download.</li>
+            <li>Tap the download icon (a downward arrow). On some versions, it appears in the action bar; on others, it is in the three-dot overflow menu.</li>
+            <li>Select your desired quality (more on this below).</li>
+            <li>The download begins immediately. You can monitor progress in the Downloads section of the app.</li>
+        </ol>
+
+        <h3>Downloading TV Episodes</h3>
+        <p>You can download individual episodes or entire seasons. Navigate to the show's season page and tap the download button next to individual episodes, or use the batch download option to grab an entire season at once. This is particularly useful before a long flight or vacation.</p>
+
+        <h3>Downloading Music</h3>
+        <p>Music downloads work similarly. Navigate to an album, artist, or playlist, and tap the download button. Music files are much smaller than video, so you can download hundreds of songs without significant storage impact.</p>
+
+        <h2>Quality Settings</h2>
+
+        <p>Plex lets you choose the quality of your downloads. Higher quality means better picture and sound but larger files and longer download times. The available options typically include:</p>
+
+        <table>
+            <tr><th>Quality Level</th><th>Resolution</th><th>Approximate Size per Hour</th></tr>
+            <tr><td>Original</td><td>Same as source file</td><td>4 to 15 GB (varies)</td></tr>
+            <tr><td>High (10 Mbps 1080p)</td><td>1080p</td><td>4 to 5 GB</td></tr>
+            <tr><td>Medium (4 Mbps 720p)</td><td>720p</td><td>1.5 to 2 GB</td></tr>
+            <tr><td>Low (2 Mbps 480p)</td><td>480p</td><td>0.7 to 1 GB</td></tr>
+            <tr><td>Lowest (0.7 Mbps 240p)</td><td>240p</td><td>0.2 to 0.3 GB</td></tr>
+        </table>
+
+        <p>If you choose "Original," Plex copies the source file directly to your device without any conversion. This is the fastest option and preserves full quality, but the file may be very large. For most mobile viewing, the 720p Medium setting offers a good balance between quality and size, especially on phone screens where the difference between 720p and 1080p is barely noticeable.</p>
+
+        <p>When you choose a quality lower than the original, the Plex server must transcode the file before sending it. This means the server needs processing power and the download takes longer. If your server is a low-powered NAS, transcoding a 4K file down to 720p could take significantly longer than the content's runtime.</p>
+
+        <h3>Setting a Default Quality</h3>
+        <p>You do not have to choose quality every time. In the Plex app settings, look for "Download Quality" or "Mobile Quality." Set a default that works for your typical use case, and the app will use it automatically for all future downloads.</p>
+
+        <h2>Managing Storage</h2>
+
+        <p>Downloaded content can fill up your device quickly. Here are strategies for managing storage:</p>
+
+        <ul>
+            <li><strong>Check storage usage.</strong> In the Plex app, navigate to Downloads. You can see total storage used by downloaded content and delete individual items or clear everything at once.</li>
+            <li><strong>Auto-delete watched content.</strong> Enable the option to automatically remove downloaded content after you have watched it. This keeps your device from accumulating finished movies.</li>
+            <li><strong>Use SD cards on Android.</strong> On Android devices with expandable storage, you can configure Plex to download to the SD card instead of internal storage. This is set in the app's storage preferences.</li>
+            <li><strong>Download selectively.</strong> Instead of downloading entire seasons, download just the next few episodes you plan to watch. Download more when you finish those.</li>
+        </ul>
+
+        <h2>Supported Clients</h2>
+
+        <p>As of 2026, offline downloads are supported on:</p>
+
+        <ul>
+            <li><strong>Plex for iOS</strong> (iPhone and iPad)</li>
+            <li><strong>Plex for Android</strong> (phones and tablets)</li>
+        </ul>
+
+        <p>Notably absent from this list are the web app, desktop apps, Apple TV, Android TV, Roku, and smart TV clients. The offline download feature is designed for mobile devices that you carry with you and that might not have internet access.</p>
+
+        <h2>Downloads for Photos</h2>
+
+        <p>The official Plex app has limited support for downloading photos for offline viewing. If your Plex server hosts a photo library and you want to save photos to your phone, the native Plex app is not optimized for this use case. Downloads are focused on video and music content.</p>
+
+        <p><strong>Phlix</strong> fills this gap specifically for photos. Phlix connects to your Plex server and lets you download photos directly to your iPhone's Photo Library for offline access. You can download individual photos or select multiple images at once. Free accounts get 25 downloads, and Phlix Pro offers unlimited downloads. If you use Plex as a photo storage solution, this is the most practical way to get photos from your server onto your phone.</p>
+
+        <h2>Troubleshooting Download Issues</h2>
+
+        <p>Downloads occasionally fail or stall. Here are the most common issues and their fixes:</p>
+
+        <h3>Downloads Stuck at 0%</h3>
+        <p>This usually means the app cannot reach the server. Confirm your server is online and accessible. If you are downloading remotely, verify that remote access is enabled and working. Try streaming the same content first. If streaming works but downloading does not, the issue may be with the download queue. Force-close the app and reopen it.</p>
+
+        <h3>Downloads Fail Partway Through</h3>
+        <p>Partial failures often indicate network interruptions or server-side transcoding errors. Check your server logs for transcoding failures. If the source file is in an unusual format, try downloading at a different quality setting. Switching from "Original" to a transcoded quality (or vice versa) can work around format-specific issues.</p>
+
+        <h3>Downloads Are Extremely Slow</h3>
+        <p>If you are downloading a transcoded version, the speed is limited by your server's transcoding ability. A low-powered NAS transcoding a 4K HDR file to 720p will be very slow. Either download the original quality (no transcoding needed) or pre-convert your media to a more efficient format.</p>
+
+        <p>If downloading over Wi-Fi on your local network, speeds should be fast. If downloading remotely, your server's upload bandwidth is the bottleneck. A server with 10 Mbps upload can deliver roughly one hour of 720p content in 30 minutes.</p>
+
+        <h3>Content Disappears After Download</h3>
+        <p>Check if auto-delete is enabled. If you have the "remove after watching" setting active, watched content is cleaned up automatically. Also check if your device's storage is full; iOS may purge app storage under extreme pressure.</p>
+
+        <h3>Downloads Not Available for Some Content</h3>
+        <p>If you are a shared user (not the server owner), the server owner must have Plex Pass for you to use downloads. Additionally, some libraries may have restrictions set by the server owner that prevent downloading. Contact the library owner to verify permissions.</p>
+
+        <h2>Tips for the Best Offline Experience</h2>
+
+        <ol>
+            <li><strong>Download overnight.</strong> Queue up your downloads before bed and let them complete overnight on Wi-Fi. They will be ready when you leave in the morning.</li>
+            <li><strong>Download on your local network.</strong> Downloading locally is dramatically faster than downloading remotely because you skip the upload bandwidth bottleneck.</li>
+            <li><strong>Test playback before departing.</strong> Verify that downloaded content actually plays offline before you board the plane. A corrupted download discovered at 30,000 feet is not recoverable.</li>
+            <li><strong>Bring a charger.</strong> Playing back downloaded video on a phone consumes battery. Downloading also uses significant battery. Plan accordingly.</li>
+            <li><strong>Use 720p for phones.</strong> On a phone screen, 720p is visually indistinguishable from 1080p at normal viewing distance but uses roughly half the storage.</li>
+        </ol>
+
+        <div class="cta-box">
+            <h3>Phlix — Download Plex Photos to Your iPhone</h3>
+            <p>Plex offline downloads are great for video. For photos, Phlix lets you save images from your Plex server directly to your iPhone's Photo Library. Browse with a chronological timeline, then download what you need. Free to browse, Pro for unlimited downloads.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/download-plex-photos-iphone/" class="related-card">
+                <h3>Download Photos from Plex to iPhone</h3>
+                <p>Save photos from your Plex server to your iPhone's Photo Library.</p>
+            </a>
+            <a href="/blog/is-plex-pass-worth-it/" class="related-card">
+                <h3>Is Plex Pass Worth It in 2026?</h3>
+                <p>Every Plex Pass feature explained, including offline downloads.</p>
+            </a>
+            <a href="/blog/best-plex-client-apps/" class="related-card">
+                <h3>Best Plex Client Apps Ranked</h3>
+                <p>Performance, codec support, and features across every platform.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

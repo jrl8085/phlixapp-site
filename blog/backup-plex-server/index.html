@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Back Up Your Plex Server — Protect Your Setup | Phlix Blog</title>
+    <meta name="description" content="Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/backup-plex-server/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/backup-plex-server/">
+    <meta property="og:title" content="How to Back Up Your Plex Server — Protect Your Setup">
+    <meta property="og:description" content="Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Back Up Your Plex Server — Protect Your Setup","description":"Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Back Up Your Plex Server</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Back Up Your Plex Server — Protect Your Setup</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>You have spent hours setting up Plex. Library organization, custom metadata edits, watched statuses, user accounts, poster overrides, playlist curation. All of that configuration lives in a database on your server. If a drive fails, an OS update goes wrong, or you accidentally delete the wrong folder, it is all gone. Your media files can be re-downloaded or re-ripped, but the Plex database, your watch history, and your configuration are unique to your server.</p>
+
+        <p>Backing up Plex is straightforward once you know which files matter. This guide covers exactly what to back up, where those files live on each platform, how to automate the process, and how to restore from a backup.</p>
+
+        <h2>What You Need to Back Up</h2>
+
+        <p>Not everything in the Plex data directory is equally important. Here is a breakdown of what matters, in order of priority:</p>
+
+        <h3>1. The Plex Database</h3>
+        <p>This is the single most important file. The database (a SQLite file) contains your library structure, watched and unwatched statuses, play counts, ratings, playlists, collections, user accounts, sharing permissions, and all metadata associations. Without it, Plex treats your server as brand new.</p>
+
+        <p>The file is located at:</p>
+        <pre><code>Plug-in Support/Databases/com.plexapp.plugins.library.db</code></pre>
+
+        <p>There are also related files like <code>com.plexapp.plugins.library.db-wal</code> and <code>com.plexapp.plugins.library.db-shm</code> (write-ahead log and shared memory). For a clean backup, stop the Plex service before copying, or back up all three files together.</p>
+
+        <h3>2. Preferences File</h3>
+        <p>The Preferences file stores your server configuration: server name, network settings, transcoder options, remote access configuration, and your server claim token. Losing this file means reconfiguring every server setting from scratch.</p>
+
+        <ul>
+            <li><strong>Windows:</strong> <code>%LOCALAPPDATA%\Plex Media Server\Preferences.xml</code></li>
+            <li><strong>macOS:</strong> <code>~/Library/Application Support/Plex Media Server/Preferences.xml</code></li>
+            <li><strong>Linux:</strong> <code>/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Preferences.xml</code></li>
+            <li><strong>Docker:</strong> Wherever you mapped the <code>/config</code> volume, inside <code>Plex Media Server/Preferences.xml</code></li>
+        </ul>
+
+        <h3>3. Metadata</h3>
+        <p>Plex downloads posters, backgrounds, thumbnails, and other artwork for your media. This data lives in the <code>Metadata</code> folder within the Plex data directory. It can be large (tens of gigabytes for big libraries) but it is regenerable. If you lose it, Plex can re-download everything from online sources during a metadata refresh. However, any custom posters or manually added artwork will be lost.</p>
+
+        <p>If you have uploaded custom posters, back up the Metadata folder. If you use only automatic metadata, you can skip it to save backup space and time.</p>
+
+        <h3>4. Media Files</h3>
+        <p>Your actual movies, TV shows, music, and photos are not part of the Plex data directory. They live wherever you store them. Backing up media files is a separate concern and depends on your storage setup (RAID, cloud backup, offsite copies). This guide focuses on the Plex-specific data, not the media itself.</p>
+
+        <h2>Where the Plex Data Directory Lives</h2>
+
+        <p>The complete data directory path varies by platform:</p>
+
+        <table>
+            <tr><th>Platform</th><th>Default Data Directory</th></tr>
+            <tr><td>Windows</td><td><code>%LOCALAPPDATA%\Plex Media Server\</code></td></tr>
+            <tr><td>macOS</td><td><code>~/Library/Application Support/Plex Media Server/</code></td></tr>
+            <tr><td>Linux (native)</td><td><code>/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/</code></td></tr>
+            <tr><td>Synology</td><td><code>/volume1/PlexMediaServer/AppData/Plex Media Server/</code></td></tr>
+            <tr><td>Docker</td><td>Mapped via <code>-v /path/to/config:/config</code></td></tr>
+        </table>
+
+        <p>Within this directory, the critical subdirectories are <code>Plug-in Support/Databases/</code> (the database), <code>Plug-in Support/Preferences/</code> (plugin settings), and <code>Metadata/</code> (artwork and metadata cache). The <code>Cache/</code> folder can be excluded from backups. It contains transcoder cache, analysis files, and other regenerable data that can consume substantial space.</p>
+
+        <h2>Manual Backup Process</h2>
+
+        <p>The simplest approach is a manual copy. Here is the step-by-step process:</p>
+
+        <ol>
+            <li><strong>Stop Plex Media Server.</strong> This ensures the database is not being written to during the copy, which could result in a corrupted backup. On Windows, stop the service in Services. On macOS, quit the app from the menu bar. On Linux, run <code>sudo systemctl stop plexmediaserver</code>.</li>
+            <li><strong>Copy the critical files.</strong> At minimum, copy the <code>Plug-in Support/Databases/</code> folder and <code>Preferences.xml</code>. If you want a complete backup, copy the entire Plex Media Server data directory minus the <code>Cache/</code> folder.</li>
+            <li><strong>Store the backup offsite.</strong> Copy the backup to an external drive, a different machine, or cloud storage. A backup on the same drive as the original is not a backup.</li>
+            <li><strong>Restart Plex Media Server.</strong></li>
+        </ol>
+
+        <h2>Automated Backup with Scripts</h2>
+
+        <p>Manual backups are better than nothing, but they rely on you remembering to do them. Automated scripts run on a schedule and ensure you always have a recent backup.</p>
+
+        <h3>Linux and macOS (Bash Script)</h3>
+        <p>Create a script that stops Plex, copies the database and preferences, compresses them, and restarts Plex:</p>
+
+        <pre><code>#!/bin/bash
+PLEX_DATA="$HOME/Library/Application Support/Plex Media Server"
+BACKUP_DIR="$HOME/plex-backups"
+DATE=$(date +%Y-%m-%d)
+
+mkdir -p "$BACKUP_DIR"
+
+# Stop Plex
+sudo systemctl stop plexmediaserver  # Linux
+# or: osascript -e 'quit app "Plex Media Server"'  # macOS
+
+# Create compressed backup
+tar -czf "$BACKUP_DIR/plex-backup-$DATE.tar.gz" \
+  "$PLEX_DATA/Plug-in Support/Databases/" \
+  "$PLEX_DATA/Preferences.xml"
+
+# Restart Plex
+sudo systemctl start plexmediaserver  # Linux
+# or: open "/Applications/Plex Media Server.app"  # macOS
+
+# Delete backups older than 30 days
+find "$BACKUP_DIR" -name "plex-backup-*.tar.gz" -mtime +30 -delete</code></pre>
+
+        <p>Schedule this with <code>cron</code> to run weekly or daily. A weekly 3 AM cron entry would be:</p>
+        <pre><code>0 3 * * 0 /path/to/plex-backup.sh</code></pre>
+
+        <h3>Windows (PowerShell)</h3>
+        <p>A similar script in PowerShell stops the Plex service, compresses the database folder, and restarts the service. Schedule it with Windows Task Scheduler to run weekly during off-peak hours.</p>
+
+        <h3>Docker Users</h3>
+        <p>If Plex runs in Docker, your data directory is already mapped to a host path. You can back up the host directory directly without needing to stop the container, though stopping it briefly produces a cleaner backup. Use <code>docker stop plex</code>, copy the mapped volume, then <code>docker start plex</code>.</p>
+
+        <h2>What You Lose Without a Backup</h2>
+
+        <p>Understanding the consequences makes backups feel less optional:</p>
+
+        <ul>
+            <li><strong>Watch history.</strong> Every watched and unwatched status across all users. Years of tracking gone in an instant.</li>
+            <li><strong>Custom metadata.</strong> Any poster, background, or description you manually edited or uploaded.</li>
+            <li><strong>Playlists and collections.</strong> Smart playlists, manual playlists, and collection configurations.</li>
+            <li><strong>User accounts and permissions.</strong> Managed users, sharing permissions, and access restrictions.</li>
+            <li><strong>Server settings.</strong> Network configuration, transcoder settings, library scan schedules, and remote access setup.</li>
+            <li><strong>Ratings.</strong> Personal star ratings or thumbs up and down across your entire library.</li>
+        </ul>
+
+        <p>Your media files will still be there, but Plex will treat everything as unmatched, unwatched, and unconfigured. For a library with thousands of items, rebuilding from scratch takes days of manual work.</p>
+
+        <h2>How to Restore from a Backup</h2>
+
+        <ol>
+            <li><strong>Install Plex Media Server</strong> on the target machine (or reinstall on the same machine).</li>
+            <li><strong>Stop Plex</strong> before restoring files.</li>
+            <li><strong>Replace the database files.</strong> Copy your backed-up <code>Plug-in Support/Databases/</code> folder into the new Plex data directory, replacing any files that were created during the fresh installation.</li>
+            <li><strong>Replace Preferences.xml.</strong> Copy your backed-up preferences file into the data directory root.</li>
+            <li><strong>Start Plex</strong> and verify that your libraries, watch history, and settings appear correctly.</li>
+            <li><strong>Update library paths.</strong> If your media files are on different drives or paths than the original server, update each library's folder paths in Plex settings. The database stores absolute paths, so moved media requires path updates.</li>
+        </ol>
+
+        <h2>How Often to Back Up</h2>
+
+        <p>The right frequency depends on how actively you use Plex. If you add new content daily and have multiple users, weekly backups are the minimum. If your library is stable and changes rarely, monthly backups may suffice.</p>
+
+        <p>A good rule of thumb: back up at least as often as you would be willing to lose. If losing a week of watch history is acceptable, back up weekly. If losing a day would be painful, back up daily. The database file is typically under 200 MB even for large libraries, so storage is not a limiting factor.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>Your Plex photos deserve a great browsing experience. Phlix offers a chronological timeline, offline downloads, and 4K AirPlay slideshows. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/migrate-plex-server/" class="related-card">
+                <h3>Migrate Plex to a New Machine</h3>
+                <p>Move your server without losing metadata, history, or accounts.</p>
+            </a>
+            <a href="/blog/plex-server-crashing/" class="related-card">
+                <h3>Plex Server Keeps Crashing</h3>
+                <p>Log analysis, database repair, and resource monitoring.</p>
+            </a>
+            <a href="/blog/plex-performance-optimization/" class="related-card">
+                <h3>Speed Up Your Plex Server</h3>
+                <p>Database maintenance, cache settings, and hardware optimization.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex TV Show Naming Guide — Season, Episode, and Special Files | Phlix Blog</title>
+    <meta name="description" content="Name your TV show files so Plex matches them perfectly. Season folders, episode numbering, specials, and multi-episode files.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-tv-show-naming-guide/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-tv-show-naming-guide/">
+    <meta property="og:title" content="Plex TV Show Naming Guide — Season, Episode, and Special Files">
+    <meta property="og:description" content="Name your TV show files so Plex matches them perfectly. Season folders, episode numbering, specials, and multi-episode files.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Plex TV Show Naming Guide — Season, Episode, and Special Files","description":"Name your TV show files so Plex matches them perfectly. Season folders, episode numbering, specials, and multi-episode files.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex TV Show Naming Guide</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>Plex TV Show Naming Guide — Season, Episode, and Special Files</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>TV shows are the trickiest media type to name correctly for Plex. Unlike movies, which have a single file per title, TV shows involve hundreds of episodes organized by season, with specials, multi-part episodes, and different numbering schemes depending on the metadata source. Get the naming wrong and Plex mismatches episodes, assigns them to the wrong show entirely, or ignores them. This guide covers the naming format that works every time.</p>
+
+        <h2>The Standard Format</h2>
+
+        <p>Every TV show file should follow this three-level structure:</p>
+
+        <pre><code>Show Name (Year)/Season 01/Show Name (Year) - S01E01 - Episode Title.ext</code></pre>
+
+        <p>Here is a concrete example:</p>
+
+        <pre><code>Breaking Bad (2008)/Season 01/Breaking Bad (2008) - S01E01 - Pilot.mkv
+Breaking Bad (2008)/Season 01/Breaking Bad (2008) - S01E02 - Cat's in the Bag.mkv
+Breaking Bad (2008)/Season 02/Breaking Bad (2008) - S02E01 - Seven Thirty-Seven.mkv</code></pre>
+
+        <p>The critical elements are the show name, the <code>SxxExx</code> numbering, and the season folder. The episode title after the dash is optional but helps with manual identification when browsing your file system.</p>
+
+        <h2>Breaking Down Each Component</h2>
+
+        <h3>Show Name and Year</h3>
+
+        <p>Use the exact show name as listed on your chosen metadata source (TMDB or TheTVDB). The year in parentheses helps Plex distinguish shows with identical names. For example, "Battlestar Galactica" has versions from 1978 and 2003. Without the year, Plex may match to the wrong one.</p>
+
+        <p>The year should be the original air year of the first episode according to your metadata agent. Check TMDB or TheTVDB if you are unsure.</p>
+
+        <h3>Season Folders</h3>
+
+        <p>Season folders must be named <code>Season XX</code> with a two-digit number. Use <code>Season 01</code>, not <code>S01</code>, <code>Season1</code>, or <code>Staffel 01</code>. Plex specifically looks for the word "Season" followed by a space and a number.</p>
+
+        <pre><code>Good: Season 01, Season 02, Season 10
+Bad:  S01, Season1, Series 1, Staffel 01</code></pre>
+
+        <h3>Episode Numbering (SxxExx)</h3>
+
+        <p>Use the <code>S01E01</code> format with leading zeros. This is the most reliable format across all Plex scanners. Alternative formats like <code>1x01</code> technically work but are less reliable and not recommended.</p>
+
+        <h2>Specials and Season 0</h2>
+
+        <p>Specials, pilots that aired before the first season, reunion episodes, and other out-of-sequence content go in <code>Season 00</code>:</p>
+
+        <pre><code>The Office (2005)/Season 00/The Office (2005) - S00E01 - The Interview.mkv
+The Office (2005)/Season 00/The Office (2005) - S00E02 - The Accountants.mkv</code></pre>
+
+        <p>The episode number for specials comes from your metadata source. Look up the show on TheTVDB or TMDB and check the Specials season to find the correct numbering. Do not make up episode numbers. A mismatch between your file's episode number and the database entry means Plex will pull the wrong title and description.</p>
+
+        <h2>Multi-Episode Files</h2>
+
+        <p>Some files contain two or more episodes in a single video. Plex supports multi-episode naming using consecutive <code>E</code> tags:</p>
+
+        <pre><code>Show Name (Year)/Season 01/Show Name (Year) - S01E01-E02.mkv
+Show Name (Year)/Season 01/Show Name (Year) - S01E01E02.mkv</code></pre>
+
+        <p>Both formats work. Plex will create entries for both episodes in the library, with both pointing to the same file. The first format with the dash is slightly more readable. For three or more episodes in a single file, continue the pattern: <code>S01E01-E02-E03</code>.</p>
+
+        <h2>Daily Shows</h2>
+
+        <p>Talk shows, news programs, and other daily shows often use date-based numbering instead of season/episode numbers:</p>
+
+        <pre><code>The Daily Show/Season 2024/The Daily Show - 2024-03-15.mkv
+Last Week Tonight with John Oliver/Season 2024/Last Week Tonight with John Oliver - 2024-06-02.mkv</code></pre>
+
+        <p>Use the format <code>YYYY-MM-DD</code> in place of the <code>SxxExx</code> tag. The season folder should use the year as its season number. Some daily shows are also numbered traditionally on TMDB or TheTVDB. Check your metadata source and match whichever scheme they use.</p>
+
+        <h2>Anime and Absolute Numbering</h2>
+
+        <p>Anime series frequently use absolute episode numbering rather than season-based numbering. A show with 500 episodes might number them 1 through 500 instead of splitting into seasons. Plex handles this with the "absolute ordering" option in library settings.</p>
+
+        <p>For absolute numbering, the file naming depends on whether your metadata source (typically TheTVDB) uses absolute or season-based ordering for that show. The safest approach:</p>
+
+        <ol>
+            <li>Check the show on TheTVDB and note whether episodes are listed with absolute numbers or season/episode numbers.</li>
+            <li>Name your files to match that listing exactly.</li>
+            <li>In your Plex library's Advanced settings, set the episode ordering to match your naming scheme (TheTVDB or TMDB, and Aired order vs Absolute order).</li>
+        </ol>
+
+        <pre><code>Naruto (2002)/Season 01/Naruto (2002) - S01E01 - Enter Naruto Uzumaki.mkv</code></pre>
+
+        <p>If the show uses absolute ordering on your metadata source, name files with <code>S01E001</code> through <code>S01E220</code> and place everything in <code>Season 01</code>. Then set the library to use absolute ordering. Alternatively, use the <code>SxxExx</code> format matching the seasonal breakdown on the database.</p>
+
+        <h2>TheTVDB vs TMDB</h2>
+
+        <p>Plex lets you choose between TheTVDB and TMDB as your TV show metadata agent. The choice affects naming because these databases sometimes number episodes differently:</p>
+
+        <ul>
+            <li><strong>TheTVDB:</strong> The traditional default. Has the largest database of specials, alternate orderings, and legacy shows. Season and episode numbers can differ from what aired in your country.</li>
+            <li><strong>TMDB (The Movie Database):</strong> Plex's newer default agent. Generally follows the original air numbering more closely. Better for international shows and newer content. Specials numbering may differ from TheTVDB.</li>
+        </ul>
+
+        <p>The most important thing is consistency. Pick one agent per library and name all your files according to that source's numbering. Mixing numbering schemes from different databases within the same library causes mismatches.</p>
+
+        <h3>Switching Agents</h3>
+
+        <p>If you switch a library from TheTVDB to TMDB (or vice versa), you may need to rename files whose episode numbering differs between the two databases. After switching, do a library scan and check for mismatched episodes. Fix individual matches as needed using the "Fix Match" option on each show.</p>
+
+        <h2>Handling Tricky Cases</h2>
+
+        <h3>Shows With the Same Name</h3>
+
+        <pre><code>Charmed (1998)/Season 01/Charmed (1998) - S01E01.mkv
+Charmed (2018)/Season 01/Charmed (2018) - S01E01.mkv</code></pre>
+
+        <p>The year in the folder name is essential for disambiguation. Without it, both would match to whichever show Plex finds first.</p>
+
+        <h3>Miniseries</h3>
+
+        <p>Miniseries with a single season are named the same way as any other show. Use <code>Season 01</code> and number episodes normally. If the miniseries is listed as a special season under a parent show (common on TheTVDB), use the season number assigned by the database.</p>
+
+        <h3>Split Seasons</h3>
+
+        <p>Some shows air a season in two parts (e.g., "Season 4 Part 1" and "Season 4 Part 2"). Despite the marketing, these are typically a single season in the database. Name all episodes as part of the same season with continuous episode numbers. Do not create separate <code>Season 4a</code> and <code>Season 4b</code> folders.</p>
+
+        <h2>Bulk Renaming Tools</h2>
+
+        <p>Renaming TV show files manually is impractical for large collections. Use dedicated tools:</p>
+
+        <ul>
+            <li><strong>FileBot:</strong> Matches episodes against TheTVDB or TMDB and renames files into the correct Plex format automatically. Handles season packs, multi-episode files, and anime. Worth the license fee for large libraries.</li>
+            <li><strong>Sonarr:</strong> If you use Sonarr for TV show management, it automatically names and organizes downloaded episodes in Plex-compatible format.</li>
+            <li><strong>Tiny Media Manager:</strong> Free tool that renames TV show files and downloads metadata.</li>
+        </ul>
+
+        <h2>After Renaming: Verify in Plex</h2>
+
+        <p>After renaming your files, scan your TV library in Plex. Check a few shows to confirm episodes are correctly numbered and metadata matches. If an episode is wrong, click it, select "Fix Match," and search by show name. For a show that is completely wrong, unmatch the entire show first, then fix the match at the show level rather than episode by episode.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-movie-naming-guide/" class="related-card">
+                <h3>Plex Movie Naming Guide</h3>
+                <p>Folder structure, year tags, edition labels, and multi-version support.</p>
+            </a>
+            <a href="/blog/organize-media-library-plex/" class="related-card">
+                <h3>Organize Your Media Library for Plex</h3>
+                <p>Complete file naming and folder structure best practices.</p>
+            </a>
+            <a href="/blog/plex-not-finding-media/" class="related-card">
+                <h3>Plex Not Finding Your Media?</h3>
+                <p>Troubleshoot missing files, wrong matches, and scan failures.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

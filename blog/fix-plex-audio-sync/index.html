@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Fix Plex Audio Sync Issues | Phlix Blog</title>
+    <meta name="description" content="Resolve audio delay and lip sync problems in Plex.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/fix-plex-audio-sync/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/fix-plex-audio-sync/">
+    <meta property="og:title" content="How to Fix Plex Audio Sync Issues">
+    <meta property="og:description" content="Resolve audio delay and lip sync problems in Plex.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Fix Plex Audio Sync Issues",
+        "description": "Resolve audio delay and lip sync problems in Plex.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Fix Plex Audio Sync Issues</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat">Troubleshooting</span>
+                <h1>How to Fix Plex Audio Sync Issues</h1>
+                <p class="subtitle">Resolve audio delay and lip sync problems in Plex.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>Audio sync issues — where the sound does not match what is happening on screen — are among the most noticeable and annoying playback problems. A lip sync offset of even 40 milliseconds is perceptible to most viewers, and a few hundred milliseconds makes content unwatchable. The causes range from server-side transcoding latency to client-side audio processing, and the fix depends entirely on which link in the chain is introducing the delay.</p>
+
+            <h2>Understanding the Causes</h2>
+
+            <p>Audio and video travel from your Plex server to your playback device through a pipeline with multiple stages. At each stage, something can introduce a timing mismatch. The most common causes fall into four categories.</p>
+
+            <h3>Transcoding Delay</h3>
+
+            <p>When Plex transcodes video but not audio (or vice versa), the two streams can fall out of sync. Video transcoding is computationally heavier and takes longer to process than audio transcoding. If the server is struggling to keep up with real-time transcoding — due to high CPU load, insufficient hardware, or particularly demanding content — the video stream may lag behind the audio. This type of desync typically gets worse over time rather than being a fixed offset.</p>
+
+            <h3>Audio Passthrough Processing</h3>
+
+            <p>Many home theater setups use audio passthrough, where the Plex client sends the raw audio bitstream (DTS, TrueHD, Atmos) directly to an AV receiver or soundbar for decoding. The receiver introduces its own processing delay as it decodes and applies audio effects. If the TV processes the video faster (or slower) than the receiver processes the audio, a sync offset results.</p>
+
+            <p>This is particularly common in setups where audio goes through HDMI to a receiver and then to the TV, adding an extra hop. Each device in the chain adds its own processing latency.</p>
+
+            <h3>Client-Side Buffering</h3>
+
+            <p>Some Plex clients buffer video and audio independently, and differences in buffer size or fill rate can introduce sync drift. This is most noticeable on lower-powered devices (older smart TVs, budget streaming sticks) where the decoder struggles to maintain consistent timing under load.</p>
+
+            <h3>File-Level Issues</h3>
+
+            <p>Sometimes the audio sync problem exists in the media file itself. This can happen during the encoding or muxing process if the audio and video streams were not properly aligned. Files converted from one container format to another are particularly susceptible, as are files that were edited or trimmed with tools that do not handle timestamp correction properly.</p>
+
+            <h2>Diagnosing the Problem</h2>
+
+            <p>Before attempting fixes, determine whether the problem is consistent across files or specific to certain content. Play several different files from your library. If the audio desync appears on everything, the issue is in your playback chain (client, receiver, TV). If it only affects specific files, the problem is in those files.</p>
+
+            <p>Next, check whether the issue is present on other clients. Play the same content on a phone, a computer, or a different TV. If the sync is fine on other devices, the problem is specific to the original client device or its audio output chain.</p>
+
+            <p>Also check the Plex dashboard to see whether the stream is being transcoded. If video is transcoding but audio is Direct Playing (or the reverse), that asymmetry is a likely cause.</p>
+
+            <h2>Fix 1: Audio Offset Setting</h2>
+
+            <p>Many Plex clients include a real-time audio offset adjustment that lets you shift the audio forward or backward during playback. During playback, look for the audio settings or playback settings menu. The offset is typically adjustable in millisecond increments.</p>
+
+            <p>If audio leads the video (sound comes before the action), apply a positive offset to delay the audio. If audio lags the video (action happens before the sound), apply a negative offset. Start with 50 ms increments and fine-tune from there. Watch a scene with clear, sharp dialog and visible lip movements to calibrate.</p>
+
+            <p>The downside of this approach is that it is a per-session fix. You will need to reapply it each time you play something, and the optimal offset may vary between files and content types.</p>
+
+            <h2>Fix 2: Container Format</h2>
+
+            <p>The container format (MKV, MP4, AVI, TS) affects how audio and video streams are interleaved and timestamped. MKV is the most flexible and generally handles sync most reliably. MP4 is widely compatible but can sometimes introduce sync issues with certain audio codecs. AVI is an outdated format that handles variable bitrate audio poorly and is a frequent cause of progressive sync drift.</p>
+
+            <p>If you have files in AVI or TS format that exhibit audio sync issues, remux them to MKV using MKVToolNix. This does not re-encode anything — it simply repackages the streams in a more robust container. The process is fast (limited only by disk speed) and often resolves sync problems caused by the original container.</p>
+
+            <h2>Fix 3: Audio Codec Compatibility</h2>
+
+            <p>Audio sync problems are more likely when the client cannot natively decode the audio format and Plex must transcode it. If the video is Direct Playing but the audio is being transcoded from DTS to AAC, the transcoding process adds latency that can cause desync.</p>
+
+            <p>Check the Plex dashboard during playback. If audio is being transcoded, consider one of these approaches: add a compatible audio track to the file (e.g., add an AAC stereo track alongside the DTS 5.1 track using FFmpeg or MKVToolNix), or upgrade your client device to one that natively decodes the audio format.</p>
+
+            <p>The command to add a secondary AAC audio track with FFmpeg is:</p>
+
+            <p><code>ffmpeg -i input.mkv -map 0 -c copy -c:a:1 aac -b:a:1 256k output.mkv</code></p>
+
+            <p>This copies all existing streams and adds a new AAC track, giving clients a fallback audio option that does not require transcoding.</p>
+
+            <h2>Fix 4: Disable Audio Passthrough</h2>
+
+            <p>If you suspect your AV receiver or soundbar is introducing the delay, try disabling audio passthrough in the Plex client settings. This forces the client to decode the audio itself and send PCM audio to the receiver, bypassing the receiver's decoding pipeline. If the sync improves, the receiver's processing delay was the issue.</p>
+
+            <p>Many TVs and receivers have their own audio delay or lip sync correction settings. Check the audio settings menu on your TV and receiver. Some offer automatic lip sync detection (via HDMI CEC or similar protocols), while others provide a manual offset slider. Combining the TV or receiver's correction with the Plex client's audio offset can achieve a precise fix.</p>
+
+            <h2>Fix 5: Client-Specific Solutions</h2>
+
+            <p><strong>Apple TV:</strong> Audio sync issues on Apple TV are relatively rare but can occur with certain audio formats. Ensure "Change Format" is set to match your receiver's capabilities in Settings &gt; Video and Audio. If using Atmos passthrough, test with and without it to isolate the issue.</p>
+
+            <p><strong>Web browser:</strong> The Plex web player has limited codec support and frequently transcodes both video and audio. Audio sync issues in the browser are common and often the hardest to resolve. Use a native app client whenever possible instead of the web player.</p>
+
+            <p><strong>Smart TVs:</strong> Many smart TV Plex apps have known audio sync issues with specific audio codecs or when transcoding is involved. Check the Plex forums for your specific TV model. Updating the TV's firmware and the Plex app often helps.</p>
+
+            <p><strong>Android/Fire TV:</strong> On Android-based devices, check the device's system-level audio settings. Some Android TV devices have audio delay settings that affect all apps, not just Plex. Also check whether the device is converting audio to a different sample rate, which can introduce drift.</p>
+
+            <h2>Fix 6: Fix the Source File</h2>
+
+            <p>If a specific file has audio sync issues that are consistent across all clients, the file itself needs repair. Use FFmpeg to re-mux with timestamp correction:</p>
+
+            <p><code>ffmpeg -i input.mkv -map 0 -c copy -async 1 output.mkv</code></p>
+
+            <p>The <code>-async 1</code> flag corrects audio timestamps to match the video stream. For persistent drift issues, you can apply a fixed offset during the remux:</p>
+
+            <p><code>ffmpeg -i input.mkv -itsoffset 0.200 -i input.mkv -map 1:v -map 0:a -c copy output.mkv</code></p>
+
+            <p>This example delays the video by 200 milliseconds relative to the audio. Adjust the offset value to match your specific desync amount.</p>
+
+            <div class="cta-box">
+                <h3>Phlix — The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-transcoding-explained/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Transcoding Explained — Direct Play vs Direct Stream vs Transcode</h3></a>
+                <a href="/blog/fix-plex-subtitles/" class="blog-card"><span class="cat">Troubleshooting</span><h3>How to Fix Plex Subtitle Issues — Complete Guide</h3></a>
+                <a href="/blog/fix-plex-buffering/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Buffering? Here's How to Fix It Once and For All</h3></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

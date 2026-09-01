@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Guide to Plex Photos in 2026 | Phlix Blog</title>
+    <meta name="description" content="Everything about Plex's photo features. Setup, supported formats, EXIF metadata, limitations, and the best third-party photo browsers for Plex.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/ultimate-guide-plex-photos/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/ultimate-guide-plex-photos/">
+    <meta property="og:title" content="The Ultimate Guide to Plex Photos in 2026">
+    <meta property="og:description" content="Everything about Plex's photo features. Setup, supported formats, EXIF metadata, limitations, and the best third-party photo browsers for Plex.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"The Ultimate Guide to Plex Photos in 2026","description":"Everything about Plex's photo features. Setup, supported formats, EXIF metadata, limitations, and the best third-party photo browsers for Plex.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; The Ultimate Guide to Plex Photos</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat" style="color:var(--gold)">Photos</span>
+                <h1>The Ultimate Guide to Plex Photos in 2026</h1>
+                <p class="subtitle">Everything about Plex's photo features -- setup, supported formats, EXIF metadata, limitations, and the third-party apps that fill the gaps.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>Plex is best known as a media server for movies and TV shows, but it has supported photo libraries since its early days. If you already run a Plex server for video, adding your photo collection means all your personal media lives in one place, accessible from any device, anywhere. The promise is compelling. The reality, however, has some significant gaps -- gaps that third-party apps like Phlix were built specifically to fill.</p>
+
+            <p>This guide covers everything you need to know about Plex's photo capabilities in 2026: what works well, what does not, and what your options are for getting the most out of your photo library on Plex.</p>
+
+            <h2>How to Set Up a Photo Library in Plex</h2>
+
+            <p>Adding a photo library to Plex follows the same process as adding any other library type:</p>
+
+            <ol>
+                <li>Open the Plex web interface and click the <strong>+</strong> icon next to your library list.</li>
+                <li>Select <strong>Photos</strong> as the library type.</li>
+                <li>Name the library (e.g., "Family Photos") and point it to the folder on disk where your images are stored.</li>
+                <li>Click "Add Library" and let Plex scan the folder.</li>
+            </ol>
+
+            <p>Plex will index all images it finds, generate thumbnails, and read EXIF metadata. The initial scan can be slow for large collections -- a library of 50,000 photos may take an hour or more to fully process on a mechanical hard drive.</p>
+
+            <h3>Folder Organization Matters</h3>
+
+            <p>Unlike movies and TV shows, Plex displays photos based on their folder structure. Each top-level folder becomes an "album" in the Plex interface. A well-organized folder hierarchy directly translates to a well-organized library. A common approach is to organize by year and event:</p>
+
+            <pre><code>Photos/
+  2024/
+    2024-01 - New Years/
+    2024-03 - Spring Break/
+    2024-07 - Summer Vacation/
+  2025/
+    2025-04 - Easter/
+    2025-08 - Beach Trip/
+  2026/
+    2026-01 - Ski Trip/</code></pre>
+
+            <h2>Supported Formats</h2>
+
+            <p>Plex supports the most common image formats:</p>
+
+            <ul>
+                <li><strong>JPEG / JPG:</strong> Full support including EXIF metadata.</li>
+                <li><strong>PNG:</strong> Supported but no EXIF metadata (PNG uses a different metadata standard).</li>
+                <li><strong>TIFF:</strong> Supported for thumbnails and viewing.</li>
+                <li><strong>HEIC / HEIF:</strong> Supported on most modern Plex server versions. This is the default format for iPhones since iOS 11.</li>
+                <li><strong>RAW formats:</strong> Limited support. Plex can generate thumbnails from some RAW formats (CR2, NEF, ARW) but viewing quality and compatibility vary by server platform.</li>
+                <li><strong>GIF:</strong> Static display only. Animated GIFs are displayed as a single frame.</li>
+                <li><strong>WebP:</strong> Supported on recent Plex server versions.</li>
+            </ul>
+
+            <h2>EXIF Metadata</h2>
+
+            <p>Plex reads EXIF data from JPEG and HEIC files and displays it in the media info panel. The metadata fields Plex extracts include:</p>
+
+            <ul>
+                <li>Date and time taken (used for sorting)</li>
+                <li>Camera make and model</li>
+                <li>Lens information</li>
+                <li>Aperture, shutter speed, and ISO</li>
+                <li>GPS coordinates (if geotagged)</li>
+                <li>Image dimensions and orientation</li>
+            </ul>
+
+            <p>The date taken field is particularly important because Plex uses it to sort photos chronologically within each album. If your photos lack EXIF dates (common with scanned photos or screenshots), Plex falls back to the file modification date, which may not reflect the actual date the photo was taken.</p>
+
+            <h2>The Viewing Experience -- What Plex Offers</h2>
+
+            <p>Plex's built-in photo viewing experience is functional but basic. On the web interface and most client apps, you can:</p>
+
+            <ul>
+                <li>Browse photos by album (folder)</li>
+                <li>View photos in a grid layout with thumbnails</li>
+                <li>Open individual photos in a lightbox viewer</li>
+                <li>Navigate between photos with arrow keys or swipe gestures</li>
+                <li>View EXIF metadata for individual photos</li>
+                <li>Start a basic slideshow within the Plex app</li>
+            </ul>
+
+            <p>For small libraries and casual viewing, this works adequately. The problems emerge as libraries grow and expectations rise.</p>
+
+            <h2>The Limitations -- Where Plex Falls Short</h2>
+
+            <p>Plex's photo features have received minimal development attention in recent years. The official Plex Photos app on the iOS App Store, last updated in June 2025, carries a 1.3-star rating. The core limitations include:</p>
+
+            <h3>No Chronological Timeline</h3>
+            <p>Plex has no unified timeline view that spans across albums. You cannot scroll through your entire photo history in date order the way you can in Apple Photos, Google Photos, or any modern photo app. Instead, you must navigate album by album, which is impractical when you have hundreds of folders.</p>
+
+            <h3>Poor Large Library Performance</h3>
+            <p>Libraries with more than 20,000 to 30,000 photos become noticeably slow. Loading album grids takes several seconds, thumbnail generation lags, and the overall experience becomes frustrating. Libraries exceeding 100,000 photos are essentially unusable in the native Plex interface without significant patience.</p>
+
+            <h3>No Offline Downloads (iOS)</h3>
+            <p>The Plex iOS app supports offline downloads (Sync) for movies and TV shows, but this feature does not extend to photos. There is no way to save a photo from your Plex library to your iPhone's Camera Roll through the official Plex app. This is a significant limitation for anyone who wants to share or use photos from their server on the go.</p>
+
+            <h3>No Year Scrubber or Fast Navigation</h3>
+            <p>When browsing large collections, there is no way to quickly jump to a specific year or date range. You must scroll manually through the entire library, which becomes impractical at scale.</p>
+
+            <h3>Limited Slideshow Capabilities</h3>
+            <p>The built-in slideshow is basic -- it plays through photos in an album sequentially. There is no external display support for a dual-screen experience (phone as controller, TV as display), and slideshow quality is limited by the client device's rendering capabilities.</p>
+
+            <h2>The Solution: Phlix</h2>
+
+            <p>Phlix was built specifically to address every limitation listed above. It connects to your existing Plex server and provides a modern, purpose-built photo browsing experience for iOS.</p>
+
+            <h3>Chronological Timeline</h3>
+            <p>Phlix presents your entire Plex photo library as a single, scrollable chronological timeline sorted by date taken. Every photo from every album appears in date order, just like Apple Photos. A year scrubber along the edge lets you jump instantly to any year in your collection.</p>
+
+            <h3>Built for Large Libraries</h3>
+            <p>Phlix was designed and tested against libraries with over 150,000 photos. Server-side year filtering, virtual paging, and intelligent prefetching keep the experience fast regardless of library size. Where the native Plex interface chokes on large collections, Phlix remains responsive.</p>
+
+            <h3>Download to iPhone</h3>
+            <p>Phlix lets you save any photo from your Plex server directly to your iPhone's Photo Library. The first 25 downloads are free, and unlimited downloads are included with Phlix Pro.</p>
+
+            <h3>AirPlay 2 Slideshow</h3>
+            <p>Phlix supports AirPlay 2 with extended display mode, turning your iPhone into a slideshow controller while your TV displays photos in full resolution. Your phone shows the current photo, upcoming photos, and playback controls while the TV shows nothing but the image. This dual-screen experience is not possible with the native Plex app.</p>
+
+            <h3>Free to Browse</h3>
+            <p>Phlix is free to download and use for browsing, timeline, year scrubber, search, favorites, and on-device slideshows. Pro features (unlimited downloads, external-display slideshows) are available from $6.99/year or $19.99 for lifetime access.</p>
+
+            <p>If you have a Plex server with photos, Phlix transforms the experience from "technically possible but frustrating" to genuinely enjoyable. It is the photo browser that Plex's photo library deserves.</p>
+
+            <div class="cta-box">
+                <h3>Phlix -- The Photo Browser Your Plex Library Deserves</h3>
+                <p>Chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Everything Plex Photos should be.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/browse-large-plex-photo-library/" class="blog-card"><span class="cat" style="color:var(--gold)">Photos</span><h3>Browse 100,000+ Photos on Plex Without Lag</h3><p>Optimize your server for massive photo libraries.</p></a>
+                <a href="/blog/plex-airplay-slideshow/" class="blog-card"><span class="cat" style="color:var(--gold)">Photos</span><h3>AirPlay Slideshow from Plex</h3><p>Display your Plex photos as a slideshow on your TV via AirPlay.</p></a>
+                <a href="/blog/plex-photos-vs-apple-google/" class="blog-card"><span class="cat" style="color:var(--gold)">Photos</span><h3>Plex Photos vs Apple Photos vs Google Photos</h3><p>Compare self-hosted Plex photos with cloud services.</p></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

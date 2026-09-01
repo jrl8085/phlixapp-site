@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex API Guide -- Automating Your Media Server | Phlix Blog</title>
+    <meta name="description" content="Use the Plex Media Server API for automation and custom integrations. Authentication, endpoints, curl examples, and Python scripts.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-api-guide/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-api-guide/">
+    <meta property="og:title" content="Plex API Guide -- Automating Your Media Server">
+    <meta property="og:description" content="Use the Plex Media Server API for automation and custom integrations. Authentication, endpoints, curl examples, and Python scripts.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Plex API Guide -- Automating Your Media Server","description":"Use the Plex Media Server API for automation and custom integrations. Authentication, endpoints, curl examples, and Python scripts.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex API Guide</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat" style="color:#FFA726">Advanced</span>
+                <h1>Plex API Guide -- Automating Your Media Server</h1>
+                <p class="subtitle">Use the Plex Media Server API for automation, custom integrations, and scripted library management.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>Plex Media Server exposes a comprehensive HTTP API that lets you do almost anything you can do through the web interface and more. Trigger library scans, fetch metadata, manage playlists, monitor active sessions, and automate maintenance tasks -- all through standard HTTP requests. This guide covers authentication, key endpoints, practical examples with curl and Python, and common automation use cases.</p>
+
+            <h2>Authentication -- Getting Your X-Plex-Token</h2>
+
+            <p>Every API request to a Plex server requires authentication via an <code>X-Plex-Token</code> parameter. This token identifies your Plex account and grants access to servers claimed by that account. There are several ways to obtain your token.</p>
+
+            <h3>Method 1: From the Plex Web Interface</h3>
+            <p>The quickest way to find your token is through the Plex web app. Open any media item in your browser, click the three-dot menu, and select "Get Info." Look at the XML URL in your browser's address bar -- the <code>X-Plex-Token</code> parameter will be appended to the URL.</p>
+
+            <h3>Method 2: Via the plex.tv API</h3>
+            <p>You can authenticate against plex.tv to receive a token programmatically:</p>
+
+            <pre><code>curl -X POST "https://plex.tv/users/sign_in.json" \
+  -H "X-Plex-Client-Identifier: my-automation-script" \
+  -H "X-Plex-Product: My Script" \
+  -H "X-Plex-Version: 1.0" \
+  -d "user[login]=your_email" \
+  -d "user[password]=your_password"</code></pre>
+
+            <p>The response JSON includes an <code>authToken</code> field. This is your global Plex account token. Note that for direct server communication, especially when working with shared user accounts, you may need a server-specific token obtained from the <code>/api/v2/resources</code> endpoint.</p>
+
+            <h3>Important: Account Token vs. Server Token</h3>
+            <p>The global <code>authToken</code> from plex.tv works for the server owner's account. If you are building an application that works with shared users (users who have been invited to access a server but do not own it), you need to obtain a <code>serverToken</code> from the <code>/api/v2/resources</code> endpoint. The server token is scoped to a specific server and user combination.</p>
+
+            <h2>Key API Endpoints</h2>
+
+            <p>All endpoints are relative to your server's base URL, typically <code>http://server-ip:32400</code>. Append <code>?X-Plex-Token=YOUR_TOKEN</code> to every request, or pass it as a header: <code>X-Plex-Token: YOUR_TOKEN</code>.</p>
+
+            <h3>Server Identity</h3>
+            <pre><code>GET /identity</code></pre>
+            <p>Returns server name, version, platform, and machine identifier. Useful for verifying connectivity and identifying which server you are talking to.</p>
+
+            <h3>List Libraries</h3>
+            <pre><code>GET /library/sections</code></pre>
+            <p>Returns all libraries on the server with their keys, types, titles, and paths. Each library has a numeric key (e.g., <code>1</code>, <code>2</code>, <code>3</code>) that you use in subsequent requests.</p>
+
+            <h3>Browse a Library</h3>
+            <pre><code>GET /library/sections/{key}/all</code></pre>
+            <p>Returns all items in a library. Add query parameters to filter: <code>?type=1</code> for movies, <code>?type=4</code> for episodes. You can also filter by year, genre, rating, and other metadata fields.</p>
+
+            <h3>Get Item Metadata</h3>
+            <pre><code>GET /library/metadata/{ratingKey}</code></pre>
+            <p>Returns full metadata for a specific item, including file paths, codec information, artwork URLs, and all associated metadata.</p>
+
+            <h3>Active Sessions</h3>
+            <pre><code>GET /status/sessions</code></pre>
+            <p>Returns information about all active playback sessions, including the user, client device, media being played, transcoding status, and bandwidth usage.</p>
+
+            <h3>Trigger a Library Scan</h3>
+            <pre><code>GET /library/sections/{key}/refresh</code></pre>
+            <p>Triggers a scan of the specified library. Plex will check for new, changed, and removed files.</p>
+
+            <h2>Practical Examples with curl</h2>
+
+            <h3>List All Movie Libraries</h3>
+            <pre><code>curl -s "http://192.168.1.100:32400/library/sections" \
+  -H "X-Plex-Token: YOUR_TOKEN" \
+  -H "Accept: application/json" | python3 -m json.tool</code></pre>
+
+            <h3>Search for a Movie</h3>
+            <pre><code>curl -s "http://192.168.1.100:32400/library/sections/1/all?title=Inception" \
+  -H "X-Plex-Token: YOUR_TOKEN" \
+  -H "Accept: application/json"</code></pre>
+
+            <h3>Check Who Is Currently Streaming</h3>
+            <pre><code>curl -s "http://192.168.1.100:32400/status/sessions" \
+  -H "X-Plex-Token: YOUR_TOKEN" \
+  -H "Accept: application/json"</code></pre>
+
+            <h3>Force a Library Scan</h3>
+            <pre><code>curl -s "http://192.168.1.100:32400/library/sections/1/refresh" \
+  -H "X-Plex-Token: YOUR_TOKEN"</code></pre>
+
+            <h2>Python Automation Examples</h2>
+
+            <p>For more complex automation, Python with the <code>requests</code> library is the natural choice. Here is a script that monitors active sessions and sends a notification when a new stream starts:</p>
+
+            <pre><code>import requests
+import time
+
+PLEX_URL = "http://192.168.1.100:32400"
+TOKEN = "YOUR_TOKEN"
+HEADERS = {
+    "X-Plex-Token": TOKEN,
+    "Accept": "application/json"
+}
+
+known_sessions = set()
+
+while True:
+    r = requests.get(f"{PLEX_URL}/status/sessions", headers=HEADERS)
+    data = r.json()
+
+    current = set()
+    for session in data.get("MediaContainer", {}).get("Metadata", []):
+        session_id = session.get("sessionKey")
+        current.add(session_id)
+
+        if session_id not in known_sessions:
+            user = session.get("User", {}).get("title", "Unknown")
+            title = session.get("title", "Unknown")
+            print(f"New stream: {user} is watching {title}")
+
+    known_sessions = current
+    time.sleep(30)</code></pre>
+
+            <p>You can extend this pattern to send notifications via Discord webhooks, email, or any other service. Tautulli provides this functionality out of the box (see our <a href="/blog/plex-tautulli-monitoring/">Tautulli guide</a>), but building your own gives you full control.</p>
+
+            <h2>Plex Webhooks</h2>
+
+            <p>Plex Pass subscribers can configure server-side webhooks that fire on events like playback start, stop, pause, resume, media added, and library scan complete. Configure these in <strong>Settings &gt; Webhooks</strong> by adding a URL that Plex will POST to when events occur.</p>
+
+            <p>The webhook payload is a JSON body containing the event type, account information, server details, and metadata about the media item involved. Common automation triggers include:</p>
+
+            <ul>
+                <li><strong>media.play:</strong> Send a notification when someone starts watching something.</li>
+                <li><strong>library.new:</strong> Trigger a custom script when new media is added (e.g., sync artwork, update a database, notify a chat channel).</li>
+                <li><strong>media.scrobble:</strong> Log completed views to an external service.</li>
+                <li><strong>device.new:</strong> Alert when a new device connects to your server.</li>
+            </ul>
+
+            <h2>Common Automation Use Cases</h2>
+
+            <ul>
+                <li><strong>Scheduled library scans.</strong> Trigger scans at specific times using cron and the refresh endpoint, rather than relying on Plex's built-in interval scanner.</li>
+                <li><strong>User activity reports.</strong> Query the sessions endpoint periodically and log usage to a database for monthly reports.</li>
+                <li><strong>Automated poster management.</strong> Use the metadata endpoints to bulk-update artwork across your library.</li>
+                <li><strong>Disk space monitoring.</strong> Query library sizes and file counts, then alert when storage is running low.</li>
+                <li><strong>Stale content cleanup.</strong> Identify items that have not been played in a specified period and flag them for removal.</li>
+            </ul>
+
+            <p>The Plex API is not officially documented by Plex in a formal specification, but community resources like the unofficial Plex API documentation on GitHub provide comprehensive endpoint references. Combined with the Python <code>plexapi</code> library (installable via <code>pip install plexapi</code>), you can automate virtually every aspect of your Plex server management.</p>
+
+            <div class="cta-box">
+                <h3>Phlix -- The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-tautulli-monitoring/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>Monitor Plex with Tautulli</h3><p>Detailed statistics, notifications, and user monitoring setup.</p></a>
+                <a href="/blog/plex-reverse-proxy-nginx/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>Plex Reverse Proxy with Nginx</h3><p>SSL/TLS termination, custom domain, and enhanced security.</p></a>
+                <a href="/blog/plex-docker-setup/" class="blog-card"><span class="cat" style="color:#4CAF50">Getting Started</span><h3>Plex in Docker -- Step-by-Step</h3><p>Docker container setup with persistent storage and hardware transcoding.</p></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

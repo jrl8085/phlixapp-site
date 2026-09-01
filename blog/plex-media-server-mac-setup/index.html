@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Install Plex Media Server on Mac — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="Set up Plex Media Server on macOS. Installation, library configuration, energy settings, and remote access.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-media-server-mac-setup/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-media-server-mac-setup/">
+    <meta property="og:title" content="How to Install Plex Media Server on Mac — Complete Guide">
+    <meta property="og:description" content="Set up Plex Media Server on macOS. Installation, library configuration, energy settings, and remote access.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Install Plex Media Server on Mac — Complete Guide","description":"Set up Plex Media Server on macOS. Installation, library configuration, energy settings, and remote access.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Install Plex Media Server on Mac</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Install Plex Media Server on Mac — Complete Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+
+        <p>Macs make excellent Plex servers. Apple Silicon chips deliver strong transcoding performance at minimal power consumption, and macOS is a reliable operating system for always-on services. Whether you are using a Mac Mini as a dedicated headless server or running Plex alongside your daily work on an iMac or MacBook, this guide walks through every step of the installation and configuration process.</p>
+
+        <h2>Choosing the Right Mac</h2>
+
+        <p>Any Mac running macOS Ventura (13) or later can run Plex Media Server, but some models are better suited than others:</p>
+
+        <ul>
+            <li><strong>Mac Mini:</strong> The best choice for a dedicated Plex server. Small, quiet, energy-efficient, and designed to run 24/7. The M-series Mac Mini consumes around 5-10 watts at idle, making it far cheaper to run than a desktop PC.</li>
+            <li><strong>iMac:</strong> Great as a dual-purpose machine. Run Plex in the background while using the iMac for everything else. The always-on display is unnecessary for Plex but the hardware is more than capable.</li>
+            <li><strong>MacBook:</strong> Works as a Plex server but has caveats. You need to prevent sleep when the lid is closed, battery health degrades when plugged in constantly, and the fan may run during transcoding. Use a MacBook only if it is your only option.</li>
+            <li><strong>Mac Studio / Mac Pro:</strong> Overkill for Plex alone, but if you already own one for professional work, it handles Plex effortlessly alongside everything else.</li>
+        </ul>
+
+        <h2>Step 1 — Download and Install</h2>
+
+        <p>Go to <code>plex.tv/media-server-downloads</code> and select macOS. Download the <code>.dmg</code> file. Once downloaded, double-click the DMG to mount it, then drag the Plex Media Server icon into your Applications folder.</p>
+
+        <p>Launch Plex Media Server from Applications or Spotlight. The first time you open it, macOS may display a security prompt asking whether you want to open an app downloaded from the internet. Click Open to proceed. You will also see permission requests for network access and possibly file access depending on where your media is stored. Grant all requested permissions.</p>
+
+        <p>When Plex launches, a small Plex icon appears in the menu bar at the top of your screen. This icon indicates Plex is running and provides quick access to open the web interface, restart the server, or quit.</p>
+
+        <h2>Step 2 — Run the Setup Wizard</h2>
+
+        <p>After launching Plex, your default browser opens to <code>http://localhost:32400/web</code> with the first-time setup wizard. Sign in with your Plex account to claim the server. If you do not have an account, create one for free at <code>plex.tv</code>.</p>
+
+        <p>Name your server something recognizable like "Mac Mini" or "Office iMac." This name appears in all client apps when selecting a server.</p>
+
+        <h2>Step 3 — Add Media Libraries</h2>
+
+        <p>Click "Add Library" in the wizard and choose a library type: Movies, TV Shows, Music, or Photos. Browse to the folder containing your media. For media on an external drive, navigate to <code>/Volumes/YourDriveName/</code>.</p>
+
+        <h3>File Permissions on macOS</h3>
+
+        <p>macOS enforces strict file permissions through System Settings. If Plex cannot access your media folder, you need to grant Full Disk Access or add Plex to the Files and Folders permissions. Go to System Settings, then Privacy and Security, then Full Disk Access, and add Plex Media Server. This is especially important for media stored in locations outside your home folder or on external drives.</p>
+
+        <p>If your media is on a network share (SMB or AFP), mount the share in Finder first, then point Plex to the mounted path under <code>/Volumes/</code>. For reliable automatic mounting, add the network share to your Login Items in System Settings under General.</p>
+
+        <h2>Step 4 — Prevent Sleep</h2>
+
+        <p>A sleeping Mac cannot serve media. This is the most common problem new Mac-based Plex users encounter. Configure your energy settings to prevent sleep:</p>
+
+        <h3>Mac Mini and iMac (Desktop Macs)</h3>
+
+        <p>Open System Settings, then Energy Saver (or Battery on laptops). Set "Prevent automatic sleeping when the display is off" to On. On a Mac Mini, also enable "Start up automatically after a power failure" so the server recovers from outages without manual intervention. The display can turn off to save energy without affecting Plex.</p>
+
+        <h3>MacBook</h3>
+
+        <p>If you must use a MacBook as a server, the challenge is preventing sleep when the lid is closed. Connect an external display or use a closed-clamshell setup with an external keyboard and mouse. Alternatively, use a utility like <code>caffeinate</code> in Terminal:</p>
+
+        <pre><code>caffeinate -s &amp;</code></pre>
+
+        <p>This command prevents sleep for as long as the Terminal window stays open. For a permanent solution, create a Launch Agent that runs caffeinate at login. Be aware that running a MacBook closed and plugged in continuously will impact long-term battery health.</p>
+
+        <h2>Step 5 — Configure the macOS Firewall</h2>
+
+        <p>macOS has a built-in firewall that is disabled by default. If you have enabled it, you need to allow Plex through. Go to System Settings, then Network, then Firewall, and click Options. Add Plex Media Server to the allowed applications list and set it to "Allow incoming connections."</p>
+
+        <p>For remote access from outside your home network, forward port 32400 on your router to your Mac's local IP address. Then in the Plex web interface, go to Settings, Remote Access, and enable it. A green checkmark confirms that remote access is working.</p>
+
+        <h3>Assign a Static IP</h3>
+
+        <p>Port forwarding relies on your Mac having a consistent local IP address. By default, your router assigns IPs dynamically via DHCP, which means your Mac's address could change after a reboot. Fix this by either assigning a static IP in System Settings under Network, or by creating a DHCP reservation in your router's settings. The router method is generally preferred because it keeps network configuration centralized.</p>
+
+        <h2>Step 6 — Start Plex Automatically at Login</h2>
+
+        <p>You want Plex to launch whenever your Mac starts up. Open System Settings, then General, then Login Items. Click the plus button and add Plex Media Server from your Applications folder. Now Plex will start automatically every time you log in.</p>
+
+        <p>For a headless Mac Mini that nobody logs into, enable automatic login in System Settings under Users and Groups. Select your user account and enable "Automatically log in as." Combined with the Login Items setting, this ensures Plex starts after every reboot without manual intervention.</p>
+
+        <h2>Step 7 — Optimize Performance</h2>
+
+        <h3>Apple Silicon Advantages</h3>
+
+        <p>M-series Macs have dedicated media engines that accelerate video encoding and decoding in hardware. Plex supports hardware transcoding on Apple Silicon through VideoToolbox. This means an M1 Mac Mini can transcode multiple 4K streams simultaneously while barely increasing power consumption. Enable hardware transcoding in Plex Settings under Transcoder (Plex Pass required).</p>
+
+        <h3>Storage Configuration</h3>
+
+        <p>Keep Plex's metadata and database on your Mac's internal SSD for fast library browsing. Store actual media files on external drives if you need more capacity. USB-C and Thunderbolt drives provide the best performance. Avoid USB 2.0 drives, as their throughput is too low for reliable 4K streaming.</p>
+
+        <p>If using multiple external drives, consider creating a JBOD (Just a Bunch of Disks) configuration or using software RAID through Disk Utility. For simpler management, just add multiple folder paths to a single Plex library.</p>
+
+        <h3>macOS Updates</h3>
+
+        <p>macOS updates occasionally restart your Mac. Unlike Windows, macOS does not force-install updates during active use, but it does prompt regularly. Enable automatic updates but disable "Install macOS updates" if you want to control when restarts happen. Your Mac will still download the update but wait for your approval to install. Check for and apply updates during times when nobody is streaming.</p>
+
+        <h2>Verifying Your Setup</h2>
+
+        <p>From another device on your network, open a browser and navigate to <code>http://YOUR-MAC-IP:32400/web</code>. You should see your Plex libraries. Play a file to confirm streaming works. Then install a Plex client app on your phone or TV and sign in with the same account. Your Mac server should appear automatically.</p>
+
+        <p>For photo browsing, the Phlix app connects to your Mac-hosted Plex server and provides a chronological timeline view that makes browsing thousands of photos far more intuitive than Plex's own client.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-media-server-windows-setup/" class="related-card">
+                <h3>Install Plex Media Server on Windows</h3>
+                <p>Step-by-step Windows installation with firewall and service tips.</p>
+            </a>
+            <a href="/blog/plex-network-optimization/" class="related-card">
+                <h3>Optimize Your Network for Plex</h3>
+                <p>Ethernet, QoS, VLANs, and bandwidth management for smooth streaming.</p>
+            </a>
+            <a href="/blog/plex-photo-library-setup/" class="related-card">
+                <h3>Set Up a Plex Photo Library</h3>
+                <p>Organize your photos in Plex with proper folder structure and EXIF data.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

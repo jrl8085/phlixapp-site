@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up a Plex Reverse Proxy with Nginx | Phlix Blog</title>
+    <meta name="description" content="Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-reverse-proxy-nginx/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-reverse-proxy-nginx/">
+    <meta property="og:title" content="How to Set Up a Plex Reverse Proxy with Nginx">
+    <meta property="og:description" content="Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Reverse Proxy with Nginx","description":"Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Reverse Proxy with Nginx</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat" style="color:#FFA726">Advanced</span>
+                <h1>How to Set Up a Plex Reverse Proxy with Nginx</h1>
+                <p class="subtitle">Configure Nginx as a reverse proxy for Plex with SSL/TLS, custom domain, WebSocket proxying, and security headers.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>Running Plex behind a reverse proxy gives you control over how your media server faces the internet. Instead of exposing port 32400 directly, you can serve Plex through a custom domain with a valid SSL certificate, add security headers, and consolidate multiple services behind a single IP address. Nginx is the most popular choice for this role, and configuring it for Plex is straightforward once you understand the handful of quirks involved.</p>
+
+            <h2>Why Use a Reverse Proxy for Plex</h2>
+
+            <p>A reverse proxy sits between the internet and your Plex server, accepting incoming connections and forwarding them to Plex on the backend. This architecture offers several practical advantages:</p>
+
+            <ul>
+                <li><strong>Custom domain with SSL.</strong> Instead of accessing your server at <code>your-ip:32400</code>, you can use <code>plex.yourdomain.com</code> with a trusted HTTPS certificate from Let's Encrypt. This eliminates browser security warnings and makes sharing your server with others more professional.</li>
+                <li><strong>Single entry point.</strong> If you run other services alongside Plex (Tautulli, Overseerr, Sonarr), Nginx can route traffic to each service based on subdomain or path, all through ports 80 and 443.</li>
+                <li><strong>Security headers.</strong> You can add HTTP security headers like HSTS, X-Frame-Options, and Content-Security-Policy at the proxy level, hardening your server without modifying Plex itself.</li>
+                <li><strong>Rate limiting and access control.</strong> Nginx can rate-limit connection attempts, block suspicious IPs, or restrict access to specific geographic regions before traffic ever reaches Plex.</li>
+            </ul>
+
+            <h2>Prerequisites</h2>
+
+            <p>Before you begin, make sure you have the following in place:</p>
+
+            <ul>
+                <li>A Linux server (Ubuntu 22.04 or newer recommended) with Plex Media Server installed and running on its default port 32400.</li>
+                <li>A domain name with DNS A records pointing to your server's public IP address. For this guide, we will use <code>plex.example.com</code>.</li>
+                <li>Nginx installed. On Ubuntu: <code>sudo apt install nginx</code>.</li>
+                <li>Certbot for Let's Encrypt certificates: <code>sudo apt install certbot python3-certbot-nginx</code>.</li>
+                <li>Ports 80 and 443 open on your firewall and forwarded through your router.</li>
+            </ul>
+
+            <h2>Step 1 -- Configure Plex for Reverse Proxy</h2>
+
+            <p>Before touching Nginx, you need to tell Plex that it will be accessed through a proxy. Open the Plex web interface, go to <strong>Settings &gt; Network</strong>, and configure two settings:</p>
+
+            <p><strong>Custom server access URLs:</strong> Add <code>https://plex.example.com:443</code> to the list. This tells Plex to advertise this URL to clients so they can find your server through the proxy.</p>
+
+            <p><strong>Treat these IP ranges as local (LAN Networks):</strong> Add the IP of your Nginx server (e.g., <code>172.17.0.0/16</code> for Docker, or <code>127.0.0.1/32</code> if Nginx runs on the same machine). This ensures Plex treats proxied connections as local, avoiding unnecessary bandwidth restrictions and enabling full-quality streaming.</p>
+
+            <h2>Step 2 -- Obtain an SSL Certificate</h2>
+
+            <p>Run Certbot to obtain a free SSL certificate from Let's Encrypt:</p>
+
+            <pre><code>sudo certbot certonly --nginx -d plex.example.com</code></pre>
+
+            <p>Certbot will verify domain ownership, generate the certificate, and save it to <code>/etc/letsencrypt/live/plex.example.com/</code>. Certificates renew automatically via a systemd timer. You can verify the renewal process works with <code>sudo certbot renew --dry-run</code>.</p>
+
+            <h2>Step 3 -- Write the Nginx Configuration</h2>
+
+            <p>Create a new site configuration file at <code>/etc/nginx/sites-available/plex.conf</code>. The following configuration handles HTTPS termination, WebSocket proxying (required for Plex Companion and some client communications), and security headers:</p>
+
+            <pre><code>upstream plex_backend {
+    server 127.0.0.1:32400;
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    server_name plex.example.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name plex.example.com;
+
+    ssl_certificate /etc/letsencrypt/live/plex.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/plex.example.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+
+    # Security headers
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;
+
+    # Large uploads (for camera upload feature)
+    client_max_body_size 100M;
+
+    # Disable buffering for streaming
+    proxy_buffering off;
+
+    location / {
+        proxy_pass http://plex_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # WebSocket support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        # Timeouts for long-lived connections
+        proxy_read_timeout 86400s;
+        proxy_send_timeout 86400s;
+    }
+}</code></pre>
+
+            <h2>Step 4 -- Enable the Site and Test</h2>
+
+            <p>Symlink the configuration into <code>sites-enabled</code>, test the syntax, and reload Nginx:</p>
+
+            <pre><code>sudo ln -s /etc/nginx/sites-available/plex.conf /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+
+            <p>If <code>nginx -t</code> reports no errors, navigate to <code>https://plex.example.com</code> in your browser. You should see the Plex web interface served over HTTPS with a valid certificate.</p>
+
+            <h2>WebSocket Proxying -- Why It Matters</h2>
+
+            <p>Plex uses WebSocket connections for real-time features like Plex Companion (controlling playback from your phone), server notifications, and session updates. Without proper WebSocket proxying, these features will silently fail. The key lines in the configuration above are the <code>Upgrade</code> and <code>Connection</code> headers, along with <code>proxy_http_version 1.1</code>. If you omit these, Plex will appear to work but Companion will not function and the dashboard will not update in real time.</p>
+
+            <h2>Security Hardening</h2>
+
+            <p>The configuration above includes essential security headers, but you can go further depending on your threat model:</p>
+
+            <h3>Rate Limiting</h3>
+            <p>Add a rate limiting zone to prevent brute-force attacks against the Plex login:</p>
+
+            <pre><code># In the http block of nginx.conf
+limit_req_zone $binary_remote_addr zone=plex_limit:10m rate=5r/s;
+
+# In the server block
+location / {
+    limit_req zone=plex_limit burst=20 nodelay;
+    # ... rest of proxy config
+}</code></pre>
+
+            <h3>Geo-Blocking</h3>
+            <p>If you only share your server with people in specific countries, you can use the Nginx GeoIP2 module to block all other traffic at the proxy level, before it reaches Plex.</p>
+
+            <h3>Fail2Ban Integration</h3>
+            <p>Configure Fail2Ban to monitor the Nginx access log for repeated failed authentication attempts and automatically ban offending IP addresses. This adds an active defense layer beyond rate limiting.</p>
+
+            <h2>Common Issues and Solutions</h2>
+
+            <p><strong>Clients cannot find the server remotely.</strong> Ensure you have added the custom access URL in Plex settings and that Plex's own remote access is disabled (since Nginx now handles external access). Some clients may need to be signed out and back in to pick up the new URL.</p>
+
+            <p><strong>Streaming works but is slow.</strong> Check that <code>proxy_buffering off</code> is set. Without this, Nginx will attempt to buffer the entire stream before forwarding it, which causes massive delays for large files.</p>
+
+            <p><strong>502 Bad Gateway errors.</strong> Verify that Plex is running and listening on port 32400. Check <code>sudo systemctl status plexmediaserver</code> and ensure no firewall rules block localhost connections.</p>
+
+            <p><strong>Certificate renewal fails.</strong> Make sure port 80 is accessible for the Let's Encrypt HTTP-01 challenge. The redirect from port 80 to 443 should not interfere with Certbot because it handles the <code>.well-known/acme-challenge</code> path before the redirect fires.</p>
+
+            <h2>Docker Considerations</h2>
+
+            <p>If Plex runs in Docker, replace <code>127.0.0.1:32400</code> in the upstream block with the container's IP or Docker network hostname. When using Docker Compose, both containers can share a network, and you can reference Plex by its service name (e.g., <code>plex:32400</code>). Ensure the Nginx container exposes ports 80 and 443, while the Plex container does not need to expose port 32400 to the host at all.</p>
+
+            <p>A reverse proxy is one of those configurations that takes 20 minutes to set up but pays dividends for years. Your Plex server gets a clean URL, a trusted certificate, better security, and the flexibility to grow alongside other self-hosted services on your network.</p>
+
+            <div class="cta-box">
+                <h3>Phlix -- The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-gpu-transcoding/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>GPU Transcoding -- Hardware Acceleration</h3><p>Intel Quick Sync, NVIDIA NVENC, AMD VCE setup and benchmarks.</p></a>
+                <a href="/blog/plex-tautulli-monitoring/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>Monitor Plex with Tautulli</h3><p>Detailed statistics, notifications, and user monitoring setup.</p></a>
+                <a href="/blog/plex-docker-setup/" class="blog-card"><span class="cat" style="color:#4CAF50">Getting Started</span><h3>Plex in Docker -- Step-by-Step</h3><p>Docker container setup with persistent storage and hardware transcoding.</p></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

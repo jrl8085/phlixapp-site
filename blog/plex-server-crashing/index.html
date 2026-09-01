@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Server Keeps Crashing — How to Diagnose and Fix It | Phlix Blog</title>
+    <meta name="description" content="Troubleshoot Plex server crashes with log analysis, database repair, and resource monitoring.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-server-crashing/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-server-crashing/">
+    <meta property="og:title" content="Plex Server Keeps Crashing — How to Diagnose and Fix It">
+    <meta property="og:description" content="Troubleshoot Plex server crashes with log analysis, database repair, and resource monitoring.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Plex Server Keeps Crashing — How to Diagnose and Fix It",
+        "description": "Troubleshoot Plex server crashes with log analysis, database repair, and resource monitoring.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Server Keeps Crashing</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat">Troubleshooting</span>
+                <h1>Plex Server Keeps Crashing — How to Diagnose and Fix It</h1>
+                <p class="subtitle">Troubleshoot Plex server crashes with log analysis, database repair, and resource monitoring.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>A Plex server that crashes is worse than one that runs slowly. Slow performance degrades the experience; crashes destroy it entirely. Your family starts a movie and it dies mid-stream. Your remote users lose access without warning. Scheduled recordings fail. The good news is that Plex crashes almost always leave diagnostic evidence, and most causes have straightforward fixes once identified.</p>
+
+            <h2>Step 1: Check the Plex Media Server Logs</h2>
+
+            <p>The Plex Media Server logs are your primary diagnostic tool. They record everything the server does, including error messages and crash-related events that occurred right before the process died. The logs are located in your Plex data directory under <code>Logs/</code>.</p>
+
+            <p>The key log files are:</p>
+
+            <p><strong>Plex Media Server.log</strong> — the main application log. Look at the last entries before the crash timestamp. Errors related to memory allocation failures, database lock timeouts, or unhandled exceptions will appear here.</p>
+
+            <p><strong>Plex Media Scanner.log</strong> — if crashes coincide with library scans, this log may reveal problematic files or directories that trigger scanner failures.</p>
+
+            <p><strong>Crash reports</strong> — on macOS, check <code>~/Library/Logs/DiagnosticReports/</code> for Plex crash reports. On Linux, check <code>/var/log/syslog</code> or <code>journalctl -u plexmediaserver</code> for OOM (Out of Memory) kills and segfaults. On Windows, the Event Viewer (Application log) may contain relevant crash entries.</p>
+
+            <p>Search the logs for keywords like "ERROR," "FATAL," "Segmentation fault," "killed," "out of memory," and "database is locked." These terms point directly to the crash cause.</p>
+
+            <h2>Step 2: Database Corruption</h2>
+
+            <p>Database corruption is one of the most common causes of persistent Plex crashes. The SQLite database can become corrupted due to power failures, disk errors, forced shutdowns, or running out of disk space during a write operation. When the database is corrupt, Plex may crash on startup, during library browsing, or when accessing specific content.</p>
+
+            <h3>Checking for Corruption</h3>
+
+            <p>Stop the Plex server, then run an integrity check on the main database:</p>
+
+            <p><code>sqlite3 "com.plexapp.plugins.library.db" "PRAGMA integrity_check;"</code></p>
+
+            <p>If the output is "ok," the database is structurally sound. If it reports errors, the database needs repair.</p>
+
+            <h3>Repairing the Database</h3>
+
+            <p>SQLite can often repair a corrupt database by exporting and reimporting it:</p>
+
+            <p><code>sqlite3 "com.plexapp.plugins.library.db" ".dump" | sqlite3 "repaired.db"</code></p>
+
+            <p>This exports all recoverable data from the corrupt database into a new, clean database. Back up the original file, rename the repaired database to replace it, and restart Plex. You may lose some data (watch history, custom edits) from the corrupted sections, but the server should start and run reliably.</p>
+
+            <p>If the damage is too severe for the dump-and-reimport approach, you may need to delete the database entirely and let Plex rebuild it by rescanning your libraries. This loses all watch history, custom metadata, and playlists, but results in a completely fresh database. Before doing this, export your watch history using a tool like Tautulli or ExportTools so you can restore it later.</p>
+
+            <h2>Step 3: Memory and Resource Limits</h2>
+
+            <p>Plex can consume significant memory, especially on servers with large libraries, many simultaneous streams, or active transcoding. If your server has limited RAM, the operating system's OOM (Out of Memory) killer may terminate the Plex process when memory pressure becomes critical.</p>
+
+            <p>On Linux, check for OOM kills with <code>dmesg | grep -i "killed process"</code> or <code>journalctl -k | grep -i oom</code>. If Plex is being killed due to memory, you have several options: add more physical RAM, increase swap space (slower but prevents crashes), reduce the number of simultaneous transcodes, or disable memory-intensive features like video preview thumbnails.</p>
+
+            <p>On Docker installations, check the container's memory limit. If the container is constrained to 2 GB of RAM but Plex needs 3 GB for a large library with transcoding, the container runtime will kill the process. Increase the memory limit or remove it entirely if the host has sufficient RAM.</p>
+
+            <h2>Step 4: Disk Space</h2>
+
+            <p>Running out of disk space is a silent killer. Plex needs free space on the drive containing its data directory for database operations, thumbnail generation, transcode temp files, and log rotation. When the disk fills up, Plex may crash during any write operation.</p>
+
+            <p>Check available space on all relevant drives. On Linux, use <code>df -h</code>. On Windows, check the drive properties. Pay special attention to the drive hosting the Plex data directory, which is often different from the media storage drives. Thumbnail data alone can consume tens of gigabytes on a large library.</p>
+
+            <p>To free space quickly: delete old transcoder temp files (in the <code>Cache/Transcode/</code> directory), clean old log files, empty the Plex trash (<strong>Settings &gt; Library &gt; Empty Trash</strong>), and run <strong>Clean Bundles</strong> to remove orphaned metadata bundles.</p>
+
+            <h2>Step 5: Update to the Latest Version</h2>
+
+            <p>Plex regularly releases updates that fix bugs, including crash-causing bugs. Check your current version in <strong>Settings &gt; General</strong> and compare it with the latest release on the Plex downloads page. If you are more than a few versions behind, update.</p>
+
+            <p>However, do not blindly update to the newest version if your server has been stable. Occasionally, a new release introduces regressions. Check the Plex forums for reports of issues with the latest version before updating. If a recent update caused your crashes, you can roll back by downloading and installing the previous version from the Plex downloads archive.</p>
+
+            <h2>Step 6: Clean Install vs. Repair Install</h2>
+
+            <p>If crashes persist after all the above steps, a clean install may be necessary. This involves uninstalling Plex, removing the data directory entirely, reinstalling the latest version, and setting up your server from scratch. You will lose all metadata, watch history, and configurations, but you will also eliminate any corrupt files, broken plugins, or misconfigured settings that may be causing instability.</p>
+
+            <p>A less destructive option is a repair install: uninstall and reinstall Plex without removing the data directory. This replaces the application binaries while preserving your database, metadata, and settings. This fixes issues caused by corrupted application files without losing your data.</p>
+
+            <p>On Windows, use the standard installer to repair. On Linux, reinstall the package (<code>dpkg -i</code> or <code>rpm -i --force</code>). On macOS, download the latest DMG and install over the existing version. On Docker, pull the latest image and recreate the container with the same volume mounts.</p>
+
+            <h2>Step 7: Monitoring Tools</h2>
+
+            <p>After resolving the immediate crash, set up monitoring to catch future issues before they become crashes. <strong>Tautulli</strong> monitors Plex-specific activity including stream counts, library sizes, and playback issues. <strong>Uptime Kuma</strong> or <strong>Healthchecks.io</strong> can ping your Plex server at regular intervals and alert you when it goes down.</p>
+
+            <p>For system-level monitoring, tools like <strong>Netdata</strong>, <strong>Grafana with Prometheus</strong>, or even simple scripts that check CPU, RAM, and disk usage can provide early warning when resources are running low. Set alerts for disk usage above 90%, RAM usage above 85%, and sustained CPU usage above 95%.</p>
+
+            <p>If your server is headless (no monitor attached), ensure you have remote access configured so you can check logs and restart services without physical access. SSH on Linux and macOS, or Remote Desktop on Windows, should be configured and tested before you need them.</p>
+
+            <h2>When to Ask for Help</h2>
+
+            <p>If your logs show errors you cannot interpret, the Plex forums are the best place to seek help. Post the relevant log excerpts (not the entire log file), your server hardware specifications, operating system version, Plex version, and a description of when and how the crashes occur. The Plex community is generally responsive and experienced with obscure crash scenarios.</p>
+
+            <div class="cta-box">
+                <h3>Phlix — The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-performance-optimization/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Performance Optimization — Speed Up Your Server</h3></a>
+                <a href="/blog/plex-app-not-connecting/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex App Not Connecting to Server — Fix Connection Issues</h3></a>
+                <a href="/blog/fix-plex-buffering/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Buffering? Here's How to Fix It Once and For All</h3></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

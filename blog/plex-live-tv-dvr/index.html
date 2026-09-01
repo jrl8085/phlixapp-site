@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Plex Live TV and DVR — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="Configure OTA tuners, EPG guides, and DVR recording in Plex. Complete setup guide for HDHomeRun tuners, channel lineups, and commercial skip.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-live-tv-dvr/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-live-tv-dvr/">
+    <meta property="og:title" content="How to Set Up Plex Live TV and DVR — Complete Guide">
+    <meta property="og:description" content="Configure OTA tuners, EPG guides, and DVR recording in Plex. Complete setup guide for HDHomeRun tuners, channel lineups, and commercial skip.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up Plex Live TV and DVR — Complete Guide","description":"Configure OTA tuners, EPG guides, and DVR recording in Plex. Complete setup guide for HDHomeRun tuners, channel lineups, and commercial skip.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Live TV and DVR</div>
+
+    <article>
+        <span class="category features">Features</span>
+        <h1>How to Set Up Plex Live TV and DVR — Complete Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Plex can do more than stream your personal media library. With a compatible over-the-air (OTA) tuner and an active Plex Pass subscription, you can watch live broadcast television and record shows directly from within the Plex interface. No cable subscription required. You get local channels like ABC, CBS, NBC, FOX, and PBS in full HD, recorded automatically to your server for on-demand viewing.</p>
+
+        <p>This guide walks through the complete setup: choosing a tuner, configuring the electronic program guide, recording shows, enabling commercial skip, and managing storage for your recordings.</p>
+
+        <h2>What You Need</h2>
+
+        <p>Before starting, gather the following:</p>
+
+        <ul>
+            <li><strong>Plex Pass.</strong> Live TV and DVR is a Plex Pass feature. It is not available on free Plex accounts. You need either a monthly ($4.99), yearly ($39.99), or lifetime subscription.</li>
+            <li><strong>A compatible OTA tuner.</strong> Plex supports network-attached tuners, with HDHomeRun being the most widely used and best-supported option.</li>
+            <li><strong>An OTA antenna.</strong> A standard indoor or outdoor antenna that receives broadcast channels in your area. Signal quality depends on your distance from broadcast towers.</li>
+            <li><strong>Sufficient storage.</strong> DVR recordings consume disk space. Budget roughly 4 to 8 GB per hour of HD recording, depending on the broadcast bitrate.</li>
+            <li><strong>A running Plex Media Server.</strong> Version 1.10 or later, though you should always run the latest version for best compatibility.</li>
+        </ul>
+
+        <h2>Choosing a Tuner</h2>
+
+        <p>The HDHomeRun family of tuners from SiliconDust is the gold standard for Plex Live TV. These are small network-attached boxes that connect to your router via Ethernet and to your antenna via coaxial cable. Plex discovers them automatically on your network.</p>
+
+        <h3>Popular HDHomeRun Models</h3>
+
+        <table>
+            <tr><th>Model</th><th>Tuners</th><th>Notes</th></tr>
+            <tr><td>HDHomeRun FLEX DUO</td><td>2</td><td>Most affordable option. Supports two simultaneous channels.</td></tr>
+            <tr><td>HDHomeRun FLEX 4K</td><td>4</td><td>Four tuners, ATSC 3.0 support for future 4K broadcasts.</td></tr>
+            <tr><td>HDHomeRun CONNECT</td><td>2</td><td>Older model, still fully supported. ATSC 1.0 only.</td></tr>
+        </table>
+
+        <p>The number of tuners determines how many channels you can watch or record simultaneously. Two tuners means you can record two shows at once, or watch one live while recording another. If you plan to record aggressively, consider a four-tuner model.</p>
+
+        <p>Beyond HDHomeRun, Plex also supports some other tuners including the Hauppauge WinTV series and certain AVerMedia devices. However, HDHomeRun provides the most seamless experience with automatic network discovery and consistent firmware updates.</p>
+
+        <h2>Setting Up the Antenna</h2>
+
+        <p>Your antenna is what actually receives the broadcast signal. The tuner just converts it to a network stream. A few tips for getting the best reception:</p>
+
+        <ul>
+            <li><strong>Check your location.</strong> Use a tool like <code>antennaweb.org</code> or the FCC's DTV reception maps to see which broadcast towers are near you and what channels you can expect to receive.</li>
+            <li><strong>Elevation matters.</strong> Higher placement generally means better reception. A rooftop or attic-mounted antenna outperforms a tabletop model in most cases.</li>
+            <li><strong>Use RG6 coaxial cable.</strong> If running a long cable from antenna to tuner, use RG6 rather than the thinner RG59. It has less signal loss over distance.</li>
+            <li><strong>Amplification.</strong> If you are more than 30 miles from broadcast towers, a signal amplifier can help. If you are close to towers, an amplifier can actually cause problems by overloading the tuner.</li>
+        </ul>
+
+        <h2>Adding the Tuner to Plex</h2>
+
+        <p>With your HDHomeRun connected to your network and your antenna plugged in, open Plex Web and navigate to Settings. Under "Live TV &amp; DVR," click "Set Up Plex DVR."</p>
+
+        <ol>
+            <li><strong>Tuner detection.</strong> Plex will scan your network and find the HDHomeRun automatically. If it does not appear, confirm the tuner is powered on and connected to the same network as your Plex server. You can also enter the tuner's IP address manually.</li>
+            <li><strong>Channel scan.</strong> Plex will instruct the tuner to scan for available channels. This takes one to three minutes. When complete, you will see a list of all detected channels with signal strength indicators.</li>
+            <li><strong>Channel selection.</strong> Uncheck any channels you do not want. Shopping channels, religious broadcasters, and low-signal channels are common candidates for removal. Fewer channels means a cleaner guide.</li>
+        </ol>
+
+        <h2>Configuring the Electronic Program Guide (EPG)</h2>
+
+        <p>The EPG is what tells Plex what is airing on each channel and when. Without it, you would see channel numbers but no program names, descriptions, or scheduling data.</p>
+
+        <p>Plex includes a built-in EPG powered by Gracenote that covers most North American and European markets. During setup, Plex will ask for your postal code to match your channels against the correct local listings. It then maps detected channels to their guide entries automatically.</p>
+
+        <p>If Plex cannot match a channel, you can manually assign it. This sometimes happens with smaller local stations or subchannels (like 7.2 or 11.3). Click the unmatched channel and search for it by call sign or network name.</p>
+
+        <h3>Using a Custom EPG Source</h3>
+
+        <p>If the built-in guide data does not cover your channels or if you prefer more detailed listings, Plex supports XMLTV-format guide data. Services like Schedules Direct provide comprehensive EPG data for a modest annual fee. To use a custom source, select "Have an XMLTV guide?" during setup and point Plex to the URL or local file containing the guide data.</p>
+
+        <h2>Recording Shows with the DVR</h2>
+
+        <p>Once Live TV is configured, you can browse the program guide and schedule recordings directly from Plex.</p>
+
+        <h3>Recording a Single Episode</h3>
+        <p>Find the show in the guide, click on it, and select "Record." Plex will record the broadcast at the scheduled time and add it to your library. The recording appears like any other piece of content in Plex, with metadata, artwork, and episode information.</p>
+
+        <h3>Recording an Entire Series</h3>
+        <p>For ongoing shows, select "Record All New Episodes" or "Record All Episodes." Plex will monitor the guide and automatically record new airings. You can configure whether to keep all recordings or only the most recent episodes, which helps manage storage.</p>
+
+        <h3>Recording Priority</h3>
+        <p>If you have a two-tuner device and three shows overlap, Plex needs to know which two to record. The DVR priority list lets you rank your shows. Higher-priority shows always get recorded first. You can rearrange priorities under Settings, then Live TV &amp; DVR, then DVR.</p>
+
+        <h2>Commercial Skip</h2>
+
+        <p>One of the most compelling Plex Pass features for DVR users is automatic commercial detection. After a recording finishes, Plex analyzes the video to identify commercial breaks and inserts chapter markers at each transition.</p>
+
+        <p>When you play back a recording, Plex shows a "Skip" button whenever a commercial break begins, just like the Skip Intro feature for TV shows. You can also configure Plex to automatically skip commercials entirely, with no button press needed.</p>
+
+        <p>Commercial detection is CPU-intensive. Processing a one-hour recording typically takes five to fifteen minutes on a modern CPU. If you record many shows overnight, expect your server to be busy processing them the next morning. Hardware with Quick Sync or a dedicated GPU handles this more efficiently.</p>
+
+        <h2>Storage Requirements and Management</h2>
+
+        <p>DVR recordings accumulate quickly. Here are rough estimates for per-hour storage:</p>
+
+        <table>
+            <tr><th>Content Type</th><th>Approximate Size per Hour</th></tr>
+            <tr><td>720p broadcast</td><td>3 to 5 GB</td></tr>
+            <tr><td>1080i broadcast (typical)</td><td>5 to 8 GB</td></tr>
+            <tr><td>1080p broadcast (rare)</td><td>6 to 10 GB</td></tr>
+        </table>
+
+        <p>Recording four shows per day at an average of 6 GB per hour adds up to roughly 720 GB per month. Plan your storage accordingly.</p>
+
+        <p>To manage storage, use Plex's built-in retention settings. For each series recording, you can choose to keep only the five most recent episodes, or automatically delete recordings after they have been watched. Plex can also be configured to delete the oldest recordings when the DVR storage location runs low on disk space.</p>
+
+        <h2>Watching Live TV on Clients</h2>
+
+        <p>Once everything is set up, Live TV appears as a new section in your Plex apps. The channel guide shows what is currently airing and what is coming up. Click any currently-airing show to start watching it live. You get a channel-surfing experience similar to cable, but streaming through your Plex server.</p>
+
+        <p>Live TV works on most Plex clients including iOS, Android, Apple TV, Android TV, Roku, smart TVs, and the web app. Playback of live streams can be slightly more demanding on your server than recorded content, because Plex must transcode the broadcast stream in real time for clients that do not support the native MPEG-TS format.</p>
+
+        <h2>Troubleshooting Common Issues</h2>
+
+        <p><strong>Tuner not detected.</strong> Confirm the HDHomeRun is on the same subnet as your Plex server. Check the tuner's status page at <code>my.hdhomerun.com</code> to verify it has a valid IP address. If using Docker for Plex, ensure the container has host networking or that multicast traffic can reach it.</p>
+
+        <p><strong>Weak or missing channels.</strong> Reposition your antenna, try a higher location, or consider an amplified antenna. Re-run the channel scan after any antenna adjustment.</p>
+
+        <p><strong>Recordings fail to start.</strong> Check that you have enough available tuners. If all tuners are busy with other recordings or live streams, new recordings cannot start. Also verify that your DVR storage path is writable and has sufficient free space.</p>
+
+        <p><strong>Guide data is missing or wrong.</strong> Re-run the guide setup and verify your postal code. If using XMLTV, confirm the source URL is accessible and the data is fresh.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>Plex does more than video. If you store photos on your Plex server, Phlix gives you a fast chronological timeline, year scrubber, and 4K AirPlay slideshows. Free to browse.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/is-plex-pass-worth-it/" class="related-card">
+                <h3>Is Plex Pass Worth It in 2026?</h3>
+                <p>Every Plex Pass feature explained, including Live TV and DVR.</p>
+            </a>
+            <a href="/blog/plex-discover-guide/" class="related-card">
+                <h3>Plex Discover — What It Is and How to Use It</h3>
+                <p>Universal search and streaming availability across all your content.</p>
+            </a>
+            <a href="/blog/backup-plex-server/" class="related-card">
+                <h3>Back Up Your Plex Server</h3>
+                <p>Protect your DVR settings, metadata, and watch history.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

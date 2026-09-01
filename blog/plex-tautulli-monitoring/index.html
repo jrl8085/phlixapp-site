@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Monitor Your Plex Server with Tautulli | Phlix Blog</title>
+    <meta name="description" content="Install and configure Tautulli for Plex statistics, notifications, newsletters, and user monitoring. Docker and bare metal setup.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-tautulli-monitoring/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-tautulli-monitoring/">
+    <meta property="og:title" content="How to Monitor Your Plex Server with Tautulli">
+    <meta property="og:description" content="Install and configure Tautulli for Plex statistics, notifications, newsletters, and user monitoring. Docker and bare metal setup.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Monitor Your Plex Server with Tautulli","description":"Install and configure Tautulli for Plex statistics, notifications, newsletters, and user monitoring. Docker and bare metal setup.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Monitor Plex with Tautulli</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat" style="color:#FFA726">Advanced</span>
+                <h1>How to Monitor Your Plex Server with Tautulli</h1>
+                <p class="subtitle">Install and configure Tautulli for statistics, notifications, newsletters, and user monitoring.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>Plex's built-in dashboard tells you who is streaming right now. Tautulli tells you everything else: what was streamed last month, which users consume the most bandwidth, what content sits unwatched, and when your server is under the heaviest load. It is the single most useful companion tool for any Plex server administrator, and it is completely free and open source.</p>
+
+            <h2>What Is Tautulli</h2>
+
+            <p>Tautulli (formerly PlexPy) is a Python-based monitoring application that connects to your Plex Media Server and records detailed playback statistics. It runs as a lightweight web application alongside your Plex server and provides a dashboard, historical analytics, notification triggers, newsletter generation, and custom scripting capabilities.</p>
+
+            <p>Tautulli does not interact with your media files or modify your Plex installation in any way. It reads data from the Plex API (the same API we cover in our <a href="/blog/plex-api-guide/">Plex API guide</a>) and stores historical records in its own SQLite database. Your Plex server does not even know Tautulli exists.</p>
+
+            <h2>Installation</h2>
+
+            <h3>Docker (Recommended)</h3>
+
+            <p>The easiest and most portable installation method is Docker. Pull the official image and run:</p>
+
+            <pre><code>docker run -d \
+  --name tautulli \
+  --restart unless-stopped \
+  -p 8181:8181 \
+  -v /path/to/tautulli/config:/config \
+  ghcr.io/tautulli/tautulli</code></pre>
+
+            <p>Replace <code>/path/to/tautulli/config</code> with a directory on your host where Tautulli should store its configuration and database. After the container starts, access the web interface at <code>http://your-server-ip:8181</code>.</p>
+
+            <p>If you use Docker Compose, add Tautulli to your existing stack:</p>
+
+            <pre><code>services:
+  tautulli:
+    image: ghcr.io/tautulli/tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    ports:
+      - "8181:8181"
+    volumes:
+      - /path/to/tautulli/config:/config</code></pre>
+
+            <h3>Bare Metal (Linux)</h3>
+
+            <p>If you prefer running Tautulli directly on the host, clone the repository and run it with Python:</p>
+
+            <pre><code>git clone https://github.com/Tautulli/Tautulli.git /opt/tautulli
+cd /opt/tautulli
+python3 Tautulli.py</code></pre>
+
+            <p>To run Tautulli as a systemd service that starts on boot, create a unit file at <code>/etc/systemd/system/tautulli.service</code> and enable it with <code>systemctl enable tautulli</code>.</p>
+
+            <h3>Windows and macOS</h3>
+
+            <p>Tautulli provides standalone installers for Windows (MSI) and macOS (DMG) on their GitHub releases page. Download, install, and the setup wizard will guide you through connecting to your Plex server.</p>
+
+            <h2>Initial Configuration</h2>
+
+            <p>On first launch, Tautulli's setup wizard asks for two things: your Plex server connection details and your Plex account credentials. If Tautulli runs on the same machine as Plex, the connection URL is <code>http://localhost:32400</code>. If they are on different machines, use the Plex server's IP address.</p>
+
+            <p>Tautulli will authenticate via your Plex account and begin importing your existing watch history. Depending on the size of your library and history, this initial import can take anywhere from a few seconds to several minutes. Once complete, the dashboard will populate with current and historical data.</p>
+
+            <h2>Key Statistics and What They Tell You</h2>
+
+            <h3>Activity Dashboard</h3>
+            <p>The main dashboard shows real-time streams with details including the user, media title, playback state, stream type (Direct Play, Direct Stream, or Transcode), bandwidth usage, and client device. This is similar to the Plex dashboard but with more detail and historical context.</p>
+
+            <h3>Watch Statistics</h3>
+            <p>The statistics page breaks down viewing habits by user, time period, content type, and platform. You can answer questions like: Which user watched the most content last month? What percentage of plays are transcoded vs. Direct Play? What day of the week sees the heaviest usage? Which library gets the most activity?</p>
+
+            <h3>History</h3>
+            <p>Tautulli logs every single play session with granular detail: when it started, when it stopped, whether it was paused, how much of the item was watched, the stream type, the bandwidth consumed, and the client used. This history is searchable and exportable, making it invaluable for troubleshooting ("when did the buffering start?") and capacity planning ("do I need more upload bandwidth?").</p>
+
+            <h3>Graphs</h3>
+            <p>Visual graphs show plays over time, bandwidth over time, concurrent streams, and duration statistics. These help identify trends like increasing usage, peak hours, and whether your server's capacity is keeping up with demand.</p>
+
+            <h2>Notification Setup</h2>
+
+            <p>Tautulli can send notifications for virtually any event. Supported notification agents include:</p>
+
+            <ul>
+                <li><strong>Discord:</strong> Post to a channel via webhook. The most popular option for self-hosters who use Discord for server management.</li>
+                <li><strong>Email:</strong> SMTP-based email notifications with customizable templates.</li>
+                <li><strong>Telegram:</strong> Send notifications to a Telegram bot.</li>
+                <li><strong>Slack, Pushover, Pushbullet:</strong> Additional messaging platforms.</li>
+                <li><strong>Custom scripts:</strong> Run any script or program when an event fires.</li>
+            </ul>
+
+            <h3>Setting Up Discord Notifications</h3>
+
+            <ol>
+                <li>In Discord, go to your server settings, then Integrations, and create a new Webhook. Copy the webhook URL.</li>
+                <li>In Tautulli, go to <strong>Settings &gt; Notification Agents</strong> and click "Add a new notification agent."</li>
+                <li>Select Discord, paste the webhook URL, and configure which events should trigger notifications.</li>
+                <li>Customize the message template. Tautulli supports rich formatting with variables like <code>{user}</code>, <code>{title}</code>, <code>{stream_decision}</code>, and dozens more.</li>
+            </ol>
+
+            <p>Common notification triggers include: playback started, playback stopped, buffer warning, new content added, Plex server down, and Plex server back up. The "Plex server down" notification is particularly valuable -- it alerts you immediately when your server goes offline so you can investigate before users complain.</p>
+
+            <h2>Newsletters</h2>
+
+            <p>Tautulli can generate and send HTML newsletters summarizing recent additions to your Plex library. This is a great way to keep your shared users engaged and aware of new content without requiring them to check Plex regularly.</p>
+
+            <p>Configure newsletters under <strong>Settings &gt; Newsletters</strong>. You can set a schedule (weekly or monthly), customize the template with your own branding, and choose which libraries to include. The newsletter is sent via email to all users or a custom list of recipients.</p>
+
+            <h2>Custom Scripts</h2>
+
+            <p>For advanced automation, Tautulli can execute custom scripts when events occur. The script receives event data as command-line arguments or environment variables. Example use cases:</p>
+
+            <ul>
+                <li><strong>Kill transcoded streams.</strong> If a user forces a transcode on content that should Direct Play, automatically stop the stream and notify them to adjust their client settings.</li>
+                <li><strong>Bandwidth enforcement.</strong> Monitor concurrent streams and pause lower-priority streams when total bandwidth exceeds your upload capacity.</li>
+                <li><strong>Usage-based access.</strong> Track inactive users and automatically revoke library access after a defined period of inactivity.</li>
+                <li><strong>Integration with home automation.</strong> Trigger smart home events (dim lights, turn on the TV) when playback starts on a specific device.</li>
+            </ul>
+
+            <h2>User Monitoring and Management</h2>
+
+            <p>Tautulli provides per-user profiles showing their complete watch history, most-watched content, average session duration, preferred client devices, and streaming quality. This is useful for managing shared servers where you want to understand usage patterns without manually interrogating each user.</p>
+
+            <p>Combined with notification triggers, you can build a system that alerts you to unusual activity (a user suddenly streaming 24/7), capacity issues (too many simultaneous transcodes), or misconfigurations (a user's client forcing unnecessary transcodes).</p>
+
+            <p>Tautulli is one of those tools that you install once, configure in 15 minutes, and then wonder how you ever managed your Plex server without it. The insights it provides transform server administration from guesswork into data-driven decision making.</p>
+
+            <div class="cta-box">
+                <h3>Phlix -- The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-api-guide/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>Plex API Guide</h3><p>Automate library management with the Plex API. Endpoints and examples.</p></a>
+                <a href="/blog/plex-reverse-proxy-nginx/" class="blog-card"><span class="cat" style="color:#FFA726">Advanced</span><h3>Plex Reverse Proxy with Nginx</h3><p>SSL/TLS termination, custom domain, and enhanced security.</p></a>
+                <a href="/blog/plex-performance-optimization/" class="blog-card"><span class="cat" style="color:#EF5350">Troubleshooting</span><h3>Speed Up Your Plex Server</h3><p>Database maintenance, cache settings, network tuning, and hardware tips.</p></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

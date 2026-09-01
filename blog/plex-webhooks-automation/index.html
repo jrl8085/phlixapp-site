@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Plex Webhooks for Automation | Phlix Blog</title>
+    <meta name="description" content="Automate your Plex server with webhooks. Trigger smart home actions, notifications, and scripts on playback events.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-webhooks-automation/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-webhooks-automation/">
+    <meta property="og:title" content="How to Use Plex Webhooks for Automation">
+    <meta property="og:description" content="Automate your Plex server with webhooks. Trigger smart home actions, notifications, and scripts on playback events.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Use Plex Webhooks for Automation","description":"Automate your Plex server with webhooks. Trigger smart home actions, notifications, and scripts on playback events.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Use Plex Webhooks for Automation</div>
+
+    <article>
+        <span class="category advanced">Advanced</span>
+        <h1>How to Use Plex Webhooks for Automation</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Plex webhooks let your server notify external services whenever something happens — a movie starts playing, a new episode is added to the library, or someone pauses a stream. This opens up powerful automation possibilities: dim the lights when movie night starts, send a Discord notification when new content arrives, or log every play to a spreadsheet. This guide explains how webhooks work, what data they send, and how to connect them to popular automation platforms.</p>
+
+        <h2>What Are Webhooks?</h2>
+
+        <p>A webhook is a URL that Plex sends an HTTP POST request to whenever a specific event occurs on your server. Think of it as a push notification for machines. Instead of polling Plex repeatedly to ask "did anything happen?" your automation tool simply waits for Plex to call its URL with event data.</p>
+
+        <p>When an event fires, Plex sends a JSON payload containing details about what happened, which user triggered it, and what media was involved. Your receiving service parses this payload and takes action based on the event type and data.</p>
+
+        <h3>Plex Pass Requirement</h3>
+
+        <p>Webhooks are a Plex Pass feature. You need an active Plex Pass subscription (monthly, yearly, or lifetime) to configure webhook URLs in your server settings. Without Plex Pass, the webhooks section does not appear in settings. Third-party tools like Tautulli can provide webhook-like functionality without Plex Pass, but native Plex webhooks are the simplest and most reliable option.</p>
+
+        <h2>Setting Up Your First Webhook</h2>
+
+        <h3>Step 1 — Get a Receiving URL</h3>
+
+        <p>You need a URL that can receive HTTP POST requests. Options include:</p>
+
+        <ul>
+            <li><strong>Webhook.site:</strong> A free testing tool that displays incoming webhook payloads in real time. Great for understanding the data format before building real integrations.</li>
+            <li><strong>A local script:</strong> A simple Python Flask or Node.js Express server running on your network.</li>
+            <li><strong>Home Assistant:</strong> Has a built-in webhook trigger for automations.</li>
+            <li><strong>Zapier or Make (formerly Integromat):</strong> Cloud automation platforms with webhook receivers.</li>
+            <li><strong>n8n:</strong> Self-hosted automation platform with a webhook node.</li>
+        </ul>
+
+        <h3>Step 2 — Add the URL in Plex</h3>
+
+        <p>Open the Plex web interface, go to Settings, then Webhooks (under your server name, not account settings). Click "Add Webhook" and paste your receiving URL. Click Save. Plex will now send event data to this URL whenever qualifying events occur. You can add multiple webhook URLs if you want different services to receive the same events.</p>
+
+        <h3>Step 3 — Trigger a Test Event</h3>
+
+        <p>Play any media on any client connected to your server, then pause and stop it. Each action generates a webhook event. Check your receiving service to confirm the payloads arrived. If nothing appears, verify that your URL is accessible from your Plex server's network and that any firewalls allow outbound HTTP traffic from the server.</p>
+
+        <h2>Event Types</h2>
+
+        <p>Plex sends webhooks for the following events:</p>
+
+        <ul>
+            <li><strong>media.play:</strong> Playback starts on any client.</li>
+            <li><strong>media.pause:</strong> Playback is paused.</li>
+            <li><strong>media.resume:</strong> Playback resumes after a pause.</li>
+            <li><strong>media.stop:</strong> Playback stops completely.</li>
+            <li><strong>media.scrobble:</strong> A media item has been watched past the scrobble threshold (typically around 90% for movies and episodes).</li>
+            <li><strong>media.rate:</strong> A user rates a media item.</li>
+            <li><strong>library.on.deck:</strong> A new item appears on a user's On Deck.</li>
+            <li><strong>library.new:</strong> A new item is added to a library.</li>
+            <li><strong>admin.database.backup:</strong> A database backup completes.</li>
+            <li><strong>admin.database.corrupted:</strong> Database corruption is detected.</li>
+            <li><strong>device.new:</strong> A new device connects to the server.</li>
+            <li><strong>playback.started:</strong> Similar to media.play but includes transcoding details.</li>
+        </ul>
+
+        <h2>Payload Structure</h2>
+
+        <p>Each webhook POST contains a multipart form with a JSON payload in the <code>payload</code> field. The JSON structure includes:</p>
+
+        <pre><code>{
+  "event": "media.play",
+  "user": true,
+  "owner": true,
+  "Account": {
+    "id": 12345,
+    "title": "YourUsername",
+    "thumb": "https://plex.tv/users/..."
+  },
+  "Server": {
+    "title": "My Plex Server",
+    "uuid": "abc123..."
+  },
+  "Player": {
+    "local": true,
+    "publicAddress": "192.168.1.100",
+    "title": "Living Room TV",
+    "uuid": "def456..."
+  },
+  "Metadata": {
+    "type": "movie",
+    "title": "The Matrix",
+    "year": 1999,
+    "thumb": "/library/metadata/123/thumb",
+    "grandparentTitle": "",
+    "parentTitle": "",
+    "summary": "A computer hacker learns..."
+  }
+}</code></pre>
+
+        <p>The <code>Metadata</code> object varies by media type. For TV episodes, <code>grandparentTitle</code> contains the show name and <code>parentTitle</code> contains the season name. For music, the hierarchy maps to artist, album, and track.</p>
+
+        <h2>Integration Examples</h2>
+
+        <h3>Home Assistant — Dim Lights on Play</h3>
+
+        <p>Home Assistant supports webhooks as automation triggers natively. In your Home Assistant <code>automations.yaml</code>, create a webhook trigger:</p>
+
+        <pre><code>automation:
+  - alias: "Dim lights when Plex plays"
+    trigger:
+      - platform: webhook
+        webhook_id: plex-play-event
+        local_only: true
+    condition:
+      - condition: template
+        value_template: "{{ trigger.json.event == 'media.play' }}"
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.living_room
+        data:
+          brightness_pct: 10</code></pre>
+
+        <p>Add the webhook URL <code>http://YOUR-HA-IP:8123/api/webhook/plex-play-event</code> to your Plex webhook settings. When playback starts, Home Assistant dims the living room lights to 10%. Add a second automation that restores brightness on <code>media.stop</code>.</p>
+
+        <h3>Discord Notifications</h3>
+
+        <p>Discord channels support incoming webhooks natively. Create a webhook in your Discord channel settings (Edit Channel, Integrations, Webhooks, New Webhook). However, Plex's webhook payload format does not match Discord's expected format, so you need a translation layer.</p>
+
+        <p>Options for this include Tautulli (which has built-in Discord notification support), a simple middleware script, or a cloud automation service like n8n that receives the Plex webhook, reformats the data, and sends a formatted Discord message with the media title, thumbnail, and user who started playback.</p>
+
+        <h3>Scrobbling to Trakt.tv</h3>
+
+        <p>The <code>media.scrobble</code> event fires when you finish watching something. Use this to sync your watch history to Trakt.tv. While dedicated tools like PlexTraktSync are more robust for this specific use case, a webhook-based approach gives you more control. Forward the scrobble event to a script that calls the Trakt.tv API with the TMDB or TVDB ID from the Plex metadata.</p>
+
+        <h3>Logging Plays to a Spreadsheet</h3>
+
+        <p>Use Zapier or Make to receive Plex webhooks and append a row to a Google Sheet for every <code>media.play</code> event. Log the title, user, timestamp, and player device. Over time, this creates a detailed viewing history you can analyze. Useful for families who want to track screen time or for server admins who want usage insights without installing Tautulli.</p>
+
+        <h2>Troubleshooting Webhooks</h2>
+
+        <ul>
+            <li><strong>No events arriving:</strong> Verify your Plex Pass is active. Check that the URL is correct and reachable from the server. Test the URL manually with <code>curl -X POST your-url</code>.</li>
+            <li><strong>Events arriving inconsistently:</strong> Some events fire only for the server owner, not for shared users. The <code>user</code> and <code>owner</code> fields in the payload indicate who triggered the event.</li>
+            <li><strong>Duplicate events:</strong> Some actions generate multiple events in rapid succession (e.g., stop immediately followed by scrobble). Build debounce logic into your receiving script if this causes problems.</li>
+            <li><strong>Payload too large:</strong> If your receiving service rejects the POST, it may have a body size limit. Plex webhook payloads can include base64-encoded thumbnail data that inflates the size. Configure your receiver to accept larger payloads or ignore the thumbnail field.</li>
+        </ul>
+
+        <h2>Security Considerations</h2>
+
+        <p>Plex webhooks do not include a signature or shared secret for verifying authenticity. If your webhook URL is exposed to the internet, anyone who discovers it could send fake events. Mitigations include: keeping your webhook receivers on your local network only, using a randomized URL path that is hard to guess, checking the source IP against your Plex server's address, and validating that the payload structure matches Plex's format before acting on it.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/plex-tautulli-monitoring/" class="related-card">
+                <h3>Monitor Plex with Tautulli</h3>
+                <p>Track usage, get notifications, and analyze streaming statistics.</p>
+            </a>
+            <a href="/blog/plex-api-guide/" class="related-card">
+                <h3>Plex API Guide</h3>
+                <p>Query your Plex server programmatically for custom integrations.</p>
+            </a>
+            <a href="/blog/is-plex-pass-worth-it/" class="related-card">
+                <h3>Is Plex Pass Worth It?</h3>
+                <p>Webhooks, hardware transcoding, and every other Plex Pass perk explained.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

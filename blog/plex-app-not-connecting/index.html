@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex App Not Connecting to Server — Fix Connection Issues | Phlix Blog</title>
+    <meta name="description" content="Troubleshoot Plex client connection failures on iOS, Android, Smart TV, and desktop.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-app-not-connecting/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-app-not-connecting/">
+    <meta property="og:title" content="Plex App Not Connecting to Server — Fix Connection Issues">
+    <meta property="og:description" content="Troubleshoot Plex client connection failures on iOS, Android, Smart TV, and desktop.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Plex App Not Connecting to Server — Fix Connection Issues",
+        "description": "Troubleshoot Plex client connection failures on iOS, Android, Smart TV, and desktop.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex App Not Connecting to Server</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat">Troubleshooting</span>
+                <h1>Plex App Not Connecting to Server — Fix Connection Issues</h1>
+                <p class="subtitle">Troubleshoot Plex client connection failures on iOS, Android, Smart TV, and desktop.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>You open the Plex app and your server is nowhere to be found. Or it appears in the sidebar but shows as "Unavailable." Or it was working five minutes ago and now everything is gone. Connection failures between Plex clients and servers are frustrating precisely because the symptom — "cannot connect" — has dozens of possible causes. This guide walks through them systematically, from the obvious to the obscure.</p>
+
+            <h2>Step 1: Is the Server Actually Running?</h2>
+
+            <p>Start with the simplest check. On the machine running Plex Media Server, verify the process is active. On Windows, open Task Manager and look for "Plex Media Server" in the process list. On macOS, check Activity Monitor. On Linux, run <code>systemctl status plexmediaserver</code> or <code>ps aux | grep plex</code>. On NAS devices (Synology, QNAP, Unraid), check the package or container status in the management UI.</p>
+
+            <p>If the server is not running, start it. If it was supposed to be running but stopped, check the logs for crash information (see our guide on Plex server crashes).</p>
+
+            <p>Next, confirm you can access the server locally. On the server machine itself (or another device on the same network), open a web browser and navigate to <code>http://[server-ip]:32400/web</code>. If this loads the Plex web interface, the server is running and accessible on the local network. If it does not load, the issue is with the server itself, not the client.</p>
+
+            <h2>Step 2: Same Network Test</h2>
+
+            <p>If you are trying to connect from outside your home network, first confirm the client can connect when on the same local network as the server. Connect the client device to your home WiFi, then try again. If it works locally but not remotely, the problem is remote access (port forwarding, firewall, or NAT issues). If it does not work even locally, the problem is network discovery or authentication.</p>
+
+            <p>For local network issues, check whether client and server are on the same subnet. If your router has separate networks for 2.4 GHz and 5 GHz WiFi, or if you have VLANs configured, the client and server may be on isolated network segments that cannot communicate. Plex uses GDM (G'Day Mate) protocol for local server discovery, which relies on UDP multicast. If multicast is blocked between subnets, the client will not discover the server automatically.</p>
+
+            <h2>Step 3: Sign Out and Sign Back In</h2>
+
+            <p>Plex uses plex.tv authentication to link clients to servers. When this authentication breaks — due to expired tokens, password changes, or account issues — the client cannot verify its connection to the server, even if the network path is fine.</p>
+
+            <p>On the client app, sign out of your Plex account, close the app completely, reopen it, and sign back in with your plex.tv credentials. This refreshes the authentication token and forces the client to re-discover your servers through plex.tv's connection broker.</p>
+
+            <p>On the server side, check that the server is signed into the correct plex.tv account. Go to <strong>Settings &gt; General</strong> in the server web interface and verify the account shown. If the server was "claimed" under a different account than the one you are signing into on the client, the client will not see it.</p>
+
+            <h2>Step 4: Clear App Cache</h2>
+
+            <p>Plex client apps cache connection data, server lists, and authentication tokens. Corrupted cache data can prevent connections even when everything else is configured correctly.</p>
+
+            <p><strong>iOS:</strong> The Plex app does not expose a cache-clearing option. Delete the app from your device and reinstall it from the App Store. This clears all cached data.</p>
+
+            <p><strong>Android / Fire TV:</strong> Go to device Settings &gt; Apps &gt; Plex &gt; Clear Cache. If that does not help, also try Clear Data (this will reset the app to its initial state, so you will need to sign in again).</p>
+
+            <p><strong>Smart TVs (Samsung, LG, Roku):</strong> Uninstall the Plex app and reinstall it. Most smart TVs do not offer a separate cache-clearing option.</p>
+
+            <p><strong>Desktop (Windows / macOS):</strong> For the Plex desktop app, try uninstalling and reinstalling. For the web player at app.plex.tv, clear your browser's cache and cookies for plex.tv and app.plex.tv domains.</p>
+
+            <h2>Step 5: DNS Issues</h2>
+
+            <p>Plex clients connect to plex.tv to authenticate and discover servers. If DNS resolution for plex.tv is failing on your network, the client cannot complete authentication and will appear unable to find your server, even on the local network.</p>
+
+            <p>Test DNS resolution by opening a web browser on the client device and navigating to <code>https://plex.tv</code>. If the page does not load, DNS is likely the issue. Try changing your device's DNS settings to use a public DNS server like Google (8.8.8.8, 8.8.4.4) or Cloudflare (1.1.1.1, 1.0.0.1).</p>
+
+            <p>Some ad-blocking DNS solutions (Pi-hole, AdGuard Home) or corporate network filters may block Plex-related domains. If you use a network-level ad blocker, check whether any plex.tv subdomains are being blocked and whitelist them.</p>
+
+            <h2>Step 6: Firewall and Security Software</h2>
+
+            <p>Firewalls on both the server and client side can block Plex connections. On the server, ensure port 32400 (TCP) is open for incoming connections. On the client device, ensure outgoing connections to port 32400 are not blocked.</p>
+
+            <p>Third-party security software (Norton, McAfee, Kaspersky, Bitdefender) frequently blocks Plex connections. These programs may identify the Plex traffic as suspicious and silently block it without any visible error. Temporarily disable your security software to test whether it is the cause. If it is, add an exception for Plex Media Server and port 32400.</p>
+
+            <p>On macOS, the built-in firewall may block incoming connections to Plex. Check <strong>System Settings &gt; Network &gt; Firewall &gt; Options</strong> and ensure Plex Media Server is set to "Allow incoming connections."</p>
+
+            <h2>Step 7: Plex Relay</h2>
+
+            <p>When a direct connection cannot be established between a client and server (due to NAT, firewall, or port forwarding issues), Plex falls back to its Relay service. Relay connections are routed through Plex's infrastructure and are limited to <strong>2 Mbps</strong> for Plex Pass subscribers and <strong>1 Mbps</strong> for free users.</p>
+
+            <p>If your connection is going through Relay, you will see "Relay" or "Indirect" in the server information or the Plex dashboard. While Relay provides a working connection, the bandwidth limitation makes it unsuitable for anything beyond low-quality video. To avoid Relay, fix the underlying connection issue (usually port forwarding) so clients can connect directly.</p>
+
+            <p>Note that Relay requires an active internet connection on both the server and client sides. If either side loses internet, Relay connections drop. Local playback is not affected by internet outages as long as the client can reach the server on the local network.</p>
+
+            <h2>Step 8: Manual Server Connection</h2>
+
+            <p>If automatic server discovery is failing, you can add your server manually in most Plex client apps. This bypasses the plex.tv discovery mechanism and connects directly to your server's IP address.</p>
+
+            <p>In the Plex client settings, look for an option to add a server manually (the location varies by platform). Enter your server's local IP address and port (e.g., <code>192.168.1.100:32400</code> for local connections) or your public IP address and port for remote connections. Some clients require the full URL: <code>http://192.168.1.100:32400</code>.</p>
+
+            <p>If manual connection works but automatic discovery does not, the issue is likely with GDM multicast on your local network or with the plex.tv connection broker for remote access. Manual connections are a viable permanent workaround for networks where multicast is restricted.</p>
+
+            <h2>Platform-Specific Notes</h2>
+
+            <p><strong>iOS:</strong> Ensure the Plex app has permission for local network access (Settings &gt; Privacy &gt; Local Network &gt; Plex). iOS may prompt for this permission on first launch, and denying it prevents local server discovery.</p>
+
+            <p><strong>Android TV / Google TV:</strong> Some Android TV devices have aggressive battery optimization that kills background connections. Ensure Plex is excluded from battery optimization in device settings.</p>
+
+            <p><strong>Roku:</strong> Roku devices occasionally lose their Plex link. Unlink and relink the device in the Plex web interface under <strong>Settings &gt; Authorized Devices</strong>.</p>
+
+            <p><strong>Smart TVs:</strong> Older smart TV Plex apps may not support newer authentication methods. Check whether a firmware update is available for your TV, and ensure the Plex app is updated to the latest version available for your platform.</p>
+
+            <div class="cta-box">
+                <h3>Phlix — The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/fix-plex-remote-access/" class="blog-card"><span class="cat">Troubleshooting</span><h3>How to Fix Plex Remote Access Not Working</h3></a>
+                <a href="/blog/plex-server-crashing/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Server Keeps Crashing — How to Diagnose and Fix It</h3></a>
+                <a href="/blog/fix-plex-buffering/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Buffering? Here's How to Fix It Once and For All</h3></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Organize Your Media Library for Plex — Complete Guide | Phlix Blog</title>
+    <meta name="description" content="File naming conventions, folder structure, and metadata tips for perfect Plex matching.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/organize-media-library-plex/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/organize-media-library-plex/">
+    <meta property="og:title" content="How to Organize Your Media Library for Plex — Complete Guide">
+    <meta property="og:description" content="File naming conventions, folder structure, and metadata tips for perfect Plex matching.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Organize Your Media Library for Plex — Complete Guide","description":"File naming conventions, folder structure, and metadata tips for perfect Plex matching.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Organize Your Media Library for Plex</div>
+
+    <article>
+        <span class="category getting-started">Getting Started</span>
+        <h1>How to Organize Your Media Library for Plex — Complete Guide</h1>
+        <p class="meta">Published September 1, 2026 &middot; 10 min read</p>
+
+        <p>Plex is only as good as the files you feed it. When your media is named correctly and organized into the right folder structure, Plex automatically downloads the correct posters, descriptions, ratings, and episode data. When it is not, you get wrong matches, missing items, and hours of manual fixing. This guide covers the naming conventions and folder structures for every media type Plex supports.</p>
+
+        <h2>The Golden Rule</h2>
+
+        <p>Plex matches files to online databases by parsing the filename. The closer your filename matches the official title and release year on TheMovieDB, TheTVDB, or MusicBrainz, the more likely Plex is to match it correctly on the first scan. Always include the year for movies and the season/episode numbers for TV shows.</p>
+
+        <h2>Movies</h2>
+
+        <h3>Naming Convention</h3>
+        <p>Each movie should be in its own folder, named with the movie title and year in parentheses:</p>
+
+        <pre><code>Movies/
+  The Matrix (1999)/
+    The Matrix (1999).mkv
+  Inception (2010)/
+    Inception (2010).mp4
+  Spider-Man Across the Spider-Verse (2023)/
+    Spider-Man Across the Spider-Verse (2023).mkv</code></pre>
+
+        <p>The folder-per-movie structure is not strictly required, but it is strongly recommended. It keeps related files (subtitles, extras, featurettes) organized and prevents naming conflicts.</p>
+
+        <h3>What to Include in the Filename</h3>
+        <ul>
+            <li><strong>Movie title</strong> — Use the official English title as listed on TheMovieDB.</li>
+            <li><strong>Year</strong> — In parentheses. This disambiguates remakes and films with identical titles (e.g., "Dune (1984)" vs "Dune (2021)").</li>
+            <li><strong>File extension</strong> — <code>.mkv</code>, <code>.mp4</code>, <code>.avi</code>, etc.</li>
+        </ul>
+
+        <h3>What to Avoid</h3>
+        <ul>
+            <li>Do not include resolution, codec, or quality tags in the filename (e.g., "1080p.BluRay.x264"). Plex reads this metadata from the file itself.</li>
+            <li>Do not use underscores or dots as word separators. Use spaces.</li>
+            <li>Do not put multiple movies in the same folder.</li>
+        </ul>
+
+        <h3>Subtitles</h3>
+        <p>Place subtitle files in the same folder as the movie, using the same base name plus a language code:</p>
+        <pre><code>The Matrix (1999)/
+  The Matrix (1999).mkv
+  The Matrix (1999).en.srt
+  The Matrix (1999).es.srt</code></pre>
+
+        <h2>TV Shows</h2>
+
+        <h3>Naming Convention</h3>
+        <p>TV shows require a three-level folder structure: show name, season folder, and episode files with <code>SxxExx</code> numbering:</p>
+
+        <pre><code>TV Shows/
+  Breaking Bad/
+    Season 01/
+      Breaking Bad - S01E01 - Pilot.mkv
+      Breaking Bad - S01E02 - Cat's in the Bag.mkv
+    Season 02/
+      Breaking Bad - S02E01 - Seven Thirty-Seven.mkv
+  The Office (US)/
+    Season 01/
+      The Office (US) - S01E01 - Pilot.mkv</code></pre>
+
+        <h3>Key Rules</h3>
+        <ul>
+            <li>Use <code>S01E01</code> format, not <code>1x01</code>. Both work, but <code>SxxExx</code> is more reliable.</li>
+            <li>Season folders must be named "Season 01", "Season 02", etc. Use leading zeros.</li>
+            <li>Include the year in the show folder name only if needed to disambiguate (e.g., "The Office (US)").</li>
+            <li>For specials, use "Season 00" and the special episode number from TheTVDB.</li>
+            <li>Multi-episode files: use <code>S01E01-E02</code> or <code>S01E01E02</code>.</li>
+        </ul>
+
+        <h3>Common TV Naming Mistakes</h3>
+        <p><strong>Wrong:</strong> <code>breaking.bad.s01e01.720p.bluray.mkv</code> — Plex might parse this correctly, but the dots and extra tags increase the chance of a mismatch.</p>
+        <p><strong>Right:</strong> <code>Breaking Bad - S01E01 - Pilot.mkv</code> — Clean, unambiguous, matches every time.</p>
+
+        <h2>Music</h2>
+
+        <h3>Naming Convention</h3>
+        <p>Music in Plex relies heavily on embedded tags (ID3 for MP3, Vorbis for FLAC/OGG). The folder structure matters less than the tags, but a clean structure helps:</p>
+
+        <pre><code>Music/
+  Pink Floyd/
+    The Dark Side of the Moon (1973)/
+      01 - Speak to Me.flac
+      02 - Breathe.flac
+      03 - On the Run.flac
+  Radiohead/
+    OK Computer (1997)/
+      01 - Airbag.flac</code></pre>
+
+        <h3>Tagging Tips</h3>
+        <ul>
+            <li>Use a tag editor like MusicBrainz Picard to standardize your tags before adding music to Plex.</li>
+            <li>Ensure Album Artist, Album, Track Number, and Track Title are filled in correctly.</li>
+            <li>Plex supplements tags with data from MusicBrainz and other sources, but correct embedded tags produce the best results.</li>
+            <li>Avoid "Various Artists" as the album artist — use the compilation flag instead and set individual track artists.</li>
+        </ul>
+
+        <h2>Photos</h2>
+
+        <h3>Folder Structure</h3>
+        <p>Plex photo libraries use folder names as album names. The most common organizational approach is by date:</p>
+
+        <pre><code>Photos/
+  2024/
+    2024-01 January/
+      IMG_0001.jpg
+      IMG_0002.jpg
+    2024-02 February/
+      IMG_0100.jpg
+  2025/
+    2025-06 June Vacation/
+      DSC_0001.jpg</code></pre>
+
+        <p>Alternatively, organize by event:</p>
+
+        <pre><code>Photos/
+  Family Reunion 2024/
+    IMG_0001.jpg
+  Wedding/
+    DSC_0001.jpg
+  Everyday/
+    2024-01-15_001.jpg</code></pre>
+
+        <h3>EXIF Data</h3>
+        <p>Plex reads EXIF metadata from JPEG and TIFF files, including date taken, camera model, GPS coordinates, and orientation. Make sure your photos have intact EXIF data. Some image editors strip EXIF when saving, and some cloud services strip GPS data for privacy. Photos without EXIF date data will be sorted by file modification date, which is often inaccurate after copying files between drives.</p>
+
+        <h3>Supported Formats</h3>
+        <p>Plex supports JPEG, PNG, TIFF, and GIF for photos. RAW files (CR2, NEF, ARW, DNG) are not directly supported in most Plex clients. If you shoot RAW, keep both the RAW and a JPEG export in your library, or convert to JPEG for Plex.</p>
+
+        <h2>General Organizational Tips</h2>
+
+        <h3>Keep Media Types Separate</h3>
+        <p>Never mix movies, TV shows, music, and photos in the same folder or library. Each media type has its own scanner and metadata agent. A movie file inside a TV show library will be ignored or incorrectly matched.</p>
+
+        <h3>Use a Consistent Structure</h3>
+        <p>Pick one organizational scheme and stick with it. If you start putting movies in folders with years, do it for every movie. If you organize photos by date, do it for every photo folder. Consistency makes it easier to add new content and troubleshoot problems.</p>
+
+        <h3>Avoid Special Characters</h3>
+        <p>Some characters can cause issues across operating systems or network shares. Avoid colons, backslashes, and angle brackets in folder and file names. If a movie title contains a colon (like "Spider-Man: Homecoming"), you can either omit it or replace it with a dash.</p>
+
+        <h3>Fix Mismatches Manually</h3>
+        <p>If Plex matches a file incorrectly, you do not necessarily need to rename the file. In the Plex web interface, click the three-dot menu on any item, select "Fix Match," and search for the correct title. This creates a manual override that persists through future scans. However, fixing the filename is always the better long-term solution.</p>
+
+        <h2>Metadata Agents</h2>
+
+        <p>Plex uses metadata agents to look up information about your media. The default agents are:</p>
+
+        <ul>
+            <li><strong>Movies:</strong> Plex Movie agent (uses TheMovieDB and IMDb data).</li>
+            <li><strong>TV Shows:</strong> Plex TV Series agent (uses TheTVDB and TheMovieDB).</li>
+            <li><strong>Music:</strong> Plex Music agent (uses MusicBrainz, AllMusic).</li>
+            <li><strong>Photos:</strong> Plex Photo Scanner (reads EXIF data from files).</li>
+        </ul>
+
+        <p>In most cases, the default Plex agents work best. You can change the agent for a specific library in its settings, but the defaults are the most reliable and well-maintained.</p>
+
+        <h2>Tools That Help</h2>
+
+        <p><strong>FileBot:</strong> A desktop application that automatically renames and organizes movie and TV files according to Plex naming conventions. It queries TheMovieDB and TheTVDB to determine the correct title and formatting.</p>
+
+        <p><strong>MusicBrainz Picard:</strong> An open-source music tagger that identifies tracks by audio fingerprint and applies correct metadata from the MusicBrainz database.</p>
+
+        <p><strong>Tiny Media Manager:</strong> A media management tool that can rename files, download metadata, and organize your library to match Plex's expected structure.</p>
+
+        <p>Spending an hour organizing your library before adding it to Plex saves many hours of fixing mismatches later. Get the naming right from the start, and Plex does the rest.</p>
+
+        <div class="cta-box">
+            <h3>Phlix — The Photo Browser for Plex</h3>
+            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+        </div>
+    </article>
+
+    <section class="related">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+            <a href="/blog/how-to-set-up-plex-media-server/" class="related-card">
+                <h3>How to Set Up Plex Media Server</h3>
+                <p>Complete beginner's guide to installing and configuring PMS.</p>
+            </a>
+            <a href="/blog/plex-photo-library-setup/" class="related-card">
+                <h3>Set Up a Plex Photo Library</h3>
+                <p>Folder structure, EXIF support, and tips for large collections.</p>
+            </a>
+            <a href="/blog/plex-hardware-requirements/" class="related-card">
+                <h3>Plex Hardware Requirements</h3>
+                <p>CPU, RAM, and storage needs for every use case.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Not Finding Your Media? Fix Scan and Match Issues | Phlix Blog</title>
+    <meta name="description" content="Troubleshoot Plex library scanning problems. Fix missing files, incorrect matches, and metadata.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/blog/plex-not-finding-media/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/blog/plex-not-finding-media/">
+    <meta property="og:title" content="Plex Not Finding Your Media? Fix Scan and Match Issues">
+    <meta property="og:description" content="Troubleshoot Plex library scanning problems. Fix missing files, incorrect matches, and metadata.">
+    <meta property="og:site_name" content="Phlix">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Plex Not Finding Your Media? Fix Scan and Match Issues",
+        "description": "Troubleshoot Plex library scanning problems. Fix missing files, incorrect matches, and metadata.",
+        "datePublished": "2026-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Loomis"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Phlix",
+            "url": "https://phlixapp.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav><div class="nav-inner">
+        <a href="/" class="nav-logo grad-text">PHLIX</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/support">Support</a>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
+        </div>
+    </div></nav>
+
+    <main>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Not Finding Your Media? Fix Scan and Match Issues</div>
+
+        <article>
+            <div class="article-header">
+                <span class="cat">Troubleshooting</span>
+                <h1>Plex Not Finding Your Media? Fix Scan and Match Issues</h1>
+                <p class="subtitle">Troubleshoot Plex library scanning problems. Fix missing files, incorrect matches, and metadata.</p>
+                <time datetime="2026-09-01">September 1, 2026</time>
+            </div>
+
+            <p>You have added new files to your media folder, but Plex stubbornly refuses to show them. Or worse, it found the files but matched them to the wrong movie, wrong show, or wrong album entirely. Library scanning and matching issues are among the most common Plex frustrations, and they almost always come down to how your files are named and organized.</p>
+
+            <h2>Why Plex Cannot Find Your Files</h2>
+
+            <p>Plex relies on a combination of file naming conventions, folder structure, and metadata agents to identify and catalog your media. When any of these elements are wrong, the scanner either skips files entirely or matches them incorrectly. The scanner is not reading the content of your files. It is reading your folder names, file names, and sometimes embedded metadata tags to figure out what each file is.</p>
+
+            <p>Understanding this distinction is key. Plex does not know that a file named <code>movie.mkv</code> sitting in a folder called <code>Downloads</code> is actually "The Shawshank Redemption." It needs you to tell it, through proper naming.</p>
+
+            <h2>File Naming Conventions That Work</h2>
+
+            <h3>Movies</h3>
+
+            <p>Every movie should be in its own folder, and both the folder and file should include the movie title and release year. The correct format is:</p>
+
+            <p><code>/Movies/The Shawshank Redemption (1994)/The Shawshank Redemption (1994).mkv</code></p>
+
+            <p>The year in parentheses is critical. Without it, Plex may match your file to a different movie with the same or similar title. There are multiple films called "Crash," "Frozen," and "The Thing." The year disambiguates them.</p>
+
+            <p>Common mistakes that cause scan failures: putting multiple movies in one folder, omitting the year, using abbreviations or shorthand in the file name, including extraneous information like resolution or codec in the primary file name (these belong in curly braces as edition tags, e.g., <code>{edition-4K HDR}</code>), and using periods or underscores instead of spaces.</p>
+
+            <h3>TV Shows</h3>
+
+            <p>TV shows require a nested folder structure: show name, then season folders, then episode files with season and episode numbers. The format Plex expects is:</p>
+
+            <p><code>/TV Shows/Breaking Bad/Season 01/Breaking Bad - S01E01 - Pilot.mkv</code></p>
+
+            <p>The <code>S01E01</code> pattern (season number, episode number, zero-padded) is the most reliable format. Plex also recognizes <code>1x01</code> format, but <code>S01E01</code> is preferred. Without this pattern, Plex cannot determine which season and episode a file belongs to, and it will either skip the file or guess incorrectly.</p>
+
+            <h3>Music</h3>
+
+            <p>Music follows the structure: <code>/Music/Artist/Album/01 - Track Title.flac</code>. Plex uses embedded ID3 tags (for MP3) or Vorbis comments (for FLAC) in addition to file names. If your tags are incorrect or missing, use a tool like MusicBrainz Picard to retag your collection before scanning.</p>
+
+            <h3>Photos</h3>
+
+            <p>Photos are organized by date, ideally in a <code>/Photos/YYYY/MM-MonthName/</code> structure. Plex reads EXIF data from photos to determine dates and locations. Files without EXIF data will still appear but may be sorted incorrectly.</p>
+
+            <h2>Scanners and Agents</h2>
+
+            <p>Plex uses two components when processing your library. The <strong>scanner</strong> finds files on disk and determines their basic identity (movie title, show name, episode number). The <strong>agent</strong> fetches metadata (posters, descriptions, ratings, cast information) from online databases.</p>
+
+            <p>For movies, the default agent pulls from TheMovieDB (TMDB). For TV shows, it uses TheTVDB (TVDB). For music, it uses MusicBrainz. If the agent cannot find a match for the title and year the scanner extracted from your file name, the item either goes unmatched or gets matched to something wrong.</p>
+
+            <p>Check your library's scanner and agent settings by going to <strong>Settings &gt; Manage &gt; Libraries</strong>, clicking the three-dot menu on the library, and selecting <strong>Edit</strong>. Ensure the scanner matches the content type (Plex Movie for movies, Plex TV Series for shows) and that the agent is set to a reliable source.</p>
+
+            <h2>Forcing a Manual Scan</h2>
+
+            <p>Plex runs periodic automatic scans, but they do not always catch new files immediately, especially if your server was offline when files were added. To force a scan, navigate to the library in the Plex web interface, click the three-dot menu, and select <strong>Scan Library Files</strong>.</p>
+
+            <p>If a scan does not pick up your new files, try <strong>Clean Bundles</strong> and <strong>Empty Trash</strong> from the same menu, then scan again. These operations remove stale references to deleted files that can sometimes interfere with new scans.</p>
+
+            <h2>Fixing Incorrect Matches</h2>
+
+            <p>When Plex matches a file to the wrong title, you can correct it manually. Click on the incorrectly matched item, select the three-dot menu, and choose <strong>Fix Match</strong>. This opens a search dialog where you can type the correct title, year, and even a TMDB or TVDB ID to find the exact match you want.</p>
+
+            <p>For TV shows, the fix must be applied at the show level, not individual episodes. Fix the show match first, then check whether the episodes sorted themselves correctly. If individual episodes are still wrong (perhaps because of ambiguous naming), you can manually edit episode information through <strong>Edit &gt; Episode</strong>.</p>
+
+            <h2>Refreshing Metadata</h2>
+
+            <p>If a match is correct but the metadata is wrong, missing, or incomplete, use <strong>Refresh Metadata</strong> from the item's three-dot menu. This re-fetches information from the online agent without changing the match itself. You can also select <strong>Unmatch</strong> to completely disassociate an item and then re-match it from scratch.</p>
+
+            <h2>File Permissions</h2>
+
+            <p>On Linux and NAS systems, file permissions are a frequent cause of missing media. The Plex Media Server process runs under a specific user account (typically <code>plex</code>). If your media files or folders do not grant read access to that user, the scanner will skip them silently.</p>
+
+            <p>Check permissions by running <code>ls -la</code> on your media directories. The Plex user needs at minimum read and execute permission on directories and read permission on files. On a Synology NAS, ensure the <code>plex</code> user or group has read access to the shared folder containing your media. On an Unraid server, verify that the share permissions include the nobody user.</p>
+
+            <h2>Common Mistakes That Prevent Scanning</h2>
+
+            <p>Beyond naming and permissions, watch for these pitfalls. Hidden files (names starting with a dot on Unix systems) are skipped by the scanner. Files with unsupported extensions (like <code>.nfo</code> or <code>.txt</code>) are ignored. Symbolic links may or may not be followed depending on your operating system and Plex version. Network-mounted drives (NFS, SMB) can sometimes become temporarily unavailable, causing Plex to mark all content from that mount as missing. If your media appears and disappears intermittently, check the mount stability.</p>
+
+            <p>Finally, ensure your library is pointed at the correct root folder. If you moved your media to a new drive or changed the folder structure, update the library path in <strong>Settings &gt; Manage &gt; Libraries &gt; Edit</strong> to reflect the new location.</p>
+
+            <div class="cta-box">
+                <h3>Phlix — The Photo Browser for Plex</h3>
+                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, 4K AirPlay slideshows, and offline downloads. Free to browse, Pro from $6.99/yr.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+                <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <a href="/blog/plex-metadata-wrong/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Metadata Wrong? How to Fix Incorrect Matches</h3></a>
+                <a href="/blog/plex-server-crashing/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Server Keeps Crashing — How to Diagnose and Fix It</h3></a>
+                <a href="/blog/plex-performance-optimization/" class="blog-card"><span class="cat">Troubleshooting</span><h3>Plex Performance Optimization — Speed Up Your Server</h3></a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+        </div>
+        <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+</body>
+</html>
