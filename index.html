@@ -3,167 +3,966 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phlix - Photo & Video Browser for Plex</title>
-    <meta name="description" content="Phlix is a beautiful photo and video browser for your Plex Media Server. Browse, search, slideshow, and download your media.">
+    <title>Phlix — Photo Browser for Plex Media Server | Timeline, Slideshow, Downloads</title>
+    <meta name="description" content="Browse your Plex photo library with a chronological timeline and year scrubber. 4K slideshows to your TV, offline downloads, and smooth scrolling through 150,000+ photos. Free for iOS.">
+    <meta name="keywords" content="plex photos, plex photo browser, plex photo viewer, plex slideshow, plex photo timeline, plex ios app, plex photo client, plex airplay photos, plex photo download, plex photo library">
+    <meta name="author" content="Jason Loomis">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://phlixapp.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://phlixapp.com/">
+    <meta property="og:title" content="Phlix — The Photo Browser Your Plex Library Deserves">
+    <meta property="og:description" content="Chronological timeline, year scrubber, 4K slideshows to your TV, offline downloads. Handles 150,000+ photos. Free for iOS.">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Phlix — Photo Browser for Plex Media Server">
+    <meta name="twitter:description" content="Chronological timeline, year scrubber, 4K slideshows to your TV, offline downloads. Handles 150,000+ photos. Free for iOS.">
+
+    <!-- Apple Smart Banner -->
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+
+    <!-- Google Analytics 4 — Replace G-XBXHBYYTL8 with your measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XBXHBYYTL8');
+    </script>
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Phlix Photos",
+      "alternateName": "Phlix",
+      "applicationCategory": "PhotographyApplication",
+      "operatingSystem": "iOS 17",
+      "applicationSubCategory": "Photo Browser",
+      "description": "The iOS photo browser for Plex Media Server. Chronological timeline with year scrubber, 4K slideshows to your TV via AirPlay 2, offline downloads, and smooth scrolling through libraries of 150,000+ photos.",
+      "url": "https://phlixapp.com",
+      "downloadUrl": "https://apps.apple.com/app/phlix-photos/id6796820208",
+      "softwareVersion": "1.0",
+      "datePublished": "2026-08-27",
+      "inLanguage": "en",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "name": "Free",
+          "description": "Full browsing, timeline, year scrubber, search, favorites, on-device slideshow"
+        },
+        {
+          "@type": "Offer",
+          "price": "19.99",
+          "priceCurrency": "USD",
+          "name": "Pro Lifetime",
+          "description": "One-time purchase. Unlimited downloads, external display slideshows. Family Sharing included."
+        },
+        {
+          "@type": "Offer",
+          "price": "6.99",
+          "priceCurrency": "USD",
+          "name": "Pro Yearly",
+          "description": "Annual subscription for Pro features."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Jason Loomis"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Jason Loomis"
+      },
+      "featureList": [
+        "Chronological photo timeline with year scrubber",
+        "Handles libraries of 150,000+ photos",
+        "4K slideshow on external display via AirPlay 2 or HDMI",
+        "Offline downloads to iOS Photo Library",
+        "Cellular-smart data saver",
+        "Multi-library support",
+        "Search across filenames, tags, and collections",
+        "VoiceOver accessibility",
+        "Universal iPhone and iPad app",
+        "14-day free trial, no subscription required"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Phlix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phlix is an iOS photo browser for Plex Media Server. It displays your photos in a chronological timeline with a year scrubber, supports 4K slideshows on your TV via AirPlay 2, and lets you download photos for offline access. It handles libraries of 150,000+ photos with smooth scrolling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need Plex Pass to use Phlix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Phlix works with both free Plex accounts and Plex Pass. All you need is a Plex Media Server with at least one photo library."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Phlix cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phlix is free to download. Browsing, timeline, search, favorites, and on-device slideshows are free forever. Phlix Pro unlocks unlimited downloads and big-screen slideshows for $19.99 one-time (with Family Sharing) or $6.99/year. You can try Pro free for 14 days with no subscription required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many photos can Phlix handle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phlix is built for scale. It uses server-side year filtering, virtual paging, and intelligent prefetching to handle libraries of 150,000+ photos with smooth scrolling and fast load times."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Phlix work with AirPlay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Phlix supports AirPlay 2 extended display and HDMI adapters for 4K slideshows. Your TV displays photos at full resolution while your iPhone stays as the controller. It also supports AirPlay Screen Mirroring for any AirPlay-compatible TV."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data private with Phlix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Phlix collects only anonymous usage data to improve the app. No photos, filenames, server addresses, Plex credentials, or personal information are ever collected. There are no ads, no tracking, and you can opt out of analytics entirely in Settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes Phlix different from the official Plex Photos app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phlix was built from scratch to be the photo experience Plex users need. It offers a chronological timeline with year scrubber, handles 150K+ photo libraries smoothly, supports 4K slideshows on external displays via AirPlay 2, provides offline downloads, includes a cellular data saver, and receives weekly updates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Phlix outside my home network?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, whether local or remote."
+          }
+        }
+      ]
+    }
+    </script>
+
     <style>
         :root {
             --gold: #F0B429;
             --orange: #E8850C;
-            --dark-bg: #0F0F0F;
-            --surface: #1A1A1A;
+            --gold-dim: rgba(240, 180, 41, 0.15);
+            --bg: #0A0A0A;
+            --surface: #131313;
+            --surface-2: #1A1A1A;
+            --border: #222;
             --text: #F0F0F0;
-            --text-secondary: #888888;
+            --text-2: #999;
+            --text-3: #666;
+            --check: #4CAF50;
+            --cross: #555;
+            --nav-h: 64px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-            background: var(--dark-bg);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-        header {
-            text-align: center;
-            padding: 80px 0 40px;
-        }
-        header h1 {
-            font-size: 3rem;
-            font-weight: 900;
+        a { color: var(--gold); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        .grad-text {
             background: linear-gradient(135deg, var(--gold), var(--orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 0.05em;
         }
-        header .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-top: 8px;
+
+        /* ─── Nav ─── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            height: var(--nav-h);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-        header .tagline {
-            color: var(--text-secondary);
-            font-size: 1rem;
+        .nav-inner {
+            max-width: 1080px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 100%;
+        }
+        .nav-logo {
+            font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-links a { color: var(--text-2); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        .nav-cta {
+            display: inline-block; padding: 8px 20px;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #000 !important; font-weight: 700; font-size: 0.85rem;
+            border-radius: 8px; text-decoration: none !important;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.9; }
+        #menu-toggle { display: none; }
+        .menu-btn { display: none; cursor: pointer; padding: 8px; color: var(--text); font-size: 1.5rem; line-height: 1; }
+
+        /* ─── Hero ─── */
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            max-width: 800px;
+            margin: 0 auto 24px;
+            letter-spacing: -0.02em;
+        }
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-2);
+            max-width: 640px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero .subtitle strong { color: var(--text); font-weight: 600; }
+        .cta-btn {
+            display: inline-block; padding: 16px 48px;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #000; font-weight: 700; font-size: 1.1rem;
+            border-radius: 14px; text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(240, 180, 41, 0.25);
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(240, 180, 41, 0.35); text-decoration: none; }
+        .cta-sub {
+            color: var(--text-3);
+            font-size: 0.9rem;
             margin-top: 16px;
-            max-width: 500px;
+        }
+
+        /* ─── Trust Bar ─── */
+        .trust-bar {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 0;
+        }
+        .trust-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+        .trust-stat .num {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+        .trust-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-2);
+            margin-top: 4px;
+        }
+
+        /* ─── Section common ─── */
+        .section { padding: 100px 0; }
+        .section-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--text-2);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+
+        /* ─── Features ─── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .feature-card:hover {
+            border-color: rgba(240, 180, 41, 0.3);
+            transform: translateY(-4px);
+        }
+        .feature-card .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .feature-card .accent {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .feature-card p {
+            color: var(--text-2);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* ─── Comparison ─── */
+        .compare-section { background: var(--surface); }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .compare-table thead th {
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .compare-table thead th:first-child { width: 45%; }
+        .compare-table thead th:nth-child(2) { color: var(--gold); }
+        .compare-table tbody td {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-2);
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table .yes { color: var(--check); font-weight: 600; }
+        .compare-table .no { color: var(--cross); }
+        .compare-table .highlight { color: var(--text); font-weight: 600; }
+
+        /* ─── Mid CTA ─── */
+        .mid-cta {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+        }
+        .mid-cta h2 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        /* ─── Developer ─── */
+        .dev-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .dev-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 28px;
+        }
+        .dev-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .dev-card p {
+            color: var(--text-2);
+            font-size: 0.92rem;
+        }
+
+        /* ─── Pricing ─── */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .price-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: center;
+            position: relative;
+        }
+        .price-card.featured {
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(240, 180, 41, 0.1);
+        }
+        .price-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .price-card .tier {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .price-card .price {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        .price-card .period {
+            color: var(--text-3);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 28px;
+        }
+        .price-card ul li {
+            color: var(--text-2);
+            font-size: 0.88rem;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .price-card ul li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--check);
+            font-weight: 700;
+        }
+        .price-card .card-cta {
+            display: block;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+        .price-card .card-cta:hover { opacity: 0.9; text-decoration: none; }
+        .price-card .card-cta.primary {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #000;
+        }
+        .price-card .card-cta.secondary {
+            background: var(--surface-2);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .trial-callout {
+            text-align: center;
+            margin-top: 40px;
+            padding: 24px;
+            background: var(--gold-dim);
+            border-radius: 12px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
-        .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            padding: 40px 0;
+        .trial-callout strong { color: var(--gold); }
+        .trial-callout p { color: var(--text-2); font-size: 0.92rem; margin-top: 4px; }
+
+        /* ─── FAQ ─── */
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
         }
-        @media (max-width: 600px) {
-            .features { grid-template-columns: 1fr; }
+        .faq-list details {
+            border-bottom: 1px solid var(--border);
         }
-        .feature {
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 24px;
+        .faq-list summary {
+            padding: 20px 0;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .feature h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--gold), var(--orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .faq-list summary::-webkit-details-marker { display: none; }
+        .faq-list summary::after {
+            content: "+";
+            font-size: 1.4rem;
+            color: var(--text-3);
+            font-weight: 300;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            margin-left: 16px;
         }
-        .feature p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .faq-list details[open] summary::after {
+            content: "\2212";
         }
-        .cta {
+        .faq-list details p {
+            color: var(--text-2);
+            font-size: 0.92rem;
+            padding-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* ─── Final CTA ─── */
+        .final-cta {
             text-align: center;
-            padding: 40px 0;
+            padding: 100px 0;
+            background: radial-gradient(ellipse at center, rgba(240, 180, 41, 0.06) 0%, transparent 70%);
         }
-        .cta a {
-            display: inline-block;
-            padding: 16px 48px;
-            background: linear-gradient(135deg, var(--gold), var(--orange));
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            border-radius: 12px;
+        .final-cta h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 16px;
         }
-        .cta p {
-            color: var(--text-secondary);
-            margin-top: 12px;
-            font-size: 0.9rem;
+        .final-cta .sub {
+            color: var(--text-2);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
         }
+        .final-cta .req {
+            color: var(--text-3);
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        /* ─── Footer ─── */
         footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
             text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid #222;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
         }
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: underline;
-            margin: 0 8px;
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a {
+            color: var(--text-2);
+            font-size: 0.85rem;
+            margin: 0 12px;
+            text-decoration: none;
         }
-        footer .trademark {
-            margin-top: 16px;
+        .footer-links a:hover { color: var(--text); }
+        .trademark {
+            color: var(--text-3);
             font-size: 0.75rem;
-            opacity: 0.6;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .copyright {
+            color: var(--text-3);
+            font-size: 0.8rem;
+            margin-top: 16px;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 900px) {
+            .features-grid, .dev-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+        }
+        @media (max-width: 700px) {
+            .features-grid, .dev-grid { grid-template-columns: 1fr; }
+            .trust-inner { grid-template-columns: repeat(2, 1fr); }
+            .menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: var(--nav-h);
+                left: 0; right: 0;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            .nav-cta { text-align: center; width: 100%; padding: 12px; }
+            .compare-table { font-size: 0.85rem; }
+            .compare-table thead th, .compare-table tbody td { padding: 10px 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>PHLIX</h1>
-            <p class="subtitle">for Plex</p>
-            <p class="tagline">Browse photos, videos &amp; slideshows on your Plex Media Server. Beautiful, fast, and built for iOS.</p>
-        </header>
 
-        <section class="features">
-            <div class="feature">
-                <h3>Browse Your Library</h3>
-                <p>Navigate folders and timelines across your entire photo collection with smooth, responsive browsing.</p>
+    <!-- ─── Navigation ─── -->
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo grad-text">PHLIX</a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Toggle menu">&#9776;</label>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#compare">Compare</a>
+                <a href="#pricing">Pricing</a>
+                <a href="/support">Support</a>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
             </div>
-            <div class="feature">
-                <h3>Stream Videos</h3>
-                <p>Play videos directly from your server with full playback controls and AirPlay support.</p>
-            </div>
-            <div class="feature">
-                <h3>Stunning Slideshows</h3>
-                <p>Create beautiful slideshows with customizable timing, shuffle, and AirPlay mirroring to your TV.</p>
-            </div>
-            <div class="feature">
-                <h3>Download &amp; Save</h3>
-                <p>Download photos and videos to your device for offline access. Save directly to your photo library.</p>
-            </div>
-            <div class="feature">
-                <h3>Search Everything</h3>
-                <p>Quickly find any photo or video across all your libraries with server-powered search.</p>
-            </div>
-            <div class="feature">
-                <h3>Free to Browse. Pro to Own.</h3>
-                <p>Browse your whole library free, forever. Pro unlocks unlimited downloads and big-screen slideshows &mdash; $19.99 once or $6.99/yr. Try Pro free for 14 days, no subscription required.</p>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ─── Hero ─── -->
+        <section class="hero">
+            <div class="wrap">
+                <h1>Your Plex photos deserve <span class="grad-text">a real timeline.</span></h1>
+                <p class="subtitle">Phlix is the iOS photo browser built for <strong>Plex Media Server</strong>. Chronological timeline with a year scrubber, <strong>4K slideshows</strong> on your TV, <strong>offline downloads</strong>, and smooth scrolling through <strong>150,000+ photos</strong>.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Download Free on the App Store</a>
+                <p class="cta-sub">Free to browse forever. Pro from $6.99/yr. Try Pro free for 14 days, no subscription required.</p>
             </div>
         </section>
 
-        <section class="cta">
-            <a href="https://apps.apple.com/app/phlix-photos/id6796820208">Download on the App Store</a>
-            <p>Requires iOS 17 or later. Works with any Plex Media Server.</p>
+        <!-- ─── Trust Bar ─── -->
+        <section class="trust-bar">
+            <div class="wrap">
+                <div class="trust-inner">
+                    <div class="trust-stat">
+                        <div class="num grad-text">150K+</div>
+                        <div class="label">Photos handled smoothly</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="num grad-text">Weekly</div>
+                        <div class="label">Developer updates</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="num grad-text">Zero</div>
+                        <div class="label">Ads or tracking</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="num grad-text">Family</div>
+                        <div class="label">Sharing included</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <footer>
-            <div>
+        <!-- ─── Features ─── -->
+        <section class="section" id="features">
+            <div class="wrap">
+                <h2 class="section-title">Everything your Plex photo library needs</h2>
+                <p class="section-sub">Built from scratch for Plex users with large photo libraries. Every feature designed to make your photos accessible, beautiful, and fast.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="icon" aria-hidden="true">&#128197;</span>
+                        <h3>Chronological Timeline</h3>
+                        <span class="accent grad-text">Tap 1987, you're there.</span>
+                        <p>Your photos displayed chronologically with a year scrubber down the side. Navigate decades of memories in seconds, the way Apple Photos works, but for your Plex library.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon" aria-hidden="true">&#128640;</span>
+                        <h3>Built for Scale</h3>
+                        <span class="accent grad-text">150,000+ photos. Smooth as butter.</span>
+                        <p>Server-side year filtering, virtual paging, and intelligent prefetching mean your library loads fast and scrolls smoothly, no matter how massive it gets.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon" aria-hidden="true">&#128250;</span>
+                        <h3>4K Slideshows on Your TV</h3>
+                        <span class="accent grad-text">Your phone is the remote. Your TV is the canvas.</span>
+                        <p>Connect via AirPlay 2 extended display or HDMI adapter. Phlix renders photos at full resolution on your TV while your phone stays as the controller. Not screen mirroring, a real dual-screen slideshow.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon" aria-hidden="true">&#128229;</span>
+                        <h3>Offline Downloads</h3>
+                        <span class="accent grad-text">Your photos, on your terms.</span>
+                        <p>Download photos directly to your iOS Photo Library. Browse your memories anywhere, no server connection needed. 25 free downloads, unlimited with Pro.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon" aria-hidden="true">&#128225;</span>
+                        <h3>Cellular Data Saver</h3>
+                        <span class="accent grad-text">Smart about your cell plan.</span>
+                        <p>Automatic thumbnail compression and paused prefetching on cellular data. Full quality on Wi-Fi. Zero settings to manage, it just works.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon" aria-hidden="true">&#128269;</span>
+                        <h3>Search &amp; Organize</h3>
+                        <span class="accent grad-text">Find anything, instantly.</span>
+                        <p>Search across filenames, tags, and collections. Mark favorites. Switch between multiple photo libraries on the same server. Universal iPhone and iPad app with adaptive layout.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Comparison ─── -->
+        <section class="section compare-section" id="compare">
+            <div class="wrap">
+                <h2 class="section-title">Features you won't find in the native Plex app</h2>
+                <p class="section-sub">Phlix was built from scratch to fill the gaps. Here's what sets it apart.</p>
+                <table class="compare-table" role="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">Phlix</th>
+                            <th scope="col">Official Plex Photos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chronological photo timeline</td>
+                            <td class="yes">Full timeline</td>
+                            <td class="no">Folder-based only</td>
+                        </tr>
+                        <tr>
+                            <td>Year scrubber navigation</td>
+                            <td class="yes">Tap any year</td>
+                            <td class="no">Not available</td>
+                        </tr>
+                        <tr>
+                            <td>Large library performance (150K+)</td>
+                            <td class="yes">Smooth scrolling</td>
+                            <td class="no">Struggles with scale</td>
+                        </tr>
+                        <tr>
+                            <td>4K slideshow on external display</td>
+                            <td class="yes">AirPlay 2 + HDMI</td>
+                            <td class="no">Not available</td>
+                        </tr>
+                        <tr>
+                            <td>Offline downloads to Photos</td>
+                            <td class="yes">25 free, unlimited Pro</td>
+                            <td class="no">Not available</td>
+                        </tr>
+                        <tr>
+                            <td>Cellular data saver</td>
+                            <td class="yes">Automatic</td>
+                            <td class="no">Not available</td>
+                        </tr>
+                        <tr>
+                            <td>Full-bleed photo viewing</td>
+                            <td class="yes">Immersive, no chrome</td>
+                            <td class="no">Title bar visible</td>
+                        </tr>
+                        <tr>
+                            <td>VoiceOver accessibility</td>
+                            <td class="yes">Full support</td>
+                            <td class="no">Limited</td>
+                        </tr>
+                        <tr>
+                            <td>Active development</td>
+                            <td class="highlight">Weekly updates</td>
+                            <td class="no">Last update: June 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ─── Mid CTA ─── -->
+        <section class="mid-cta">
+            <div class="wrap">
+                <h2>Ready to see your photos the way they deserve?</h2>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Download Free on the App Store</a>
+            </div>
+        </section>
+
+        <!-- ─── Developer ─── -->
+        <section class="section" id="developer">
+            <div class="wrap">
+                <h2 class="section-title">Built by a developer who listens</h2>
+                <p class="section-sub">Phlix is made by a solo developer with 40,000 family photos on Plex. Every feature exists because it was needed, not because it tested well in a focus group.</p>
+                <div class="dev-grid">
+                    <div class="dev-card">
+                        <h3 class="grad-text">Weekly updates</h3>
+                        <p>Real improvements shipped every week. Not cosmetic changes. Bug fixes, performance gains, and features driven by actual user feedback.</p>
+                    </div>
+                    <div class="dev-card">
+                        <h3 class="grad-text">Your feedback, heard</h3>
+                        <p>Every feature request and bug report goes directly to the person writing the code. No support tickets lost in a queue. No corporate layers between you and a fix.</p>
+                    </div>
+                    <div class="dev-card">
+                        <h3 class="grad-text">No ads. No tracking. Ever.</h3>
+                        <p>Phlix makes money from people who choose to buy Pro. Not from selling data, not from ads, not from dark patterns. Anonymous analytics are opt-out in Settings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Pricing ─── -->
+        <section class="section" id="pricing">
+            <div class="wrap">
+                <h2 class="section-title">Simple, honest pricing</h2>
+                <p class="section-sub">Browse your entire library free, forever. Pro unlocks power features when you're ready.</p>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <div class="tier">Free</div>
+                        <div class="price">$0</div>
+                        <div class="period">Forever</div>
+                        <ul>
+                            <li>Full library browsing</li>
+                            <li>Chronological timeline</li>
+                            <li>Year scrubber</li>
+                            <li>Search &amp; favorites</li>
+                            <li>On-device slideshow</li>
+                            <li>25 photo downloads</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="card-cta secondary">Download Free</a>
+                    </div>
+                    <div class="price-card featured">
+                        <div class="badge">Best Value</div>
+                        <div class="tier">Pro Lifetime</div>
+                        <div class="price grad-text">$19.99</div>
+                        <div class="period">One-time purchase</div>
+                        <ul>
+                            <li>Everything in Free</li>
+                            <li>Unlimited downloads</li>
+                            <li>External display slideshows</li>
+                            <li>Family Sharing included</li>
+                            <li>All future Pro features</li>
+                            <li>Pay once, own it forever</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="card-cta primary">Get Pro Lifetime</a>
+                    </div>
+                    <div class="price-card">
+                        <div class="tier">Pro Yearly</div>
+                        <div class="price">$6.99</div>
+                        <div class="period">Per year</div>
+                        <ul>
+                            <li>Everything in Free</li>
+                            <li>Unlimited downloads</li>
+                            <li>External display slideshows</li>
+                            <li>All future Pro features</li>
+                            <li>Cancel anytime</li>
+                            <li>&nbsp;</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="card-cta secondary">Subscribe Yearly</a>
+                    </div>
+                </div>
+                <div class="trial-callout">
+                    <strong>Try Pro free for 14 days</strong>
+                    <p>No subscription. No credit card. Full Pro access for two weeks. If you love it, keep it. If not, the free tier is yours forever.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FAQ ─── -->
+        <section class="section" id="faq">
+            <div class="wrap">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details>
+                        <summary>What is Phlix?</summary>
+                        <p>Phlix is an iOS photo browser for Plex Media Server. It displays your photos in a chronological timeline with a year scrubber, supports 4K slideshows on your TV via AirPlay 2 extended display, and lets you download photos to your iOS Photo Library for offline access. Built for libraries of 150,000+ photos.</p>
+                    </details>
+                    <details>
+                        <summary>Do I need Plex Pass to use Phlix?</summary>
+                        <p>No. Phlix works with both free Plex accounts and Plex Pass. All you need is a Plex Media Server with at least one photo library. No Plex Pass required.</p>
+                    </details>
+                    <details>
+                        <summary>What makes Phlix different from the official Plex Photos app?</summary>
+                        <p>Phlix was built from scratch to be the photo experience Plex users need. It offers a chronological timeline with year scrubber, handles 150K+ photo libraries smoothly, supports 4K slideshows on external displays via AirPlay 2, provides offline downloads to your iOS Photos, includes automatic cellular data saver, and receives weekly developer updates. These are features the official Plex Photos app doesn't offer.</p>
+                    </details>
+                    <details>
+                        <summary>How many photos can Phlix handle?</summary>
+                        <p>Phlix is engineered for scale. It uses server-side year filtering, virtual paging, and intelligent prefetching to handle libraries of 150,000+ photos with smooth scrolling and fast load times. If you have an enormous family photo collection, Phlix was built for you.</p>
+                    </details>
+                    <details>
+                        <summary>How does the AirPlay slideshow work?</summary>
+                        <p>Connect to an AirPlay 2 extended display or plug in an HDMI adapter. Phlix renders photos at full 4K resolution on your TV while your iPhone stays as the controller with playback controls. This is a true dual-screen experience, not screen mirroring. Phlix also supports AirPlay Screen Mirroring for any AirPlay-compatible TV.</p>
+                    </details>
+                    <details>
+                        <summary>Is my data private with Phlix?</summary>
+                        <p>Yes. Phlix has no ads, no tracking pixels, and no session replay. It collects only anonymous usage data (which features are used, where errors occur) to improve the app. No photos, filenames, server addresses, Plex credentials, or personal information are ever collected. You can opt out entirely in Settings. See the <a href="/privacy">Privacy Policy</a> for full details.</p>
+                    </details>
+                    <details>
+                        <summary>Can I use Phlix outside my home network?</summary>
+                        <p>Yes, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote.</p>
+                    </details>
+                    <details>
+                        <summary>Does the lifetime purchase include Family Sharing?</summary>
+                        <p>Yes. The $19.99 Pro Lifetime purchase is Family Shareable through Apple Family Sharing. Buy once and your whole family can use Pro on their devices.</p>
+                    </details>
+                    <details>
+                        <summary>What happens after the 14-day trial?</summary>
+                        <p>After 14 days, Pro features (unlimited downloads, external display slideshows) lock and Phlix returns to the free tier. You keep full access to browsing, timeline, search, favorites, and on-device slideshows. Nothing is deleted and nothing is charged. You can upgrade to Pro anytime.</p>
+                    </details>
+                    <details>
+                        <summary>Is Phlix made by Plex?</summary>
+                        <p>No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It connects to your Plex Media Server using publicly available APIs.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Final CTA ─── -->
+        <section class="final-cta">
+            <div class="wrap">
+                <h2><span class="grad-text">Start browsing your Plex photos today.</span></h2>
+                <p class="sub">Free to download. Free to browse. No account to create.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Download Free on the App Store</a>
+                <p class="req">Requires iOS 17 or later. Works with any Plex Media Server with a photo library.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── Footer ─── -->
+    <footer>
+        <div class="wrap">
+            <div class="footer-links">
                 <a href="/privacy">Privacy Policy</a>
                 <a href="/terms">Terms of Use</a>
                 <a href="/support">Support</a>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208">App Store</a>
             </div>
             <p class="trademark">
                 Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
                 Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
             </p>
-            <p style="margin-top: 12px;">&copy; 2026 Phlix. All rights reserved.</p>
-        </footer>
-    </div>
+            <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Close mobile menu when a link is clicked -->
+    <script>
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            document.getElementById('menu-toggle').checked = false;
+        });
+    });
+    </script>
+
 </body>
 </html>
