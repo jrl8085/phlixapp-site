@@ -85,7 +85,7 @@
             <p>The most natural way to browse photos is by date. A proper photo viewer should display your entire Plex photo library as a single chronological timeline, regardless of how photos are organized into folders on your server. You should be able to scroll from today back to 2005 (or whenever your digital photos begin) in one continuous feed, just like Apple Photos or Google Photos.</p>
 
             <h3>Fast Thumbnail Loading</h3>
-            <p>A photo browser that makes you wait for thumbnails defeats the purpose. The viewer should pre-fetch thumbnails, cache them aggressively, and use virtual scrolling so that performance stays consistent whether your library has 500 photos or 150,000.</p>
+            <p>A photo browser that makes you wait for thumbnails defeats the purpose. The viewer should pre-fetch thumbnails, cache them aggressively, and use virtual scrolling so that performance stays consistent whether your library has 500 photos or 100,000.</p>
 
             <h3>Year Scrubber</h3>
             <p>When your library spans decades, scrolling from top to bottom is impractical. A year scrubber -- a small control on the side of the screen that lets you jump directly to any year -- turns a five-minute scroll into a one-second tap.</p>
@@ -98,7 +98,7 @@
             <p>Phlix was built specifically to solve the photo browsing problems described above. It connects to your Plex Media Server and presents your entire photo library as a unified, chronological timeline -- the same mental model as your iPhone's Camera Roll, but pulling from your Plex server instead of local storage.</p>
 
             <h3>How Phlix Handles Large Libraries</h3>
-            <p>Phlix uses server-side year filtering to keep API responses fast. Instead of loading metadata for 100,000 photos at once, it queries by year. When you scroll to 2021, only 2021's photos are fetched. Combined with virtual paging (only rendering photos visible on screen), this means a library of 150,000 photos browses as quickly as a library of 1,000. For a deeper look at these performance techniques, see our guide on <a href="/blog/browse-large-plex-photo-library/">browsing large Plex photo libraries without lag</a>.</p>
+            <p>Phlix uses server-side year filtering to keep API responses fast. Instead of loading metadata for 100,000 photos at once, it queries by year. When you scroll to 2021, only 2021's photos are fetched. Combined with virtual paging (only rendering photos visible on screen), this means a library of 100,000 photos is requested a year at a time, so each screen stays small. For a deeper look at these performance techniques, see our guide on <a href="/blog/browse-large-plex-photo-library/">browsing large Plex photo libraries without lag</a>.</p>
 
             <h3>The Year Scrubber</h3>
             <p>A draggable scrubber on the side of the screen displays every year in your library. Tap a year and the timeline jumps there instantly. This is especially useful for libraries that span 10 or 20 years of family photos.</p>
@@ -106,11 +106,11 @@
             <h3>Favorites</h3>
             <p>Long-press any photo to mark it as a favorite. Favorites are stored locally and accessible from a dedicated tab. Start a slideshow from your favorites for a curated highlight reel, or use them to quickly pull up your best shots when sharing with someone.</p>
 
-            <h3>Offline Downloads</h3>
-            <p>See a photo on your Plex server you want on your phone? Phlix lets you download full-resolution photos directly to your iPhone's Camera Roll. Free users get 25 downloads; Pro removes the limit. For more on this feature, see our guide to <a href="/blog/download-plex-photos-iphone/">downloading Plex photos to iPhone</a>.</p>
+            <h3>Save to Photos</h3>
+            <p>See a photo on your Plex server you want on your phone? Phlix saves full-resolution photos straight into your iPhone's Photos app. Free users get 25 saves; Pro removes the limit. For more on this feature, see our guide to <a href="/blog/download-plex-photos-iphone/">downloading Plex photos to iPhone</a>.</p>
 
             <h3>AirPlay Slideshows</h3>
-            <p>Phlix supports AirPlay 2 extended display, turning your TV into a full-screen photo display while your iPhone acts as a controller. This goes far beyond screen mirroring. For the complete walkthrough, see our <a href="/blog/plex-airplay-slideshow/">AirPlay slideshow guide</a>.</p>
+            <p>With Screen Mirroring on, or over an HDMI adapter, Phlix Pro takes over the TV: just the photo on the TV, full screen, while your iPhone shows the controls. For the complete walkthrough, see our <a href="/blog/plex-airplay-slideshow/">AirPlay slideshow guide</a>.</p>
 
             <h2>Setting Up Your Photo Library in Plex</h2>
 
@@ -132,7 +132,7 @@
 
             <div class="cta-box">
                 <h3>Phlix -- The Plex Photo Viewer for iPhone</h3>
-                <p>Chronological timeline, year scrubber, favorites, offline downloads, and AirPlay slideshows. Browse your entire Plex photo library the way it deserves. Free to browse, Pro from $6.99/yr.</p>
+                <p>Chronological timeline, year scrubber, favorites, saves to the Photos app, and slideshows on your TV. Browse your entire Plex photo library the way it deserves. Free to browse, Pro from $6.99/yr.</p>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
                 <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
             </div>

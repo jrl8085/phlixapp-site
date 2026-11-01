@@ -1,10 +1,10 @@
 # Phlix
 
-> Phlix is a free iOS photo browser for Plex Media Server. Chronological timeline with year scrubber, 4K slideshows to your TV, offline downloads, and smooth scrolling through 150,000+ photos.
+> Phlix is a free iOS photo browser for Plex Media Server. Chronological timeline with year scrubber, big-screen slideshows on your TV, saves to the Photos app, and smooth scrolling through 100,000+ photos.
 
 ## Overview
 
-Phlix is a third-party iOS app that connects to your Plex Media Server to browse, view, and download your photo library. It was built to provide the photo experience that Plex users have been missing: a chronological timeline, fast performance with large libraries, and real external display slideshows.
+Phlix is a third-party iOS app that connects to your Plex Media Server to browse, view, and save your photo library. It was built to provide the photo experience that Plex users have been missing: a chronological timeline, fast performance with large libraries, and big-screen slideshows on your TV.
 
 - Website: https://phlixapp.com
 - App Store: https://apps.apple.com/app/phlix-photos/id6796820208
@@ -19,48 +19,47 @@ Phlix is a third-party iOS app that connects to your Plex Media Server to browse
 Photos displayed chronologically with a year scrubber. Tap any year to jump instantly. Navigate decades of memories in seconds.
 
 ### Built for Scale
-Handles libraries of 150,000+ photos using server-side year filtering, virtual paging, and intelligent prefetching. Smooth scrolling regardless of library size.
+Handles libraries of 100,000+ photos using server-side year filtering, virtual paging, and intelligent prefetching. The first screen appears in seconds; the year index fills in behind it.
 
-### 4K External Display Slideshow
-Connect via AirPlay 2 extended display or HDMI adapter. Photos render at full resolution on your TV while your phone stays as the controller. True dual-screen experience, not screen mirroring.
+### Big-Screen Slideshows on Your TV
+With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photo, full screen, while your phone shows the controls. Photos display at the resolution your TV reports to iOS, up to 4K over a USB-C HDMI adapter. A Pro feature; without Pro the TV mirrors your phone.
 
-### Offline Downloads
-Download photos directly to your iOS Photo Library for offline access. 25 free downloads included. Unlimited with Pro.
+### Save to Photos
+Save photos and clips straight into your iOS Photos app. 25 free saves, unlimited with Pro.
 
 ### Cellular Data Saver
-Automatic thumbnail compression and paused prefetching on cellular data. Full quality on Wi-Fi. No configuration needed.
+Automatic thumbnail compression and paused prefetching on cellular or in Low Data Mode. Full quality on Wi-Fi. On by default, with two switches in Settings (Use Mobile Data, Reduce Data on Cellular) if you want it different.
 
 ### Search & Organize
-Search across filenames, tags, and collections. Mark favorites. Switch between multiple photo libraries on the same Plex server.
+Search photo and video titles, tags and collections. Mark favorites. Switch between multiple photo libraries on the same Plex server.
 
 ### Accessibility
 Full VoiceOver support with position announcements. Universal iPhone and iPad app with adaptive grid layout and split view.
 
 ## Pricing
 
-- **Free**: Full library browsing, timeline, year scrubber, search, favorites, on-device slideshow, 25 downloads
-- **Pro Lifetime**: $19.99 one-time purchase. Unlimited downloads, external display slideshows, Family Sharing included
+- **Free**: Full library browsing, timeline, year scrubber, search, favorites, on-device slideshow, 25 saves to Photos
+- **Pro Lifetime**: $19.99 one-time purchase. Unlimited saves to Photos, big-screen slideshows on your TV, Family Sharing included
 - **Pro Yearly**: $6.99/year. Same Pro features, cancel anytime
 - **14-Day Trial**: Try Pro free for 14 days. No subscription, no credit card, no charge
 
 ## Comparison with Official Plex Photos App
 
-Phlix offers features not available in the official Plex Photos iOS app:
-- Chronological photo timeline (vs folder-based browsing)
-- Year scrubber navigation
-- Large library performance (150K+ photos)
-- 4K slideshow on external display via AirPlay 2
-- Offline downloads to iOS Photo Library
+Phlix offers features the official Plex Photos iOS app does not list:
+- Chronological photo timeline with a year scrubber
+- Large library performance (100,000+ photos)
+- Big-screen slideshows: with Screen Mirroring on, or over HDMI, the TV shows just the photo while your phone shows the controls
+- Saves to the iOS Photos app
 - Cellular data saver
 - Full-bleed photo viewing (no persistent UI chrome)
 - Full VoiceOver accessibility
-- Weekly developer updates
+- Frequent developer updates
 
 ## Privacy
 
 - No ads, no tracking pixels, no session replay
 - Anonymous usage analytics only (opt-out available in Settings)
-- No photos, filenames, server addresses, or personal information collected
+- No photos, filenames, server addresses, Plex credentials, names or email addresses collected
 - No third-party advertising SDKs
 - Privacy policy: https://phlixapp.com/privacy
 
@@ -68,7 +67,7 @@ Phlix offers features not available in the official Plex Photos iOS app:
 
 - iOS 17 or later
 - A Plex Media Server with at least one photo library
-- A Plex account (free or Plex Pass — no Plex Pass required)
+- A Plex account. No Plex Pass is needed on your home network. Away from home, Plex requires the server owner to have a Plex Pass (or you a Remote Watch Pass) to stream personal video — including clips in Phlix — and Plex's photo exemption is stated only for its own Plex Photos app, so photos may be affected too.
 
 ## Independence Disclaimer
 

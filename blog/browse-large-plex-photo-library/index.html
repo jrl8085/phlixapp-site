@@ -48,7 +48,7 @@
 
             <p>Large photo libraries are where Plex's photo features start to break down. A collection of 5,000 photos works fine. At 20,000, things get sluggish. By the time you hit 50,000 or 100,000 photos, the native Plex interface can take 10 to 30 seconds to load a single album grid, and scrolling becomes an exercise in patience. This is not a hardware problem you can throw money at -- it is a fundamental limitation in how the Plex client apps request and render photo data.</p>
 
-            <p>But it is solvable. With the right server-side optimizations and the right client app, browsing a library of 150,000 or more photos can feel as responsive as scrolling through your phone's Camera Roll.</p>
+            <p>But it is solvable. With the right server-side optimizations and the right client app, browsing a library of 100,000 or more photos can stay responsive.</p>
 
             <h2>Why Large Libraries Are Slow in Plex</h2>
 
@@ -118,17 +118,17 @@
 
             <p>You can optimize the server all you want, but if the client app does not handle large datasets intelligently, the experience will still suffer. This is where most Plex users hit a wall. The native Plex apps were designed primarily for video libraries where you rarely have more than a few thousand items. Photo libraries operate at a completely different scale.</p>
 
-            <h3>Phlix: Built for 150,000+ Photos</h3>
+            <h3>Phlix: Built for 100,000+ Photos</h3>
 
             <p>Phlix was designed from the ground up to handle massive Plex photo libraries. Instead of requesting all metadata at once, Phlix uses three techniques that make large libraries feel fast:</p>
 
-            <p><strong>Server-side year filtering.</strong> Rather than loading your entire 150,000-photo library into memory, Phlix queries the Plex API with year-based filters. When you scroll to 2019, only 2019's photos are requested from the server. This keeps each API response small and fast, regardless of total library size.</p>
+            <p><strong>Server-side year filtering.</strong> Rather than loading your entire 100,000-photo library into memory, Phlix queries the Plex API with year-based filters. When you scroll to 2019, only 2019's photos are requested from the server. Each request covers one year, so the first screen appears before the whole library has been counted.</p>
 
-            <p><strong>Virtual paging.</strong> Phlix only renders the photos currently visible on screen, plus a small buffer above and below. Whether your library has 1,000 or 150,000 photos, the memory footprint remains constant. There are no grid rendering delays because the app never attempts to render tens of thousands of thumbnails at once.</p>
+            <p><strong>Virtual paging.</strong> Phlix only renders the photos currently visible on screen, plus a small buffer above and below. Whether your library has 1,000 or 100,000 photos, the memory footprint stays small. There are no grid rendering delays because the app never attempts to render tens of thousands of thumbnails at once.</p>
 
             <p><strong>Intelligent prefetching.</strong> As you scroll, Phlix predicts which photos you will see next and begins loading their thumbnails in the background. Combined with aggressive thumbnail caching, this creates a browsing experience where photos appear to load instantly, even over a remote connection.</p>
 
-            <p>The result: a library of 150,000 photos in Phlix feels as fast to browse as a library of 1,000. The year scrubber lets you jump to any year instantly, and the chronological timeline provides the "Camera Roll for your Plex server" experience that the native Plex app cannot deliver.</p>
+            <p>The result: each request covers one year, so the first screen of a 100,000-photo library appears before the whole library has been counted. The year scrubber lets you jump to any year instantly, and the chronological timeline provides the "Camera Roll for your Plex server" experience.</p>
 
             <h2>The Bottom Line</h2>
 
@@ -136,7 +136,7 @@
 
             <div class="cta-box">
                 <h3>Phlix -- Built for Large Plex Photo Libraries</h3>
-                <p>Server-side year filtering, virtual paging, and intelligent prefetching. Browse 150,000+ photos without lag. Free to browse, Pro from $6.99/yr.</p>
+                <p>Server-side year filtering, virtual paging, and intelligent prefetching. Browse 100,000+ photos. Free to browse, Pro from $6.99/yr.</p>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
                 <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
             </div>
