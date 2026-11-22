@@ -304,7 +304,7 @@ claude plugin install phlix-camera-upload@phlix</code></pre></div>
         <p>Your browser warns that the connection is not private. <strong>That is expected.</strong> A home server has no public name that a certificate authority could vouch for, so the helper makes its own certificate, and browsers warn about every certificate made that way. Choose Advanced or Show Details, then continue to the page. Phlix does not rely on the browser's check: it remembers the helper's exact certificate when it pairs.</p>
         <p>The page should say <strong>Upload folder: Ready</strong> and <strong>Plex Media Server: Found</strong>. If it says something else, the <code>doctor</code> command tells you what to do:</p>
         <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
-<pre><code>Phlix Camera Upload 1.0.0
+<pre><code>Phlix Camera Upload 1.0.1
 OK       The helper is running on port 7459
 OK       The upload folder /photos can be written to.
 OK       223.6 GB free on the upload disk.
@@ -536,7 +536,8 @@ Nothing needs fixing.</code></pre>
             <tr><th>Cause</th><th>Fix</th></tr>
             <tr><td>The helper writes files as the owner of the upload folder. If root owns that folder, the files belong to root.</td><td>Set <code>PUID</code> and <code>PGID</code> to the user and group you want, then run <code>docker compose up -d</code>. The command <code>id USERNAME</code> prints a user's numbers.</td></tr>
             <tr><td>The status page says "The helper cannot write here".</td><td>Change the upload folder's owner or permissions, or set <code>PUID</code> and <code>PGID</code>.</td></tr>
-            <tr><td>Fedora, RHEL or Rocky Linux with SELinux: the log says "unable to open database file".</td><td>Label both folders for containers, in the helper's folder: <code>sudo chcon -R -t container_file_t "/your/upload/folder" config</code>, then <code>docker compose restart</code>.</td></tr>
+            <tr><td>The log says "it cannot use its own data folder".</td><td>The user that the helper runs as may not write to its <code>config</code> folder. The log line names that user by number. In the helper's folder, run <code>sudo chown -R USER:GROUP config</code> with those numbers, or set <code>PUID</code> and <code>PGID</code>, then <code>docker compose up -d</code>.</td></tr>
+            <tr><td>Fedora, RHEL or Rocky Linux with SELinux: the same message, or "The helper cannot write here".</td><td>Label both folders for containers, in the helper's folder: <code>sudo chcon -R -t container_file_t "/your/upload/folder" config</code>, then <code>docker compose restart</code>.</td></tr>
         </table>
 
         <h3>The helper does not start</h3>

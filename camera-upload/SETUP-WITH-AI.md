@@ -244,7 +244,7 @@ If a command fails, find the message in [Troubleshooting](#troubleshooting). Do 
    It must end with `Nothing needs fixing.`, like this:
 
    ```
-   Phlix Camera Upload 1.0.0
+   Phlix Camera Upload 1.0.1
    OK       The helper is running on port 7459
    OK       The upload folder /photos can be written to.
    OK       224.7 GB free on the upload disk.
@@ -425,7 +425,7 @@ Each `PROBLEM` line has a `Fix:` line under it. Then find what you see in this t
 | The same message, and both folders are in the Compose file | Docker on this server stores containers without a file system of their own, so the helper cannot see the mounts. This is rare. | Run `docker info --format '{{.Driver}}'`. If it prints `vfs`, ask the owner. With a yes, add `ALLOW_UNMOUNTED: "1"` under `environment:`, and run `docker compose up -d`. Then number 7 of Step 8 must pass. If it prints something else, stop and ask the owner. |
 | The container exits or keeps restarting. The log says `Phlix Camera Upload cannot start:` | A setting has a value the helper cannot use. The message names it. | Correct the setting in `docker-compose.yml`. Run `docker compose up -d`. |
 | `Upload folder` is not `Ready` | The helper's user may not write to the upload folder. | Compare `Running as user` in the log with `stat -c '%u:%g %a'` of the upload folder. Repeat numbers 6 to 9 of Step 5. Then run `docker compose restart`. |
-| The container keeps restarting and the log says `unable to open database file`, or `Upload folder` is not `Ready`. In both cases `getenforce` prints `Enforcing`. | SELinux keeps the container out of folders that are not labelled for containers. | Ask the owner. With a yes, run `sudo chcon -R -t container_file_t "HOST_PATH_OF_UPLOAD_FOLDER" "INSTALL_FOLDER/config"`. Then run `docker compose restart`. Do not change the Compose file. |
+| The container keeps restarting and the log says `it cannot use its own data folder`, or `Upload folder` is not `Ready`. In both cases `getenforce` prints `Enforcing`. | SELinux keeps the container out of folders that are not labelled for containers. | Ask the owner. With a yes, run `sudo chcon -R -t container_file_t "HOST_PATH_OF_UPLOAD_FOLDER" "INSTALL_FOLDER/config"`. Then run `docker compose restart`. Do not change the Compose file. |
 | The log says `Running as root, so uploaded files will belong to root`, and `doctor` has a NOTE that says `The helper runs as root` | Root owns the upload folder. | On Docker Desktop this is expected. Elsewhere, repeat number 8 of Step 5, then run `docker compose restart`. |
 | `Plex Media Server` stays `Not found` | The helper cannot reach Plex on port 32400 of the server. | Add `PLEX_URL` as Step 6 shows, with SERVER_ADDRESS from Step 10. Run `docker compose up -d` and repeat Step 8. If it is still not found, take `PLEX_URL` out again, run `docker compose up -d`, and tell the owner that phones pair with the pairing code. |
 | The status page says Plex `lets this helper in without signing in`, or `doctor` says so in a `NOTE` | In Plex, the setting List of IP addresses and networks that are allowed without auth includes the helper's address. Plex then cannot confirm who owns the server. | Do not change Plex. Tell the owner that phones pair with the pairing code, and that this Plex setting is the reason. |
