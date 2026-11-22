@@ -162,6 +162,16 @@
             <p>Go to Settings &gt; Storage &gt; Clear Image Cache. This frees up disk space without affecting your favorites or preferences.</p>
         </div>
 
+        <div class="faq">
+            <h3>What does Camera Upload (Beta) do?</h3>
+            <p>It backs up the photos and videos on your iPhone or iPad to a folder of your Plex photo library, on your own server. It uploads only on your home Wi-Fi, never over mobile data. The connection is encrypted, and your photos go to your own server and nowhere else. It is a one-way copy: it never deletes or changes anything on your device. On the server each device has its own folder, with a folder for each year and month. The first 100 uploads are free, and Phlix Pro uploads the rest. It does not upload the video part of a Live Photo, hidden photos, shared albums, or photos synced from a computer. It is a beta: keep your own backup of anything you cannot replace. The <a href="/camera-upload/#beta">setup guide</a> lists what the beta does and what it does not do.</p>
+        </div>
+
+        <div class="faq">
+            <h3>How do I set up Camera Upload (Beta)?</h3>
+            <p>Camera Upload backs up the photos and videos on your iPhone or iPad to your own server, on your home Wi-Fi only. It needs Phlix 1.0.21 or later, and a small free program, the helper, that you run in Docker on your own server, next to Plex Media Server. If the App Store does not offer version 1.0.21 yet, it is on its way. The <a href="/camera-upload/">Camera Upload setup guide</a> has every step, with networking help and troubleshooting.</p>
+        </div>
+
         <h2>Contact Us</h2>
         <p>Didn't find your answer above? Send us a message and we'll get back to you.</p>
 
@@ -193,6 +203,7 @@
                     <select id="topic" name="topic" required>
                         <option value="" disabled selected>Select a topic</option>
                         <option value="Connection Issue">Connection Issue</option>
+                        <option value="Camera Upload (Beta)">Camera Upload (Beta)</option>
                         <option value="Bug Report">Bug Report</option>
                         <option value="Feature Request">Feature Request</option>
                         <option value="Account / Privacy">Account / Privacy</option>

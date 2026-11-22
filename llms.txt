@@ -28,7 +28,26 @@ With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photo, 
 Save photos and clips straight into your iOS Photos app. 25 free saves, unlimited with Pro.
 
 ### Camera Upload (Beta, from version 1.0.21)
-Backs up the photos and videos on your iPhone or iPad to your own server, where they show up in Plex. It needs the free Phlix Camera Upload helper, one Docker container next to Plex Media Server (source: https://github.com/jrl8085/phlix-camera-upload). Uploads run only on your home Wi-Fi, encrypted, straight from the phone to your server: nothing goes to Phlix or to any cloud, and nothing is deleted from the phone. The app shows how many photos are backed up, what is uploading, and when everything is done. The first 100 uploads are free; Pro uploads the rest. Setup guide: https://phlixapp.com/camera-upload/
+Camera Upload is a beta. It backs up the photos and videos on your iPhone or iPad to a folder of your Plex photo library, on your own server. It needs Phlix 1.0.21 or later and the free Phlix Camera Upload helper, one Docker container that runs next to Plex Media Server (source: https://github.com/jrl8085/phlix-camera-upload). Version 1.0.21 may not be on the App Store yet: if Settings in the app has no Camera Upload row, that version has not arrived.
+
+What the beta does:
+- It uploads only on your home Wi-Fi, over an encrypted connection (HTTPS), straight from the device to your own server. Your photos and videos do not go to Phlix or to a cloud service.
+- Before anything is switched on, the app checks that the helper is on your network. If the helper is not found, Camera Upload stays off and the app says why.
+- The owner of the Plex server pairs without a code. Everyone else types the helper's pairing code.
+- The app shows how many items are backed up, how many are still to back up, and when everything is backed up. It can send a notification then.
+- With Phlix open, new photos upload by themselves. With Phlix closed, iOS lets it carry on in short bursts, mostly while the device charges.
+- On the server each device has its own folder, with a folder for each year and month. The same photo from two devices is stored once. Nothing is ever overwritten.
+- It is a one-way copy. It never deletes or changes anything on the device.
+- The first 100 uploads are free. Phlix Pro uploads the rest.
+
+What the beta does not do:
+- It does not upload away from home, over mobile data, or through a VPN into your home.
+- It is not a sync. Deleting a photo on the device leaves the copy on the server, and nothing comes back to the device.
+- It does not upload the video part of a Live Photo, hidden photos, shared albums, or photos synced from a computer.
+- With Phlix closed, uploads happen when iOS allows them. A large library takes a few days in the background.
+- It is a beta. Keep your own backup of anything you cannot replace.
+
+Setup guide: https://phlixapp.com/camera-upload/
 
 ### Cellular Data Saver
 Automatic thumbnail compression and paused prefetching on cellular or in Low Data Mode. Full quality on Wi-Fi. On by default, with two switches in Settings (Use Mobile Data, Reduce Data on Cellular) if you want it different.
@@ -41,8 +60,8 @@ Full VoiceOver support with position announcements. Universal iPhone and iPad ap
 
 ## Pricing
 
-- **Free**: Full library browsing, timeline, year scrubber, search, favorites, on-device slideshow, 25 saves to Photos, and (from version 1.0.21) the first 100 camera uploads
-- **Pro Lifetime**: $19.99 one-time purchase. Unlimited saves to Photos, big-screen slideshows on your TV, unlimited camera uploads (from version 1.0.21), Family Sharing included
+- **Free**: Full library browsing, timeline, year scrubber, search, favorites, on-device slideshow, 25 saves to Photos, and the first 100 uploads with Camera Upload (Beta, from version 1.0.21)
+- **Pro Lifetime**: $19.99 one-time purchase. Unlimited saves to Photos, big-screen slideshows on your TV, unlimited uploads with Camera Upload (Beta, from version 1.0.21), Family Sharing included
 - **Pro Yearly**: $6.99/year. Same Pro features, cancel anytime
 - **14-Day Trial**: Try Pro free for 14 days. No subscription, no credit card, no charge
 
@@ -80,8 +99,8 @@ Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and 
 ## Links
 
 - Homepage: https://phlixapp.com
-- Camera Upload setup guide: https://phlixapp.com/camera-upload/
-- Camera Upload helper (Docker image and source): https://github.com/jrl8085/phlix-camera-upload
+- Camera Upload (Beta) setup guide: https://phlixapp.com/camera-upload/
+- Camera Upload (Beta) helper (Docker image and source): https://github.com/jrl8085/phlix-camera-upload
 - Support: https://phlixapp.com/support
 - Privacy Policy: https://phlixapp.com/privacy
 - Terms of Use: https://phlixapp.com/terms

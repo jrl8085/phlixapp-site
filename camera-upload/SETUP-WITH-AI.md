@@ -1,6 +1,6 @@
 # Set up Phlix Camera Upload with an AI agent
 
-**For you, the owner of the server.** This file tells an AI coding agent how to install Phlix Camera Upload, the helper that receives camera uploads from the Phlix app.
+**For you, the owner of the server.** This file tells an AI coding agent how to install Phlix Camera Upload, the helper that receives camera uploads from the Phlix app. Camera Upload is a beta feature of Phlix 1.0.21 or later. The setup guide for people, with pictures: https://phlixapp.com/camera-upload/
 
 1. Put this file on your server, or on a computer that can reach the server over SSH.
 2. Open your AI coding agent in the folder that holds this file, and say: `Follow SETUP-WITH-AI.md`.
@@ -14,7 +14,7 @@ Everything below is for the AI agent.
 
 Install Phlix Camera Upload in Docker on the machine that runs the owner's Plex Media Server. The helper must write uploads into a folder that is inside a Plex photo library.
 
-The owner is the person you are talking to. Phlix is an app for iPhone and iPad that shows the photos of a Plex Media Server. The helper receives the photos and videos that Phlix uploads from the phone's camera roll over the home network, and writes them into one folder. Plex then shows them.
+The owner is the person you are talking to. Phlix is an app for iPhone and iPad that shows the photos of a Plex Media Server. The helper receives the photos and videos that Phlix uploads from the phone's camera roll over the home network, and writes them into one folder. Plex then shows them. In the app, Camera Upload is marked Beta.
 
 If you cannot run commands on the server yourself, work through the owner. Give them one command at a time, ask them to paste what it printed, and go on from there. Never ask for a Plex token or for the pairing code.
 
@@ -82,7 +82,7 @@ How the helper behaves:
 
 How the app behaves:
 
-- Phlix needs version 1.0.21 or later. Camera Upload is under Settings > Camera Upload.
+- Phlix needs version 1.0.21 or later. Camera Upload is under Settings > Camera Upload, where it is marked Beta.
 - Phlix looks for the helper at the address of the Plex server, on port 7459. Any other address can be typed into the app.
 - Phlix talks HTTPS only.
 - Phlix uploads only on the home network: the Wi-Fi network the phone was on when it paired. It never uploads over mobile data, on other Wi-Fi networks, or through a VPN from outside.
@@ -337,11 +337,15 @@ Give the owner this message. Fill in the four values.
 > Two things are left for you to do.
 >
 > 1. In Plex, switch on Settings > Library > Scan my library automatically. Plex shows new photos only after it scans.
-> 2. On your iPhone or iPad, connect to your home Wi-Fi. Update Phlix to version 1.0.21 or later. Open Phlix and go to Settings > Camera Upload. Tap Check for the Helper, then Check My Network. When Phlix says Helper found, tap Connect, then Turn On Camera Upload. The screen then shows a green dot and "Connected to" the helper's name. Your phone pairs without a code, because your Plex account owns the server.
+> 2. On your iPhone or iPad, connect to your home Wi-Fi. You need Phlix 1.0.21 or later. Open Phlix and go to Settings > Camera Upload. Tap Check for the Helper, then Check My Network. When Phlix says Helper found, tap Connect, then Turn On Camera Upload. The screen then shows a green dot and "Connected to" the helper's name. Your phone pairs without a code, because your Plex account owns the server.
 >
 > Other people in your home, with their own Plex account, need the pairing code. Ask me for it, or run: docker exec phlix-camera-upload python -m phlix_upload code
 >
 > Phlix uploads only on your home Wi-Fi: the network the phone is on when it pairs. The first 100 uploads are free. Phlix Pro uploads the rest. The helper never deletes a file, and removing the helper does not delete your photos.
+>
+> Camera Upload is a beta, and the app marks it Beta. Keep your own backup of anything you cannot replace. What the beta does and does not do: https://phlixapp.com/camera-upload/#beta
+>
+> The setup guide, and help when something does not work: https://phlixapp.com/camera-upload/
 
 If the status page says Plex is not found, replace the last sentence of number 2 with: "Type the pairing code when Phlix asks for it."
 
@@ -431,10 +435,10 @@ Each `PROBLEM` line has a `Fix:` line under it. Then find what you see in this t
 | The status page says Plex `lets this helper in without signing in`, or `doctor` says so in a `NOTE` | In Plex, the setting List of IP addresses and networks that are allowed without auth includes the helper's address. Plex then cannot confirm who owns the server. | Do not change Plex. Tell the owner that phones pair with the pairing code, and that this Plex setting is the reason. |
 | Phlix says "iOS is keeping Phlix off your local network" | The Local Network permission is off for Phlix on the phone. | The owner opens the phone's Settings > Apps > Phlix and switches Local Network on. |
 | Phlix does not find the helper, and Camera Upload stays off | The phone cannot reach the helper, or the helper is not at the address of Plex. | Do Step 10. Ask the owner to check two things on the phone: it is on the home Wi-Fi, and no VPN app is on. If that does not help, the owner types `https://SERVER_ADDRESS:7459` into the app. |
-| Phlix found the helper at home and uploads nothing elsewhere | Phlix uploads only on the home Wi-Fi: the network the phone was on when it paired. | Nothing is wrong. To add a second network at home, the owner connects to it, opens the Camera Upload screen and chooses This is my home network. |
+| Phlix found the helper at home and uploads nothing elsewhere | Phlix uploads only on the home Wi-Fi: the network the phone was on when it paired. | Nothing is wrong. To add a second network at home, the owner connects to it, opens the Camera Upload screen and chooses This Is My Home Network. |
 | Phlix says the Plex account does not own the server, or asks for the pairing code | The phone's Plex account is not the owner's, or Plex could not confirm it. | The owner types the pairing code. Do Step 9 if the owner asks. |
 | Phlix says there were too many wrong tries | One address made five wrong tries within a minute. Or all addresses together sent 200 wrong codes within ten minutes: pairing with the code then pauses for everyone, and pairing through Plex still works. | Tell the owner to wait a minute and type the code again. If it goes on, read the log for `Wrong pairing code from`. |
-| A phone that was paired says it is no longer paired | The same device paired again, which is normal after a phone was restored. Or the helper lost its `config` folder. | Read the log for `was already paired and has paired again from`. The owner pairs the phone again. If nobody in the home did that, tell the owner to change the pairing code first, with `docker exec phlix-camera-upload python -m phlix_upload new-code` and then `docker restart phlix-camera-upload`. Pairing the phone again after that ends the other pairing. |
+| A phone that was paired says it is no longer paired | The same device paired again, which is normal after a phone was restored. Or the helper lost its `config` folder. | Read the log for `was already paired and has paired again from`. The owner pairs the phone again. If nobody in the home did that, tell the owner to change the pairing code first, with `docker exec phlix-camera-upload python -m phlix_upload new-code` and then `docker restart phlix-camera-upload`. Pairing the phone again after that ends the other pairing. If the helper lost its `config` folder, Phlix says "The server's identity has changed": the owner notes the name in the Folder row of the Camera Upload screen, chooses Disconnect, connects again and types that same folder name, so that files already on the server are not stored twice. |
 | Photos reach the upload folder and do not show in Plex | Plex has not scanned, or Plex cannot see the folder. | Tell the owner to switch on Scan my library automatically. Repeat number 8 of Step 8. Do not change Plex yourself. |
 
 ### Special networks

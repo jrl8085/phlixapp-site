@@ -1148,7 +1148,12 @@ main() {
         say
         say "Phlix looks for port 7459 by itself. This helper is on port $shown_port,"
         say "so type this address into the app:  https://$address:$shown_port"
+        say "A phone that is already paired has to choose Disconnect first, then connect again."
     fi
+    say
+    say "Camera Upload is a beta. In the app it is marked Beta."
+    say "  Keep your own backup of anything you cannot replace."
+    say "  What the beta does and does not do:  https://phlixapp.com/camera-upload/#beta"
     say
     say "The pairing code:"
     say "  The owner of the Plex server pairs without a code."
@@ -1158,6 +1163,7 @@ main() {
     say
     say "To update the helper later, run this installer again."
     say "If the app cannot find the helper, read: $NETWORKING_URL"
+    say "Setup guide: https://phlixapp.com/camera-upload/"
 
     if [ "$doctor_status" -ne 0 ]; then
         exit 1
