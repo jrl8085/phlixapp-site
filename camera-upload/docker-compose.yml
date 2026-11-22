@@ -1,0 +1,143 @@
+# Phlix Camera Upload
+#
+# This file starts the helper that receives the photos and videos the Phlix
+# app uploads from your iPhone or iPad, and writes them into a folder of your
+# Plex photo library.
+#
+# How to use this file:
+#   1. Change the one line marked CHANGE THE NEXT LINE below.
+#   2. In the folder that holds this file, run:  docker compose up -d
+#   3. Open https://YOUR-SERVER:7459 in a browser to check that it runs.
+#      The browser warns about the certificate. That is expected.
+#
+# If something does not work, ask the helper what is wrong:
+#   docker exec phlix-camera-upload python -m phlix_upload doctor
+#
+# Setup guide: https://phlixapp.com/camera-upload/
+# If the app cannot find the helper:
+#   https://github.com/jrl8085/phlix-camera-upload/blob/main/NETWORKING.md
+
+services:
+  phlix-camera-upload:
+    image: ghcr.io/jrl8085/phlix-camera-upload:1
+    container_name: phlix-camera-upload
+
+    # Start again by itself when the server or Docker restarts.
+    restart: unless-stopped
+
+    # The Phlix app looks for the helper on port 7459 of your server.
+    ports:
+      - "7459:7459"
+
+    volumes:
+      # Your upload folder: the folder on this server where the photos go.
+      #
+      # It must be inside a folder that one of your Plex photo libraries
+      # includes. If it is not, Plex never shows the photos.
+      #
+      # Make the folder before you start the helper. Docker refuses to start
+      # the helper if the folder is missing. The helper writes files as the
+      # user who owns the folder.
+      #
+      # Write the path as it is on the server itself. If Plex runs in Docker,
+      # do not use the path from inside the Plex container.
+      #
+      # Examples:
+      #   Linux      /mnt/media/Photos/Camera Uploads
+      #   Synology   /volume1/photo/Camera Uploads
+      #   TrueNAS    /mnt/tank/media/Photos/Camera Uploads
+      #   Mac        /Users/you/Pictures/Camera Uploads
+      #   Windows    C:\Users\you\Pictures\Camera Uploads
+      #
+      # Spaces in the path are fine. If the path has a "#" after a space, or
+      # a ":" before a space, put the whole path in 'single quotes'.
+      - type: bind
+        # CHANGE THE NEXT LINE. Keep "source: " and write your folder after it.
+        source: /CHANGE/THIS/Photos/Camera Uploads
+        target: /photos
+        bind:
+          create_host_path: false
+
+      # The helper's own data: the list of paired phones, the list of files
+      # it has received, and its certificate. No photos are kept here.
+      # Docker makes a folder named "config" next to this file. Keep it: if
+      # it is lost, every phone has to pair again.
+      # If your tool has no "next to this file" (TrueNAS, Portainer), write a
+      # full path in place of ./config, for example:
+      #   /mnt/tank/apps/phlix-camera-upload:/config
+      - ./config:/config
+
+    # Lets the helper find Plex Media Server on this machine.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    # The helper can never gain more rights than it was started with.
+    security_opt:
+      - "no-new-privileges:true"
+
+    # Optional settings. The helper works without any of them.
+    #
+    # To use one, remove the "# " in front of "environment:" and in front of
+    # the setting you want. Leave the other spaces as they are. Then run
+    # "docker compose up -d" again.
+    #
+    # environment:
+    #   # Where Plex Media Server is. Set this if the helper's status page
+    #   # says "Plex Media Server: Not found", or to make sure that the helper
+    #   # asks your own server and no other.
+    #   PLEX_URL: "http://192.168.1.10:32400"
+    #
+    #   # Write files as this user and group. Without these, the helper uses
+    #   # the owner of the upload folder.
+    #   PUID: "1000"
+    #   PGID: "1000"
+    #
+    #   # Permissions for new files and folders. With 022, other users may
+    #   # read them. With 002, the group may also change them.
+    #   UMASK: "022"
+    #
+    #   # The name that the app and the status page show for this helper.
+    #   NAME: "Phlix Camera Upload"
+    #
+    #   # Who may pair. auto: the owner of the Plex server pairs without a
+    #   # code and everyone else types the pairing code. code: everyone types
+    #   # the code. plex: only the owner of the Plex server may pair.
+    #   PAIRING: "auto"
+    #
+    #   # Your own pairing code, in place of the one the helper makes. Write
+    #   # at least 6 letters or digits between the quotes.
+    #   PAIRING_CODE: ""
+    #
+    #   # The folders the helper makes inside the upload folder. You can use
+    #   # {device}, {year}, {month} and {day}.
+    #   PATH_TEMPLATE: "{device}/{year}/{year}-{month}"
+    #
+    #   # Refuse uploads that would leave less than this many GB free. Uploads
+    #   # that are still arriving count too.
+    #   MIN_FREE_GB: "2"
+    #
+    #   # The largest single file the helper accepts, in GB.
+    #   MAX_UPLOAD_GB: "50"
+    #
+    #   # More file types to accept, besides the usual photo and video types.
+    #   # Separate them with commas.
+    #   EXTRA_EXTENSIONS: "insp,lrv"
+    #
+    #   # How much the log says: debug, info, warning or error.
+    #   LOG_LEVEL: "info"
+    #
+    #   # Write "off" only if your own reverse proxy adds HTTPS in front of
+    #   # the helper. Phlix talks HTTPS only: with "off" and no such proxy,
+    #   # the app cannot use the helper.
+    #   TLS: "on"
+    #
+    #   # Your own certificate and its key, as paths inside the container.
+    #   # Set both. A file you put in the config folder is at /config/...
+    #   TLS_CERT: "/config/my-cert.pem"
+    #   TLS_KEY: "/config/my-key.pem"
+    #
+    # PORT, BIND, UPLOAD_DIR and CONFIG_DIR exist too. With Docker you do not
+    # need them. To use another port on your server, change only the first
+    # number in the "ports" line above, for example "8443:7459". The app
+    # looks for port 7459 by itself, so with another port you type the
+    # helper's address into the app.

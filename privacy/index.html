@@ -40,13 +40,13 @@
     <div class="container">
         <a href="/" class="back">&larr; Back to Phlix</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: November 16, 2026</p>
+        <p class="updated">Last updated: November 22, 2026</p>
 
         <h2>Overview</h2>
         <p>Phlix ("the App") is an independent, third-party photo and video browser that connects to a Plex Media Server that you own, operate, or are authorized to access. This Privacy Policy explains what information the App processes, how it is processed, and what choices you have. By using the App you agree to the processing described below; if you do not agree, do not use the App.</p>
 
         <h2>The Short Version</h2>
-        <p>Phlix collects anonymous product-interaction data (which features are used, where things break) to improve the app. This data is not linked to your identity and is not used for advertising or tracking. Phlix does not collect your name, email, photos, library contents, server name, server address, or Plex account information. You can opt out of analytics entirely in Settings &rarr; Privacy. This website (phlixapp.com) uses Google Analytics to count visits; see "This Website" below.</p>
+        <p>Phlix collects anonymous product-interaction data (which features are used, where things break) to improve the app. This data is not linked to your identity and is not used for advertising or tracking. Phlix does not collect your name, email, photos, library contents, server name, server address, or Plex account information. You can opt out of analytics entirely in Settings &rarr; Privacy. If you turn on Camera Upload (from version 1.0.21), the App copies the photos and videos on your device to your own server over your home network, and never to the developer; see "Camera Upload" below. This website (phlixapp.com) uses Google Analytics to count visits; see "This Website" below.</p>
 
         <h2>Anonymous Analytics Data We Collect</h2>
         <p>Phlix collects anonymous product-interaction data to understand which features are used, where users encounter problems, and how to improve the app. This data is sent to <a href="https://posthog.com">PostHog</a> (US Cloud). The analytics implementation is a custom, dependency-free client &mdash; no third-party SDK is embedded in the app.</p>
@@ -64,7 +64,7 @@
         <ul>
             <li>Your name, email address, phone number, or any contact information.</li>
             <li>Your Plex username, authentication tokens, server name, server address, or any server configuration.</li>
-            <li>Photos, videos, filenames, album names, or any content from your Plex library.</li>
+            <li>Photos, videos, filenames, album names, or any content from your Plex library or from your device's Photo Library.</li>
             <li>Apple advertising identifiers (IDFA) or cross-app tracking data.</li>
             <li>Payment information, billing details, or Apple transaction records.</li>
         </ul>
@@ -79,6 +79,7 @@
             <li><strong>App Preferences</strong> &mdash; Selected library, slideshow defaults, mobile-data preferences, and similar settings, stored in UserDefaults on your device.</li>
             <li><strong>Favorites</strong> &mdash; A list of media-item identifiers you have favorited within the App, stored in a local file on your device.</li>
             <li><strong>Image and Metadata Cache</strong> &mdash; Thumbnails, full-resolution images, and library indexes are cached on your device to improve performance. You can clear the image cache at any time in the App's Settings, or by uninstalling the App.</li>
+            <li><strong>Camera Upload Settings</strong> (only if you set up Camera Upload) &mdash; The address of your Camera Upload helper, the fingerprint of its certificate, a pairing token and a random identifier for this device (both in the iOS Keychain), the folder name you chose, the address range of your home network (for example 192.168.1.0/24, never the Wi-Fi's name), and a list of which items in your Photo Library have already been uploaded.</li>
         </ul>
         <p>This information is deleted from your device when you uninstall the App. It is not backed up or transmitted to the developer.</p>
 
@@ -87,6 +88,7 @@
         <ul>
             <li><strong>Plex, Inc.</strong> (plex.tv) &mdash; Used for authentication via Plex's OAuth PIN flow and for discovering Plex Media Servers associated with your Plex account. Communication is between your device and Plex's servers. Plex's handling of your data is governed by <a href="https://www.plex.tv/about/privacy-legal/">Plex's Privacy Policy</a>.</li>
             <li><strong>Your Plex Media Server</strong> &mdash; Used to browse, search, stream, and download media stored on that server. Communication is between your device and the server's address (which may be on your local network or reached over the internet, depending on how you configure your Plex Media Server).</li>
+            <li><strong>Your Camera Upload helper</strong> (only if you set up Camera Upload) &mdash; A program you install on your own server. The App sends it copies of the photos and videos on your device, over your home network and encrypted. Communication is between your device and that program. See "Camera Upload" below.</li>
             <li><strong>Apple, Inc.</strong> &mdash; The App is distributed through the Apple App Store; Apple processes purchases and subscriptions, distributes the App, and may collect data about App downloads and use in accordance with Apple's standard policies. Apple's handling of that data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The developer does not receive your name, email address, billing information, or any other identifying purchase data from Apple.</li>
             <li><strong>PostHog, Inc.</strong> (us.posthog.com) &mdash; Anonymous product-interaction events are sent to PostHog's US Cloud infrastructure for analytics. No names, contact details, Plex credentials, server addresses, or media content are included. See "Anonymous Analytics Data We Collect" above for the full list. You can opt out in the App's Settings. PostHog's handling of data is governed by <a href="https://posthog.com/privacy">PostHog's Privacy Policy</a>.</li>
             <li><strong>Google LLC</strong> (Google Analytics, website only) &mdash; Used on the phlixapp.com homepage and blog pages to count visits and clicks on App Store links. The App itself never contacts Google. See "This Website" below.</li>
@@ -96,7 +98,21 @@
         <p>phlixapp.com (the homepage and blog) uses Google Analytics 4 to count page views and clicks on App Store links. Google sets first-party _ga cookies for this purpose. The privacy, terms and support pages carry no analytics. To opt out, block cookies or use a content blocker; Google's handling of this data is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
         <h2>Photo Library Access</h2>
-        <p>If you choose to save downloaded media to your device's Photo Library, the App will request the iOS "Add Photos Only" permission. That permission is used solely to save media you explicitly choose to download. The App does not request, read, or access your existing Photo Library content.</p>
+        <p>If you choose to save downloaded media to your device's Photo Library, the App will request the iOS "Add Photos Only" permission. That permission is used solely to save media you explicitly choose to download. If you choose an album to save into, the App asks for access to your Photo Library so that it can list your albums; it reads their names and nothing else. If you turn on Camera Upload, the App reads the photos and videos in your Photo Library in order to copy them to your own server, as described below. Nothing from your Photo Library is ever sent to the developer.</p>
+
+        <h2 id="camera-upload">Camera Upload (optional, beta, from version 1.0.21)</h2>
+        <p>Camera Upload is off unless you set it up. It copies the photos and videos in your device's Photo Library to a folder on a server that you run, so that they appear in your Plex library.</p>
+        <ul>
+            <li><strong>Where your photos go.</strong> To the Camera Upload helper, a program you install on your own server, and nowhere else. They are not sent to the developer, to Plex, Inc., or to any other third party, and the developer cannot see or reach them.</li>
+            <li><strong>Only at home.</strong> The App uploads only while your device is on your home network: the Wi-Fi network it was on when you paired it with the helper, or one you add yourself. Away from that network it does not upload and does not look for the helper. It never uploads over mobile data.</li>
+            <li><strong>Encrypted in transit.</strong> The connection to the helper is encrypted, and the App only talks to a server that presents the certificate it saw when you paired.</li>
+            <li><strong>Pairing.</strong> If your Plex account owns the server, the App asks your Plex Media Server for a short-lived token that works on that server only, and shows it to the helper once so the helper can confirm with Plex that you are the owner. The helper does not keep it. Your Plex account's own sign-in token is never sent to the helper. Anyone else pairs with a code that the helper shows to the server's owner.</li>
+            <li><strong>What the helper keeps on your server.</strong> The files you upload, the folder name you chose for your device, and a record of which files it has received. This stays on your server; the developer has no access to it. The helper's source code is public at <a href="https://github.com/jrl8085/phlix-camera-upload">github.com/jrl8085/phlix-camera-upload</a>.</li>
+            <li><strong>Nothing is deleted.</strong> The App copies. It never deletes or changes anything in your Photo Library.</li>
+            <li><strong>Analytics.</strong> If you share anonymous usage data, Camera Upload adds counts and outcomes to it: for example that it was switched on, how many items a run uploaded or could not upload, and why it paused. Never a file name, a folder name, an address, or the name of a server, a device or a network.</li>
+            <li><strong>Notifications.</strong> If you ask to be told when everything is backed up, the App creates that notification on your device. No push-notification service is involved.</li>
+        </ul>
+        <p>To stop, switch Camera Upload off, or choose Disconnect on its screen to remove the pairing from your device. Files already on your server stay there until you delete them.</p>
 
         <h2>Children's Privacy</h2>
         <p>The App is not directed to children under the age of 13. The App does not knowingly collect personal information from children. The App collects no names, contact details, or account information from anyone, and its analytics are not linked to an identifiable person, so no special procedures are required for users of any age. Parents and guardians should be aware that the App requires a Plex account and access to a Plex Media Server, and should ensure that content accessible via that server is appropriate for any child using the App.</p>
