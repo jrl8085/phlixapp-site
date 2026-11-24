@@ -324,7 +324,7 @@ Phlix is an independent iPhone and iPad app that works with Plex Media Server. I
 
 With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) also backs up your camera roll to your Plex server at home.
 
-Phlix is free to browse, so you can try it on your own library. If the App Store does not offer version 1.0.21 yet, it is on its way.
+Phlix is free to browse, so you can try it on your own library. Camera Upload needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.
 
 ### Plex Photos and Phlix
 
