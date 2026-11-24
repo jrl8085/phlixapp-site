@@ -18,18 +18,18 @@
     <meta property="og:image" content="https://phlixapp.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Phlix -- chronological photo timeline for Plex Media Server">
+    <meta property="og:image:alt" content="Phlix -- a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Stream Plex Photos to Your TV with AirPlay">
     <meta name="twitter:description" content="Display your Plex photos on your TV using AirPlay. Screen Mirroring, HDMI, quality tips, compatible hardware, and step-by-step setup for Apple TV and AirPlay 2 TVs.">
     <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
-    <meta name="twitter:image:alt" content="Phlix -- chronological photo timeline for Plex Media Server">
+    <meta name="twitter:image:alt" content="Phlix -- a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"Stream Plex Photos to Your TV with AirPlay","description":"Display your Plex photos on your TV using AirPlay. Screen Mirroring, HDMI, quality tips, compatible hardware, and step-by-step setup for Apple TV and AirPlay 2 TVs.","datePublished":"2026-09-22","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"Stream Plex Photos to Your TV with AirPlay","description":"Display your Plex photos on your TV using AirPlay. Screen Mirroring, HDMI, quality tips, compatible hardware, and step-by-step setup for Apple TV and AirPlay 2 TVs.","datePublished":"2026-09-22","dateModified":"2026-11-24","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
     </script>
 </head>
 <body>
@@ -46,19 +46,13 @@
                 <time datetime="2026-09-22">September 22, 2026</time>
             </div>
 
-            <p>You have thousands of photos on your Plex server. Your TV is right there, with a beautiful 55-inch or 65-inch screen that could be displaying those photos instead of sitting idle. The connection between those two things should be simple, but Plex does not make it easy. The official Plex app was not designed to send photos to your TV via AirPlay in any optimized way, and the result is that most Plex users never see their photos on their biggest screen.</p>
+            <p>You have thousands of photos on your Plex server. Your TV is right there, with a beautiful 55-inch or 65-inch screen that could be displaying those photos instead of sitting idle. The connection between those two things should be simple, and with the right setup it is.</p>
 
             <p>This guide covers every method for displaying Plex AirPlay photos on your TV, from basic screen mirroring to a dedicated app that puts just the photo on the TV. Whether you want to show a few vacation photos to your family or run a continuous photo display in your living room, you will find the right approach here.</p>
 
             <h2>Why AirPlay for Plex Photos?</h2>
 
-            <p>Before we get into the how, let us address the why. The Plex app exists natively on Apple TV, so you can browse photos directly on the TV without AirPlay. However, the Plex app on Apple TV has significant limitations for photos:</p>
-
-            <ul>
-                <li><strong>No chronological timeline.</strong> You navigate album by album, just like on mobile. There is no unified photo timeline on the Apple TV Plex app.</li>
-                <li><strong>Sluggish navigation with a remote.</strong> Browsing photos with the Apple TV remote -- clicking through albums, scrolling grids, selecting individual photos -- is tedious. A phone touchscreen is a far more natural way to choose what to display.</li>
-                <li><strong>Limited slideshow.</strong> The Apple TV Plex app's slideshow is album-bound with minimal controls.</li>
-            </ul>
+            <p>Before we get into the how, let us address the why. Browsing photos with a TV remote -- clicking through albums, scrolling grids, selecting individual photos -- takes a lot of clicks, and a phone touchscreen is a more natural way to choose what to display.</p>
 
             <p>AirPlay flips the model. You browse and control from your iPhone -- where touch-based photo navigation feels natural -- and the TV displays what you choose. Your phone is the controller. Your TV is the display. Each device does what it does best.</p>
 
@@ -81,8 +75,8 @@
             <p>Screen mirroring has real drawbacks for photos specifically:</p>
 
             <ul>
-                <li><strong>The TV shows your phone's interface, not just the photo.</strong> Status bar, navigation chrome, toolbar -- all of it appears on the TV. During a slideshow, your audience sees the Plex app interface rather than a clean, full-screen photo.</li>
-                <li><strong>Resolution is capped at your phone's screen resolution.</strong> Your iPhone's display is roughly 1170x2532 pixels. When this is mirrored to a 4K TV (3840x2160), the image is upscaled and loses sharpness. A 24-megapixel photo that could display beautifully at 4K gets compressed through your phone's screen resolution first.</li>
+                <li><strong>The TV shows your phone's interface, not just the photo.</strong> Status bar, navigation chrome, toolbar -- all of it appears on the TV. During a slideshow, your audience sees whatever the app shows on your phone, controls included.</li>
+                <li><strong>Resolution is capped at your phone's screen resolution.</strong> Your iPhone's display is roughly 1170x2532 pixels. When this is mirrored to a large TV, the image is scaled up and loses sharpness. A 24-megapixel photo is squeezed into your phone's screen resolution first.</li>
                 <li><strong>Your phone is locked.</strong> You cannot use your phone for anything else while mirroring. A text message notification will appear on the TV. Switching apps interrupts the display.</li>
                 <li><strong>Battery drain.</strong> Screen mirroring continuously encodes and transmits video from your phone. Expect significant battery consumption during extended viewing.</li>
             </ul>
@@ -93,23 +87,23 @@
 
             <p>Mirroring does not have to mean a copy of your phone screen. While Screen Mirroring is on, iOS hands an app the TV as a second screen, and an app built for it can draw its own full-screen window there while the phone shows something else, like playback controls. This is how presentation apps work, and it is the ideal approach for displaying Plex photos on a TV.</p>
 
-            <p>The native Plex app does not do this for photos; it simply mirrors. To use this method, you need an app built for it.</p>
+            <p>To use this method, you need an app built for it, such as Phlix, an independent app that works with Plex Media Server.</p>
 
             <h3>Phlix: Just the Photo on Your TV</h3>
 
-            <p>With Screen Mirroring on, or over an HDMI adapter, Phlix Pro takes over the TV. Here is what happens when you start a slideshow:</p>
+            <p>Start a slideshow in Phlix. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. This is a Phlix Pro feature; without Pro, the TV mirrors your iPhone's screen. In detail:</p>
 
-            <p><strong>On the TV:</strong> Your photo fills the entire screen at the resolution your TV reports to iOS. No status bar, no navigation chrome, no app interface. Just the photo, edge to edge, exactly as a dedicated digital photo frame would display it. Hard cuts transition cleanly between photos.</p>
+            <p><strong>On the TV:</strong> Just the photo, full screen. No status bar, no navigation chrome, no app interface -- the way a dedicated digital photo frame would display it. Phlix asks your server for an image sized to the display, with hard cuts between photos.</p>
 
             <p><strong>On your iPhone:</strong> Phlix shows the same photo with the slideshow controls on top -- pause, next and previous -- and they stay on screen while the TV is connected. Choose 2, 4, 6 or 10 seconds a slide, shuffle, loop and whether to include videos before you start. Closing the player ends the show on the TV.</p>
 
-            <p>This separation is what makes AirPlay photos actually work for real-world scenarios. Start a slideshow, set your phone on the table, and let photos play on the TV all evening. Pick up your phone to skip a photo, then set it down again. Your audience never sees anything but photos on the big screen. Without Pro, Phlix mirrors like any other app.</p>
+            <p>This separation is what makes AirPlay photos actually work for real-world scenarios. Start a slideshow, set your phone on the table, and let photos play on the TV all evening. Pick up your phone to skip a photo, then set it down again. Your audience never sees anything but photos on the big screen.</p>
 
             <h2>Setting Up AirPlay Photos Step by Step</h2>
 
             <h3>What You Need</h3>
             <ul>
-                <li><strong>An AirPlay 2 receiver:</strong> Apple TV 4K (any generation) for the best experience. Apple TV HD works at 1080p. AirPlay 2-compatible smart TVs from Samsung (2018+), LG (2019+), Sony (2019+), and Vizio (2018+) also work.</li>
+                <li><strong>An AirPlay 2 receiver:</strong> an Apple TV, or an AirPlay 2-compatible smart TV from Samsung (2018+), LG (2019+), Sony (2019+), or Vizio (2018+).</li>
                 <li><strong>An iPhone running iOS 17 or later.</strong></li>
                 <li><strong>A Plex Media Server</strong> with a photo library configured. If you have not set this up yet, our <a href="/blog/plex-photo-library-setup/">Plex photo library setup guide</a> walks through the process.</li>
                 <li><strong>Both devices on the same Wi-Fi network.</strong> For best results, connect the Apple TV via Ethernet and keep the iPhone on Wi-Fi.</li>
@@ -120,7 +114,7 @@
                 <li>Download Phlix from the App Store and sign in to your Plex account.</li>
                 <li>Browse your photo timeline and find the photos you want to display.</li>
                 <li>Open Control Center, tap Screen Mirroring and pick your TV (or plug in an HDMI adapter). Phlix notices the connected display by itself.</li>
-                <li>Start a slideshow. With Pro, the TV shows just the photo, full screen.</li>
+                <li>Start a slideshow. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. This is a Phlix Pro feature; without Pro, the TV mirrors your iPhone's screen.</li>
                 <li>Use your iPhone to control playback: pause, skip forward or back. Closing the player ends the show on the TV.</li>
             </ol>
 
@@ -129,24 +123,24 @@
             <p>The visual quality of your AirPlay photos depends on several factors you can control:</p>
 
             <h3>Source Photo Resolution</h3>
-            <p>Phlix fetches the original full-resolution file from your Plex server for TV display. A 24-megapixel photo from a modern camera (6000x4000) will look stunning on a big TV. Phone photos at 12 megapixels (4032x3024) display beautifully. Even older photos at lower resolutions look better on a TV than you might expect because the typical viewing distance (8 to 12 feet) compensates for lower pixel density.</p>
+            <p>Phlix asks your Plex server for an image sized to the display. The more detail your original has, the better that image can be: a 24-megapixel photo from a modern camera (6000x4000) or a 12-megapixel phone photo (4032x3024) has plenty for a big TV. Even older photos at lower resolutions look better on a TV than you might expect because the typical viewing distance (8 to 12 feet) compensates for lower pixel density.</p>
 
             <h3>Network Speed</h3>
-            <p>Full-resolution photos can be 5 to 15 MB each. If your Plex server is connected via Ethernet and your network is reasonably modern, each photo loads in under a second. On slower networks, there may be a brief delay between photos while the next image loads. Connecting your Plex server and Apple TV via Ethernet (rather than Wi-Fi) ensures the most reliable performance.</p>
+            <p>Each photo travels from your Plex server to your iPhone before it reaches the TV. On a fast home network that is quick; on slower networks, there may be a brief delay between photos while the next image loads. Connecting your Plex server and Apple TV via Ethernet (rather than Wi-Fi) ensures the most reliable performance.</p>
 
             <h3>Pre-Generate Thumbnails</h3>
-            <p>While Phlix fetches full-resolution images for TV display, it uses Plex thumbnails for the grid and timeline on your iPhone. Make sure your Plex server has fully generated thumbnails for your photo library. See our guide on <a href="/blog/browse-large-plex-photo-library/">optimizing Plex for large photo libraries</a> for details on pre-generating thumbnails.</p>
+            <p>While Phlix asks for display-sized images for the TV, it uses Plex thumbnails for the grid and timeline on your iPhone. Make sure your Plex server has fully generated thumbnails for your photo library. See our guide on <a href="/blog/browse-large-plex-photo-library/">optimizing Plex for large photo libraries</a> for details on pre-generating thumbnails.</p>
 
             <h2>Practical Scenarios</h2>
 
             <h3>Family Gathering</h3>
-            <p>Mark your favorite photos across different years as favorites in Phlix throughout the week before the event. When family arrives, start a favorites-only slideshow on the TV. Set the interval to 6 seconds and let it run all evening. For more on this use case, see our <a href="/blog/plex-family-photo-slideshow/">family photo slideshow guide</a>.</p>
+            <p>In the week before the event, copy the photos you want to show into one folder on your server, with a subfolder per year if you like. When family arrives, start a slideshow of that folder on the TV; with Include Subfolders on, it plays the folders inside it too. Set the interval to 6 seconds and let it run all evening. For more on this use case, see our <a href="/blog/plex-family-photo-slideshow/">family photo slideshow guide</a>.</p>
 
             <h3>Background Photo Display</h3>
             <p>Set the longest interval (10 seconds per photo) and shuffle your entire library. Your TV becomes a slowly rotating photo gallery -- like a digital photo frame, but with access to your full Plex library of thousands of photos instead of the 50 that fit on a frame's internal memory.</p>
 
             <h3>Photo Review Session</h3>
-            <p>After a vacation or event, use Phlix to display your recent photos on the TV while reviewing them. On your phone, swipe through the timeline and mark favorites. On the TV, each photo appears at the TV's resolution so you can evaluate sharpness, composition, and color on a proper screen.</p>
+            <p>After a vacation or event, start a slideshow of the folder with your new photos and pause on any photo to look at it longer. Phlix asks your server for an image sized to the TV, so you can evaluate sharpness, composition, and color on a proper screen.</p>
 
             <h2>Troubleshooting AirPlay Photo Issues</h2>
 
@@ -154,17 +148,17 @@
 
             <p><strong>Photos loading slowly between slides.</strong> This usually indicates a network bottleneck between your Plex server and the iPhone. Connect the Plex server via Ethernet. If the server is on a NAS, verify it is on a gigabit (or faster) connection to your router.</p>
 
-            <p><strong>Photos appear cropped on TV.</strong> Photos are displayed at full resolution with aspect-ratio scaling. A portrait-orientation photo on a landscape TV will have black bars on the sides -- this is correct and preserves the photo's proportions. Photos are never cropped or distorted.</p>
+            <p><strong>Photos appear cropped on TV.</strong> Photos are scaled to fit the screen. A portrait-orientation photo on a landscape TV will have black bars on the sides -- this is correct and preserves the photo's proportions. Photos are never cropped or distorted.</p>
 
             <p><strong>iPhone battery draining quickly.</strong> Screen Mirroring does consume battery. For extended viewing sessions, keep your iPhone plugged in. A Lightning or USB-C cable to a charger ensures the slideshow can run indefinitely.</p>
 
             <h2>The Bottom Line</h2>
 
-            <p>Streaming Plex AirPlay photos to your TV does not have to mean accepting a mirrored phone screen with black bars and app chrome. With Phlix taking over the TV during Screen Mirroring, your TV becomes a true photo display -- edge to edge, controlled from your phone. Your Plex photo library finally gets the screen size it deserves.</p>
+            <p>Streaming Plex AirPlay photos to your TV does not have to mean a mirrored phone screen with app chrome. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. That is a Phlix Pro feature, and it turns your TV into a photo display for your Plex library.</p>
 
             <div class="cta-box">
                 <h3>Phlix -- Your Plex Photos on the Big Screen</h3>
-                <p>With Screen Mirroring on, or over HDMI, the TV shows just your Plex photos while your iPhone shows the controls. Free to browse, Pro for the TV feature from $6.99/yr.</p>
+                <p>With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. Free to browse, Pro for the TV feature from $6.99/yr.</p>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
                 <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
             </div>
@@ -173,7 +167,7 @@
             <div class="related-grid">
                 <a href="/blog/plex-airplay-slideshow/" class="blog-card"><span class="cat" style="color:var(--gold)">Photos</span><h3>AirPlay Slideshow from Plex</h3><p>The complete guide to AirPlay slideshows, quality settings, and hardware.</p></a>
                 <a href="/blog/plex-airplay-guide/" class="blog-card"><span class="cat" style="color:#AB47BC">Features</span><h3>Plex with AirPlay -- Complete Guide</h3><p>AirPlay vs native app, streaming vs mirroring, and troubleshooting.</p></a>
-                <a href="/blog/plex-photo-slideshow-guide/" class="blog-card"><span class="cat" style="color:var(--gold)">Photos</span><h3>Create Slideshows from Your Plex Photos</h3><p>Build slideshows that span your entire library with curated favorites.</p></a>
+                <a href="/blog/plex-photo-slideshow-guide/" class="blog-card"><span class="cat" style="color:var(--gold)">Photos</span><h3>Create Slideshows from Your Plex Photos</h3><p>Build slideshows of a folder, a year, or your entire library.</p></a>
             </div>
         </article>
     </main>

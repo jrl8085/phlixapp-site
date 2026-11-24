@@ -18,18 +18,18 @@
     <meta property="og:image" content="https://phlixapp.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Phlix — chronological photo timeline for Plex Media Server">
+    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Set Up a Plex Photo Library — Complete Guide">
     <meta name="twitter:description" content="Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.">
     <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
-    <meta name="twitter:image:alt" content="Phlix — chronological photo timeline for Plex Media Server">
+    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Photo Library — Complete Guide","description":"Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Photo Library — Complete Guide","description":"Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.","datePublished":"2026-09-01","dateModified":"2026-11-24","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
     </script>
 </head>
 <body>
@@ -160,32 +160,25 @@
         <h3>Database Maintenance</h3>
         <p>Over time, the Plex database can grow fragmented with large libraries. Periodic optimization helps maintain responsiveness. Go to Settings, then Troubleshooting, and click "Optimize Database" occasionally — especially after large batch imports.</p>
 
-        <h2>Viewing Options and Limitations</h2>
+        <h2>Viewing Options</h2>
 
-        <p>Plex displays photos through its various client apps, but the photo browsing experience varies significantly by platform:</p>
+        <p>Once the scan is done, you can browse the library in Plex Web and in Plex's apps. On iPhone and iPad, Plex Inc. also makes a separate app for photo libraries, Plex Photos: its App Store page lists Recommended View, Timeline View and Library View as its supported features. Independent apps that work with Plex Media Server, such as Phlix, are another way to view the same library.</p>
 
-        <ul>
-            <li><strong>Plex Web:</strong> The most capable interface for photos. Grid view, timeline view, and album browsing. Supports zooming and full-resolution viewing.</li>
-            <li><strong>Plex for iOS:</strong> Basic photo browsing with album view. The experience is functional but minimal — no chronological timeline, no fast year-based scrolling, and limited photo-specific features.</li>
-            <li><strong>Plex for Apple TV:</strong> Can display photos and run slideshows on your TV. Limited browsing controls.</li>
-            <li><strong>Plex for Android:</strong> Similar to iOS — basic browsing without advanced photo-specific features.</li>
-        </ul>
+        <h2>Phlix: Another Way to Browse Plex Photos on iPhone and iPad</h2>
 
-        <p>This is where Plex's photo support shows its age. Plex was designed primarily as a video platform, and the photo experience has not received the same level of investment. Browsing a library with tens of thousands of photos using the native Plex apps can feel slow and awkward compared to purpose-built photo applications.</p>
-
-        <h2>Phlix: A Better Way to Browse Plex Photos on iPhone</h2>
-
-        <p>If you are an iPhone user and want a significantly better experience browsing your Plex photo library, Phlix was built specifically for this purpose. Where the native Plex app treats photos as an afterthought, Phlix puts them front and center with features designed for large photo collections:</p>
+        <p>If you browse your Plex photo library on an iPhone or iPad, Phlix is an independent app that works with Plex Media Server, with features designed for large photo collections:</p>
 
         <ul>
-            <li><strong>Chronological timeline:</strong> Browse all your photos in date order, exactly like Apple Photos. No folder-by-folder navigation required.</li>
-            <li><strong>Year scrubber:</strong> Jump instantly to any year in your library. Critical for collections spanning decades.</li>
-            <li><strong>Big-screen slideshows:</strong> With Screen Mirroring on, or over HDMI, the TV shows just your Plex photos, full screen, while your iPhone shows the controls.</li>
-            <li><strong>Save to Photos:</strong> Save photos from your Plex server to your iPhone's Photos app, where they stay whether or not your server is reachable.</li>
-            <li><strong>Performance with large libraries:</strong> Phlix is optimized for libraries with 100,000+ photos, using progressive loading and efficient caching to keep the interface responsive.</li>
+            <li><strong>Chronological timeline:</strong> Browse all your photos in date order, much like Apple Photos, without going folder by folder. The folders on your server are one tap away.</li>
+            <li><strong>Year scrubber:</strong> Tap a year to see just that year's photos. Critical for collections spanning decades.</li>
+            <li><strong>Big-screen slideshows:</strong> With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. This is a Phlix Pro feature; without Pro, the TV mirrors your iPhone's screen.</li>
+            <li><strong>Save to Photos:</strong> Save photos from your Plex server to your iPhone's Photos app, one at a time, where they stay whether or not your server is reachable.</li>
+            <li><strong>Big libraries:</strong> Phlix loads a page at a time instead of everything at once.</li>
         </ul>
 
         <p>Phlix connects directly to your Plex server — no additional setup required beyond what you have already configured in Plex. It is free to browse, with Pro features (unlimited downloads, external display slideshows) available from $6.99/year or $19.99 for a lifetime license.</p>
+
+        <p>To get the photos on your iPhone or iPad into this library, Camera Upload (Beta) in Phlix copies them, videos included, into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server. The <a href="/camera-upload/">setup guide</a> walks you through it. It needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.</p>
 
         <h2>Tips for the Best Photo Library Experience</h2>
 
@@ -198,11 +191,11 @@
             <li><strong>Run the initial scan overnight.</strong> Large libraries take hours to index on the first pass.</li>
         </ul>
 
-        <p>A Plex photo library gives you cloud-like access to your photos without the cloud. Your images stay on your hardware, under your control, accessible from any device. With the right organization and a photo-focused client like Phlix, it becomes a genuinely enjoyable way to revisit your memories.</p>
+        <p>A Plex photo library gives you cloud-like access to your photos without the cloud. Your images stay on your hardware, under your control, accessible from any device. With the right organization and a photo app like Phlix, it becomes a genuinely enjoyable way to revisit your memories.</p>
 
         <div class="cta-box">
-            <h3>Your Plex Photos Deserve a Better App</h3>
-            <p>Phlix is the photo browser your Plex library has been waiting for. Chronological timeline, year scrubber, big-screen slideshows on your TV, saves to the Photos app, and fast performance even with 100,000+ photos. Free to browse — no subscription required.</p>
+            <h3>Phlix — A Photo App That Works with Plex</h3>
+            <p>Phlix is an independent app that works with Plex Media Server: a chronological timeline, year scrubber, big-screen slideshows on your TV, and saves to the Photos app, built for big libraries. Free to browse — no subscription required.</p>
             <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
             <p class="sub">iOS 17+ &middot; Works with any Plex Media Server &middot; Pro from $6.99/yr</p>
         </div>

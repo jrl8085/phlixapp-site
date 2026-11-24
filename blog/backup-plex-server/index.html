@@ -18,18 +18,18 @@
     <meta property="og:image" content="https://phlixapp.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Phlix — chronological photo timeline for Plex Media Server">
+    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Back Up Your Plex Server — Protect Your Setup">
     <meta name="twitter:description" content="Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.">
     <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
-    <meta name="twitter:image:alt" content="Phlix — chronological photo timeline for Plex Media Server">
+    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Back Up Your Plex Server — Protect Your Setup","description":"Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.","datePublished":"2026-09-01","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Back Up Your Plex Server — Protect Your Setup","description":"Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.","datePublished":"2026-09-01","dateModified":"2026-11-24","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
     </script>
 </head>
 <body>
@@ -75,6 +75,8 @@
 
         <h3>4. Media Files</h3>
         <p>Your actual movies, TV shows, music, and photos are not part of the Plex data directory. They live wherever you store them. Backing up media files is a separate concern and depends on your storage setup (RAID, cloud backup, offsite copies). This guide focuses on the Plex-specific data, not the media itself.</p>
+
+        <p>For the photos on your phone, Camera Upload (Beta) in Phlix copies the photos and videos on an iPhone or iPad into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server. It is a one-way copy, and nothing is deleted from the phone (<a href="/plex-camera-upload/">how it works</a>). It needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.</p>
 
         <h2>Where the Plex Data Directory Lives</h2>
 
@@ -174,8 +176,8 @@ find "$BACKUP_DIR" -name "plex-backup-*.tar.gz" -mtime +30 -delete</code></pre>
         <p>A good rule of thumb: back up at least as often as you would be willing to lose. If losing a week of watch history is acceptable, back up weekly. If losing a day would be painful, back up daily. The database file is typically under 200 MB even for large libraries, so storage is not a limiting factor.</p>
 
         <div class="cta-box">
-            <h3>Phlix — The Photo Browser for Plex</h3>
-            <p>Your Plex photos deserve a great browsing experience. Phlix offers a chronological timeline, saves to the Photos app, and big-screen slideshows on your TV. Free to browse, Pro from $6.99/yr.</p>
+            <h3>Phlix — A Photo App That Works with Plex</h3>
+            <p>For the photos on your Plex server, Phlix offers a chronological timeline, saves to the Photos app, and big-screen slideshows on your TV. Free to browse, Pro from $6.99/yr.</p>
             <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
             <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
         </div>

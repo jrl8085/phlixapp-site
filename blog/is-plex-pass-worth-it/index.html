@@ -18,12 +18,12 @@
     <meta property="og:image" content="https://phlixapp.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Phlix — chronological photo timeline for Plex Media Server">
+    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Is Plex Pass Worth It in 2026? Complete Feature Breakdown">
     <meta name="twitter:description" content="Every Plex Pass feature explained. Hardware transcoding, Skip Intro, Remote Watch Pass, mobile downloads, and more. Pricing tiers and verdict by use case.">
     <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
-    <meta name="twitter:image:alt" content="Phlix — chronological photo timeline for Plex Media Server">
+    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
@@ -35,6 +35,7 @@
         "headline": "Is Plex Pass Worth It in 2026? Complete Feature Breakdown",
         "description": "Every Plex Pass feature explained. Hardware transcoding, Skip Intro, Remote Watch Pass, mobile downloads, and more. Pricing tiers and verdict by use case.",
         "datePublished": "2026-09-01",
+        "dateModified": "2026-11-24",
         "author": {
             "@type": "Person",
             "name": "Jason Loomis"
@@ -108,8 +109,8 @@
         <h3>Lyrics and Music Features (Low Value)</h3>
         <p>Plex Pass unlocks time-synced lyrics in Plexamp and the Plex web player, along with loudness leveling and a visual waveform display. If you use Plexamp as your primary music player, these are nice additions. For most users, they are not a deciding factor.</p>
 
-        <h3>Camera Upload (Low Value)</h3>
-        <p>Plex Pass enables automatic photo uploads from your phone's camera roll to your Plex server. The implementation has been unreliable over the years -- uploads sometimes stall, duplicates appear, and the feature receives little development attention. Most users are better off using a dedicated photo sync tool like Syncthing or PhotoPrism for camera uploads and then pointing Plex at the resulting folder.</p>
+        <h3>Camera Upload (Ended)</h3>
+        <p>Plex Pass used to include automatic photo uploads from your phone's camera roll to your Plex server, but Plex announced on its forum on March 18, 2021 that it was ending Camera Upload, with removal targeted for June 2021. To get phone photos into Plex, use a dedicated photo sync tool like Syncthing or PhotoPrism and point Plex at the resulting folder. Or use Camera Upload (Beta) in Phlix, which copies the photos and videos on an iPhone or iPad into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server (see the <a href="/camera-upload/">setup guide</a>). It needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.</p>
 
         <h3>Multi-User Home (Low Value)</h3>
         <p>Create managed user profiles for family members, each with their own watch history, ratings, and restrictions. Parental controls and content restrictions are tied to this feature. Useful for families, less relevant for solo users or those sharing with other adults.</p>
@@ -130,7 +131,7 @@
             <li>Plex Discover (universal search across streaming services)</li>
             <li>Watchlist and cross-service tracking</li>
             <li>Free ad-supported movies and TV (Plex's own catalog)</li>
-            <li>Basic photo library browsing</li>
+            <li>Photo library browsing</li>
             <li>Community-contributed subtitles via OpenSubtitles</li>
         </ul>
 
@@ -145,7 +146,7 @@
         <p><strong>Get Plex Pass (annual plan).</strong> Hardware transcoding is nearly essential when serving multiple remote users. The annual plan at $69.99/year is the sweet spot for most server owners.</p>
 
         <h3>Frequent traveler</h3>
-        <p><strong>Get Plex Pass or use third-party alternatives.</strong> Mobile downloads are locked behind Plex Pass. If you travel often and want offline access, you need it. Alternatively, for photos specifically, <a href="https://phlixapp.com">Phlix</a> saves photos from your Plex server to your iPhone's Photos app; no Plex Pass is needed on your home network, though Plex may require one for remote access.</p>
+        <p><strong>Get Plex Pass.</strong> Mobile downloads are locked behind Plex Pass. If you travel often and want offline access, you need it. For photos specifically, <a href="https://phlixapp.com">Phlix</a>, an independent app that works with Plex Media Server, saves photos from your Plex server to your iPhone's Photos app; no Plex Pass is needed on your home network, though Plex may require one for remote access.</p>
 
         <h3>Cord-cutter wanting DVR</h3>
         <p><strong>Get Plex Pass.</strong> Live TV and DVR is one of the most complete implementations available, and it integrates seamlessly with your existing library.</p>
@@ -162,7 +163,7 @@
         <p>As for the $749 lifetime price -- it only makes sense if you are absolutely certain you will be running Plex for the next decade. For most people, the annual plan is the smarter choice.</p>
 
         <div class="cta-box">
-            <h3>Phlix — The Photo Browser for Plex</h3>
+            <h3>Phlix — A Photo App That Works with Plex</h3>
             <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, big-screen slideshows on your TV, and saves to the Photos app. Free to browse, Pro from $6.99/yr.</p>
             <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
             <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
