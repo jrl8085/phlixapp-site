@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Camera Upload: What Happened, and What to Use Now | Phlix</title>
+    <meta name="description" content="Plex ended its Camera Upload in 2021. How to get iPhone photos into your Plex library now, including Camera Upload (Beta) in Phlix, which backs up on your home Wi-Fi.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://phlixapp.com/plex-camera-upload/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/plex-camera-upload/">
+    <meta property="og:title" content="Plex Camera Upload: what happened to it, and how to back up iPhone photos to Plex now">
+    <meta property="og:description" content="Plex announced in March 2021 that it was ending Camera Upload. To get iPhone photos into Plex now, they go into a folder of a Plex photo library. Phlix Camera Upload (Beta) does that on your home Wi-Fi.">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plex Camera Upload: what happened to it, and how to back up iPhone photos to Plex now">
+    <meta name="twitter:description" content="Plex announced in March 2021 that it was ending Camera Upload. To get iPhone photos into Plex now, they go into a folder of a Plex photo library. Phlix Camera Upload (Beta) does that on your home Wi-Fi.">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"Plex Camera Upload: what happened to it, and how to back up your iPhone photos to Plex now","description":"Plex announced in March 2021 that it was ending Camera Upload in its apps. How to get the photos on an iPhone or iPad into a Plex photo library now, including Camera Upload (Beta) in Phlix, an independent app that works with Plex Media Server.","datePublished":"2026-11-24","dateModified":"2026-11-24","inLanguage":"en","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/plex-camera-upload/","about":[{"@type":"Thing","name":"Camera upload"},{"@type":"SoftwareApplication","name":"Phlix Photos","operatingSystem":"iOS, iPadOS","applicationCategory":"MultimediaApplication","url":"https://phlixapp.com/"}],"citation":["https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626","https://forums.plex.tv/t/plex-photos-app-not-uploading-to-server/927683"]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Plex Camera Upload","item":"https://phlixapp.com/plex-camera-upload/"}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Does Plex still have Camera Upload?","acceptedAnswer":{"@type":"Answer","text":"Plex announced on its forum on March 18, 2021 that it was ending support for Camera Upload, with removal targeted for June 2021. In August 2025, a moderator on Plex's forum described the feature as discontinued about four years earlier. Photos uploaded before that stayed in Plex."}},
+    {"@type":"Question","name":"How do I back up my iPhone photos to Plex automatically?","acceptedAnswer":{"@type":"Answer","text":"Camera Upload (Beta) in Phlix does it. Install the free Phlix Camera Upload helper, one Docker container, on the machine that runs Plex Media Server, and point it at a folder inside your Plex photo library. Then turn on Settings > Camera Upload in Phlix. At home, on your Wi-Fi, new photos copy to your server by themselves. It needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way."}},
+    {"@type":"Question","name":"Can I put iPhone photos into Plex without an app?","acceptedAnswer":{"@type":"Answer","text":"Yes, by hand. Copy the photos into a folder that one of your Plex photo libraries includes, then let Plex scan the library. From an iPhone, the Files app can connect to a shared folder on your server, and in the Photos app, Share > Save to Files copies the selected photos there. From a computer, import the photos from the iPhone and copy them into that folder."}},
+    {"@type":"Question","name":"Does Phlix Camera Upload need Plex Pass?","acceptedAnswer":{"@type":"Answer","text":"No. The helper writes ordinary files into a folder of your Plex photo library, which works with every Plex Media Server."}},
+    {"@type":"Question","name":"Does it upload away from home or over mobile data?","acceptedAnswer":{"@type":"Answer","text":"No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back."}},
+    {"@type":"Question","name":"Does it delete photos from my iPhone?","acceptedAnswer":{"@type":"Answer","text":"No. It is a one-way copy. Phlix never deletes or changes anything in your Photo Library, and deleting a photo on the phone leaves the copy on the server."}},
+    {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The helper is free and open source. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you."}},
+    {"@type":"Question","name":"What do I need?","acceptedAnswer":{"@type":"Answer","text":"Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid or TrueNAS SCALE); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network."}},
+    {"@type":"Question","name":"Is Phlix made by Plex?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It works with Plex Media Server."}},
+    {"@type":"Question","name":"Is there an Android version?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an app for iPhone and iPad."}}
+    ]}
+    </script>
+    <style>
+        /* Page-specific pieces. Everything else comes from /blog/style.css. */
+        article.answer-page { max-width: 780px; }
+        .breadcrumb { max-width: 780px; }
+        .answer-page .category.beta { background: rgba(240,180,41,0.15); color: var(--gold); }
+        .answer-page h2 { margin-top: 52px; font-size: 1.5rem; }
+        .answer-page .lead { font-size: 1.1rem; color: var(--text); line-height: 1.75; }
+        .answer { background: var(--surface); border: 1px solid rgba(240,180,41,0.35); border-radius: 14px; padding: 22px 26px; margin: 8px 0 24px; }
+        .answer h2 { margin: 0 0 10px !important; font-size: 0.8rem !important; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+        .answer p { color: var(--text); margin-bottom: 12px; }
+        .answer p:last-child { margin-bottom: 0; }
+        .answer .small { color: var(--text-2); font-size: 0.92rem; }
+        .facts { list-style: none; margin: 18px 0 0 !important; padding: 0; }
+        .facts li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+        .facts li::before { content: ""; position: absolute; left: 4px; top: 0.62em; width: 10px; height: 10px; border-radius: 50%; background: var(--check); }
+        blockquote cite { display: block; font-style: normal; font-size: 0.85rem; color: var(--text-3); margin-top: 8px; }
+        .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+        .steps3 .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+        .steps3 .num { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--orange)); color: #000; font-weight: 800; font-size: 0.9rem; margin-bottom: 10px; }
+        .steps3 h3 { margin: 0 0 6px; font-size: 1rem; }
+        .steps3 p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+        .cmd { position: relative; }
+        .cmd pre { padding-right: 84px; white-space: pre; }
+        .cmd button { position: absolute; top: 9px; right: 9px; background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .cmd button:hover { color: var(--text); border-color: rgba(240,180,41,0.4); }
+        .cmd button.done { color: var(--check); border-color: rgba(76,175,80,0.5); }
+        .note { border-left: 3px solid var(--gold); background: var(--surface); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+        .note p { margin: 0; }
+        .answer-page details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; }
+        .answer-page details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+        .answer-page details > summary::-webkit-details-marker { display: none; }
+        .answer-page details > summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.3rem; font-weight: 400; }
+        .answer-page details[open] > summary::after { content: "\2212"; }
+        .answer-page details > .inner { padding: 0 18px 8px; }
+        .tree { line-height: 1.5; }
+        .lang-links { font-size: 0.9rem; line-height: 2; }
+        .lang-links a { margin-right: 12px; white-space: nowrap; }
+        .sources li { font-size: 0.9rem; }
+        @media (max-width: 700px) { .steps3 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav data-page-section="camera-answer-nav"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/camera-upload/">Setup guide</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Plex Camera Upload</div>
+
+    <article class="answer-page">
+        <span class="category photos">Photos &middot; Answers</span>
+        <h1>Plex Camera Upload: what happened to it, and how to back up your iPhone photos to Plex now</h1>
+        <p class="meta">Updated November 24, 2026 &middot; 5 min read</p>
+
+        <div class="answer" id="short-answer">
+            <h2>The short answer</h2>
+            <p><strong>Plex's own Camera Upload is gone.</strong> Plex announced on its forum in March 2021 that it was ending the feature, with removal targeted for June 2021.</p>
+            <p><strong>To get the photos on your iPhone or iPad into Plex now,</strong> they have to land in a folder that one of your Plex photo libraries includes. Plex then scans them in like any other photo.</p>
+            <p><strong>To do that automatically,</strong> use Camera Upload (Beta) in Phlix, an independent app that works with Plex Media Server. It copies your camera roll to a free helper that runs next to Plex Media Server, on your home Wi-Fi only, and the photos show up in your Plex photo library.</p>
+            <p class="small">Camera Upload (Beta) needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.</p>
+        </div>
+
+        <h2 id="what-happened">What happened to Plex's Camera Upload?</h2>
+        <p>Plex added Camera Upload to its mobile apps in 2014. It copied the photos on a phone to the owner's Plex Media Server. In March 2021, Plex posted <em>Important info about Camera Upload in Plex</em> in the Announcements section of its forum:</p>
+        <blockquote>
+            <p>&ldquo;Today we are ending support for the Camera Upload feature for those who do not have it enabled. Existing users that have it enabled may continue to use it as-is for now, but it will be removed in a future version of Plex. The current target for removal is 90 days from now (estimated June 2021).&rdquo;</p>
+            <cite>The Plex Team, Plex Forum, Announcements, March 18, 2021 (<a href="https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626">archived copy</a>; the original forum page is no longer online)</cite>
+        </blockquote>
+        <p>The same announcement said that photos already added through Camera Upload would not be affected, and gave Plex's reasons: many other apps now offered camera upload, and iOS and Android had brought &ldquo;new formats, background processing APIs, and privacy restrictions on how apps like Plex are allowed to access users&rsquo; photos.&rdquo;</p>
+        <p>The feature did not come back. In August 2025, when someone on Plex's forum asked whether the new Plex Photos app could upload the photos on their phone, a forum moderator answered: &ldquo;That feature was discontinued about 4 years ago.&rdquo; (<a href="https://forums.plex.tv/t/plex-photos-app-not-uploading-to-server/927683">Plex Forum, August 1, 2025</a>)</p>
+
+        <h2 id="how-to">How to get iPhone photos into Plex now</h2>
+        <p>Plex shows the photos that are inside the folders of a Plex photo library, once it has scanned them. So every way of getting phone photos into Plex comes down to one thing: putting the files into such a folder. There are two ways to do that.</p>
+
+        <h3 id="automatic">1. Automatically, at home: Camera Upload (Beta) in Phlix</h3>
+        <p>Camera Upload in Phlix backs up the photos and videos on your iPhone or iPad to the server in your home, while the device is on your home Wi-Fi. It has two parts. The <strong>Phlix app</strong> on the phone reads your camera roll. A small free program on your server, the <strong>Camera Upload helper</strong>, receives the photos and writes them into a folder of your Plex photo library. The helper is one Docker container, and its source code is public.</p>
+        <ul class="facts">
+            <li><strong>Only at home.</strong> Phlix uploads on your home Wi-Fi and nowhere else. Never over mobile data.</li>
+            <li><strong>Only to you.</strong> Photos go from your phone straight to your server, encrypted. None of them go to Phlix or to a cloud service.</li>
+            <li><strong>Only copies.</strong> Nothing is ever deleted or changed on your phone.</li>
+            <li><strong>In your Plex library.</strong> Each device gets its own folder, with a folder for each year and month, so the photos show up in Plex, and in Phlix, next to everything else.</li>
+        </ul>
+        <p>The helper is free. In the app, the first 100 uploads are free, and <a href="/#pricing">Phlix Pro</a> uploads the rest. Camera Upload is a beta: keep your own backup of anything you cannot replace. <a href="/camera-upload/#beta">What the beta does, and what it does not do</a>.</p>
+
+        <h3 id="by-hand">2. By hand, now and then</h3>
+        <p>Without an app, copy the photos yourself, then let Plex scan:</p>
+        <ul>
+            <li><strong>From the iPhone.</strong> In the Files app, connect to a shared folder on your server (Browse, then the &bull;&bull;&bull; button, then Connect to Server). Then in the Photos app, select the photos, tap Share, and choose Save to Files with that folder.</li>
+            <li><strong>From a computer.</strong> Import the photos from the iPhone to the computer, then copy them into the folder of your Plex photo library.</li>
+            <li><strong>Then, in Plex,</strong> scan the photo library, or switch on Settings &rsaquo; Library &rsaquo; <em>Scan my library automatically</em> so that Plex picks up new files by itself.</li>
+        </ul>
+        <p>That works, and it needs nothing new on your server. It is also easy to forget, which is what Camera Upload is for.</p>
+
+        <h2 id="steps">Camera Upload (Beta) in three steps</h2>
+        <div class="steps3">
+            <div class="card"><span class="num">1</span><h3>Install the helper</h3><p>One Docker container on the machine that runs Plex Media Server, pointed at a folder inside your Plex photo library.</p></div>
+            <div class="card"><span class="num">2</span><h3>Connect your iPhone</h3><p>In Phlix, open Settings &rsaquo; Camera Upload. Phlix finds the helper on your network and pairs with it.</p></div>
+            <div class="card"><span class="num">3</span><h3>At home</h3><p>On your home Wi-Fi, new photos copy to your server: straight away while Phlix is open, and in short bursts while it is closed.</p></div>
+        </div>
+        <p>On a Linux computer or server, or a Mac with Docker Desktop, step 1 is one command in a terminal on the server. The installer checks Docker, asks for your upload folder and starts the helper:</p>
+        <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh</code></pre></div>
+        <p>On Windows, Unraid, Synology and TrueNAS SCALE, or to let an AI assistant do it, follow <a href="/camera-upload/#install">the setup guide's Step 1</a>. Then, in Phlix, tap <strong>Check for the Helper</strong>, then <strong>Check My Network</strong>. Nothing is switched on, and nothing is uploaded, until the helper is found. When Phlix says <strong>Helper found</strong>, name this device's folder and tap <strong>Connect</strong>. The owner of the Plex server pairs without a code; family members type the helper's pairing code. <a href="/camera-upload/#connect">All the steps, with screenshots</a>.</p>
+
+        <h2 id="where">Where the photos go</h2>
+        <p>Each phone or tablet gets its own folder inside the upload folder, with one folder for each year and one for each month:</p>
+<pre class="tree"><code>Camera Uploads/
+  Anna's iPhone/
+    2026/
+      2026-11/
+        IMG_1234.HEIC
+        IMG_1235.MOV</code></pre>
+        <p>A file keeps its name and its date. The same photo from two phones is stored once, and nothing is ever overwritten. When your Plex account owns the server, Phlix asks Plex to scan once your photos have arrived. To be sure, switch on <em>Scan my library automatically</em> in Plex as well.</p>
+
+        <h2 id="in-your-language">In your language</h2>
+        <p class="lang-links">
+            <a href="/de/camera-upload/" hreflang="de" lang="de">Deutsch</a>
+            <a href="/fr/camera-upload/" hreflang="fr" lang="fr">Français</a>
+            <a href="/es/camera-upload/" hreflang="es" lang="es">Español</a>
+            <a href="/it/camera-upload/" hreflang="it" lang="it">Italiano</a>
+            <a href="/pt-br/camera-upload/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a>
+            <a href="/nl/camera-upload/" hreflang="nl" lang="nl">Nederlands</a>
+            <a href="/sv/camera-upload/" hreflang="sv" lang="sv">Svenska</a>
+            <a href="/da/camera-upload/" hreflang="da" lang="da">Dansk</a>
+            <a href="/nb/camera-upload/" hreflang="nb" lang="nb">Norsk bokmål</a>
+            <a href="/fi/camera-upload/" hreflang="fi" lang="fi">Suomi</a>
+            <a href="/pl/camera-upload/" hreflang="pl" lang="pl">Polski</a>
+            <a href="/ja/camera-upload/" hreflang="ja" lang="ja">日本語</a>
+            <a href="/ko/camera-upload/" hreflang="ko" lang="ko">한국어</a>
+            <a href="/zh-hans/camera-upload/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+            <a href="/zh-hant/camera-upload/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a>
+        </p>
+
+        <h2 id="faq">Questions</h2>
+        <details>
+            <summary>Does Plex still have Camera Upload?</summary>
+            <div class="inner"><p>Plex announced on its forum on March 18, 2021 that it was ending support for Camera Upload, with removal targeted for June 2021. In August 2025, a moderator on Plex's forum described the feature as discontinued about four years earlier. Photos uploaded before that stayed in Plex.</p></div>
+        </details>
+        <details>
+            <summary>How do I back up my iPhone photos to Plex automatically?</summary>
+            <div class="inner"><p>Camera Upload (Beta) in Phlix does it. Install the free Phlix Camera Upload helper, one Docker container, on the machine that runs Plex Media Server, and point it at a folder inside your Plex photo library. Then turn on Settings &gt; Camera Upload in Phlix. At home, on your Wi-Fi, new photos copy to your server by themselves. It needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.</p></div>
+        </details>
+        <details>
+            <summary>Can I put iPhone photos into Plex without an app?</summary>
+            <div class="inner"><p>Yes, by hand. Copy the photos into a folder that one of your Plex photo libraries includes, then let Plex scan the library. From an iPhone, the Files app can connect to a shared folder on your server, and in the Photos app, Share &gt; Save to Files copies the selected photos there. From a computer, import the photos from the iPhone and copy them into that folder.</p></div>
+        </details>
+        <details>
+            <summary>Does Phlix Camera Upload need Plex Pass?</summary>
+            <div class="inner"><p>No. The helper writes ordinary files into a folder of your Plex photo library, which works with every Plex Media Server.</p></div>
+        </details>
+        <details>
+            <summary>Does it upload away from home or over mobile data?</summary>
+            <div class="inner"><p>No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back.</p></div>
+        </details>
+        <details>
+            <summary>Does it delete photos from my iPhone?</summary>
+            <div class="inner"><p>No. It is a one-way copy. Phlix never deletes or changes anything in your Photo Library, and deleting a photo on the phone leaves the copy on the server.</p></div>
+        </details>
+        <details>
+            <summary>What does it cost?</summary>
+            <div class="inner"><p>The helper is free and open source. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you.</p></div>
+        </details>
+        <details>
+            <summary>What do I need?</summary>
+            <div class="inner"><p>Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid or TrueNAS SCALE); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network.</p></div>
+        </details>
+        <details>
+            <summary>Is Phlix made by Plex?</summary>
+            <div class="inner"><p>No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It works with Plex Media Server.</p></div>
+        </details>
+        <details>
+            <summary>Is there an Android version?</summary>
+            <div class="inner"><p>No. Phlix is an app for iPhone and iPad.</p></div>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+        <ul class="sources">
+            <li>The Plex Team, &ldquo;Important info about Camera Upload in Plex&rdquo;, Plex Forum, Announcements, March 18, 2021. <a href="https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626">Archived copy of March 19, 2021</a> (the original address, forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626, no longer answers).</li>
+            <li>&ldquo;Plex Photos App Not Uploading to Server&rdquo;, Plex Forum, August 1, 2025: <a href="https://forums.plex.tv/t/plex-photos-app-not-uploading-to-server/927683">forums.plex.tv/t/plex-photos-app-not-uploading-to-server/927683</a>.</li>
+            <li>The Phlix Camera Upload helper, source code and documents: <a href="https://github.com/jrl8085/phlix-camera-upload">github.com/jrl8085/phlix-camera-upload</a>.</li>
+        </ul>
+
+        <div class="cta-box" data-page-section="camera-answer-cta">
+            <h3>Phlix: Camera Upload (Beta) and a timeline for the photos on your Plex server</h3>
+            <p>An independent iPhone and iPad app that works with Plex Media Server. Free to browse, with no ads.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iPhone and iPad &middot; iOS 17 or later<br>Camera Upload needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/camera-upload/">Camera Upload (Beta)</a>
+            <a href="/plex-photos-alternative/">Plex Photos alternative</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+    <script>
+    /* A Copy button on each command, and a link to a closed question opens it. */
+    (function () {
+        'use strict';
+        var blocks = document.querySelectorAll('.cmd');
+        for (var i = 0; i < blocks.length; i++) {
+            (function (block) {
+                var code = block.querySelector('code');
+                if (!code || !navigator.clipboard) { return; }
+                var button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = 'Copy';
+                button.setAttribute('aria-label', 'Copy this command');
+                button.addEventListener('click', function () {
+                    navigator.clipboard.writeText(code.textContent).then(function () {
+                        button.textContent = 'Copied';
+                        button.className = 'done';
+                        setTimeout(function () { button.textContent = 'Copy'; button.className = ''; }, 1600);
+                    });
+                });
+                block.appendChild(button);
+            })(blocks[i]);
+        }
+        function openTarget() {
+            var id = location.hash.slice(1);
+            if (!id) { return; }
+            var el = document.getElementById(id);
+            while (el) {
+                if (el.tagName === 'DETAILS') { el.open = true; }
+                el = el.parentElement;
+            }
+        }
+        window.addEventListener('hashchange', openTarget);
+        openTarget();
+    })();
+    </script>
+    <script src="/blog/track.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plex Photos Alternative for iPhone and iPad | Phlix</title>
+    <meta name="description" content="Looking for another way to view the photos on your Plex Media Server? Phlix is an independent iPhone and iPad app: a date timeline, saves to Photos, TV slideshows, Camera Upload (Beta).">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://phlixapp.com/plex-photos-alternative/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/plex-photos-alternative/">
+    <meta property="og:title" content="A Plex Photos alternative for iPhone and iPad: Phlix">
+    <meta property="og:description" content="Phlix is an independent iPhone and iPad app that works with Plex Media Server: folders and a date timeline, saves to Photos or an album, slideshows on your TV, and Camera Upload (Beta).">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A Plex Photos alternative for iPhone and iPad: Phlix">
+    <meta name="twitter:description" content="Phlix is an independent iPhone and iPad app that works with Plex Media Server: folders and a date timeline, saves to Photos or an album, slideshows on your TV, and Camera Upload (Beta).">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"A Plex Photos alternative for iPhone and iPad: Phlix","description":"Phlix is an independent iPhone and iPad app that works with Plex Media Server: what it does, what it does not do, how it compares with what Plex lists for its own Plex Photos app, and what it costs.","datePublished":"2026-11-24","dateModified":"2026-11-24","inLanguage":"en","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/plex-photos-alternative/","about":{"@type":"SoftwareApplication","name":"Phlix Photos","operatingSystem":"iOS, iPadOS","applicationCategory":"MultimediaApplication","url":"https://phlixapp.com/","downloadUrl":"https://apps.apple.com/app/phlix-photos/id6796820208","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Plex Photos alternative","item":"https://phlixapp.com/plex-photos-alternative/"}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Is there an alternative to the Plex Photos app?","acceptedAnswer":{"@type":"Answer","text":"Yes. Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or into an album, and plays slideshows on the phone or on your TV. It is free to browse."}},
+    {"@type":"Question","name":"Is Phlix made by Plex?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It works with Plex Media Server."}},
+    {"@type":"Question","name":"Can I use Phlix and Plex Photos side by side?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both read the same photo libraries on your Plex Media Server. Phlix never changes or deletes what is on your server, so you can keep using any Plex app next to it."}},
+    {"@type":"Question","name":"Do I need Plex Pass?","acceptedAnswer":{"@type":"Answer","text":"No Plex Pass is needed on your home network. Away from home, Plex may require the server owner to have a Plex Pass, or you a Remote Watch Pass, before it serves files remotely to any app, including Phlix."}},
+    {"@type":"Question","name":"Does Phlix work with a Plex server that someone shared with me?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use your own server or one shared with you, and switch between its photo libraries."}},
+    {"@type":"Question","name":"How much does Phlix cost?","acceptedAnswer":{"@type":"Answer","text":"Phlix is free to browse, with 25 free saves to Photos. Phlix Pro adds unlimited saves, big-screen slideshows on your TV and, from version 1.0.21, unlimited camera uploads: $19.99 once, with Family Sharing, or $6.99 a year. You can try Pro free for 14 days; the trial never renews and never charges you."}},
+    {"@type":"Question","name":"Can Phlix upload the photos on my iPhone to Plex?","acceptedAnswer":{"@type":"Answer","text":"Yes, from version 1.0.21: Camera Upload (Beta) copies the photos and videos on your iPhone or iPad into a folder of your Plex photo library, on your home Wi-Fi only, through a free helper you run in Docker next to Plex Media Server. If the App Store does not offer that version yet, it is on its way."}},
+    {"@type":"Question","name":"Does Phlix work on iPad and Mac?","acceptedAnswer":{"@type":"Answer","text":"Phlix is one app for iPhone and iPad; on iPad, a sidebar lists your libraries. On a Mac with Apple silicon, the App Store offers the iPad version. Apple lists it as designed for iPad and not verified for macOS."}},
+    {"@type":"Question","name":"Which languages does Phlix speak?","acceptedAnswer":{"@type":"Answer","text":"English, German, French, Spanish, Italian, Portuguese (Brazil), Dutch, Swedish, Danish, Norwegian, Finnish, Polish, Japanese, Korean, and Chinese, Simplified and Traditional."}}
+    ]}
+    </script>
+    <style>
+        /* Page-specific pieces. Everything else comes from /blog/style.css. */
+        article.answer-page { max-width: 780px; }
+        .breadcrumb { max-width: 780px; }
+        .answer-page h2 { margin-top: 52px; font-size: 1.5rem; }
+        .answer { background: var(--surface); border: 1px solid rgba(240,180,41,0.35); border-radius: 14px; padding: 22px 26px; margin: 8px 0 24px; }
+        .answer h2 { margin: 0 0 10px !important; font-size: 0.8rem !important; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+        .answer p { color: var(--text); margin-bottom: 12px; }
+        .answer p:last-child { margin-bottom: 0; }
+        .answer .small { color: var(--text-2); font-size: 0.92rem; }
+        .answer-page table td.yes { color: var(--check); }
+        .answer-page table td.no { color: var(--text-3); }
+        .answer-page .table-note { font-size: 0.85rem; color: var(--text-3); }
+        .answer-page details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; }
+        .answer-page details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+        .answer-page details > summary::-webkit-details-marker { display: none; }
+        .answer-page details > summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.3rem; font-weight: 400; }
+        .answer-page details[open] > summary::after { content: "\2212"; }
+        .answer-page details > .inner { padding: 0 18px 8px; }
+        .answer-page table { display: block; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <nav data-page-section="alternative-nav"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Plex Photos alternative</div>
+
+    <article class="answer-page">
+        <span class="category photos">Photos &middot; Answers</span>
+        <h1>A Plex Photos alternative for iPhone and iPad: Phlix</h1>
+        <p class="meta">Updated November 24, 2026 &middot; 4 min read</p>
+
+        <div class="answer" id="short-answer">
+            <h2>The short answer</h2>
+            <p><strong>Phlix is an independent iPhone and iPad app that works with Plex Media Server.</strong> It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows of a folder (with the folders inside it), a year or the whole library.</p>
+            <p>With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) also backs up your camera roll to your Plex server at home.</p>
+            <p class="small">Phlix is free to browse, so you can try it on your own library. If the App Store does not offer version 1.0.21 yet, it is on its way.</p>
+        </div>
+
+        <h2 id="plex-photos">Plex Photos and Phlix</h2>
+        <p>Plex Photos is Plex's own free app for photo libraries. Its App Store page lists three supported features: Recommended View, Timeline View and Library View. Its latest version is 2025.2.0, from June 12, 2025.</p>
+        <p>Phlix reads the same photo libraries on the same Plex Media Server. You do not have to choose: Phlix never changes or deletes what is on your server, so you can use it next to any Plex app. Here is what each one lists:</p>
+        <table>
+            <tr><th>Feature</th><th>Phlix</th><th>Plex Photos</th></tr>
+            <tr><td>Timeline by date</td><td class="yes">Yes, with a year scrubber</td><td class="yes">Timeline View</td></tr>
+            <tr><td>Folders as on your server</td><td class="yes">Yes</td><td class="yes">Library View</td></tr>
+            <tr><td>Save to the Photos app, or into an album</td><td class="yes">25 free, unlimited with Pro</td><td class="no">Not listed</td></tr>
+            <tr><td>Slideshows of a folder, a year or the whole library</td><td class="yes">2, 4, 6 or 10 seconds a slide, shuffle, loop</td><td class="no">Not listed</td></tr>
+            <tr><td>Just the photos on the TV, the controls on the iPhone</td><td class="yes">With Screen Mirroring or an HDMI adapter (Pro)</td><td class="no">Not listed</td></tr>
+            <tr><td>Camera upload to your own server</td><td class="yes">Beta, from version 1.0.21</td><td class="no">Not listed</td></tr>
+            <tr><td>Curated highlights</td><td class="no">No</td><td class="yes">Recommended View</td></tr>
+        </table>
+        <p class="table-note">The Plex Photos column is what Plex lists on its <a href="https://apps.apple.com/us/app/plex-photos/id6504519803">App Store page</a>, checked November 24, 2026. "Not listed" means the page does not list it.</p>
+
+        <h2 id="what-phlix-does">What Phlix does</h2>
+        <ul>
+            <li><strong>Folders and a timeline.</strong> Folders that follow the folders on your server, and a date timeline one tap away. Tap a year on the scrubber, say 1987, to see just that year.</li>
+            <li><strong>Built for big libraries.</strong> Phlix loads a page at a time instead of everything at once, so a library of 100,000 photos opens in seconds.</li>
+            <li><strong>Save to Photos and Save to Album.</strong> Save photos and videos to the Photos app, one at a time: the original file when your server sends it, or a copy your server converted, which may be smaller. Pick an album once, and every save goes into it.</li>
+            <li><strong>Slideshows.</strong> A folder's slideshow also plays the folders inside it (switch: Include Subfolders). 2, 4, 6 or 10 seconds a slide, shuffle and loop, with hard cuts between photos.</li>
+            <li><strong>Big-screen slideshows.</strong> With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. A Phlix Pro feature; without Pro, the TV mirrors your phone.</li>
+            <li><strong>Camera Upload (Beta).</strong> From version 1.0.21, Phlix backs up the photos and videos on your iPhone or iPad to a folder of your Plex photo library, on your home Wi-Fi only, through a free helper next to Plex Media Server. <a href="/plex-camera-upload/">What happened to Plex's own Camera Upload, and how this one works</a>.</li>
+            <li><strong>Search and favorites.</strong> Search photo and video titles, tags and collections. Favorites are saved on your device.</li>
+            <li><strong>Your server, or a shared one.</strong> Use your own server or one shared with you, and switch between its photo libraries.</li>
+            <li><strong>Every screen.</strong> iPhone and iPad, with a sidebar of your libraries on iPad, VoiceOver support, and English and 15 more languages.</li>
+            <li><strong>Careful with data.</strong> On cellular and in Low Data Mode, Phlix stops loading ahead of you.</li>
+        </ul>
+
+        <h2 id="what-phlix-does-not-do">What Phlix does not do</h2>
+        <ul>
+            <li>It plays photo libraries only: not your movie, TV or music libraries.</li>
+            <li>It does not edit photos, and it never changes or deletes what is on your server. Camera Upload only adds new files, in the folder you choose for it.</li>
+            <li>It does not convert files itself. HEIC, RAW and TIFF photos are converted by your Plex server; if it cannot convert one, Phlix shows the best copy it can get.</li>
+            <li>It is not on Android.</li>
+        </ul>
+
+        <h2 id="price">What it costs</h2>
+        <p>Phlix is free to download and free to browse, with no ads. Browsing, the timeline, search, favorites and on-device slideshows are free forever, with 25 saves to Photos and, from version 1.0.21, the first 100 camera uploads. <a href="/#pricing">Phlix Pro</a> removes those limits and adds big-screen slideshows on your TV: $19.99 once, with Family Sharing, or $6.99 a year. Try Pro free for 14 days: the trial is not a subscription, and it never charges you.</p>
+
+        <h2 id="try">How to try it on your own library</h2>
+        <ol>
+            <li>Download Phlix from the App Store.</li>
+            <li>Sign in on Plex's own sign-in page. Phlix never sees your password, and there is no Phlix account to create.</li>
+            <li>Pick your server and a photo library. Phlix needs a Plex Media Server with at least one photo library, and iOS 17 or later.</li>
+        </ol>
+
+        <h2 id="faq">Questions</h2>
+        <details>
+            <summary>Is there an alternative to the Plex Photos app?</summary>
+            <div class="inner"><p>Yes. Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or into an album, and plays slideshows on the phone or on your TV. It is free to browse.</p></div>
+        </details>
+        <details>
+            <summary>Is Phlix made by Plex?</summary>
+            <div class="inner"><p>No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It works with Plex Media Server.</p></div>
+        </details>
+        <details>
+            <summary>Can I use Phlix and Plex Photos side by side?</summary>
+            <div class="inner"><p>Yes. Both read the same photo libraries on your Plex Media Server. Phlix never changes or deletes what is on your server, so you can keep using any Plex app next to it.</p></div>
+        </details>
+        <details>
+            <summary>Do I need Plex Pass?</summary>
+            <div class="inner"><p>No Plex Pass is needed on your home network. Away from home, Plex may require the server owner to have a Plex Pass, or you a Remote Watch Pass, before it serves files remotely to any app, including Phlix.</p></div>
+        </details>
+        <details>
+            <summary>Does Phlix work with a Plex server that someone shared with me?</summary>
+            <div class="inner"><p>Yes. Use your own server or one shared with you, and switch between its photo libraries.</p></div>
+        </details>
+        <details>
+            <summary>How much does Phlix cost?</summary>
+            <div class="inner"><p>Phlix is free to browse, with 25 free saves to Photos. Phlix Pro adds unlimited saves, big-screen slideshows on your TV and, from version 1.0.21, unlimited camera uploads: $19.99 once, with Family Sharing, or $6.99 a year. You can try Pro free for 14 days; the trial never renews and never charges you.</p></div>
+        </details>
+        <details>
+            <summary>Can Phlix upload the photos on my iPhone to Plex?</summary>
+            <div class="inner"><p>Yes, from version 1.0.21: Camera Upload (Beta) copies the photos and videos on your iPhone or iPad into a folder of your Plex photo library, on your home Wi-Fi only, through a free helper you run in Docker next to Plex Media Server. If the App Store does not offer that version yet, it is on its way.</p></div>
+        </details>
+        <details>
+            <summary>Does Phlix work on iPad and Mac?</summary>
+            <div class="inner"><p>Phlix is one app for iPhone and iPad; on iPad, a sidebar lists your libraries. On a Mac with Apple silicon, the App Store offers the iPad version. Apple lists it as designed for iPad and not verified for macOS.</p></div>
+        </details>
+        <details>
+            <summary>Which languages does Phlix speak?</summary>
+            <div class="inner"><p>English, German, French, Spanish, Italian, Portuguese (Brazil), Dutch, Swedish, Danish, Norwegian, Finnish, Polish, Japanese, Korean, and Chinese, Simplified and Traditional.</p></div>
+        </details>
+
+        <div class="cta-box" data-page-section="alternative-cta">
+            <h3>Phlix: a photo app that works with Plex Media Server</h3>
+            <p>Folders and a date timeline, saves to Photos or an album, and slideshows on your TV. Free to browse, with no ads.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
+            <p class="sub">iPhone and iPad &middot; iOS 17 or later</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/plex-camera-upload/">Plex Camera Upload</a>
+            <a href="/camera-upload/">Camera Upload (Beta)</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/support">Support</a>
+        </div>
+        <p class="trademark">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+    <script>
+    /* A link to a closed question opens it. */
+    (function () {
+        'use strict';
+        function openTarget() {
+            var id = location.hash.slice(1);
+            if (!id) { return; }
+            var el = document.getElementById(id);
+            while (el) {
+                if (el.tagName === 'DETAILS') { el.open = true; }
+                el = el.parentElement;
+            }
+        }
+        window.addEventListener('hashchange', openTarget);
+        openTarget();
+    })();
+    </script>
+    <script src="/blog/track.js" defer></script>
+</body>
+</html>
