@@ -184,7 +184,7 @@
         <h2 id="install">Passo 1: instale o auxiliar</h2>
         <p class="note">Está lendo isto no celular? O passo 1 é feito no seu servidor. Abra esta página em um computador para poder copiar os comandos.</p>
         <p>Faça isto uma vez, na máquina que executa o Plex Media Server. Primeiro, escolha sua <strong>pasta de upload</strong>: a pasta para onde vão as fotos do seu celular. Ela precisa estar <strong>dentro de uma pasta incluída em uma das suas bibliotecas de fotos do Plex</strong>, senão o Plex nunca mostra as fotos. Se a pasta da sua biblioteca for <code>/mnt/media/Photos</code>, uma boa escolha é <code>/mnt/media/Photos/Camera Uploads</code>.</p>
-        <p>Para ver as pastas da sua biblioteca, abra o Plex em um navegador e acesse <em>Settings › Manage › Libraries</em>, escolha <em>Edit Library</em> na sua biblioteca de fotos e depois <em>Add folders</em>. (Esses são os nomes do Plex em inglês; o seu Plex pode mostrá-los em português.)</p>
+        <p>Para ver as pastas da sua biblioteca, abra o Plex em um navegador e acesse <em>Configurações › Gerenciar › Bibliotecas de mídia</em>, escolha <em>Editar Biblioteca</em> na sua biblioteca de fotos e depois <em>Adicionar pastas</em>.</p>
         <p><strong>O seu Plex também roda em Docker?</strong> Isso é comum no Unraid e no TrueNAS SCALE. Nesse caso, o Plex mostra o caminho da pasta dentro do próprio contêiner, como <code>/data/Photos</code>. O auxiliar precisa do caminho da pasta no servidor, como <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">Como encontrar os dois caminhos (em inglês)</a>.</p>
         <p>Há três formas de instalar o auxiliar. A forma B funciona em qualquer sistema. No Unraid, no Synology e no TrueNAS SCALE, siga <a href="#other-systems">as notas para o seu sistema</a>, mais abaixo, em vez das formas A e C.</p>
         <p>Os comandos são digitados em um terminal no seu servidor: no Mac, o app chamado Terminal; no Windows, o PowerShell; no Linux, o programa de terminal, ou SSH a partir de outro computador. Cada comando em uma caixa tem um botão para copiá-lo. Se o Docker responder “permission denied”, coloque <code>sudo</code> antes de cada comando <code>docker</code>.</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>Uma linha que começa com <code>PROBLEM</code> é seguida de uma linha que começa com <code>Fix:</code>.</p>
-        <div class="note"><p><strong>Um ajuste no Plex.</strong> O Plex só mostra arquivos novos depois de fazer uma varredura. Quando a sua conta Plex é a proprietária do servidor, o Phlix pede uma varredura ao Plex assim que suas fotos chegam. Para todas as outras pessoas da sua casa, e para garantir, ative <em>Settings › Library › Scan my library automatically</em> no Plex. Essa opção vem desativada por padrão.</p></div>
+        <div class="note"><p><strong>Um ajuste no Plex.</strong> O Plex só mostra arquivos novos depois de fazer uma varredura. Quando a sua conta Plex é a proprietária do servidor, o Phlix pede uma varredura ao Plex assim que suas fotos chegam. Para todas as outras pessoas da sua casa, e para garantir, ative <em>Configurações › Biblioteca › Verificar minha biblioteca automaticamente</em> no Plex. Essa opção vem desativada por padrão.</p></div>
 
         <h2 id="connect">Passo 2: conecte seu iPhone</h2>
         <ol>

@@ -184,7 +184,7 @@
         <h2 id="install">Stap 1: Installeer het hulpprogramma</h2>
         <p class="note">Lees je dit op je telefoon? Stap 1 doe je op je server. Open deze pagina op een computer, zodat je de opdrachten kunt kopiëren.</p>
         <p>Dit doe je één keer, op de computer waarop Plex Media Server draait. Kies eerst je <strong>uploadmap</strong>: de map waarin de foto's van je telefoon terechtkomen. Die moet <strong>in een map staan die in een van je Plex-fotobibliotheken is opgenomen</strong>, anders laat Plex de foto's nooit zien. Is de map van je bibliotheek <code>/mnt/media/Photos</code>, dan is <code>/mnt/media/Photos/Camera Uploads</code> een goede keuze.</p>
-        <p>Om de mappen van je bibliotheek te zien, open je Plex in een browser, ga je naar <em>Settings › Manage › Libraries</em>, kies je bij je fotobibliotheek <em>Edit Library</em> en daarna <em>Add folders</em>. (Dit zijn de Engelse labels van Plex; jouw Plex toont ze misschien in je eigen taal.)</p>
+        <p>Om de mappen van je bibliotheek te zien, open je Plex in een browser, ga je naar <em>Instellingen › Beheren › Bibliotheken</em>, kies je bij je fotobibliotheek <em>Bewerk bibliotheek</em> en daarna <em>Mappen toevoegen</em>.</p>
         <p><strong>Draait je Plex zelf in Docker?</strong> Op Unraid en TrueNAS SCALE is dat gebruikelijk. Plex toont dan het pad van de map binnen zijn eigen container, zoals <code>/data/Photos</code>. Het hulpprogramma heeft het pad van de map op de server nodig, zoals <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">Zo vind je beide paden (Engels)</a>.</p>
         <p>Er zijn drie manieren om het hulpprogramma te installeren. Manier B werkt op elk systeem. Volg op Unraid, Synology en TrueNAS SCALE in plaats van manier A en C <a href="#other-systems">de aanwijzingen voor je systeem</a> hieronder.</p>
         <p>Je typt de opdrachten in een terminal op je server: op een Mac in de app Terminal, op Windows in PowerShell, op Linux in het terminalprogramma of via SSH vanaf een andere computer. Bij een opdracht in een kader staat een knop om te kopiëren. Antwoordt Docker “permission denied”, zet dan <code>sudo</code> voor elke <code>docker</code>-opdracht.</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>Na een regel die begint met <code>PROBLEM</code> volgt een regel die begint met <code>Fix:</code>.</p>
-        <div class="note"><p><strong>Eén instelling in Plex.</strong> Plex toont nieuwe bestanden pas na een scan. Als je Plex-account de eigenaar van de server is, vraagt Phlix Plex om een scan zodra je foto's zijn aangekomen. Zet voor alle anderen in je huishouden, en voor de zekerheid, in Plex <em>Settings › Library › Scan my library automatically</em> aan. Standaard staat dit uit.</p></div>
+        <div class="note"><p><strong>Eén instelling in Plex.</strong> Plex toont nieuwe bestanden pas na een scan. Als je Plex-account de eigenaar van de server is, vraagt Phlix Plex om een scan zodra je foto's zijn aangekomen. Zet voor alle anderen in je huishouden, en voor de zekerheid, in Plex <em>Instellingen › Bibliotheek › Scan mijn bibliotheek automatisch</em> aan. Standaard staat dit uit.</p></div>
 
         <h2 id="connect">Stap 2: Verbind je iPhone</h2>
         <ol>

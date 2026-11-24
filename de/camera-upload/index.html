@@ -184,7 +184,7 @@
         <h2 id="install">Schritt 1: Das Hilfsprogramm installieren</h2>
         <p class="note">Liest du das auf deinem iPhone? Schritt 1 erledigst du auf deinem Server. Öffne diese Seite auf einem Computer, damit du die Befehle kopieren kannst.</p>
         <p>Das machst du einmal, auf dem Computer, auf dem Plex Media Server läuft. Leg zuerst deinen <strong>Upload-Ordner</strong> fest: den Ordner, in dem die Fotos deines iPhone landen. Er muss <strong>in einem Ordner liegen, der zu einer deiner Plex-Fotobibliotheken gehört</strong>, sonst zeigt Plex die Fotos nie an. Wenn der Ordner deiner Bibliothek <code>/mnt/media/Photos</code> ist, ist <code>/mnt/media/Photos/Camera Uploads</code> eine gute Wahl.</p>
-        <p>Um die Ordner deiner Bibliothek zu sehen, öffne Plex in einem Browser und gehe zu <em>Settings › Manage › Libraries</em>, wähle bei deiner Fotobibliothek <em>Edit Library</em> und dann <em>Add folders</em>. (Das sind die englischen Bezeichnungen von Plex; dein Plex zeigt sie vielleicht in deiner Sprache an.)</p>
+        <p>Um die Ordner deiner Bibliothek zu sehen, öffne Plex in einem Browser und gehe zu <em>Einstellungen › Verwalten › Mediatheken</em>, wähle bei deiner Fotobibliothek <em>Mediathek bearbeiten</em> und dann <em>Ordner hinzufügen</em>.</p>
         <p><strong>Läuft dein Plex selbst in Docker?</strong> Auf Unraid und TrueNAS SCALE ist das üblich. Plex zeigt dann den Pfad des Ordners innerhalb seines eigenen Containers an, etwa <code>/data/Photos</code>. Das Hilfsprogramm braucht den Pfad des Ordners auf dem Server, etwa <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">So findest du beide Pfade (Englisch)</a>.</p>
         <p>Es gibt drei Wege, das Hilfsprogramm zu installieren. Weg B funktioniert auf jedem System. Auf Unraid, Synology und TrueNAS SCALE folgst du statt der Wege A und C <a href="#other-systems">den Hinweisen für dein System</a> weiter unten.</p>
         <p>Die Befehle gibst du in ein Terminal auf deinem Server ein: auf einem Mac in die App „Terminal“, unter Windows in PowerShell, unter Linux in das Terminalprogramm oder per SSH von einem anderen Computer aus. Ein Befehl in einem Kasten hat eine Schaltfläche zum Kopieren. Wenn Docker „permission denied“ meldet, setze <code>sudo</code> vor jeden <code>docker</code>-Befehl.</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>Auf eine Zeile, die mit <code>PROBLEM</code> beginnt, folgt eine Zeile, die mit <code>Fix:</code> beginnt.</p>
-        <div class="note"><p><strong>Eine Einstellung in Plex.</strong> Plex zeigt neue Dateien erst nach einem Scan an. Wenn der Server deinem Plex-Konto gehört, bittet Phlix Plex um einen Scan, sobald deine Fotos angekommen sind. Für alle anderen in deinem Haushalt und zur Sicherheit aktiviere in Plex <em>Settings › Library › Scan my library automatically</em>. Standardmäßig ist das aus.</p></div>
+        <div class="note"><p><strong>Eine Einstellung in Plex.</strong> Plex zeigt neue Dateien erst nach einem Scan an. Wenn der Server deinem Plex-Konto gehört, bittet Phlix Plex um einen Scan, sobald deine Fotos angekommen sind. Für alle anderen in deinem Haushalt und zur Sicherheit aktiviere in Plex <em>Einstellungen › Mediathek › Meine Mediathek automatisch durchsuchen</em>. Standardmäßig ist das aus.</p></div>
 
         <h2 id="connect">Schritt 2: Dein iPhone verbinden</h2>
         <ol>

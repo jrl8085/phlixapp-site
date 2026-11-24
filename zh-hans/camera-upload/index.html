@@ -184,7 +184,7 @@
         <h2 id="install">第 1 步：安装助手</h2>
         <p class="note">正在用手机阅读？第 1 步要在服务器上完成。请在电脑上打开此页面，以便复制命令。</p>
         <p>此操作只需在运行 Plex Media Server 的机器上做一次。首先确定你的<strong>上传文件夹</strong>，也就是手机照片要存入的文件夹。它必须<strong>位于你某个 Plex 照片图库所包含的文件夹之内</strong>，否则 Plex 永远不会显示这些照片。如果你的图库文件夹是 <code>/mnt/media/Photos</code>，那么 <code>/mnt/media/Photos/Camera Uploads</code> 是个不错的选择。</p>
-        <p>要查看图库的文件夹，请在浏览器中打开 Plex，前往“<em>Settings › Manage › Libraries</em>”，在你的照片图库上选择“<em>Edit Library</em>”，然后选择“<em>Add folders</em>”。（这些是 Plex 的英文标签，你的 Plex 可能会以中文显示。）</p>
+        <p>要查看图库的文件夹，请在浏览器中打开 Plex，前往“<em>设置 › 管理 › 媒体库</em>”，在你的照片图库上选择“<em>编辑资料库</em>”，然后选择“<em>添加文件夹</em>”。</p>
         <p><strong>你的 Plex 本身也在 Docker 中运行吗？</strong>这在 Unraid 和 TrueNAS SCALE 上很常见。这时 Plex 显示的是文件夹在它自己容器内的路径，例如 <code>/data/Photos</code>。而助手需要的是文件夹在服务器上的路径，例如 <code>/mnt/media/Photos</code>。详见<a href="/camera-upload/#sys-plex-docker">如何找到这两个路径（英文）</a>。</p>
         <p>安装助手有三种方式。方式 B 适用于所有系统。在 Unraid、Synology 和 TrueNAS SCALE 上，请改用下方<a href="#other-systems">针对你系统的说明</a>，而不是方式 A 和 C。</p>
         <p>这些命令要在服务器的终端中输入：在 Mac 上使用名为“终端”的 App；在 Windows 上使用 PowerShell；在 Linux 上使用终端程序，或从另一台电脑通过 SSH 连接。方框中的命令都带有复制按钮。如果 Docker 提示“permission denied”，请在每条 <code>docker</code> 命令前加上 <code>sudo</code>。</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>以 <code>PROBLEM</code> 开头的行后面，会跟着一行以 <code>Fix:</code> 开头的内容。</p>
-        <div class="note"><p><strong>Plex 中的一项设置。</strong>Plex 只有在扫描之后才会显示新文件。如果服务器归你的 Plex 账户所有，照片到达后，Phlix 会请求 Plex 进行扫描。为了家里的其他人，也为保险起见，请在 Plex 中打开“<em>Settings › Library › Scan my library automatically</em>”（自动扫描我的媒体库）。此设置默认关闭。</p></div>
+        <div class="note"><p><strong>Plex 中的一项设置。</strong>Plex 只有在扫描之后才会显示新文件。如果服务器归你的 Plex 账户所有，照片到达后，Phlix 会请求 Plex 进行扫描。为了家里的其他人，也为保险起见，请在 Plex 中打开“<em>设置 › 资料库 › 自动扫描我的资料库</em>”。此设置默认关闭。</p></div>
 
         <h2 id="connect">第 2 步：连接你的 iPhone</h2>
         <ol>

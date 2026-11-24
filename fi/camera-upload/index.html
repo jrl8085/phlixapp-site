@@ -184,7 +184,7 @@
         <h2 id="install">Vaihe 1: Asenna apuohjelma</h2>
         <p class="note">Luetko tätä puhelimella? Vaihe 1 tehdään palvelimella. Avaa tämä sivu tietokoneella, niin voit kopioida komennot.</p>
         <p>Tee tämä kerran koneella, jossa Plex Media Server toimii. Valitse ensin <strong>lähetyskansiosi</strong>: kansio, johon puhelimesi kuvat tulevat. Sen on oltava <strong>sellaisen kansion sisällä, joka kuuluu johonkin Plex-kuvakirjastoistasi</strong>, muuten Plex ei koskaan näytä kuvia. Jos kirjastosi kansio on <code>/mnt/media/Photos</code>, hyvä valinta on <code>/mnt/media/Photos/Camera Uploads</code>.</p>
-        <p>Näet kirjastosi kansiot, kun avaat Plexin selaimessa, siirryt kohtaan <em>Settings › Manage › Libraries</em>, valitset kuvakirjastosi kohdalta <em>Edit Library</em> ja sitten <em>Add folders</em>. (Nämä ovat Plexin englanninkieliset nimet. Plexisi voi näyttää ne suomeksi.)</p>
+        <p>Näet kirjastosi kansiot, kun avaat Plexin selaimessa, siirryt kohtaan <em>Asetukset › Hallitse › Kirjastot</em>, valitset kuvakirjastosi kohdalta <em>Muokkaa Kirjastoa</em> ja sitten <em>Lisää kansioita</em>.</p>
         <p><strong>Toimiiko Plexisi itse Dockerissa?</strong> Se on tavallista Unraidissa ja TrueNAS SCALE -järjestelmässä. Plex näyttää silloin kansion polun oman konttinsa sisällä, esimerkiksi <code>/data/Photos</code>. Apuohjelma tarvitsee kansion polun palvelimella, esimerkiksi <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">Näin löydät molemmat polut (englanniksi)</a>.</p>
         <p>Apuohjelman voi asentaa kolmella tavalla. Tapa B toimii kaikissa järjestelmissä. Järjestelmissä Unraid, Synology ja TrueNAS SCALE noudata tapojen A ja C sijaan alla olevia <a href="#other-systems">oman järjestelmäsi ohjeita</a>.</p>
         <p>Komennot kirjoitetaan palvelimesi päätteeseen: Macissa Pääte-appiin, Windowsissa PowerShelliin ja Linuxissa pääteohjelmaan tai SSH-yhteydellä toiselta tietokoneelta. Laatikossa olevan komennon voi kopioida painikkeella. Jos Docker vastaa ”permission denied”, kirjoita <code>sudo</code> jokaisen <code>docker</code>-komennon eteen.</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>Rivin, joka alkaa sanalla <code>PROBLEM</code>, jälkeen tulee rivi, joka alkaa sanalla <code>Fix:</code>.</p>
-        <div class="note"><p><strong>Yksi asetus Plexissä.</strong> Plex näyttää uudet tiedostot vasta skannattuaan ne. Kun Plex-tilisi omistaa palvelimen, Phlix pyytää Plexiä skannaamaan heti, kun kuvasi ovat perillä. Muita kotisi käyttäjiä varten ja varmuuden vuoksi laita Plexissä päälle <em>Settings › Library › Scan my library automatically</em>. Se on oletuksena pois päältä.</p></div>
+        <div class="note"><p><strong>Yksi asetus Plexissä.</strong> Plex näyttää uudet tiedostot vasta skannattuaan ne. Kun Plex-tilisi omistaa palvelimen, Phlix pyytää Plexiä skannaamaan heti, kun kuvasi ovat perillä. Muita kotisi käyttäjiä varten ja varmuuden vuoksi laita Plexissä päälle <em>Asetukset › Kirjasto › Tarkista kirjastoni automaattisesti</em>. Se on oletuksena pois päältä.</p></div>
 
         <h2 id="connect">Vaihe 2: Yhdistä iPhonesi</h2>
         <ol>

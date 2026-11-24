@@ -184,7 +184,7 @@
         <h2 id="install">1단계: 도우미 설치하기</h2>
         <p class="note">휴대폰으로 보고 계신가요? 1단계는 서버에서 진행합니다. 명령어를 복사할 수 있도록 컴퓨터에서 이 페이지를 여세요.</p>
         <p>Plex Media Server를 실행하는 컴퓨터에서 한 번만 하면 됩니다. 먼저 휴대폰의 사진이 들어갈 폴더인 <strong>업로드 폴더</strong>를 정하세요. 이 폴더는 반드시 <strong>Plex 사진 라이브러리 중 하나에 포함된 폴더 안에</strong> 있어야 합니다. 그렇지 않으면 Plex에 사진이 표시되지 않습니다. 라이브러리 폴더가 <code>/mnt/media/Photos</code>라면 <code>/mnt/media/Photos/Camera Uploads</code>를 사용하는 것이 좋습니다.</p>
-        <p>라이브러리의 폴더를 확인하려면 브라우저에서 Plex를 열고 <em>Settings › Manage › Libraries</em>로 이동한 다음, 사진 라이브러리에서 <em>Edit Library</em>를 선택하고 <em>Add folders</em>를 선택하세요. (이는 Plex의 영어 메뉴 이름이며, 사용 중인 Plex에서는 한국어로 표시될 수 있습니다.)</p>
+        <p>라이브러리의 폴더를 확인하려면 브라우저에서 Plex를 열고 <em>설정 › 관리 › 라이브러리</em>로 이동한 다음, 사진 라이브러리에서 <em>라이브러리 편집</em>을 선택하고 <em>폴더 추가</em>를 선택하세요.</p>
         <p><strong>Plex도 Docker에서 실행되나요?</strong> Unraid와 TrueNAS SCALE에서는 흔한 경우입니다. 이때 Plex는 자체 컨테이너 안의 폴더 경로(예: <code>/data/Photos</code>)를 보여 줍니다. 도우미에는 서버상의 폴더 경로(예: <code>/mnt/media/Photos</code>)가 필요합니다. <a href="/camera-upload/#sys-plex-docker">두 경로를 찾는 방법(영어)</a>.</p>
         <p>도우미를 설치하는 방법은 세 가지입니다. 방법 B는 모든 시스템에서 작동합니다. Unraid, Synology, TrueNAS SCALE에서는 방법 A와 C 대신 아래의 <a href="#other-systems">시스템별 안내</a>를 따르세요.</p>
         <p>명령어는 서버의 터미널에 입력합니다. Mac에서는 터미널 앱, Windows에서는 PowerShell, Linux에서는 터미널 프로그램을 사용하거나 다른 컴퓨터에서 SSH로 접속합니다. 상자 안의 명령어에는 복사 버튼이 있습니다. Docker가 “permission denied”라고 응답하면 모든 <code>docker</code> 명령어 앞에 <code>sudo</code>를 붙이세요.</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p><code>PROBLEM</code>으로 시작하는 줄 다음에는 <code>Fix:</code>로 시작하는 줄이 이어집니다.</p>
-        <div class="note"><p><strong>Plex 설정 하나.</strong> Plex는 스캔을 마친 후에야 새 파일을 표시합니다. Plex 계정이 서버의 소유자라면 사진이 도착한 후 Phlix가 Plex에 스캔을 요청합니다. 집의 다른 모든 사용자를 위해, 그리고 확실히 하기 위해 Plex에서 <em>Settings › Library › Scan my library automatically</em>를 켜세요. 기본적으로 꺼져 있습니다.</p></div>
+        <div class="note"><p><strong>Plex 설정 하나.</strong> Plex는 스캔을 마친 후에야 새 파일을 표시합니다. Plex 계정이 서버의 소유자라면 사진이 도착한 후 Phlix가 Plex에 스캔을 요청합니다. 집의 다른 모든 사용자를 위해, 그리고 확실히 하기 위해 Plex에서 <em>설정 › 라이브러리 › 내 라이브러리를 자동으로 스캔</em>을 켜세요. 기본적으로 꺼져 있습니다.</p></div>
 
         <h2 id="connect">2단계: iPhone 연결하기</h2>
         <ol>

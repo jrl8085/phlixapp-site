@@ -184,7 +184,7 @@
         <h2 id="install">Trin 1: Installer hjælpeprogrammet</h2>
         <p class="note">Læser du dette på din telefon? Trin 1 foregår på din server. Åbn denne side på en computer, så du kan kopiere kommandoerne.</p>
         <p>Gør dette én gang på den maskine, der kører Plex Media Server. Vælg først din <strong>uploadmappe</strong>: den mappe, hvor fotoene fra din telefon skal hen. Den skal ligge <strong>i en mappe, som et af dine fotobiblioteker i Plex omfatter</strong>, ellers viser Plex aldrig fotoene. Hvis dit biblioteks mappe er <code>/mnt/media/Photos</code>, er <code>/mnt/media/Photos/Camera Uploads</code> et godt valg.</p>
-        <p>Du kan se dit biblioteks mapper ved at åbne Plex i en browser og gå til <em>Settings › Manage › Libraries</em>, vælge <em>Edit Library</em> ved dit fotobibliotek og derefter <em>Add folders</em>. (Det er Plex' engelske betegnelser. Din Plex viser dem måske på dansk.)</p>
+        <p>Du kan se dit biblioteks mapper ved at åbne Plex i en browser og gå til <em>Indstillinger › Administrér › Biblioteker</em>, vælge <em>Redigér bibliotek</em> ved dit fotobibliotek og derefter <em>Tilføj mapper</em>.</p>
         <p><strong>Kører din Plex selv i Docker?</strong> Det er almindeligt på Unraid og TrueNAS SCALE. Plex viser så mappens sti inde i sin egen container, for eksempel <code>/data/Photos</code>. Hjælpeprogrammet skal bruge mappens sti på serveren, for eksempel <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">Sådan finder du begge stier (engelsk)</a>.</p>
         <p>Der er tre metoder til at installere hjælpeprogrammet. Metode B virker på alle systemer. På Unraid, Synology og TrueNAS SCALE skal du følge <a href="#other-systems">noterne til dit system</a> nedenfor i stedet for metode A og C.</p>
         <p>Kommandoerne skrives i en terminal på din server: på en Mac i appen Terminal, på Windows i PowerShell og på Linux i terminalprogrammet eller via SSH fra en anden computer. En kommando i en boks har en knap, der kopierer den. Hvis Docker svarer ”permission denied”, så skriv <code>sudo</code> foran hver <code>docker</code>-kommando.</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>Efter en linje, der starter med <code>PROBLEM</code>, kommer en linje, der starter med <code>Fix:</code>.</p>
-        <div class="note"><p><strong>Én indstilling i Plex.</strong> Plex viser først nye filer, når den har scannet dem. Når din Plex-konto ejer serveren, beder Phlix Plex om at scanne, så snart dine fotos er kommet frem. For alle andre i husstanden, og for en sikkerheds skyld, skal du i Plex slå <em>Settings › Library › Scan my library automatically</em> til. Den er slået fra som standard.</p></div>
+        <div class="note"><p><strong>Én indstilling i Plex.</strong> Plex viser først nye filer, når den har scannet dem. Når din Plex-konto ejer serveren, beder Phlix Plex om at scanne, så snart dine fotos er kommet frem. For alle andre i husstanden, og for en sikkerheds skyld, skal du i Plex slå <em>Indstillinger › Bibliotek › Scan mit bibliotek automatisk</em> til. Den er slået fra som standard.</p></div>
 
         <h2 id="connect">Trin 2: Forbind din iPhone</h2>
         <ol>

@@ -184,7 +184,7 @@
         <h2 id="install">步驟 1：安裝輔助程式</h2>
         <p class="note">正在用手機閱讀嗎？步驟 1 要在伺服器上完成。請在電腦上開啟此頁面，以便複製指令。</p>
         <p>這項操作只需在執行 Plex Media Server 的機器上做一次。首先決定你的<strong>上傳資料夾</strong>，也就是手機照片要存入的資料夾。它必須<strong>位於你某個 Plex 照片圖庫所包含的資料夾之內</strong>，否則 Plex 永遠不會顯示這些照片。如果你的圖庫資料夾是 <code>/mnt/media/Photos</code>，那麼 <code>/mnt/media/Photos/Camera Uploads</code> 就是不錯的選擇。</p>
-        <p>若要查看圖庫的資料夾，請在瀏覽器中開啟 Plex，前往「<em>Settings › Manage › Libraries</em>」，在你的照片圖庫上選擇「<em>Edit Library</em>」，然後選擇「<em>Add folders</em>」。（這些是 Plex 的英文標籤，你的 Plex 可能會以中文顯示。）</p>
+        <p>若要查看圖庫的資料夾，請在瀏覽器中開啟 Plex，前往「<em>設定 › 管理 › 媒體庫</em>」，在你的照片圖庫上選擇「<em>編輯媒體庫</em>」，然後選擇「<em>新增資料夾</em>」。</p>
         <p><strong>你的 Plex 本身也在 Docker 中執行嗎？</strong>這在 Unraid 和 TrueNAS SCALE 上很常見。這時 Plex 顯示的是資料夾在它自己容器內的路徑，例如 <code>/data/Photos</code>。而輔助程式需要的是資料夾在伺服器上的路徑，例如 <code>/mnt/media/Photos</code>。詳見<a href="/camera-upload/#sys-plex-docker">如何找到這兩個路徑（英文）</a>。</p>
         <p>安裝輔助程式有三種方式。方式 B 適用於所有系統。在 Unraid、Synology 和 TrueNAS SCALE 上，請改用下方<a href="#other-systems">針對你系統的說明</a>，而不是方式 A 和 C。</p>
         <p>這些指令要在伺服器的終端機中輸入：在 Mac 上使用名為「終端機」的 App；在 Windows 上使用 PowerShell；在 Linux 上使用終端機程式，或從另一台電腦透過 SSH 連線。方框中的指令都附有複製按鈕。如果 Docker 回應「permission denied」，請在每個 <code>docker</code> 指令前面加上 <code>sudo</code>。</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p>以 <code>PROBLEM</code> 開頭的行後面，會接著一行以 <code>Fix:</code> 開頭的內容。</p>
-        <div class="note"><p><strong>Plex 中的一項設定。</strong>Plex 要等掃描之後才會顯示新檔案。如果伺服器屬於你的 Plex 帳號，照片送達後，Phlix 會請 Plex 進行掃描。為了家中的其他人，也為了保險起見，請在 Plex 中開啟「<em>Settings › Library › Scan my library automatically</em>」（自動掃描我的媒體庫）。此設定預設為關閉。</p></div>
+        <div class="note"><p><strong>Plex 中的一項設定。</strong>Plex 要等掃描之後才會顯示新檔案。如果伺服器屬於你的 Plex 帳號，照片送達後，Phlix 會請 Plex 進行掃描。為了家中的其他人，也為了保險起見，請在 Plex 中開啟「<em>設定 › 媒體庫 › Scan my library automatically</em>」（Plex 以英文顯示這個選項，意思是「自動掃描我的媒體庫」）。此設定預設為關閉。</p></div>
 
         <h2 id="connect">步驟 2：連接你的 iPhone</h2>
         <ol>

@@ -184,7 +184,7 @@
         <h2 id="install">ステップ1：ヘルパーをインストールする</h2>
         <p class="note">スマートフォンでご覧になっていますか？ステップ1はサーバーで行います。コマンドをコピーできるよう、このページはコンピュータで開いてください。</p>
         <p>この作業は、Plex Media Serverが動作しているマシンで一度だけ行います。まず、<strong>アップロードフォルダ</strong>を決めます。iPhoneの写真が入るフォルダです。このフォルダは、<strong>Plexの写真ライブラリのいずれかに含まれるフォルダの中</strong>に置く必要があります。そうしないと、Plexに写真が表示されません。ライブラリのフォルダが<code>/mnt/media/Photos</code>なら、<code>/mnt/media/Photos/Camera Uploads</code>がよいでしょう。</p>
-        <p>ライブラリのフォルダを確認するには、ブラウザでPlexを開いて「<em>Settings › Manage › Libraries</em>」に移動し、写真ライブラリで「<em>Edit Library</em>」を選んでから、「<em>Add folders</em>」を選びます（これらはPlexの英語表示のラベルです。お使いのPlexでは日本語で表示されることがあります）。</p>
+        <p>ライブラリのフォルダを確認するには、ブラウザでPlexを開いて「<em>設定 › 管理 › ライブラリ</em>」に移動し、写真ライブラリで「<em>ライブラリを編集</em>」を選んでから、「<em>フォルダを追加</em>」を選びます。</p>
         <p><strong>Plex自体もDockerで動いていますか？</strong>UnraidやTrueNAS SCALEではよくある構成です。その場合、Plexに表示されるのは、<code>/data/Photos</code>のような、Plexのコンテナ内でのフォルダのパスです。ヘルパーに必要なのは、<code>/mnt/media/Photos</code>のような、サーバー上でのフォルダのパスです。詳しくは<a href="/camera-upload/#sys-plex-docker">両方のパスの調べ方（英語）</a>をご覧ください。</p>
         <p>ヘルパーのインストール方法は3つあります。方法Bはどのシステムでも使えます。Unraid、Synology、TrueNAS SCALEでは、方法AとCの代わりに、下の<a href="#other-systems">お使いのシステム向けの説明</a>に従ってください。</p>
         <p>コマンドは、サーバーのターミナルに入力します。Macでは「ターミナル」アプリ、WindowsではPowerShell、Linuxではターミナルプログラムを使うか、別のコンピュータからSSHで接続します。枠内のコマンドにはコピーボタンがあります。Dockerが「permission denied」と返した場合は、それぞれの<code>docker</code>コマンドの前に<code>sudo</code>を付けてください。</p>
@@ -407,7 +407,7 @@ OK       1 paired, 37 files stored (33.0 MB).
 NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
 Nothing needs fixing.</code></pre>
         <p><code>PROBLEM</code>で始まる行の次には、<code>Fix:</code>で始まる行が続きます。</p>
-        <div class="note"><p><strong>Plexの設定を1つ。</strong>Plexに新しいファイルが表示されるのは、スキャンの後だけです。お使いのPlexアカウントがサーバーの所有者である場合は、写真が届いた後にPhlixがPlexにスキャンを依頼します。家族などほかの人のためにも、また念のためにも、Plexで「<em>Settings › Library › Scan my library automatically</em>」（ライブラリを自動的にスキャン）をオンにしてください。初期設定ではオフになっています。</p></div>
+        <div class="note"><p><strong>Plexの設定を1つ。</strong>Plexに新しいファイルが表示されるのは、スキャンの後だけです。お使いのPlexアカウントがサーバーの所有者である場合は、写真が届いた後にPhlixがPlexにスキャンを依頼します。家族などほかの人のためにも、また念のためにも、Plexで「<em>設定 › ライブラリー › ライブラリーを自動的にスキャンする</em>」をオンにしてください。初期設定ではオフになっています。</p></div>
 
         <h2 id="connect">ステップ2：iPhoneを接続する</h2>
         <ol>
