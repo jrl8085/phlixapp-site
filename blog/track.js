@@ -8,7 +8,11 @@
  *     gtag('event', 'app_store_click', { button_text, page_section })
  *
  *     button_text   the link text, trimmed, first 40 characters
- *     page_section  blog-nav     link inside <nav>
+ *     page_section  the value of the nearest data-page-section attribute
+ *                   on the link or around it, when there is one (pages
+ *                   outside the blog name their own sections this way);
+ *                   otherwise:
+ *                   blog-nav     link inside <nav>
  *                   blog-cta     link inside an element with class "cta-box"
  *                   blog-footer  link inside <footer>
  *                   blog-inline  anywhere else
@@ -23,6 +27,8 @@
     var APP_STORE_LINK = 'a[href*="apps.apple.com"]';
 
     function pageSection(link) {
+        var named = link.closest('[data-page-section]');
+        if (named) { return named.getAttribute('data-page-section'); }
         if (link.closest('nav')) { return 'blog-nav'; }
         if (link.closest('.cta-box')) { return 'blog-cta'; }
         if (link.closest('footer')) { return 'blog-footer'; }

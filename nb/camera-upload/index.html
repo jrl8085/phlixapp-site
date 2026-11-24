@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kameraopplasting (beta): iPhone-bilder til din Plex-server | Phlix</title>
+    <meta name="description" content="Kameraopplasting (beta) i Phlix sikkerhetskopierer iPhone-bildene til din egen Plex-server over Wi-Fi hjemme. Krav, installasjon, sammenkobling og personvern.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://phlixapp.com/nb/camera-upload/">
+    <link rel="alternate" hreflang="en" href="https://phlixapp.com/camera-upload/">
+    <link rel="alternate" hreflang="de" href="https://phlixapp.com/de/camera-upload/">
+    <link rel="alternate" hreflang="fr" href="https://phlixapp.com/fr/camera-upload/">
+    <link rel="alternate" hreflang="es" href="https://phlixapp.com/es/camera-upload/">
+    <link rel="alternate" hreflang="it" href="https://phlixapp.com/it/camera-upload/">
+    <link rel="alternate" hreflang="pt-BR" href="https://phlixapp.com/pt-br/camera-upload/">
+    <link rel="alternate" hreflang="nl" href="https://phlixapp.com/nl/camera-upload/">
+    <link rel="alternate" hreflang="sv" href="https://phlixapp.com/sv/camera-upload/">
+    <link rel="alternate" hreflang="da" href="https://phlixapp.com/da/camera-upload/">
+    <link rel="alternate" hreflang="nb" href="https://phlixapp.com/nb/camera-upload/">
+    <link rel="alternate" hreflang="fi" href="https://phlixapp.com/fi/camera-upload/">
+    <link rel="alternate" hreflang="pl" href="https://phlixapp.com/pl/camera-upload/">
+    <link rel="alternate" hreflang="ja" href="https://phlixapp.com/ja/camera-upload/">
+    <link rel="alternate" hreflang="ko" href="https://phlixapp.com/ko/camera-upload/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://phlixapp.com/zh-hans/camera-upload/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://phlixapp.com/zh-hant/camera-upload/">
+    <link rel="alternate" hreflang="x-default" href="https://phlixapp.com/camera-upload/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/nb/camera-upload/">
+    <meta property="og:title" content="Kameraopplasting (beta): sikkerhetskopier iPhone-bildene til din egen Plex-server">
+    <meta property="og:description" content="En betafunksjon i Phlix 1.0.21 eller nyere. Et gratis Docker-hjelpeprogram på samme maskin som Plex Media Server tar imot bildene fra iPhone over Wi-Fi-nettverket hjemme. Bildene dine holdes utenfor skyen.">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:locale" content="nb_NO">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="nl_NL">
+    <meta property="og:locale:alternate" content="sv_SE">
+    <meta property="og:locale:alternate" content="da_DK">
+    <meta property="og:locale:alternate" content="fi_FI">
+    <meta property="og:locale:alternate" content="pl_PL">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Phlix – en kronologisk bildetidslinje som fungerer med Plex Media Server">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kameraopplasting (beta): sikkerhetskopier iPhone-bildene til din egen Plex-server">
+    <meta name="twitter:description" content="En betafunksjon i Phlix 1.0.21 eller nyere. Et gratis Docker-hjelpeprogram på samme maskin som Plex Media Server tar imot bildene fra iPhone over Wi-Fi-nettverket hjemme. Bildene dine holdes utenfor skyen.">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image:alt" content="Phlix – en kronologisk bildetidslinje som fungerer med Plex Media Server">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"Kameraopplasting (beta): sikkerhetskopier iPhone-bildene til din egen Plex-server","description":"Kameraopplasting (beta) i Phlix sikkerhetskopierer iPhone-bildene til din egen Plex-server over Wi-Fi hjemme. Krav, installasjon, sammenkobling og personvern.","inLanguage":"nb","datePublished":"2026-11-24","dateModified":"2026-11-24","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/nb/camera-upload/","isBasedOn":"https://phlixapp.com/camera-upload/","about":{"@type":"SoftwareApplication","name":"Phlix Photos","operatingSystem":"iOS, iPadOS","applicationCategory":"MultimediaApplication","url":"https://phlixapp.com/"}}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Hjem","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Kameraopplasting (beta)","item":"https://phlixapp.com/nb/camera-upload/"}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"nb","mainEntity":[{"@type":"Question","name":"Er Kameraopplasting en betafunksjon?","acceptedAnswer":{"@type":"Answer","text":"Ja. Kameraopplasting er en betafunksjon i Phlix 1.0.21 eller nyere. Behold din egen sikkerhetskopi av alt du ikke kan erstatte, og fortell oss hva som går galt: Åpne Innstillinger i Phlix og trykk på Send tilbakemelding."}},{"@type":"Question","name":"Hva skjedde med Plex' egen kameraopplasting?","acceptedAnswer":{"@type":"Answer","text":"Plex kunngjorde i mars 2021 at selskapet ville avslutte støtten for sin kameraopplasting, og at den etter planen skulle fjernes i juni 2021. Kameraopplasting i Phlix er en separat funksjon i en uavhengig app: Den kopierer bildene dine til en mappe i fotobiblioteket ditt i Plex via hjelpeprogrammet på din egen server."}},{"@type":"Question","name":"Sletter den bilder fra iPhonen min?","acceptedAnswer":{"@type":"Answer","text":"Nei. Phlix kopierer bildene og videoene dine til serveren din. Appen sletter eller endrer aldri noe i Bilder-biblioteket ditt."}},{"@type":"Question","name":"Virker den borte fra hjemmet eller over mobildata?","acceptedAnswer":{"@type":"Answer","text":"Nei, med vilje. Phlix laster bare opp mens telefonen er på Wi-Fi-nettverket hjemme. Borte fra hjemmet sender den ingenting og leter ikke etter serveren din. Bilder du tar på reise, lastes opp når du er hjemme igjen."}},{"@type":"Question","name":"Trenger jeg Plex Pass?","acceptedAnswer":{"@type":"Answer","text":"Nei. Hjelpeprogrammet skriver vanlige filer i en mappe i fotobiblioteket ditt i Plex, og det fungerer med enhver Plex Media Server."}},{"@type":"Question","name":"Hva koster det?","acceptedAnswer":{"@type":"Answer","text":"Hjelpeprogrammet for serveren din er gratis. I appen er de første 100 opplastingene gratis, og Phlix Pro laster opp resten."}},{"@type":"Question","name":"Kan hele familien bruke den?","acceptedAnswer":{"@type":"Answer","text":"Ja. Hver iPhone og iPad sammenkobles for seg og får sin egen mappe. Eieren av Plex-serveren sammenkobler uten kode; alle andre skriver inn sammenkoblingskoden til hjelpeprogrammet. Hvis to telefoner har det samme bildet, lagrer serveren det én gang."}},{"@type":"Question","name":"Er dette en synkronisering? Hva om jeg sletter et bilde?","acceptedAnswer":{"@type":"Answer","text":"Det er en kopi i én retning, fra telefonen til serveren. Sletter du et bilde på telefonen, blir kopien liggende på serveren. Hvert bilde lastes opp én gang."}},{"@type":"Question","name":"Virker den med iCloud-bilder?","acceptedAnswer":{"@type":"Answer","text":"Ja. Phlix leser bildene i Bilder-biblioteket ditt, uansett hvor iOS oppbevarer dem. Med «Optimaliser iPhone-lagring» laster iOS ned originalen i full størrelse fra iCloud når Phlix ber om den. Delte albumer er ikke med."}},{"@type":"Question","name":"Er Phlix laget av Plex?","acceptedAnswer":{"@type":"Answer","text":"Nei. Phlix er en uavhengig app som fungerer med Plex Media Server. Den har ingen tilknytning til Plex, Inc. og er verken godkjent eller sponset av selskapet."}}]}
+    </script>
+    <style>
+        /* Page-specific pieces. Everything else comes from /blog/style.css. */
+        article.guide { max-width: 780px; }
+        .breadcrumb { max-width: 780px; }
+        .guide .lead { font-size: 1.12rem; color: var(--text); line-height: 1.7; }
+        .guide .category.beta { background: rgba(240,180,41,0.15); color: var(--gold); }
+        .guide h2 { margin-top: 56px; padding-top: 8px; font-size: 1.55rem; }
+        .guide h3 { margin-top: 32px; }
+        .guide ol > li { margin-bottom: 12px; }
+        .guide kbd { background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.88em; color: var(--text); font-family: inherit; }
+        .langs { max-width: 780px; margin: 0 auto; padding: 10px 24px 0; font-size: 0.82rem; color: var(--text-3); line-height: 2; }
+        .langs a { color: var(--text-2); margin-right: 10px; white-space: nowrap; }
+        .langs a[aria-current="page"] { color: var(--gold); font-weight: 700; }
+        .langs-label { margin-right: 8px; }
+        .hero-row { display: flex; gap: 32px; align-items: flex-start; margin: 24px 0 8px; }
+        .hero-row .hero-text { flex: 1 1 0; min-width: 0; }
+        .hero-row figure { flex: 0 0 230px; margin: 0; }
+        .hero-row figure img { width: 100%; border-radius: 22px; border: 1px solid var(--border); margin: 0; display: block; }
+        .guide figure figcaption { font-size: 0.8rem; color: var(--text-3); text-align: center; margin-top: 8px; }
+        .facts { list-style: none; margin: 20px 0 0 !important; padding: 0; }
+        .facts li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+        .facts li::before { content: ""; position: absolute; left: 4px; top: 0.62em; width: 10px; height: 10px; border-radius: 50%; background: var(--check); }
+        .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 32px 0 0; }
+        .toc strong { display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+        .toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; }
+        .toc li { margin-bottom: 4px; break-inside: avoid; }
+        .choice { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin: 20px 0; }
+        .choice > h3 { margin: 0 0 4px; font-size: 1.15rem; }
+        .choice .for { color: var(--text-3); font-size: 0.88rem; margin-bottom: 14px; }
+        .choice.best { border-color: rgba(240,180,41,0.45); }
+        .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: rgba(240,180,41,0.15); color: var(--gold); margin-left: 8px; vertical-align: middle; }
+        .cmd { position: relative; }
+        .cmd pre { padding-right: 84px; white-space: pre; }
+        .cmd button { position: absolute; top: 9px; right: 9px; background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .cmd button:hover { color: var(--text); border-color: rgba(240,180,41,0.4); }
+        .cmd button.done { color: var(--check); border-color: rgba(76,175,80,0.5); }
+        .note { border-left: 3px solid var(--gold); background: var(--surface); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+        .note p { margin: 0; }
+        .guide details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; }
+        .guide details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+        .guide details > summary::-webkit-details-marker { display: none; }
+        .guide details > summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.3rem; font-weight: 400; }
+        .guide details[open] > summary::after { content: "\2212"; }
+        .guide details > .inner { padding: 0 18px 8px; }
+        .guide details > .inner > :first-child { margin-top: 0; }
+        .compose pre { max-height: 520px; font-size: 0.82rem; }
+        .tree { line-height: 1.5; }
+        .legal-note { color: var(--text-3); font-size: 0.75rem; margin-bottom: 4px; }
+        @media (max-width: 700px) {
+            .hero-row { flex-direction: column; }
+            .hero-row figure { flex-basis: auto; width: 100%; max-width: 240px; margin: 0 auto; }
+            .toc ol { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav data-page-section="l10n-nav"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Hjem</a><a href="/camera-upload/" hreflang="en">Hele veiledningen (engelsk)</a><a href="/support">Brukerstøtte</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Last ned gratis</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Hjem</a> &rsaquo; Kameraopplasting (beta)</div>
+    <div class="langs" role="navigation" aria-label="Språk"><span class="langs-label">Språk:</span> <a href="/camera-upload/" hreflang="en" lang="en">English</a> <a href="/de/camera-upload/" hreflang="de" lang="de">Deutsch</a> <a href="/fr/camera-upload/" hreflang="fr" lang="fr">Français</a> <a href="/es/camera-upload/" hreflang="es" lang="es">Español</a> <a href="/it/camera-upload/" hreflang="it" lang="it">Italiano</a> <a href="/pt-br/camera-upload/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> <a href="/nl/camera-upload/" hreflang="nl" lang="nl">Nederlands</a> <a href="/sv/camera-upload/" hreflang="sv" lang="sv">Svenska</a> <a href="/da/camera-upload/" hreflang="da" lang="da">Dansk</a> <a href="/nb/camera-upload/" hreflang="nb" lang="nb" aria-current="page">Norsk bokmål</a> <a href="/fi/camera-upload/" hreflang="fi" lang="fi">Suomi</a> <a href="/pl/camera-upload/" hreflang="pl" lang="pl">Polski</a> <a href="/ja/camera-upload/" hreflang="ja" lang="ja">日本語</a> <a href="/ko/camera-upload/" hreflang="ko" lang="ko">한국어</a> <a href="/zh-hans/camera-upload/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> <a href="/zh-hant/camera-upload/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></div>
+
+    <article class="guide">
+        <span class="category beta">Beta · Oppsettveiledning</span>
+        <h1>Kameraopplasting (beta): sikkerhetskopier iPhone-bildene til din egen Plex-server</h1>
+        <p class="meta">Oppdatert 24. november 2026 · Oppsettet tar omtrent 10 minutter</p>
+
+        <div class="hero-row">
+            <div class="hero-text">
+                <p class="lead">Kameraopplasting sikkerhetskopierer bildene og videoene på iPhone eller iPad til serveren hjemme hos deg mens enheten er på Wi-Fi-nettverket hjemme. De dukker opp i Plex og i Phlix sammen med alt det andre. Ingen sky og ikke noe lagringsabonnement. Bildene dine går til din egen server og ikke til noen andre.</p>
+                <p><strong>Kameraopplasting er en betafunksjon.</strong> Den er en del av Phlix 1.0.21 eller nyere. Hvis App Store ikke tilbyr den versjonen ennå, er den på vei.</p>
+                <p>Kameraopplasting består av to deler. <strong>Phlix-appen</strong> på iPhone eller iPad leser kamerarullen din. Et lite gratisprogram på serveren din, <strong>hjelpeprogrammet for Kameraopplasting</strong>, tar imot bildene og skriver dem i en mappe i fotobiblioteket ditt i Plex. Hjelpeprogrammet er én Docker-container.</p>
+                <ul class="facts">
+                    <li><strong>Bare hjemme.</strong> Phlix laster opp på Wi-Fi-nettverket hjemme og ingen andre steder. Aldri over mobildata.</li>
+                    <li><strong>Bare til deg.</strong> Bildene går kryptert rett fra telefonen til serveren din. Ingen av dem går til Phlix.</li>
+                    <li><strong>Bare kopier.</strong> Ingenting på telefonen din blir noen gang slettet eller endret.</li>
+                </ul>
+            </div>
+            <figure>
+                <img src="/camera-upload/img/backed-up.png" alt="Skjermen Kameraopplasting i Phlix, merket Beta: en grønn prikk ved «Koblet til» og navnet på hjelpeprogrammet, bryteren for Kameraopplasting slått på og «Alt er sikkerhetskopiert» over en full fremdriftslinje" width="414" height="900" loading="eager">
+                <figcaption>Kameraopplasting (beta) i Phlix (skjermbildet viser appen på engelsk)</figcaption>
+            </figure>
+        </div>
+
+        <nav class="toc" aria-label="På denne siden" style="position:static;height:auto;background:var(--surface);backdrop-filter:none;-webkit-backdrop-filter:none">
+            <strong>På denne siden</strong>
+            <ol>
+                <li><a href="#why">Hvorfor: Plex' egen kameraopplasting ble avviklet</a></li>
+                <li><a href="#what-you-need">Dette trenger du</a></li>
+                <li><a href="#install">Trinn 1: Installer hjelpeprogrammet</a></li>
+                <li><a href="#check">Sjekk at det kjører</a></li>
+                <li><a href="#connect">Trinn 2: Koble til iPhonen</a></li>
+                <li><a href="#after">Hva skjer videre</a></li>
+                <li><a href="#where">Hvor bildene havner</a></li>
+                <li><a href="#privacy">Personvern og sikkerhet</a></li>
+                <li><a href="#help">Hjelp og feilsøking</a></li>
+                <li><a href="#faq">Spørsmål</a></li>
+            </ol>
+        </nav>
+
+        <h2 id="why">Hvorfor: Plex' egen kameraopplasting ble avviklet</h2>
+        <p>Plex hadde sin egen funksjon for kameraopplasting fra 2014. I mars 2021 kunngjorde Plex på forumet sitt at selskapet ville avslutte støtten for den, og at den etter planen skulle fjernes i juni 2021 (<a href="https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626">Plex' kunngjøring, arkivert kopi</a>).</p>
+        <p>Kameraopplasting i Phlix bringer ideen tilbake på iPhone og iPad. Phlix er en uavhengig app som fungerer med Plex Media Server: Den er ikke laget av Plex. <a href="/plex-camera-upload/">Hele historien, på engelsk</a>.</p>
+
+        <h2 id="what-you-need">Dette trenger du</h2>
+        <ul>
+            <li><strong>Plex Media Server med et fotobibliotek</strong> på en datamaskin eller NAS som kjører Docker 20.10 eller nyere: Linux, en Mac eller Windows-PC med Docker Desktop, Synology (Container Manager, DSM 7.2 eller nyere), Unraid eller TrueNAS SCALE 24.10 eller nyere. Docker er et gratis program som kjører andre programmer i lukkede bokser som kalles containere. Intel-, AMD- og Arm-prosessorer fungerer alle.</li>
+            <li><strong>Phlix 1.0.21 eller nyere</strong> på en iPhone eller iPad. Hvis App Store ikke tilbyr den versjonen ennå, er den på vei.</li>
+            <li><strong>Telefonen og serveren på det samme hjemmenettverket.</strong></li>
+        </ul>
+        <p>Hjelpeprogrammet er gratis. I appen er de første 100 opplastingene gratis, og <a href="/#pricing">Phlix Pro</a> laster opp resten. Behold din egen sikkerhetskopi av alt du ikke kan erstatte så lenge Kameraopplasting er en beta. <a href="/camera-upload/#beta">Hva betaen gjør og ikke gjør (engelsk)</a>.</p>
+
+        <h2 id="install">Trinn 1: Installer hjelpeprogrammet</h2>
+        <p class="note">Leser du dette på telefonen? Trinn 1 gjøres på serveren. Åpne denne siden på en datamaskin, så du kan kopiere kommandoene.</p>
+        <p>Gjør dette én gang, på maskinen som kjører Plex Media Server. Bestem deg først for en <strong>opplastingsmappe</strong>: mappen der bildene fra telefonen skal havne. Den må ligge <strong>inne i en mappe som et av fotobibliotekene dine i Plex omfatter</strong>, ellers viser Plex aldri bildene. Hvis mappen til biblioteket ditt er <code>/mnt/media/Photos</code>, er <code>/mnt/media/Photos/Camera Uploads</code> et godt valg.</p>
+        <p>For å se mappene i biblioteket ditt åpner du Plex i en nettleser og går til <em>Settings › Manage › Libraries</em>, velger <em>Edit Library</em> på fotobiblioteket ditt og deretter <em>Add folders</em>. (Dette er Plex' engelske navn. Plex kan vise dem på norsk hos deg.)</p>
+        <p><strong>Kjører Plex selv i Docker?</strong> Det er vanlig på Unraid og TrueNAS SCALE. Plex viser da mappens bane inne i sin egen container, for eksempel <code>/data/Photos</code>. Hjelpeprogrammet trenger mappens bane på serveren, for eksempel <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">Slik finner du begge banene (engelsk)</a>.</p>
+        <p>Det er tre alternativer for å installere hjelpeprogrammet. Alternativ B fungerer på alle systemer. På Unraid, Synology og TrueNAS SCALE følger du <a href="#other-systems">merknadene for systemet ditt</a> nedenfor i stedet for alternativ A og C.</p>
+        <p>Kommandoene skrives i en terminal på serveren: på en Mac i appen Terminal, på Windows i PowerShell og på Linux i terminalprogrammet eller over SSH fra en annen datamaskin. En kommando i en boks har en knapp som kopierer den. Hvis Docker svarer «permission denied», setter du <code>sudo</code> foran hver <code>docker</code>-kommando.</p>
+
+        <div class="choice best" id="install-one-command">
+            <h3>A. Én kommando <span class="tag">Raskest</span></h3>
+            <p class="for">For en Linux-datamaskin eller -server og for en Mac med Docker Desktop. Ikke for Windows, Unraid eller TrueNAS SCALE.</p>
+            <p>Lim inn dette i en terminal på serveren:</p>
+            <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh</code></pre></div>
+            <p>Installasjonsprogrammet sjekker Docker og spør etter opplastingsmappen din. Det skriver Compose-filen, <code>docker-compose.yml</code>, til en ny mappe som heter <code>phlix-camera-upload</code> i hjemmemappen din, starter hjelpeprogrammet og kjører sjekken sin. Når alt er i orden, skriver det ut <code>Phlix Camera Upload is running.</code> og under det en linje som begynner med <code>Status page:</code>, med adressen til statussiden for hjelpeprogrammet.</p>
+            <p>Det bruker aldri <code>sudo</code>, endrer aldri Plex og sletter aldri et bilde. Du kan <a href="/camera-upload/install.sh">lese skriptet</a> før du kjører det, og prøve det først med <code>--dry-run</code>, som ikke endrer noe:</p>
+            <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh -s -- --dry-run</code></pre></div>
+            <p>Kjør installasjonsprogrammet på nytt når som helst for å oppdatere hjelpeprogrammet. Det samme skriptet ligger i <a href="https://github.com/jrl8085/phlix-camera-upload">GitHub-repositoriet</a>.</p>
+        </div>
+
+        <div class="choice" id="install-with-ai">
+            <h3>B. La en KI-assistent gjøre det</h3>
+            <p>Filen <a href="/camera-upload/SETUP-WITH-AI.md">SETUP-WITH-AI.md</a> inneholder en komplett veiledning skrevet for en KI-assistent: hvordan den finner mappen til Plex-biblioteket ditt, installerer hjelpeprogrammet, sjekker det og retter det som går galt. Assistenten spør før den endrer noe utenfor hjelpeprogrammets egen mappe. Filen er på engelsk, men assistenten kan snakke norsk med deg.</p>
+            <p>Med en assistent som kan kjøre kommandoer på serveren din (Claude Code, Codex, Gemini CLI, Cursor og lignende verktøy), i en ny, tom mappe på serveren:</p>
+            <div class="cmd"><pre><code>curl -fsSLO https://phlixapp.com/camera-upload/SETUP-WITH-AI.md</code></pre></div>
+            <p>Start deretter assistenten i den mappen og si: <kbd>Følg SETUP-WITH-AI.md</kbd></p>
+            <p>Claude Code kan også legge til oppsettet som en skill, én gang, fra en terminal:</p>
+            <div class="cmd"><pre><code>claude plugin marketplace add jrl8085/phlix-camera-upload
+claude plugin install phlix-camera-upload@phlix</code></pre></div>
+            <p>Start deretter Claude Code på serveren og si: <kbd>Sett opp Phlix Camera Upload på denne serveren</kbd></p>
+            <p>Med en chatteassistent, for eksempel ChatGPT eller Claude-appen: Gi den filen <a href="/camera-upload/SETUP-WITH-AI.md">SETUP-WITH-AI.md</a> og si <kbd>Ta meg gjennom dette, ett trinn om gangen</kbd>. Assistenten gir deg hver kommando, du kjører den på serveren og limer inn det kommandoen skrev ut.</p>
+        </div>
+
+        <div class="choice" id="install-by-hand">
+            <h3>C. Manuelt med Docker Compose</h3>
+            <p class="for">For deg som liker å se hvert trinn, på Linux, en Mac eller en Windows-PC. Seks trinn, én linje å redigere.</p>
+            <ol>
+                <li>Lag opplastingsmappen som brukeren som eier bildene dine. Hjelpeprogrammet skriver filer som eieren av denne mappen.
+                    <div class="cmd"><pre><code>mkdir &quot;/mnt/media/Photos/Camera Uploads&quot;</code></pre></div></li>
+                <li>Lag en mappe for hjelpeprogrammet, og gå inn i den.
+                    <div class="cmd"><pre><code>mkdir phlix-camera-upload
+cd phlix-camera-upload</code></pre></div></li>
+                <li>Last ned Compose-filen, <code>docker-compose.yml</code>: en liten tekstfil som forteller Docker hvordan hjelpeprogrammet skal kjøres.
+                    <div class="cmd"><pre><code>curl -fsSLO https://phlixapp.com/camera-upload/docker-compose.yml</code></pre></div></li>
+                <li>Åpne <code>docker-compose.yml</code> i et tekstredigeringsprogram. Finn kommentaren <code>CHANGE THE NEXT LINE</code>. På linjen under den bytter du ut <code>/CHANGE/THIS/Photos/Camera Uploads</code> med opplastingsmappen din. Lagre filen.</li>
+                <li>Start hjelpeprogrammet. Første gang laster Docker ned imaget: hjelpeprogrammet, pakket for Docker.
+                    <div class="cmd"><pre><code>docker compose up -d</code></pre></div></li>
+                <li>Spør hjelpeprogrammet om alt er i orden.
+                    <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div></li>
+            </ol>
+            <details class="compose" id="compose-file">
+                <summary>Compose-filen, nøyaktig slik du laster den ned</summary>
+                <div class="inner">
+                    <p>Kommentarene i den er på engelsk. Endre bare linjen under <code>CHANGE THE NEXT LINE</code>.</p>
+<pre><code># Phlix Camera Upload
+#
+# This file starts the helper that receives the photos and videos the Phlix
+# app uploads from your iPhone or iPad, and writes them into a folder of your
+# Plex photo library.
+#
+# How to use this file:
+#   1. Change the one line marked CHANGE THE NEXT LINE below.
+#   2. In the folder that holds this file, run:  docker compose up -d
+#   3. Open https://YOUR-SERVER:7459 in a browser to check that it runs.
+#      The browser warns about the certificate. That is expected.
+#
+# If something does not work, ask the helper what is wrong:
+#   docker exec phlix-camera-upload python -m phlix_upload doctor
+#
+# Setup guide: https://phlixapp.com/camera-upload/
+# If the app cannot find the helper:
+#   https://github.com/jrl8085/phlix-camera-upload/blob/main/NETWORKING.md
+
+services:
+  phlix-camera-upload:
+    image: ghcr.io/jrl8085/phlix-camera-upload:1
+    container_name: phlix-camera-upload
+
+    # Start again by itself when the server or Docker restarts.
+    restart: unless-stopped
+
+    # The Phlix app looks for the helper on port 7459 of your server.
+    ports:
+      - &quot;7459:7459&quot;
+
+    volumes:
+      # Your upload folder: the folder on this server where the photos go.
+      #
+      # It must be inside a folder that one of your Plex photo libraries
+      # includes. If it is not, Plex never shows the photos.
+      #
+      # Make the folder before you start the helper. Docker refuses to start
+      # the helper if the folder is missing. The helper writes files as the
+      # user who owns the folder.
+      #
+      # Write the path as it is on the server itself. If Plex runs in Docker,
+      # do not use the path from inside the Plex container.
+      #
+      # Examples:
+      #   Linux      /mnt/media/Photos/Camera Uploads
+      #   Synology   /volume1/photo/Camera Uploads
+      #   TrueNAS    /mnt/tank/media/Photos/Camera Uploads
+      #   Mac        /Users/you/Pictures/Camera Uploads
+      #   Windows    C:\Users\you\Pictures\Camera Uploads
+      #
+      # Spaces in the path are fine. If the path has a &quot;#&quot; after a space, or
+      # a &quot;:&quot; before a space, put the whole path in &#x27;single quotes&#x27;.
+      - type: bind
+        # CHANGE THE NEXT LINE. Keep &quot;source: &quot; and write your folder after it.
+        source: /CHANGE/THIS/Photos/Camera Uploads
+        target: /photos
+        bind:
+          create_host_path: false
+
+      # The helper&#x27;s own data: the list of paired phones, the list of files
+      # it has received, and its certificate. No photos are kept here.
+      # Docker makes a folder named &quot;config&quot; next to this file. Keep it: if
+      # it is lost, every phone has to pair again.
+      # If your tool has no &quot;next to this file&quot; (TrueNAS, Portainer), write a
+      # full path in place of ./config, for example:
+      #   /mnt/tank/apps/phlix-camera-upload:/config
+      - ./config:/config
+
+    # Lets the helper find Plex Media Server on this machine.
+    extra_hosts:
+      - &quot;host.docker.internal:host-gateway&quot;
+
+    # The helper can never gain more rights than it was started with.
+    security_opt:
+      - &quot;no-new-privileges:true&quot;
+
+    # Optional settings. The helper works without any of them.
+    #
+    # To use one, remove the &quot;# &quot; in front of &quot;environment:&quot; and in front of
+    # the setting you want. Leave the other spaces as they are. Then run
+    # &quot;docker compose up -d&quot; again.
+    #
+    # environment:
+    #   # Where Plex Media Server is. Set this if the helper&#x27;s status page
+    #   # says &quot;Plex Media Server: Not found&quot;, or to make sure that the helper
+    #   # asks your own server and no other.
+    #   PLEX_URL: &quot;http://192.168.1.10:32400&quot;
+    #
+    #   # Write files as this user and group. Without these, the helper uses
+    #   # the owner of the upload folder.
+    #   PUID: &quot;1000&quot;
+    #   PGID: &quot;1000&quot;
+    #
+    #   # Permissions for new files and folders. With 022, other users may
+    #   # read them. With 002, the group may also change them.
+    #   UMASK: &quot;022&quot;
+    #
+    #   # The name that the app and the status page show for this helper.
+    #   NAME: &quot;Phlix Camera Upload&quot;
+    #
+    #   # Who may pair. auto: the owner of the Plex server pairs without a
+    #   # code and everyone else types the pairing code. code: everyone types
+    #   # the code. plex: only the owner of the Plex server may pair.
+    #   PAIRING: &quot;auto&quot;
+    #
+    #   # Your own pairing code, in place of the one the helper makes. Write
+    #   # at least 6 letters or digits between the quotes.
+    #   PAIRING_CODE: &quot;&quot;
+    #
+    #   # The folders the helper makes inside the upload folder. You can use
+    #   # {device}, {year}, {month} and {day}.
+    #   PATH_TEMPLATE: &quot;{device}/{year}/{year}-{month}&quot;
+    #
+    #   # Refuse uploads that would leave less than this many GB free. Uploads
+    #   # that are still arriving count too.
+    #   MIN_FREE_GB: &quot;2&quot;
+    #
+    #   # The largest single file the helper accepts, in GB.
+    #   MAX_UPLOAD_GB: &quot;50&quot;
+    #
+    #   # More file types to accept, besides the usual photo and video types.
+    #   # Separate them with commas.
+    #   EXTRA_EXTENSIONS: &quot;insp,lrv&quot;
+    #
+    #   # How much the log says: debug, info, warning or error.
+    #   LOG_LEVEL: &quot;info&quot;
+    #
+    #   # Write &quot;off&quot; only if your own reverse proxy adds HTTPS in front of
+    #   # the helper. Phlix talks HTTPS only: with &quot;off&quot; and no such proxy,
+    #   # the app cannot use the helper.
+    #   TLS: &quot;on&quot;
+    #
+    #   # Your own certificate and its key, as paths inside the container.
+    #   # Set both. A file you put in the config folder is at /config/...
+    #   TLS_CERT: &quot;/config/my-cert.pem&quot;
+    #   TLS_KEY: &quot;/config/my-key.pem&quot;
+    #
+    # PORT, BIND, UPLOAD_DIR and CONFIG_DIR exist too. With Docker you do not
+    # need them. To use another port on your server, change only the first
+    # number in the &quot;ports&quot; line above, for example &quot;8443:7459&quot;. The app
+    # looks for port 7459 by itself, so with another port you type the
+    # helper&#x27;s address into the app.</code></pre>
+                </div>
+            </details>
+        </div>
+
+        <h3 id="other-systems">Unraid, Synology, TrueNAS SCALE og Windows</h3>
+        <ul>
+            <li><strong>Unraid</strong> har ikke Docker Compose. Lag opplastingsmappen i en delt mappe (share) som fotobiblioteket ditt i Plex omfatter, gi den til standardbrukeren i Unraid med <code>chown 99:100</code>, last ned malen med kommandoen nedenfor, og velg så <em>Add Container</em> på Docker-fanen og deretter <code>phlix-camera-upload</code>. <a href="/camera-upload/#sys-unraid">Trinnene for Unraid (engelsk)</a>.
+                <div class="cmd"><pre><code>mkdir &quot;/mnt/user/Photos/Camera Uploads&quot;
+chown 99:100 &quot;/mnt/user/Photos/Camera Uploads&quot;</code></pre></div>
+                <div class="cmd"><pre><code>wget -O /boot/config/plugins/dockerMan/templates-user/my-phlix-camera-upload.xml https://raw.githubusercontent.com/jrl8085/phlix-camera-upload/main/unraid/phlix-camera-upload.xml</code></pre></div></li>
+            <li><strong>Synology:</strong> Opprett et prosjekt som heter <code>phlix-camera-upload</code> i Container Manager, og lim inn innholdet i <a href="/camera-upload/docker-compose.yml">docker-compose.yml</a> med den fullstendige banen til opplastingsmappen din, for eksempel <code>/volume1/photo/Camera Uploads</code>. <a href="/camera-upload/#sys-synology">Trinnene for Synology (engelsk)</a>.</li>
+            <li><strong>TrueNAS SCALE:</strong> Ikke bruk alternativ A. Gå til <em>Apps › Discover Apps</em>, velg <em>Install via YAML</em>, lim inn Compose-filen og skriv fullstendige baner. <a href="/camera-upload/#sys-truenas">Trinnene for TrueNAS SCALE (engelsk)</a>.</li>
+            <li><strong>Mac eller Windows-PC med Docker Desktop:</strong> På Windows bruker du alternativ B eller C og skriver <code>curl.exe</code> der denne siden skriver <code>curl</code>. Opplastinger virker bare mens Docker Desktop kjører og datamaskinen er våken. <a href="/camera-upload/#sys-desktop">Merknadene for Mac og Windows (engelsk)</a>.</li>
+        </ul>
+
+        <h2 id="check">Sjekk at det kjører</h2>
+        <p>Åpne statussiden til hjelpeprogrammet i en nettleser på en annen enhet på hjemmenettverket. Bytt ut <code>SERVER</code> med adressen til serveren din, for eksempel <code>https://192.168.1.10:7459</code>:</p>
+        <div class="cmd"><pre><code>https://SERVER:7459</code></pre></div>
+        <p>Nettleseren advarer om at tilkoblingen ikke er privat. <strong>Det er som forventet.</strong> En hjemmeserver har ikke noe offentlig navn som en sertifiseringsinstans kan gå god for, så hjelpeprogrammet lager sitt eget sertifikat. Fortsett til siden. Phlix stoler ikke på nettleserens kontroll: Appen husker det nøyaktige sertifikatet til hjelpeprogrammet når den sammenkobles.</p>
+        <p>Siden skal vise <code>Upload folder: Ready</code> og <code>Plex Media Server: Found</code>. Hvis den viser noe annet, forteller kommandoen <code>doctor</code> deg hva du skal gjøre:</p>
+        <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
+<pre><code>Phlix Camera Upload 1.0.1
+OK       The helper is running on port 7459
+OK       The upload folder /photos can be written to.
+OK       223.6 GB free on the upload disk.
+OK       Plex Media Server found: its owner can pair from Phlix without a code.
+OK       1 paired, 37 files stored (33.0 MB).
+NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
+Nothing needs fixing.</code></pre>
+        <p>En linje som begynner med <code>PROBLEM</code>, følges av en linje som begynner med <code>Fix:</code>.</p>
+        <div class="note"><p><strong>Én innstilling i Plex.</strong> Plex viser nye filer først etter en skanning. Når Plex-kontoen din eier serveren, ber Phlix Plex om å skanne når bildene dine har kommet fram. For alle andre i husstanden, og for sikkerhets skyld, slår du på <em>Settings › Library › Scan my library automatically</em> i Plex. Den er av som standard.</p></div>
+
+        <h2 id="connect">Trinn 2: Koble til iPhonen</h2>
+        <ol>
+            <li>Koble iPhonen eller iPaden til Wi-Fi-nettverket hjemme.</li>
+            <li>Åpne Phlix og gå til <strong>Innstillinger</strong> › <strong>Kameraopplasting</strong>. Hvis <strong>Innstillinger</strong> ikke har raden <strong>Kameraopplasting</strong>, er Phlix-versjonen din eldre enn 1.0.21. Raden <strong>Versjon</strong> i <strong>Innstillinger</strong> viser versjonsnummeret.</li>
+            <li>Trykk på <strong>Søk etter hjelpeprogrammet</strong> og deretter på <strong>Sjekk nettverket mitt</strong>. Phlix søker etter hjelpeprogrammet på adressen til Plex-serveren din. Ingenting slås på, og ingenting lastes opp, før det er funnet. Hvis iOS spør om Phlix får finne enheter på det lokale nettverket ditt, så tillat det.</li>
+            <li>Når Phlix viser <strong>Fant hjelpeprogrammet</strong>, velger du et mappenavn for denne enheten, for eksempel «Annas iPhone», og trykker på <strong>Koble til</strong>. Velg navnet med omhu: En enhet beholder mappen den får første gang den sammenkobles.</li>
+            <li>Hvis Phlix nå viser <strong>Skriv inn sammenkoblingskoden</strong>, skriver du inn sammenkoblingskoden til hjelpeprogrammet og trykker på <strong>Sammenkoble</strong>. Familiemedlemmer med egen Plex-konto ser dette trinnet. Delen <a href="#pairing">Hvem trenger en kode</a> nedenfor forteller hvor du finner koden.</li>
+            <li>Phlix viser <strong>Tilkoblet</strong>. Velg hva som skal sikkerhetskopieres: <strong>Alt på denne enheten</strong> eller <strong>Bare nye bilder</strong>. Trykk deretter på <strong>Slå på Kameraopplasting</strong>.</li>
+            <li>iOS spør om Phlix får lese bildene dine. Velg «Gi full tilgang», så appen kan sikkerhetskopiere alle sammen.</li>
+        </ol>
+        <p>En grønn prikk og <strong>Koblet til …</strong> etterfulgt av navnet på hjelpeprogrammet betyr at tilkoblingen er god. Grå betyr at du er borte fra hjemmet, og da venter Phlix. Oransje betyr at noe trenger oppmerksomheten din, og skjermen sier hva.</p>
+
+        <h3 id="pairing">Hvem trenger en sammenkoblingskode</h3>
+        <ul>
+            <li><strong>Du eier Plex-serveren:</strong> Phlix sammenkobles uten kode, så lenge statussiden til hjelpeprogrammet viser <code>Plex Media Server: Found</code>. Appen viser hjelpeprogrammet et kortvarig token fra Plex-serveren din, hjelpeprogrammet spør Plex om det tilhører eieren av serveren, og glemmer det deretter.</li>
+            <li><strong>Alle andre</strong>, for eksempel familiemedlemmer med egen Plex-konto, skriver inn sammenkoblingskoden til hjelpeprogrammet. Eieren av serveren finner den med denne kommandoen, eller i loggen til hjelpeprogrammet hver gang det starter. Store bokstaver, mellomrom og bindestreken spiller ingen rolle:
+                <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload code</code></pre></div></li>
+        </ul>
+        <p>Hvis Phlix viser <strong>Fant ikke hjelpeprogrammet</strong>, forblir Kameraopplasting av, og ingenting sendes noe sted. <a href="/camera-upload/#ts-not-found">Appen finner ikke hjelpeprogrammet (engelsk)</a>.</p>
+
+        <h2 id="after">Hva skjer videre</h2>
+        <ul>
+            <li><strong>Når Phlix er åpen</strong>, starter opplastingene med en gang og går så fort Wi-Fi-nettverket tillater. En første stor sikkerhetskopiering går raskest når telefonen står til lading og skjermen Kameraopplasting er åpen.</li>
+            <li><strong>Når Phlix er lukket</strong>, lar iOS appen fortsette i korte økter, for det meste mens telefonen lades. Slik behandler iOS alle apper, og det betyr at et stort bibliotek tar noen dager i bakgrunnen. Nye bilder følger etter av seg selv.</li>
+            <li><strong>Borte fra hjemmet</strong> blir ingenting sendt, og Phlix leter ikke engang etter serveren din. Sikkerhetskopieringen fortsetter når telefonen er tilbake på Wi-Fi-nettverket hjemme.</li>
+            <li><strong>Når alt er sikkerhetskopiert</strong>, viser skjermen <strong>Alt er sikkerhetskopiert</strong>. Slå på <strong>Varsle når alt er sikkerhetskopiert</strong> for å få et varsel i tillegg.</li>
+        </ul>
+        <p>Phlix laster opp bildene og videoene i ditt eget Bilder-bibliotek, hvert enkelt én gang, slik det ser ut i Bilder akkurat da. Videoer er valgfrie (<strong>Ta med videoer</strong>), og skjermbilder utelates med mindre du slår på <strong>Ta med skjermbilder</strong>. Et Live Photo-bilde lastes opp som stillbilde. Skjulte bilder, delte albumer og bilder som er synkronisert fra en datamaskin, lastes ikke opp.</p>
+
+        <h2 id="where">Hvor bildene havner</h2>
+        <p>Hver telefon eller hvert nettbrett har sin egen mappe inne i opplastingsmappen, med en mappe for hvert år og for hver måned:</p>
+<pre class="tree"><code>Camera Uploads/
+  Anna&#x27;s iPhone/
+    2026/
+      2026-11/
+        IMG_1234.HEIC
+        IMG_1235.MOV
+  Ben&#x27;s iPad/
+    2026/
+      2026-10/</code></pre>
+        <ul>
+            <li>Året og måneden kommer fra bildets egen dato. Filen beholder navnet den har på telefonen.</li>
+            <li>To forskjellige bilder med samme navn blir begge beholdt. Ingenting blir noen gang overskrevet.</li>
+            <li>Det samme bildet fra to telefoner lagres én gang.</li>
+        </ul>
+
+        <h2 id="privacy">Personvern og sikkerhet</h2>
+        <ul>
+            <li><strong>Bildene dine blir på nettverket ditt.</strong> Telefonen sender dem rett til serveren din. Utvikleren av Phlix mottar dem aldri og har ingen tilgang til dem. Hjelpeprogrammet kontakter ingenting på internett; det eneste det kontakter, er din egen Plex Media Server.</li>
+            <li><strong>Tilkoblingen er kryptert.</strong> Når en telefon sammenkobles, husker Phlix det nøyaktige sertifikatet til hjelpeprogrammet. Fra da av snakker appen bare med en server som viser fram akkurat det sertifikatet.</li>
+            <li><strong>Sammenkobling krever bevis.</strong> Eieren av Plex-serveren beviser eierskapet via Plex, og hjelpeprogrammet lagrer aldri et Plex-token. Alle andre trenger sammenkoblingskoden, og hjelpeprogrammet bremser alle som gjetter.</li>
+            <li><strong>En sammenkoblet telefon kan bare legge til.</strong> Hjelpeprogrammet har ingen mulighet til å liste opp, lese, laste ned, overskrive eller slette en lagret fil. Det tar bare imot bilde- og videofiler.</li>
+            <li><strong>Du kan lese koden.</strong> Kildekoden til hjelpeprogrammet er offentlig på <a href="https://github.com/jrl8085/phlix-camera-upload">GitHub</a>, sammen med <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/SECURITY.md">sikkerhetsnotatene</a>. Den fullstendige beskrivelsen står i <a href="/privacy/#camera-upload">personvernerklæringen (engelsk)</a>.</li>
+        </ul>
+
+        <h2 id="help">Hjelp og feilsøking</h2>
+        <p>Begynn med hjelpeprogrammets egen sjekk. Den tester installasjonen og sier hvordan du retter det som er galt:</p>
+        <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
+        <p>I Phlix sier skjermen Kameraopplasting hvilket problem den ser, og <strong>Sjekk tilkoblingen</strong> prøver på nytt. Hvert problem har sin egen del i den fullstendige veiledningen, på engelsk:</p>
+        <ul>
+            <li><a href="/camera-upload/#ts-not-found">Appen finner ikke hjelpeprogrammet</a></li>
+            <li><a href="/camera-upload/#ts-plex">Bildene vises ikke i Plex</a></li>
+            <li><a href="/camera-upload/#ts-pairing">Sammenkoblingen virker ikke</a></li>
+            <li><a href="/camera-upload/#ts-permissions">Filene eies av feil bruker, eller hjelpeprogrammet kan ikke skrive</a></li>
+            <li><a href="/camera-upload/#ts-start">Hjelpeprogrammet starter ikke</a></li>
+            <li><a href="/camera-upload/#networking">Hjelp med nettverk: brannmurer, gjeste-Wi-Fi, VPN-er, Plex i Docker</a></li>
+            <li><a href="/camera-upload/#changing">Endre ting senere: oppdater, flytt eller fjern hjelpeprogrammet</a></li>
+        </ul>
+        <p>Instruksjonene for hjelpeprogrammet på GitHub, på norsk: <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/docs/nb/README.md">README</a>. Problemer med hjelpeprogrammet kan meldes i <a href="https://github.com/jrl8085/phlix-camera-upload/issues">GitHub Issues</a>, og alt annet på <a href="/support/">brukerstøttesiden</a>.</p>
+
+        <h2 id="faq">Spørsmål</h2>
+        <details id="faq-1">
+            <summary>Er Kameraopplasting en betafunksjon?</summary>
+            <div class="inner"><p>Ja. Kameraopplasting er en betafunksjon i Phlix 1.0.21 eller nyere. Behold din egen sikkerhetskopi av alt du ikke kan erstatte, og fortell oss hva som går galt: Åpne <strong>Innstillinger</strong> i Phlix og trykk på <strong>Send tilbakemelding</strong>.</p></div>
+        </details>
+        <details id="faq-2">
+            <summary>Hva skjedde med Plex&#x27; egen kameraopplasting?</summary>
+            <div class="inner"><p>Plex kunngjorde i mars 2021 at selskapet ville avslutte støtten for sin kameraopplasting, og at den etter planen skulle fjernes i juni 2021. Kameraopplasting i Phlix er en separat funksjon i en uavhengig app: Den kopierer bildene dine til en mappe i fotobiblioteket ditt i Plex via hjelpeprogrammet på din egen server.</p></div>
+        </details>
+        <details id="faq-3">
+            <summary>Sletter den bilder fra iPhonen min?</summary>
+            <div class="inner"><p>Nei. Phlix kopierer bildene og videoene dine til serveren din. Appen sletter eller endrer aldri noe i Bilder-biblioteket ditt.</p></div>
+        </details>
+        <details id="faq-4">
+            <summary>Virker den borte fra hjemmet eller over mobildata?</summary>
+            <div class="inner"><p>Nei, med vilje. Phlix laster bare opp mens telefonen er på Wi-Fi-nettverket hjemme. Borte fra hjemmet sender den ingenting og leter ikke etter serveren din. Bilder du tar på reise, lastes opp når du er hjemme igjen.</p></div>
+        </details>
+        <details id="faq-5">
+            <summary>Trenger jeg Plex Pass?</summary>
+            <div class="inner"><p>Nei. Hjelpeprogrammet skriver vanlige filer i en mappe i fotobiblioteket ditt i Plex, og det fungerer med enhver Plex Media Server.</p></div>
+        </details>
+        <details id="faq-6">
+            <summary>Hva koster det?</summary>
+            <div class="inner"><p>Hjelpeprogrammet for serveren din er gratis. I appen er de første 100 opplastingene gratis, og Phlix Pro laster opp resten.</p></div>
+        </details>
+        <details id="faq-7">
+            <summary>Kan hele familien bruke den?</summary>
+            <div class="inner"><p>Ja. Hver iPhone og iPad sammenkobles for seg og får sin egen mappe. Eieren av Plex-serveren sammenkobler uten kode; alle andre skriver inn sammenkoblingskoden til hjelpeprogrammet. Hvis to telefoner har det samme bildet, lagrer serveren det én gang.</p></div>
+        </details>
+        <details id="faq-8">
+            <summary>Er dette en synkronisering? Hva om jeg sletter et bilde?</summary>
+            <div class="inner"><p>Det er en kopi i én retning, fra telefonen til serveren. Sletter du et bilde på telefonen, blir kopien liggende på serveren. Hvert bilde lastes opp én gang.</p></div>
+        </details>
+        <details id="faq-9">
+            <summary>Virker den med iCloud-bilder?</summary>
+            <div class="inner"><p>Ja. Phlix leser bildene i Bilder-biblioteket ditt, uansett hvor iOS oppbevarer dem. Med «Optimaliser iPhone-lagring» laster iOS ned originalen i full størrelse fra iCloud når Phlix ber om den. Delte albumer er ikke med.</p></div>
+        </details>
+        <details id="faq-10">
+            <summary>Er Phlix laget av Plex?</summary>
+            <div class="inner"><p>Nei. Phlix er en uavhengig app som fungerer med Plex Media Server. Den har ingen tilknytning til Plex, Inc. og er verken godkjent eller sponset av selskapet.</p></div>
+        </details>
+
+        <div class="cta-box" data-page-section="l10n-cta">
+            <h3>Phlix: Plex-bildene dine, slik de fortjener</h3>
+            <p>En kronologisk tidslinje og bildeserier på TV-ens store skjerm. Fra versjon 1.0.21 også Kameraopplasting (beta): en sikkerhetskopi av kamerarullen din på din egen server.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Last ned Phlix gratis</a>
+            <p class="sub">iPhone og iPad · iOS 17 eller nyere. Kameraopplasting krever Phlix 1.0.21 eller nyere. Hvis App Store ikke tilbyr den versjonen ennå, er den på vei.</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Hjem</a>
+            <a href="/camera-upload/" hreflang="en">Oppsettveiledning (engelsk)</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Personvern</a>
+            <a href="/terms">Vilkår</a>
+            <a href="/support">Brukerstøtte</a>
+        </div>
+        <p class="legal-note">De to linjene nedenfor er de juridiske merknadene, på engelsk.</p>
+        <p class="trademark" lang="en">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+    <script>
+    /* A Copy button on each command, and a link to a closed section opens it. */
+    (function () {
+        'use strict';
+        var COPY = "Kopier", COPIED = "Kopiert";
+        var blocks = document.querySelectorAll('.cmd');
+        for (var i = 0; i < blocks.length; i++) {
+            (function (block) {
+                var code = block.querySelector('code');
+                if (!code || !navigator.clipboard) { return; }
+                var button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = COPY;
+                button.setAttribute('aria-label', COPY);
+                button.addEventListener('click', function () {
+                    navigator.clipboard.writeText(code.textContent).then(function () {
+                        button.textContent = COPIED;
+                        button.className = 'done';
+                        setTimeout(function () { button.textContent = COPY; button.className = ''; }, 1600);
+                    });
+                });
+                block.appendChild(button);
+            })(blocks[i]);
+        }
+        function openTarget() {
+            var id = location.hash.slice(1);
+            if (!id) { return; }
+            var el = document.getElementById(id);
+            while (el) {
+                if (el.tagName === 'DETAILS') { el.open = true; }
+                el = el.parentElement;
+            }
+        }
+        window.addEventListener('hashchange', openTarget);
+        openTarget();
+    })();
+    </script>
+    <script src="/blog/track.js" defer></script>
+</body>
+</html>

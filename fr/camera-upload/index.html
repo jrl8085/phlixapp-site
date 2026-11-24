@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envoi des photos (bêta) : de l’iPhone à votre serveur Plex | Phlix</title>
+    <meta name="description" content="L’envoi des photos (bêta) de Phlix sauvegarde les photos de votre iPhone sur votre serveur Plex, en Wi-Fi domestique. Installation, jumelage, confidentialité.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://phlixapp.com/fr/camera-upload/">
+    <link rel="alternate" hreflang="en" href="https://phlixapp.com/camera-upload/">
+    <link rel="alternate" hreflang="de" href="https://phlixapp.com/de/camera-upload/">
+    <link rel="alternate" hreflang="fr" href="https://phlixapp.com/fr/camera-upload/">
+    <link rel="alternate" hreflang="es" href="https://phlixapp.com/es/camera-upload/">
+    <link rel="alternate" hreflang="it" href="https://phlixapp.com/it/camera-upload/">
+    <link rel="alternate" hreflang="pt-BR" href="https://phlixapp.com/pt-br/camera-upload/">
+    <link rel="alternate" hreflang="nl" href="https://phlixapp.com/nl/camera-upload/">
+    <link rel="alternate" hreflang="sv" href="https://phlixapp.com/sv/camera-upload/">
+    <link rel="alternate" hreflang="da" href="https://phlixapp.com/da/camera-upload/">
+    <link rel="alternate" hreflang="nb" href="https://phlixapp.com/nb/camera-upload/">
+    <link rel="alternate" hreflang="fi" href="https://phlixapp.com/fi/camera-upload/">
+    <link rel="alternate" hreflang="pl" href="https://phlixapp.com/pl/camera-upload/">
+    <link rel="alternate" hreflang="ja" href="https://phlixapp.com/ja/camera-upload/">
+    <link rel="alternate" hreflang="ko" href="https://phlixapp.com/ko/camera-upload/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://phlixapp.com/zh-hans/camera-upload/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://phlixapp.com/zh-hant/camera-upload/">
+    <link rel="alternate" hreflang="x-default" href="https://phlixapp.com/camera-upload/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/fr/camera-upload/">
+    <meta property="og:title" content="Envoi des photos (bêta) : sauvegardez les photos de votre iPhone sur votre propre serveur Plex">
+    <meta property="og:description" content="Une bêta de Phlix 1.0.21 ou version ultérieure. Un assistant Docker gratuit, installé à côté de Plex Media Server, reçoit les photos de votre iPhone via votre Wi-Fi domestique. Vos photos restent en dehors du cloud.">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="nl_NL">
+    <meta property="og:locale:alternate" content="sv_SE">
+    <meta property="og:locale:alternate" content="da_DK">
+    <meta property="og:locale:alternate" content="nb_NO">
+    <meta property="og:locale:alternate" content="fi_FI">
+    <meta property="og:locale:alternate" content="pl_PL">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Phlix — une chronologie de vos photos par date, qui fonctionne avec Plex Media Server">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Envoi des photos (bêta) : sauvegardez les photos de votre iPhone sur votre propre serveur Plex">
+    <meta name="twitter:description" content="Une bêta de Phlix 1.0.21 ou version ultérieure. Un assistant Docker gratuit, installé à côté de Plex Media Server, reçoit les photos de votre iPhone via votre Wi-Fi domestique. Vos photos restent en dehors du cloud.">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image:alt" content="Phlix — une chronologie de vos photos par date, qui fonctionne avec Plex Media Server">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"Envoi des photos (bêta) : sauvegardez les photos de votre iPhone sur votre propre serveur Plex","description":"L’envoi des photos (bêta) de Phlix sauvegarde les photos de votre iPhone sur votre serveur Plex, en Wi-Fi domestique. Installation, jumelage, confidentialité.","inLanguage":"fr","datePublished":"2026-11-24","dateModified":"2026-11-24","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/fr/camera-upload/","isBasedOn":"https://phlixapp.com/camera-upload/","about":{"@type":"SoftwareApplication","name":"Phlix Photos","operatingSystem":"iOS, iPadOS","applicationCategory":"MultimediaApplication","url":"https://phlixapp.com/"}}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Envoi des photos (bêta)","item":"https://phlixapp.com/fr/camera-upload/"}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[{"@type":"Question","name":"L’envoi des photos est-il en version bêta ?","acceptedAnswer":{"@type":"Answer","text":"Oui. L’envoi des photos est une fonction bêta de Phlix 1.0.21 ou version ultérieure. Conservez votre propre sauvegarde de tout ce que vous ne pouvez pas remplacer, et dites-nous ce qui ne va pas : dans Phlix, ouvrez Réglages et touchez Envoyer un avis."}},{"@type":"Question","name":"Qu’est devenue la fonction Camera Upload de Plex ?","acceptedAnswer":{"@type":"Answer","text":"Plex a annoncé en mars 2021 la fin de la prise en charge de sa fonction Camera Upload, avec un retrait prévu pour juin 2021. L’envoi des photos dans Phlix est une autre fonction, celle d’une app indépendante : il copie vos photos dans un dossier de votre bibliothèque de photos Plex grâce à l’assistant installé sur votre propre serveur."}},{"@type":"Question","name":"Est-ce que cela supprime des photos de mon iPhone ?","acceptedAnswer":{"@type":"Answer","text":"Non. Phlix copie vos photos et vidéos sur votre serveur. Il ne supprime ni ne modifie jamais rien dans votre photothèque."}},{"@type":"Question","name":"Est-ce que cela fonctionne hors de chez moi, ou via les données cellulaires ?","acceptedAnswer":{"@type":"Answer","text":"Non, et c’est voulu. Phlix n’envoie vos photos que lorsque le téléphone est connecté à votre Wi-Fi domestique. Hors de chez vous, il n’envoie rien et ne cherche pas votre serveur. Les photos prises en voyage sont envoyées à votre retour."}},{"@type":"Question","name":"Ai-je besoin du Plex Pass ?","acceptedAnswer":{"@type":"Answer","text":"Non. L’assistant écrit des fichiers ordinaires dans un dossier de votre bibliothèque de photos Plex, et cela fonctionne avec n’importe quel Plex Media Server."}},{"@type":"Question","name":"Combien ça coûte ?","acceptedAnswer":{"@type":"Answer","text":"L’assistant pour votre serveur est gratuit. Dans l’app, les 100 premiers envois sont gratuits, et Phlix Pro envoie le reste."}},{"@type":"Question","name":"Toute la famille peut-elle l’utiliser ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Chaque iPhone et iPad se jumelle séparément et reçoit son propre dossier. Le propriétaire du serveur Plex effectue le jumelage sans code ; toutes les autres personnes tapent le code de jumelage de l’assistant. Si deux téléphones contiennent la même photo, le serveur ne la stocke qu’une fois."}},{"@type":"Question","name":"Est-ce une synchronisation ? Que se passe-t-il si je supprime une photo ?","acceptedAnswer":{"@type":"Answer","text":"C’est une copie à sens unique, du téléphone vers le serveur. Supprimer une photo sur le téléphone laisse la copie sur le serveur. Chaque photo n’est envoyée qu’une fois."}},{"@type":"Question","name":"Est-ce que cela fonctionne avec Photos iCloud ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Phlix lit les photos de votre photothèque, où qu’iOS les conserve. Avec « Optimiser le stockage de l’iPhone », iOS télécharge depuis iCloud l’original en pleine résolution quand Phlix le demande. Les albums partagés ne sont pas inclus."}},{"@type":"Question","name":"L’app Phlix est-elle développée par Plex ?","acceptedAnswer":{"@type":"Answer","text":"Non. Phlix est une app indépendante qui fonctionne avec Plex Media Server. Elle n’est pas affiliée à Plex, Inc., qui ne l’approuve ni ne la sponsorise."}}]}
+    </script>
+    <style>
+        /* Page-specific pieces. Everything else comes from /blog/style.css. */
+        article.guide { max-width: 780px; }
+        .breadcrumb { max-width: 780px; }
+        .guide .lead { font-size: 1.12rem; color: var(--text); line-height: 1.7; }
+        .guide .category.beta { background: rgba(240,180,41,0.15); color: var(--gold); }
+        .guide h2 { margin-top: 56px; padding-top: 8px; font-size: 1.55rem; }
+        .guide h3 { margin-top: 32px; }
+        .guide ol > li { margin-bottom: 12px; }
+        .guide kbd { background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.88em; color: var(--text); font-family: inherit; }
+        .langs { max-width: 780px; margin: 0 auto; padding: 10px 24px 0; font-size: 0.82rem; color: var(--text-3); line-height: 2; }
+        .langs a { color: var(--text-2); margin-right: 10px; white-space: nowrap; }
+        .langs a[aria-current="page"] { color: var(--gold); font-weight: 700; }
+        .langs-label { margin-right: 8px; }
+        .hero-row { display: flex; gap: 32px; align-items: flex-start; margin: 24px 0 8px; }
+        .hero-row .hero-text { flex: 1 1 0; min-width: 0; }
+        .hero-row figure { flex: 0 0 230px; margin: 0; }
+        .hero-row figure img { width: 100%; border-radius: 22px; border: 1px solid var(--border); margin: 0; display: block; }
+        .guide figure figcaption { font-size: 0.8rem; color: var(--text-3); text-align: center; margin-top: 8px; }
+        .facts { list-style: none; margin: 20px 0 0 !important; padding: 0; }
+        .facts li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+        .facts li::before { content: ""; position: absolute; left: 4px; top: 0.62em; width: 10px; height: 10px; border-radius: 50%; background: var(--check); }
+        .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 32px 0 0; }
+        .toc strong { display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+        .toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; }
+        .toc li { margin-bottom: 4px; break-inside: avoid; }
+        .choice { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin: 20px 0; }
+        .choice > h3 { margin: 0 0 4px; font-size: 1.15rem; }
+        .choice .for { color: var(--text-3); font-size: 0.88rem; margin-bottom: 14px; }
+        .choice.best { border-color: rgba(240,180,41,0.45); }
+        .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: rgba(240,180,41,0.15); color: var(--gold); margin-left: 8px; vertical-align: middle; }
+        .cmd { position: relative; }
+        .cmd pre { padding-right: 84px; white-space: pre; }
+        .cmd button { position: absolute; top: 9px; right: 9px; background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .cmd button:hover { color: var(--text); border-color: rgba(240,180,41,0.4); }
+        .cmd button.done { color: var(--check); border-color: rgba(76,175,80,0.5); }
+        .note { border-left: 3px solid var(--gold); background: var(--surface); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+        .note p { margin: 0; }
+        .guide details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; }
+        .guide details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+        .guide details > summary::-webkit-details-marker { display: none; }
+        .guide details > summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.3rem; font-weight: 400; }
+        .guide details[open] > summary::after { content: "\2212"; }
+        .guide details > .inner { padding: 0 18px 8px; }
+        .guide details > .inner > :first-child { margin-top: 0; }
+        .compose pre { max-height: 520px; font-size: 0.82rem; }
+        .tree { line-height: 1.5; }
+        .legal-note { color: var(--text-3); font-size: 0.75rem; margin-bottom: 4px; }
+        @media (max-width: 700px) {
+            .hero-row { flex-direction: column; }
+            .hero-row figure { flex-basis: auto; width: 100%; max-width: 240px; margin: 0 auto; }
+            .toc ol { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav data-page-section="l10n-nav"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Accueil</a><a href="/camera-upload/" hreflang="en">Guide complet (en anglais)</a><a href="/support">Assistance</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Télécharger gratuitement</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">Accueil</a> &rsaquo; Envoi des photos (bêta)</div>
+    <div class="langs" role="navigation" aria-label="Langue"><span class="langs-label">Langue:</span> <a href="/camera-upload/" hreflang="en" lang="en">English</a> <a href="/de/camera-upload/" hreflang="de" lang="de">Deutsch</a> <a href="/fr/camera-upload/" hreflang="fr" lang="fr" aria-current="page">Français</a> <a href="/es/camera-upload/" hreflang="es" lang="es">Español</a> <a href="/it/camera-upload/" hreflang="it" lang="it">Italiano</a> <a href="/pt-br/camera-upload/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> <a href="/nl/camera-upload/" hreflang="nl" lang="nl">Nederlands</a> <a href="/sv/camera-upload/" hreflang="sv" lang="sv">Svenska</a> <a href="/da/camera-upload/" hreflang="da" lang="da">Dansk</a> <a href="/nb/camera-upload/" hreflang="nb" lang="nb">Norsk bokmål</a> <a href="/fi/camera-upload/" hreflang="fi" lang="fi">Suomi</a> <a href="/pl/camera-upload/" hreflang="pl" lang="pl">Polski</a> <a href="/ja/camera-upload/" hreflang="ja" lang="ja">日本語</a> <a href="/ko/camera-upload/" hreflang="ko" lang="ko">한국어</a> <a href="/zh-hans/camera-upload/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> <a href="/zh-hant/camera-upload/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></div>
+
+    <article class="guide">
+        <span class="category beta">Bêta · Guide de configuration</span>
+        <h1>Envoi des photos (bêta) : sauvegardez les photos de votre iPhone sur votre propre serveur Plex</h1>
+        <p class="meta">Mis à jour le 24 novembre 2026 · Environ 10 minutes de configuration</p>
+
+        <div class="hero-row">
+            <div class="hero-text">
+                <p class="lead">L’envoi des photos sauvegarde les photos et vidéos de votre iPhone ou iPad sur le serveur que vous avez chez vous, quand l’appareil est connecté à votre Wi-Fi domestique. Elles apparaissent dans Plex, et dans Phlix, à côté de tout le reste. Pas de cloud, pas d’abonnement de stockage. Vos photos sont envoyées à votre propre serveur, et à personne d’autre.</p>
+                <p><strong>L’envoi des photos est en version bêta.</strong> Il fait partie de Phlix 1.0.21 ou version ultérieure. Si l’App Store ne propose pas encore cette version, elle est en route.</p>
+                <p>L’envoi des photos comporte deux parties. <strong>L’app Phlix</strong>, sur votre iPhone ou iPad, lit votre pellicule. Un petit programme gratuit installé sur votre serveur, <strong>l’assistant d’envoi des photos</strong>, reçoit les photos et les écrit dans un dossier de votre bibliothèque de photos Plex. L’assistant est un seul conteneur Docker.</p>
+                <ul class="facts">
+                    <li><strong>Uniquement chez vous.</strong> Phlix envoie vos photos via votre Wi-Fi domestique, et nulle part ailleurs. Jamais via les données cellulaires.</li>
+                    <li><strong>Uniquement pour vous.</strong> Les photos vont directement de votre téléphone à votre serveur, chiffrées. Aucune n’est envoyée à Phlix.</li>
+                    <li><strong>Uniquement des copies.</strong> Rien n’est jamais supprimé ni modifié sur votre téléphone.</li>
+                </ul>
+            </div>
+            <figure>
+                <img src="/camera-upload/img/backed-up.png" alt="L’écran Envoi des photos de Phlix, marqué Bêta : un point vert à côté de « Connecté à » et du nom de l’assistant, l’interrupteur Envoi des photos activé, et « Tout est sauvegardé » au-dessus d’une barre de progression pleine" width="414" height="900" loading="eager">
+                <figcaption>L’envoi des photos (bêta) dans Phlix (la capture d’écran montre l’app en anglais)</figcaption>
+            </figure>
+        </div>
+
+        <nav class="toc" aria-label="Sur cette page" style="position:static;height:auto;background:var(--surface);backdrop-filter:none;-webkit-backdrop-filter:none">
+            <strong>Sur cette page</strong>
+            <ol>
+                <li><a href="#why">Pourquoi : la fonction Camera Upload de Plex a pris fin</a></li>
+                <li><a href="#what-you-need">Ce qu’il vous faut</a></li>
+                <li><a href="#install">Étape 1 : installer l’assistant</a></li>
+                <li><a href="#check">Vérifier que l’assistant fonctionne</a></li>
+                <li><a href="#connect">Étape 2 : connecter votre iPhone</a></li>
+                <li><a href="#after">Ce qui se passe ensuite</a></li>
+                <li><a href="#where">Où vont vos photos</a></li>
+                <li><a href="#privacy">Confidentialité et sécurité</a></li>
+                <li><a href="#help">Aide et dépannage</a></li>
+                <li><a href="#faq">Questions fréquentes</a></li>
+            </ol>
+        </nav>
+
+        <h2 id="why">Pourquoi : la fonction Camera Upload de Plex a pris fin</h2>
+        <p>Plex proposait sa propre fonction Camera Upload depuis 2014. En mars 2021, Plex a annoncé sur son forum la fin de la prise en charge de cette fonction, avec un retrait prévu pour juin 2021 (<a href="https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626">annonce de Plex, copie archivée</a>).</p>
+        <p>L’envoi des photos dans Phlix fait revivre cette idée sur iPhone et iPad. Phlix est une app indépendante qui fonctionne avec Plex Media Server : elle n’est pas développée par Plex. <a href="/plex-camera-upload/">Toute l’histoire, en anglais</a>.</p>
+
+        <h2 id="what-you-need">Ce qu’il vous faut</h2>
+        <ul>
+            <li><strong>Plex Media Server avec une bibliothèque de photos</strong>, sur un ordinateur ou un NAS qui exécute Docker 20.10 ou version ultérieure : Linux, un Mac ou un PC Windows avec Docker Desktop, Synology (Container Manager, DSM 7.2 ou version ultérieure), Unraid, ou TrueNAS SCALE 24.10 ou version ultérieure. Docker est un programme gratuit qui exécute d’autres programmes dans des boîtes fermées appelées conteneurs. Les processeurs Intel, AMD et Arm sont tous compatibles.</li>
+            <li><strong>Phlix 1.0.21 ou version ultérieure</strong> sur un iPhone ou un iPad. Si l’App Store ne propose pas encore cette version, elle est en route.</li>
+            <li><strong>Votre téléphone et votre serveur sur le même réseau domestique.</strong></li>
+        </ul>
+        <p>L’assistant est gratuit. Dans l’app, les 100 premiers envois sont gratuits, et <a href="/#pricing">Phlix Pro</a> envoie le reste. Tant que l’envoi des photos est en bêta, conservez votre propre sauvegarde de tout ce que vous ne pouvez pas remplacer. <a href="/camera-upload/#beta">Ce que la bêta fait et ne fait pas (en anglais)</a>.</p>
+
+        <h2 id="install">Étape 1 : installer l’assistant</h2>
+        <p class="note">Vous lisez ceci sur votre téléphone ? L’étape 1 se fait sur votre serveur. Ouvrez cette page sur un ordinateur pour pouvoir copier les commandes.</p>
+        <p>À faire une seule fois, sur la machine qui exécute Plex Media Server. Choisissez d’abord votre <strong>dossier de destination</strong> : le dossier où iront les photos de votre téléphone. Il doit se trouver <strong>dans un dossier inclus dans l’une de vos bibliothèques de photos Plex</strong>, sinon Plex n’affichera jamais les photos. Si le dossier de votre bibliothèque est <code>/mnt/media/Photos</code>, un bon choix est <code>/mnt/media/Photos/Camera Uploads</code>.</p>
+        <p>Pour voir les dossiers de votre bibliothèque, ouvrez Plex dans un navigateur et allez dans <em>Settings › Manage › Libraries</em>, choisissez <em>Edit Library</em> sur votre bibliothèque de photos, puis <em>Add folders</em>. (Ce sont les libellés anglais de Plex ; votre Plex peut les afficher en français.)</p>
+        <p><strong>Votre Plex fonctionne-t-il lui-même dans Docker ?</strong> C’est courant sur Unraid et TrueNAS SCALE. Plex affiche alors le chemin du dossier à l’intérieur de son propre conteneur, par exemple <code>/data/Photos</code>. L’assistant a besoin du chemin du dossier sur le serveur, par exemple <code>/mnt/media/Photos</code>. <a href="/camera-upload/#sys-plex-docker">Comment trouver les deux chemins (en anglais)</a>.</p>
+        <p>Il existe trois méthodes pour installer l’assistant. La méthode B fonctionne sur tous les systèmes. Sur Unraid, Synology et TrueNAS SCALE, suivez <a href="#other-systems">les notes pour votre système</a> ci-dessous à la place des méthodes A et C.</p>
+        <p>Les commandes se tapent dans un terminal sur votre serveur : sur un Mac, l’app Terminal ; sur Windows, PowerShell ; sur Linux, le programme de terminal, ou SSH depuis un autre ordinateur. Chaque commande encadrée a un bouton pour la copier. Si Docker répond « permission denied », ajoutez <code>sudo</code> devant chaque commande <code>docker</code>.</p>
+
+        <div class="choice best" id="install-one-command">
+            <h3>A. Une seule commande <span class="tag">Rapide</span></h3>
+            <p class="for">Pour un ordinateur ou un serveur Linux, et pour un Mac avec Docker Desktop. Pas pour Windows, Unraid ni TrueNAS SCALE.</p>
+            <p>Collez ceci dans un terminal sur votre serveur :</p>
+            <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh</code></pre></div>
+            <p>Le programme d’installation vérifie Docker et vous demande votre dossier de destination. Il écrit le fichier Compose, <code>docker-compose.yml</code>, dans un nouveau dossier nommé <code>phlix-camera-upload</code> dans votre dossier personnel, démarre l’assistant et lance sa vérification. Si tout va bien, il affiche <code>Phlix Camera Upload is running.</code> puis, en dessous, une ligne qui commence par <code>Status page:</code> suivie de l’adresse de la page d’état de l’assistant.</p>
+            <p>Il n’utilise jamais <code>sudo</code>, ne modifie jamais Plex et ne supprime jamais aucune photo. Vous pouvez <a href="/camera-upload/install.sh">lire le script</a> avant de l’exécuter, et l’essayer d’abord avec <code>--dry-run</code>, qui ne change rien :</p>
+            <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh -s -- --dry-run</code></pre></div>
+            <p>Relancez le programme d’installation à tout moment pour mettre à jour l’assistant. Le même script se trouve dans le <a href="https://github.com/jrl8085/phlix-camera-upload">dépôt GitHub</a>.</p>
+        </div>
+
+        <div class="choice" id="install-with-ai">
+            <h3>B. Laisser une IA s’en charger</h3>
+            <p>Le fichier <a href="/camera-upload/SETUP-WITH-AI.md">SETUP-WITH-AI.md</a> contient des instructions complètes écrites pour une IA : comment trouver le dossier de votre bibliothèque Plex, installer l’assistant, le vérifier et corriger ce qui ne va pas. L’IA vous demande votre accord avant de modifier quoi que ce soit en dehors du dossier de l’assistant. Le fichier est en anglais ; l’IA peut vous parler en français.</p>
+            <p>Avec un outil d’IA capable d’exécuter des commandes sur votre serveur (Claude Code, Codex, Gemini CLI, Cursor et outils similaires), dans un nouveau dossier vide sur votre serveur :</p>
+            <div class="cmd"><pre><code>curl -fsSLO https://phlixapp.com/camera-upload/SETUP-WITH-AI.md</code></pre></div>
+            <p>Lancez ensuite votre outil d’IA dans ce dossier et dites : <kbd>Suis les instructions de SETUP-WITH-AI.md</kbd></p>
+            <p>Claude Code peut aussi ajouter la configuration sous forme de skill, une seule fois, depuis un terminal :</p>
+            <div class="cmd"><pre><code>claude plugin marketplace add jrl8085/phlix-camera-upload
+claude plugin install phlix-camera-upload@phlix</code></pre></div>
+            <p>Lancez ensuite Claude Code sur votre serveur et dites : <kbd>Configure Phlix Camera Upload sur ce serveur</kbd></p>
+            <p>Avec un chatbot, comme ChatGPT ou l’app Claude : donnez-lui le fichier <a href="/camera-upload/SETUP-WITH-AI.md">SETUP-WITH-AI.md</a> et dites <kbd>Guide-moi, une étape à la fois</kbd>. Il vous donne chaque commande, vous l’exécutez sur votre serveur et vous lui collez ce qu’elle a affiché.</p>
+        </div>
+
+        <div class="choice" id="install-by-hand">
+            <h3>C. À la main, avec Docker Compose</h3>
+            <p class="for">Pour ceux qui aiment voir chaque étape, sur Linux, un Mac ou un PC Windows. Six étapes, une ligne à modifier.</p>
+            <ol>
+                <li>Créez votre dossier de destination en tant qu’utilisateur propriétaire de vos photos. L’assistant écrit les fichiers sous l’identité du propriétaire de ce dossier.
+                    <div class="cmd"><pre><code>mkdir &quot;/mnt/media/Photos/Camera Uploads&quot;</code></pre></div></li>
+                <li>Créez un dossier pour l’assistant et placez-vous dedans.
+                    <div class="cmd"><pre><code>mkdir phlix-camera-upload
+cd phlix-camera-upload</code></pre></div></li>
+                <li>Téléchargez le fichier Compose, <code>docker-compose.yml</code> : un petit fichier texte qui indique à Docker comment exécuter l’assistant.
+                    <div class="cmd"><pre><code>curl -fsSLO https://phlixapp.com/camera-upload/docker-compose.yml</code></pre></div></li>
+                <li>Ouvrez <code>docker-compose.yml</code> dans un éditeur de texte. Trouvez le commentaire <code>CHANGE THE NEXT LINE</code>. Sur la ligne en dessous, remplacez <code>/CHANGE/THIS/Photos/Camera Uploads</code> par votre dossier de destination. Enregistrez le fichier.</li>
+                <li>Démarrez l’assistant. La première fois, Docker télécharge l’image : l’assistant, empaqueté pour Docker.
+                    <div class="cmd"><pre><code>docker compose up -d</code></pre></div></li>
+                <li>Demandez à l’assistant si tout est en ordre.
+                    <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div></li>
+            </ol>
+            <details class="compose" id="compose-file">
+                <summary>Le fichier Compose, exactement tel que vous le téléchargez</summary>
+                <div class="inner">
+                    <p>Ses commentaires sont en anglais. Modifiez uniquement la ligne sous <code>CHANGE THE NEXT LINE</code>.</p>
+<pre><code># Phlix Camera Upload
+#
+# This file starts the helper that receives the photos and videos the Phlix
+# app uploads from your iPhone or iPad, and writes them into a folder of your
+# Plex photo library.
+#
+# How to use this file:
+#   1. Change the one line marked CHANGE THE NEXT LINE below.
+#   2. In the folder that holds this file, run:  docker compose up -d
+#   3. Open https://YOUR-SERVER:7459 in a browser to check that it runs.
+#      The browser warns about the certificate. That is expected.
+#
+# If something does not work, ask the helper what is wrong:
+#   docker exec phlix-camera-upload python -m phlix_upload doctor
+#
+# Setup guide: https://phlixapp.com/camera-upload/
+# If the app cannot find the helper:
+#   https://github.com/jrl8085/phlix-camera-upload/blob/main/NETWORKING.md
+
+services:
+  phlix-camera-upload:
+    image: ghcr.io/jrl8085/phlix-camera-upload:1
+    container_name: phlix-camera-upload
+
+    # Start again by itself when the server or Docker restarts.
+    restart: unless-stopped
+
+    # The Phlix app looks for the helper on port 7459 of your server.
+    ports:
+      - &quot;7459:7459&quot;
+
+    volumes:
+      # Your upload folder: the folder on this server where the photos go.
+      #
+      # It must be inside a folder that one of your Plex photo libraries
+      # includes. If it is not, Plex never shows the photos.
+      #
+      # Make the folder before you start the helper. Docker refuses to start
+      # the helper if the folder is missing. The helper writes files as the
+      # user who owns the folder.
+      #
+      # Write the path as it is on the server itself. If Plex runs in Docker,
+      # do not use the path from inside the Plex container.
+      #
+      # Examples:
+      #   Linux      /mnt/media/Photos/Camera Uploads
+      #   Synology   /volume1/photo/Camera Uploads
+      #   TrueNAS    /mnt/tank/media/Photos/Camera Uploads
+      #   Mac        /Users/you/Pictures/Camera Uploads
+      #   Windows    C:\Users\you\Pictures\Camera Uploads
+      #
+      # Spaces in the path are fine. If the path has a &quot;#&quot; after a space, or
+      # a &quot;:&quot; before a space, put the whole path in &#x27;single quotes&#x27;.
+      - type: bind
+        # CHANGE THE NEXT LINE. Keep &quot;source: &quot; and write your folder after it.
+        source: /CHANGE/THIS/Photos/Camera Uploads
+        target: /photos
+        bind:
+          create_host_path: false
+
+      # The helper&#x27;s own data: the list of paired phones, the list of files
+      # it has received, and its certificate. No photos are kept here.
+      # Docker makes a folder named &quot;config&quot; next to this file. Keep it: if
+      # it is lost, every phone has to pair again.
+      # If your tool has no &quot;next to this file&quot; (TrueNAS, Portainer), write a
+      # full path in place of ./config, for example:
+      #   /mnt/tank/apps/phlix-camera-upload:/config
+      - ./config:/config
+
+    # Lets the helper find Plex Media Server on this machine.
+    extra_hosts:
+      - &quot;host.docker.internal:host-gateway&quot;
+
+    # The helper can never gain more rights than it was started with.
+    security_opt:
+      - &quot;no-new-privileges:true&quot;
+
+    # Optional settings. The helper works without any of them.
+    #
+    # To use one, remove the &quot;# &quot; in front of &quot;environment:&quot; and in front of
+    # the setting you want. Leave the other spaces as they are. Then run
+    # &quot;docker compose up -d&quot; again.
+    #
+    # environment:
+    #   # Where Plex Media Server is. Set this if the helper&#x27;s status page
+    #   # says &quot;Plex Media Server: Not found&quot;, or to make sure that the helper
+    #   # asks your own server and no other.
+    #   PLEX_URL: &quot;http://192.168.1.10:32400&quot;
+    #
+    #   # Write files as this user and group. Without these, the helper uses
+    #   # the owner of the upload folder.
+    #   PUID: &quot;1000&quot;
+    #   PGID: &quot;1000&quot;
+    #
+    #   # Permissions for new files and folders. With 022, other users may
+    #   # read them. With 002, the group may also change them.
+    #   UMASK: &quot;022&quot;
+    #
+    #   # The name that the app and the status page show for this helper.
+    #   NAME: &quot;Phlix Camera Upload&quot;
+    #
+    #   # Who may pair. auto: the owner of the Plex server pairs without a
+    #   # code and everyone else types the pairing code. code: everyone types
+    #   # the code. plex: only the owner of the Plex server may pair.
+    #   PAIRING: &quot;auto&quot;
+    #
+    #   # Your own pairing code, in place of the one the helper makes. Write
+    #   # at least 6 letters or digits between the quotes.
+    #   PAIRING_CODE: &quot;&quot;
+    #
+    #   # The folders the helper makes inside the upload folder. You can use
+    #   # {device}, {year}, {month} and {day}.
+    #   PATH_TEMPLATE: &quot;{device}/{year}/{year}-{month}&quot;
+    #
+    #   # Refuse uploads that would leave less than this many GB free. Uploads
+    #   # that are still arriving count too.
+    #   MIN_FREE_GB: &quot;2&quot;
+    #
+    #   # The largest single file the helper accepts, in GB.
+    #   MAX_UPLOAD_GB: &quot;50&quot;
+    #
+    #   # More file types to accept, besides the usual photo and video types.
+    #   # Separate them with commas.
+    #   EXTRA_EXTENSIONS: &quot;insp,lrv&quot;
+    #
+    #   # How much the log says: debug, info, warning or error.
+    #   LOG_LEVEL: &quot;info&quot;
+    #
+    #   # Write &quot;off&quot; only if your own reverse proxy adds HTTPS in front of
+    #   # the helper. Phlix talks HTTPS only: with &quot;off&quot; and no such proxy,
+    #   # the app cannot use the helper.
+    #   TLS: &quot;on&quot;
+    #
+    #   # Your own certificate and its key, as paths inside the container.
+    #   # Set both. A file you put in the config folder is at /config/...
+    #   TLS_CERT: &quot;/config/my-cert.pem&quot;
+    #   TLS_KEY: &quot;/config/my-key.pem&quot;
+    #
+    # PORT, BIND, UPLOAD_DIR and CONFIG_DIR exist too. With Docker you do not
+    # need them. To use another port on your server, change only the first
+    # number in the &quot;ports&quot; line above, for example &quot;8443:7459&quot;. The app
+    # looks for port 7459 by itself, so with another port you type the
+    # helper&#x27;s address into the app.</code></pre>
+                </div>
+            </details>
+        </div>
+
+        <h3 id="other-systems">Unraid, Synology, TrueNAS SCALE et Windows</h3>
+        <ul>
+            <li><strong>Unraid</strong> n’a pas Docker Compose. Créez votre dossier de destination dans un partage inclus dans votre bibliothèque de photos Plex, attribuez-le à l’utilisateur standard d’Unraid avec <code>chown 99:100</code>, téléchargez le modèle avec la commande ci-dessous, puis, dans l’onglet Docker, choisissez <em>Add Container</em> et sélectionnez <code>phlix-camera-upload</code>. <a href="/camera-upload/#sys-unraid">Les étapes pour Unraid (en anglais)</a>.
+                <div class="cmd"><pre><code>mkdir &quot;/mnt/user/Photos/Camera Uploads&quot;
+chown 99:100 &quot;/mnt/user/Photos/Camera Uploads&quot;</code></pre></div>
+                <div class="cmd"><pre><code>wget -O /boot/config/plugins/dockerMan/templates-user/my-phlix-camera-upload.xml https://raw.githubusercontent.com/jrl8085/phlix-camera-upload/main/unraid/phlix-camera-upload.xml</code></pre></div></li>
+            <li><strong>Synology :</strong> dans Container Manager, créez un projet nommé <code>phlix-camera-upload</code> et collez le contenu de <a href="/camera-upload/docker-compose.yml">docker-compose.yml</a>, avec le chemin complet de votre dossier de destination, par exemple <code>/volume1/photo/Camera Uploads</code>. <a href="/camera-upload/#sys-synology">Les étapes pour Synology (en anglais)</a>.</li>
+            <li><strong>TrueNAS SCALE :</strong> n’utilisez pas la méthode A. Allez dans <em>Apps › Discover Apps</em>, choisissez <em>Install via YAML</em>, collez le fichier Compose et indiquez des chemins complets. <a href="/camera-upload/#sys-truenas">Les étapes pour TrueNAS SCALE (en anglais)</a>.</li>
+            <li><strong>Mac ou PC Windows avec Docker Desktop :</strong> sur Windows, utilisez la méthode B ou C et tapez <code>curl.exe</code> là où cette page indique <code>curl</code>. Les envois ne fonctionnent que tant que Docker Desktop est en cours d’exécution et que l’ordinateur n’est pas en veille. <a href="/camera-upload/#sys-desktop">Les notes pour Mac et Windows (en anglais)</a>.</li>
+        </ul>
+
+        <h2 id="check">Vérifier que l’assistant fonctionne</h2>
+        <p>Sur un autre appareil de votre réseau domestique, ouvrez la page d’état de l’assistant dans un navigateur. Remplacez <code>SERVER</code> par l’adresse de votre serveur, par exemple <code>https://192.168.1.10:7459</code> :</p>
+        <div class="cmd"><pre><code>https://SERVER:7459</code></pre></div>
+        <p>Votre navigateur vous avertit que la connexion n’est pas privée. <strong>C’est normal.</strong> Un serveur domestique n’a pas de nom public qu’une autorité de certification pourrait garantir, donc l’assistant crée son propre certificat. Continuez vers la page. Phlix ne se fie pas à la vérification du navigateur : il retient le certificat exact de l’assistant lors du jumelage.</p>
+        <p>La page doit indiquer <code>Upload folder: Ready</code> et <code>Plex Media Server: Found</code>. Si elle indique autre chose, la commande <code>doctor</code> vous dit quoi faire :</p>
+        <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
+<pre><code>Phlix Camera Upload 1.0.1
+OK       The helper is running on port 7459
+OK       The upload folder /photos can be written to.
+OK       223.6 GB free on the upload disk.
+OK       Plex Media Server found: its owner can pair from Phlix without a code.
+OK       1 paired, 37 files stored (33.0 MB).
+NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
+Nothing needs fixing.</code></pre>
+        <p>Une ligne qui commence par <code>PROBLEM</code> est suivie d’une ligne qui commence par <code>Fix:</code>.</p>
+        <div class="note"><p><strong>Un réglage dans Plex.</strong> Plex n’affiche les nouveaux fichiers qu’après une analyse. Quand votre compte Plex est propriétaire du serveur, Phlix demande à Plex une analyse une fois vos photos arrivées. Pour toutes les autres personnes de votre foyer, et par précaution, activez <em>Settings › Library › Scan my library automatically</em> dans Plex. Ce réglage est désactivé par défaut.</p></div>
+
+        <h2 id="connect">Étape 2 : connecter votre iPhone</h2>
+        <ol>
+            <li>Connectez votre iPhone ou iPad à votre Wi-Fi domestique.</li>
+            <li>Ouvrez Phlix et allez dans <strong>Réglages</strong> › <strong>Envoi des photos</strong>. Si <strong>Envoi des photos</strong> n’apparaît pas dans <strong>Réglages</strong>, votre version de Phlix est antérieure à la 1.0.21. Le numéro s’affiche dans <strong>Réglages</strong>, à la ligne <strong>Version</strong>.</li>
+            <li>Touchez <strong>Rechercher l’assistant</strong>, puis <strong>Vérifier mon réseau</strong>. Phlix cherche l’assistant à l’adresse de votre serveur Plex. Rien n’est activé, et rien n’est envoyé, tant qu’il n’est pas trouvé. Si iOS demande si Phlix peut trouver des appareils sur votre réseau local, autorisez-le.</li>
+            <li>Quand Phlix affiche <strong>Assistant trouvé</strong>, choisissez un nom de dossier pour cet appareil, par exemple « iPhone de Camille », et touchez <strong>Se connecter</strong>. Choisissez ce nom avec soin : un appareil garde le dossier qu’il reçoit lors de son premier jumelage.</li>
+            <li>Si Phlix affiche ensuite <strong>Saisissez le code de jumelage</strong>, tapez le code de l’assistant et touchez <strong>Jumeler</strong>. Les membres de la famille qui ont leur propre compte Plex voient cette étape. La section <a href="#pairing">Qui a besoin d’un code</a>, plus bas, indique où trouver le code.</li>
+            <li>Phlix affiche <strong>Connecté</strong>. Choisissez ce que vous voulez sauvegarder, <strong>Tout sur cet appareil</strong> ou <strong>Nouvelles photos</strong>, puis touchez <strong>Activer l’envoi des photos</strong>.</li>
+            <li>iOS demande si Phlix peut lire vos photos. Choisissez l’accès complet, pour qu’il puisse toutes les sauvegarder.</li>
+        </ol>
+        <p>Un point vert et <strong>Connecté à …</strong> suivi du nom de l’assistant indiquent que la connexion est bonne. Un point gris signifie que vous n’êtes pas chez vous, et Phlix attend. Un point orange signifie que quelque chose demande votre attention, et l’écran indique quoi.</p>
+
+        <h3 id="pairing">Qui a besoin d’un code de jumelage</h3>
+        <ul>
+            <li><strong>Vous êtes propriétaire du serveur Plex :</strong> Phlix effectue le jumelage sans code, tant que la page d’état de l’assistant indique <code>Plex Media Server: Found</code>. L’app présente à l’assistant un jeton de courte durée issu de votre serveur Plex, l’assistant demande à Plex s’il appartient au propriétaire du serveur, puis l’oublie.</li>
+            <li><strong>Toutes les autres personnes</strong>, comme les membres de la famille qui ont leur propre compte Plex, tapent le code de jumelage de l’assistant. Le propriétaire du serveur le trouve avec cette commande, ou dans le journal de l’assistant à chaque démarrage. Les majuscules, les espaces et le tiret n’ont pas d’importance :
+                <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload code</code></pre></div></li>
+        </ul>
+        <p>Si Phlix affiche <strong>Assistant introuvable</strong>, l’envoi des photos reste désactivé, et rien n’est envoyé nulle part. <a href="/camera-upload/#ts-not-found">L’app ne trouve pas l’assistant (en anglais)</a>.</p>
+
+        <h2 id="after">Ce qui se passe ensuite</h2>
+        <ul>
+            <li><strong>Avec Phlix ouvert</strong>, les envois démarrent tout de suite et vont aussi vite que votre Wi-Fi le permet. Une première grosse sauvegarde va plus vite avec le téléphone en charge et l’écran Envoi des photos ouvert.</li>
+            <li><strong>Avec Phlix fermé</strong>, iOS le laisse continuer par courtes périodes, surtout pendant que le téléphone se recharge. iOS traite ainsi toutes les apps, et une grande photothèque demande donc quelques jours en arrière-plan. Les nouvelles photos suivent d’elles-mêmes.</li>
+            <li><strong>Hors de chez vous</strong>, rien n’est envoyé, et Phlix ne cherche même pas votre serveur. La sauvegarde reprend quand le téléphone est de nouveau connecté à votre Wi-Fi domestique.</li>
+            <li><strong>Quand tout est sauvegardé</strong>, l’écran affiche <strong>Tout est sauvegardé</strong>. Activez <strong>M’avertir en fin de sauvegarde</strong> pour recevoir aussi une notification.</li>
+        </ul>
+        <p>Phlix envoie les photos et vidéos de votre propre photothèque, chacune une seule fois, telle qu’elle apparaît dans Photos à ce moment-là. Les vidéos sont facultatives (<strong>Inclure les vidéos</strong>) ; les captures d’écran sont exclues, sauf si vous activez <strong>Inclure les captures d’écran</strong>. Une Live Photo est envoyée sous forme de photo fixe. Les photos masquées, les albums partagés et les photos synchronisées depuis un ordinateur ne sont pas envoyés.</p>
+
+        <h2 id="where">Où vont vos photos</h2>
+        <p>Chaque téléphone ou tablette a son propre dossier dans le dossier de destination, avec un dossier par année et un dossier par mois :</p>
+<pre class="tree"><code>Camera Uploads/
+  Anna&#x27;s iPhone/
+    2026/
+      2026-11/
+        IMG_1234.HEIC
+        IMG_1235.MOV
+  Ben&#x27;s iPad/
+    2026/
+      2026-10/</code></pre>
+        <ul>
+            <li>L’année et le mois viennent de la date de la photo elle-même. Le fichier garde le nom qu’il avait sur le téléphone.</li>
+            <li>Deux photos différentes portant le même nom sont toutes deux conservées. Rien n’est jamais écrasé.</li>
+            <li>La même photo venant de deux téléphones n’est stockée qu’une seule fois.</li>
+        </ul>
+
+        <h2 id="privacy">Confidentialité et sécurité</h2>
+        <ul>
+            <li><strong>Vos photos restent sur votre réseau.</strong> Le téléphone les envoie directement à votre serveur. Phlix, le développeur, ne les reçoit jamais et ne peut pas y accéder. L’assistant ne contacte rien sur Internet : il n’interroge que votre propre Plex Media Server.</li>
+            <li><strong>La connexion est chiffrée.</strong> Lors du jumelage d’un téléphone, Phlix retient le certificat exact de l’assistant. Ensuite, il ne communique qu’avec un serveur qui présente ce certificat.</li>
+            <li><strong>Le jumelage exige une preuve.</strong> Le propriétaire du serveur Plex le prouve par l’intermédiaire de Plex, et l’assistant ne stocke jamais de jeton Plex. Toutes les autres personnes ont besoin du code de jumelage, et l’assistant ralentit quiconque essaie de le deviner.</li>
+            <li><strong>Un téléphone jumelé ne peut qu’ajouter.</strong> L’assistant n’offre aucun moyen de lister, lire, télécharger, écraser ou supprimer un fichier stocké. Il n’accepte que des fichiers photo et vidéo.</li>
+            <li><strong>Vous pouvez lire le code.</strong> Le code source de l’assistant est public sur <a href="https://github.com/jrl8085/phlix-camera-upload">GitHub</a>, avec ses <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/SECURITY.md">notes de sécurité</a>. La description complète se trouve dans la <a href="/privacy/#camera-upload">politique de confidentialité (en anglais)</a>.</li>
+        </ul>
+
+        <h2 id="help">Aide et dépannage</h2>
+        <p>Commencez par la vérification intégrée de l’assistant. Elle teste l’installation et explique comment corriger ce qui ne va pas :</p>
+        <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
+        <p>Dans Phlix, l’écran Envoi des photos nomme le problème qu’il détecte, et <strong>Vérifier la connexion</strong> permet de réessayer. Chaque problème a sa propre section dans le guide complet, en anglais :</p>
+        <ul>
+            <li><a href="/camera-upload/#ts-not-found">L’app ne trouve pas l’assistant</a></li>
+            <li><a href="/camera-upload/#ts-plex">Les photos n’apparaissent pas dans Plex</a></li>
+            <li><a href="/camera-upload/#ts-pairing">Le jumelage ne fonctionne pas</a></li>
+            <li><a href="/camera-upload/#ts-permissions">Les fichiers appartiennent au mauvais utilisateur, ou l’assistant ne peut pas écrire</a></li>
+            <li><a href="/camera-upload/#ts-start">L’assistant ne démarre pas</a></li>
+            <li><a href="/camera-upload/#networking">Aide réseau : pare-feu, Wi-Fi invité, VPN, Plex dans Docker</a></li>
+            <li><a href="/camera-upload/#changing">Modifier plus tard : mettre à jour, déplacer ou supprimer l’assistant</a></li>
+        </ul>
+        <p>Les instructions de l’assistant sur GitHub, en français : <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/docs/fr/README.md">README</a>. Les problèmes liés à l’assistant peuvent être signalés sur <a href="https://github.com/jrl8085/phlix-camera-upload/issues">GitHub Issues</a>, et tout le reste sur la <a href="/support/">page d’assistance</a>.</p>
+
+        <h2 id="faq">Questions fréquentes</h2>
+        <details id="faq-1">
+            <summary>L’envoi des photos est-il en version bêta ?</summary>
+            <div class="inner"><p>Oui. L’envoi des photos est une fonction bêta de Phlix 1.0.21 ou version ultérieure. Conservez votre propre sauvegarde de tout ce que vous ne pouvez pas remplacer, et dites-nous ce qui ne va pas : dans Phlix, ouvrez <strong>Réglages</strong> et touchez <strong>Envoyer un avis</strong>.</p></div>
+        </details>
+        <details id="faq-2">
+            <summary>Qu’est devenue la fonction Camera Upload de Plex ?</summary>
+            <div class="inner"><p>Plex a annoncé en mars 2021 la fin de la prise en charge de sa fonction Camera Upload, avec un retrait prévu pour juin 2021. L’envoi des photos dans Phlix est une autre fonction, celle d’une app indépendante : il copie vos photos dans un dossier de votre bibliothèque de photos Plex grâce à l’assistant installé sur votre propre serveur.</p></div>
+        </details>
+        <details id="faq-3">
+            <summary>Est-ce que cela supprime des photos de mon iPhone ?</summary>
+            <div class="inner"><p>Non. Phlix copie vos photos et vidéos sur votre serveur. Il ne supprime ni ne modifie jamais rien dans votre photothèque.</p></div>
+        </details>
+        <details id="faq-4">
+            <summary>Est-ce que cela fonctionne hors de chez moi, ou via les données cellulaires ?</summary>
+            <div class="inner"><p>Non, et c’est voulu. Phlix n’envoie vos photos que lorsque le téléphone est connecté à votre Wi-Fi domestique. Hors de chez vous, il n’envoie rien et ne cherche pas votre serveur. Les photos prises en voyage sont envoyées à votre retour.</p></div>
+        </details>
+        <details id="faq-5">
+            <summary>Ai-je besoin du Plex Pass ?</summary>
+            <div class="inner"><p>Non. L’assistant écrit des fichiers ordinaires dans un dossier de votre bibliothèque de photos Plex, et cela fonctionne avec n’importe quel Plex Media Server.</p></div>
+        </details>
+        <details id="faq-6">
+            <summary>Combien ça coûte ?</summary>
+            <div class="inner"><p>L’assistant pour votre serveur est gratuit. Dans l’app, les 100 premiers envois sont gratuits, et Phlix Pro envoie le reste.</p></div>
+        </details>
+        <details id="faq-7">
+            <summary>Toute la famille peut-elle l’utiliser ?</summary>
+            <div class="inner"><p>Oui. Chaque iPhone et iPad se jumelle séparément et reçoit son propre dossier. Le propriétaire du serveur Plex effectue le jumelage sans code ; toutes les autres personnes tapent le code de jumelage de l’assistant. Si deux téléphones contiennent la même photo, le serveur ne la stocke qu’une fois.</p></div>
+        </details>
+        <details id="faq-8">
+            <summary>Est-ce une synchronisation ? Que se passe-t-il si je supprime une photo ?</summary>
+            <div class="inner"><p>C’est une copie à sens unique, du téléphone vers le serveur. Supprimer une photo sur le téléphone laisse la copie sur le serveur. Chaque photo n’est envoyée qu’une fois.</p></div>
+        </details>
+        <details id="faq-9">
+            <summary>Est-ce que cela fonctionne avec Photos iCloud ?</summary>
+            <div class="inner"><p>Oui. Phlix lit les photos de votre photothèque, où qu’iOS les conserve. Avec « Optimiser le stockage de l’iPhone », iOS télécharge depuis iCloud l’original en pleine résolution quand Phlix le demande. Les albums partagés ne sont pas inclus.</p></div>
+        </details>
+        <details id="faq-10">
+            <summary>L’app Phlix est-elle développée par Plex ?</summary>
+            <div class="inner"><p>Non. Phlix est une app indépendante qui fonctionne avec Plex Media Server. Elle n’est pas affiliée à Plex, Inc., qui ne l’approuve ni ne la sponsorise.</p></div>
+        </details>
+
+        <div class="cta-box" data-page-section="l10n-cta">
+            <h3>Phlix : vos photos Plex, comme elles le méritent</h3>
+            <p>Une chronologie de vos photos par date et des diaporamas sur grand écran, sur votre téléviseur. À partir de la version 1.0.21, également l’envoi des photos (bêta) : une sauvegarde de votre pellicule sur votre propre serveur.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Télécharger Phlix gratuitement</a>
+            <p class="sub">iPhone et iPad · iOS 17 ou version ultérieure. L’envoi des photos nécessite Phlix 1.0.21 ou version ultérieure. Si l’App Store ne propose pas encore cette version, elle est en route.</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Accueil</a>
+            <a href="/camera-upload/" hreflang="en">Guide de configuration (en anglais)</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">Confidentialité</a>
+            <a href="/terms">Conditions d’utilisation</a>
+            <a href="/support">Assistance</a>
+        </div>
+        <p class="legal-note">Les deux lignes ci-dessous sont les mentions légales, en anglais.</p>
+        <p class="trademark" lang="en">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+    <script>
+    /* A Copy button on each command, and a link to a closed section opens it. */
+    (function () {
+        'use strict';
+        var COPY = "Copier", COPIED = "Copié";
+        var blocks = document.querySelectorAll('.cmd');
+        for (var i = 0; i < blocks.length; i++) {
+            (function (block) {
+                var code = block.querySelector('code');
+                if (!code || !navigator.clipboard) { return; }
+                var button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = COPY;
+                button.setAttribute('aria-label', COPY);
+                button.addEventListener('click', function () {
+                    navigator.clipboard.writeText(code.textContent).then(function () {
+                        button.textContent = COPIED;
+                        button.className = 'done';
+                        setTimeout(function () { button.textContent = COPY; button.className = ''; }, 1600);
+                    });
+                });
+                block.appendChild(button);
+            })(blocks[i]);
+        }
+        function openTarget() {
+            var id = location.hash.slice(1);
+            if (!id) { return; }
+            var el = document.getElementById(id);
+            while (el) {
+                if (el.tagName === 'DETAILS') { el.open = true; }
+                el = el.parentElement;
+            }
+        }
+        window.addEventListener('hashchange', openTarget);
+        openTarget();
+    })();
+    </script>
+    <script src="/blog/track.js" defer></script>
+</body>
+</html>

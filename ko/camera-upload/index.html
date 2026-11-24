@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카메라 업로드(베타): iPhone 사진을 Plex 서버에 백업 | Phlix</title>
+    <meta name="description" content="Phlix의 카메라 업로드(베타)는 집 Wi-Fi에서 iPhone 사진을 개인 Plex 서버로 백업합니다. 필요한 것, 설치 단계, 페어링, 개인정보 보호를 안내합니다.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://phlixapp.com/ko/camera-upload/">
+    <link rel="alternate" hreflang="en" href="https://phlixapp.com/camera-upload/">
+    <link rel="alternate" hreflang="de" href="https://phlixapp.com/de/camera-upload/">
+    <link rel="alternate" hreflang="fr" href="https://phlixapp.com/fr/camera-upload/">
+    <link rel="alternate" hreflang="es" href="https://phlixapp.com/es/camera-upload/">
+    <link rel="alternate" hreflang="it" href="https://phlixapp.com/it/camera-upload/">
+    <link rel="alternate" hreflang="pt-BR" href="https://phlixapp.com/pt-br/camera-upload/">
+    <link rel="alternate" hreflang="nl" href="https://phlixapp.com/nl/camera-upload/">
+    <link rel="alternate" hreflang="sv" href="https://phlixapp.com/sv/camera-upload/">
+    <link rel="alternate" hreflang="da" href="https://phlixapp.com/da/camera-upload/">
+    <link rel="alternate" hreflang="nb" href="https://phlixapp.com/nb/camera-upload/">
+    <link rel="alternate" hreflang="fi" href="https://phlixapp.com/fi/camera-upload/">
+    <link rel="alternate" hreflang="pl" href="https://phlixapp.com/pl/camera-upload/">
+    <link rel="alternate" hreflang="ja" href="https://phlixapp.com/ja/camera-upload/">
+    <link rel="alternate" hreflang="ko" href="https://phlixapp.com/ko/camera-upload/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://phlixapp.com/zh-hans/camera-upload/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://phlixapp.com/zh-hant/camera-upload/">
+    <link rel="alternate" hreflang="x-default" href="https://phlixapp.com/camera-upload/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://phlixapp.com/ko/camera-upload/">
+    <meta property="og:title" content="카메라 업로드(베타): iPhone 사진을 개인 Plex 서버에 백업하기">
+    <meta property="og:description" content="Phlix 1.0.21 이상에서 사용할 수 있는 베타 기능입니다. Plex Media Server와 같은 컴퓨터에서 실행되는 무료 Docker 도우미가 집 Wi-Fi를 통해 iPhone의 사진을 받습니다. 사진은 클라우드에 올라가지 않습니다.">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="nl_NL">
+    <meta property="og:locale:alternate" content="sv_SE">
+    <meta property="og:locale:alternate" content="da_DK">
+    <meta property="og:locale:alternate" content="nb_NO">
+    <meta property="og:locale:alternate" content="fi_FI">
+    <meta property="og:locale:alternate" content="pl_PL">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Phlix — Plex Media Server와 함께 작동하는 시간순 사진 타임라인">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="카메라 업로드(베타): iPhone 사진을 개인 Plex 서버에 백업하기">
+    <meta name="twitter:description" content="Phlix 1.0.21 이상에서 사용할 수 있는 베타 기능입니다. Plex Media Server와 같은 컴퓨터에서 실행되는 무료 Docker 도우미가 집 Wi-Fi를 통해 iPhone의 사진을 받습니다. 사진은 클라우드에 올라가지 않습니다.">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image:alt" content="Phlix — Plex Media Server와 함께 작동하는 시간순 사진 타임라인">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <link rel="stylesheet" href="/blog/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"카메라 업로드(베타): iPhone 사진을 개인 Plex 서버에 백업하기","description":"Phlix의 카메라 업로드(베타)는 집 Wi-Fi에서 iPhone 사진을 개인 Plex 서버로 백업합니다. 필요한 것, 설치 단계, 페어링, 개인정보 보호를 안내합니다.","inLanguage":"ko","datePublished":"2026-11-24","dateModified":"2026-11-24","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/ko/camera-upload/","isBasedOn":"https://phlixapp.com/camera-upload/","about":{"@type":"SoftwareApplication","name":"Phlix Photos","operatingSystem":"iOS, iPadOS","applicationCategory":"MultimediaApplication","url":"https://phlixapp.com/"}}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"카메라 업로드(베타)","item":"https://phlixapp.com/ko/camera-upload/"}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ko","mainEntity":[{"@type":"Question","name":"카메라 업로드는 베타 기능인가요?","acceptedAnswer":{"@type":"Answer","text":"네. 카메라 업로드는 Phlix 1.0.21 이상의 베타 기능입니다. 대체할 수 없는 항목은 따로 백업해 두시고, 문제가 생기면 알려 주세요. Phlix에서 설정을 열고 피드백 보내기를 탭하면 됩니다."}},{"@type":"Question","name":"Plex 자체의 Camera Upload는 어떻게 되었나요?","acceptedAnswer":{"@type":"Answer","text":"Plex는 2021년 3월에 자체 Camera Upload 기능의 지원을 종료한다고 발표했으며, 제거 시점은 2021년 6월로 예정되어 있었습니다. Phlix의 카메라 업로드는 독립 앱의 별개 기능으로, 직접 운영하는 서버의 도우미를 통해 Plex 사진 라이브러리의 폴더로 사진을 복사합니다."}},{"@type":"Question","name":"iPhone에서 사진이 삭제되나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. Phlix는 사진과 비디오를 서버로 복사합니다. 사진 보관함에 있는 어떤 항목도 절대 삭제하거나 변경하지 않습니다."}},{"@type":"Question","name":"집 밖이나 셀룰러 데이터로도 작동하나요?","acceptedAnswer":{"@type":"Answer","text":"아니요, 의도적으로 그렇게 설계되었습니다. Phlix는 휴대폰이 집 Wi-Fi에 연결되어 있을 때만 업로드합니다. 집 밖에서는 아무것도 전송하지 않으며 서버를 찾지도 않습니다. 여행 중에 찍은 사진은 집에 돌아오면 업로드됩니다."}},{"@type":"Question","name":"Plex Pass가 필요한가요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 도우미는 Plex 사진 라이브러리의 폴더에 일반 파일을 저장하므로 모든 Plex Media Server에서 작동합니다."}},{"@type":"Question","name":"비용은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"서버용 도우미는 무료입니다. 앱에서는 처음 100회의 업로드가 무료이며, 나머지는 Phlix Pro가 업로드합니다."}},{"@type":"Question","name":"가족 모두가 사용할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. iPhone과 iPad는 각각 따로 페어링하며 각자 자체 폴더를 받습니다. Plex 서버 소유자는 코드 없이 페어링하고, 그 외의 모든 사용자는 도우미의 페어링 코드를 입력합니다. 두 휴대폰에 같은 사진이 있으면 서버에는 한 번만 저장됩니다."}},{"@type":"Question","name":"동기화인가요? 사진을 삭제하면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"휴대폰에서 서버로 가는 단방향 복사입니다. 휴대폰에서 사진을 삭제해도 서버의 사본은 그대로 남습니다. 각 사진은 한 번만 업로드됩니다."}},{"@type":"Question","name":"iCloud 사진과 함께 작동하나요?","acceptedAnswer":{"@type":"Answer","text":"네. Phlix는 iOS가 사진을 어디에 보관하든 사진 보관함의 사진을 읽습니다. ‘iPhone 저장 공간 최적화’를 사용하는 경우, Phlix가 요청하면 iOS가 iCloud에서 원본 크기의 사진을 다운로드합니다. 공유 앨범은 포함되지 않습니다."}},{"@type":"Question","name":"Phlix는 Plex에서 만든 앱인가요?","acceptedAnswer":{"@type":"Answer","text":"아니요. Phlix는 Plex Media Server와 함께 작동하는 독립 앱입니다. Plex, Inc.와 제휴 관계가 없으며 Plex, Inc.의 보증이나 후원을 받지 않습니다."}}]}
+    </script>
+    <style>
+        /* Page-specific pieces. Everything else comes from /blog/style.css. */
+        article.guide { max-width: 780px; }
+        .breadcrumb { max-width: 780px; }
+        .guide .lead { font-size: 1.12rem; color: var(--text); line-height: 1.7; }
+        .guide .category.beta { background: rgba(240,180,41,0.15); color: var(--gold); }
+        .guide h2 { margin-top: 56px; padding-top: 8px; font-size: 1.55rem; }
+        .guide h3 { margin-top: 32px; }
+        .guide ol > li { margin-bottom: 12px; }
+        .guide kbd { background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.88em; color: var(--text); font-family: inherit; }
+        .langs { max-width: 780px; margin: 0 auto; padding: 10px 24px 0; font-size: 0.82rem; color: var(--text-3); line-height: 2; }
+        .langs a { color: var(--text-2); margin-right: 10px; white-space: nowrap; }
+        .langs a[aria-current="page"] { color: var(--gold); font-weight: 700; }
+        .langs-label { margin-right: 8px; }
+        .hero-row { display: flex; gap: 32px; align-items: flex-start; margin: 24px 0 8px; }
+        .hero-row .hero-text { flex: 1 1 0; min-width: 0; }
+        .hero-row figure { flex: 0 0 230px; margin: 0; }
+        .hero-row figure img { width: 100%; border-radius: 22px; border: 1px solid var(--border); margin: 0; display: block; }
+        .guide figure figcaption { font-size: 0.8rem; color: var(--text-3); text-align: center; margin-top: 8px; }
+        .facts { list-style: none; margin: 20px 0 0 !important; padding: 0; }
+        .facts li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+        .facts li::before { content: ""; position: absolute; left: 4px; top: 0.62em; width: 10px; height: 10px; border-radius: 50%; background: var(--check); }
+        .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 32px 0 0; }
+        .toc strong { display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+        .toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; }
+        .toc li { margin-bottom: 4px; break-inside: avoid; }
+        .choice { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin: 20px 0; }
+        .choice > h3 { margin: 0 0 4px; font-size: 1.15rem; }
+        .choice .for { color: var(--text-3); font-size: 0.88rem; margin-bottom: 14px; }
+        .choice.best { border-color: rgba(240,180,41,0.45); }
+        .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: rgba(240,180,41,0.15); color: var(--gold); margin-left: 8px; vertical-align: middle; }
+        .cmd { position: relative; }
+        .cmd pre { padding-right: 84px; white-space: pre; }
+        .cmd button { position: absolute; top: 9px; right: 9px; background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .cmd button:hover { color: var(--text); border-color: rgba(240,180,41,0.4); }
+        .cmd button.done { color: var(--check); border-color: rgba(76,175,80,0.5); }
+        .note { border-left: 3px solid var(--gold); background: var(--surface); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+        .note p { margin: 0; }
+        .guide details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; }
+        .guide details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+        .guide details > summary::-webkit-details-marker { display: none; }
+        .guide details > summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.3rem; font-weight: 400; }
+        .guide details[open] > summary::after { content: "\2212"; }
+        .guide details > .inner { padding: 0 18px 8px; }
+        .guide details > .inner > :first-child { margin-top: 0; }
+        .compose pre { max-height: 520px; font-size: 0.82rem; }
+        .tree { line-height: 1.5; }
+        .legal-note { color: var(--text-3); font-size: 0.75rem; margin-bottom: 4px; }
+        @media (max-width: 700px) {
+            .hero-row { flex-direction: column; }
+            .hero-row figure { flex-basis: auto; width: 100%; max-width: 240px; margin: 0 auto; }
+            .toc ol { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav data-page-section="l10n-nav"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">홈</a><a href="/camera-upload/" hreflang="en">전체 가이드(영어)</a><a href="/support">지원</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">무료 다운로드</a></div></div></nav>
+
+    <div class="breadcrumb"><a href="/">홈</a> &rsaquo; 카메라 업로드(베타)</div>
+    <div class="langs" role="navigation" aria-label="언어"><span class="langs-label">언어:</span> <a href="/camera-upload/" hreflang="en" lang="en">English</a> <a href="/de/camera-upload/" hreflang="de" lang="de">Deutsch</a> <a href="/fr/camera-upload/" hreflang="fr" lang="fr">Français</a> <a href="/es/camera-upload/" hreflang="es" lang="es">Español</a> <a href="/it/camera-upload/" hreflang="it" lang="it">Italiano</a> <a href="/pt-br/camera-upload/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> <a href="/nl/camera-upload/" hreflang="nl" lang="nl">Nederlands</a> <a href="/sv/camera-upload/" hreflang="sv" lang="sv">Svenska</a> <a href="/da/camera-upload/" hreflang="da" lang="da">Dansk</a> <a href="/nb/camera-upload/" hreflang="nb" lang="nb">Norsk bokmål</a> <a href="/fi/camera-upload/" hreflang="fi" lang="fi">Suomi</a> <a href="/pl/camera-upload/" hreflang="pl" lang="pl">Polski</a> <a href="/ja/camera-upload/" hreflang="ja" lang="ja">日本語</a> <a href="/ko/camera-upload/" hreflang="ko" lang="ko" aria-current="page">한국어</a> <a href="/zh-hans/camera-upload/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> <a href="/zh-hant/camera-upload/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></div>
+
+    <article class="guide">
+        <span class="category beta">베타 · 설정 가이드</span>
+        <h1>카메라 업로드(베타): iPhone 사진을 개인 Plex 서버에 백업하기</h1>
+        <p class="meta">2026년 11월 24일 업데이트 · 설정 시간 약 10분</p>
+
+        <div class="hero-row">
+            <div class="hero-text">
+                <p class="lead">카메라 업로드는 기기가 집 Wi-Fi에 연결되어 있는 동안 iPhone이나 iPad의 사진과 비디오를 집에 있는 서버로 백업합니다. 백업한 항목은 다른 모든 항목과 함께 Plex와 Phlix에 표시됩니다. 클라우드도 저장 공간 구독도 필요 없습니다. 사진은 개인 서버로 전송될 뿐, 다른 누구에게도 전송되지 않습니다.</p>
+                <p><strong>카메라 업로드는 베타 기능입니다.</strong> Phlix 1.0.21 이상에 포함되어 있습니다. App Store에서 아직 이 버전을 받을 수 없다면 출시 준비 중인 것입니다.</p>
+                <p>카메라 업로드는 두 부분으로 이루어져 있습니다. iPhone이나 iPad의 <strong>Phlix 앱</strong>이 카메라 롤을 읽습니다. 서버에 설치하는 작은 무료 프로그램인 <strong>카메라 업로드 도우미</strong>가 사진을 받아 Plex 사진 라이브러리의 폴더에 저장합니다. 도우미는 Docker 컨테이너 하나로 되어 있습니다.</p>
+                <ul class="facts">
+                    <li><strong>집에서만 작동합니다.</strong> Phlix는 집 Wi-Fi에서만 업로드하고, 그 밖의 곳에서는 업로드하지 않습니다. 셀룰러 데이터로는 절대 업로드하지 않습니다.</li>
+                    <li><strong>개인 서버로만 전송합니다.</strong> 사진은 암호화되어 휴대폰에서 서버로 바로 전송됩니다. Phlix에는 사진이 한 장도 전송되지 않습니다.</li>
+                    <li><strong>복사만 합니다.</strong> 휴대폰에 있는 항목은 절대 삭제되거나 변경되지 않습니다.</li>
+                </ul>
+            </div>
+            <figure>
+                <img src="/camera-upload/img/backed-up.png" alt="베타 표시가 있는 Phlix의 카메라 업로드 화면: 초록색 점 옆의 ‘(도우미 이름)에 연결됨’, 켜져 있는 카메라 업로드 스위치, 가득 찬 진행 막대 위의 ‘모든 항목 백업됨’" width="414" height="900" loading="eager">
+                <figcaption>Phlix의 카메라 업로드(베타). 스크린샷은 영어 버전 앱입니다.</figcaption>
+            </figure>
+        </div>
+
+        <nav class="toc" aria-label="이 페이지의 내용" style="position:static;height:auto;background:var(--surface);backdrop-filter:none;-webkit-backdrop-filter:none">
+            <strong>이 페이지의 내용</strong>
+            <ol>
+                <li><a href="#why">배경: Plex 자체 Camera Upload 기능의 종료</a></li>
+                <li><a href="#what-you-need">필요한 것</a></li>
+                <li><a href="#install">1단계: 도우미 설치하기</a></li>
+                <li><a href="#check">실행 확인하기</a></li>
+                <li><a href="#connect">2단계: iPhone 연결하기</a></li>
+                <li><a href="#after">그다음에 일어나는 일</a></li>
+                <li><a href="#where">사진이 저장되는 위치</a></li>
+                <li><a href="#privacy">개인정보 보호 및 보안</a></li>
+                <li><a href="#help">도움말 및 문제 해결</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ol>
+        </nav>
+
+        <h2 id="why">배경: Plex 자체 Camera Upload 기능의 종료</h2>
+        <p>Plex에는 2014년부터 자체 Camera Upload 기능이 있었습니다. 2021년 3월, Plex는 포럼을 통해 이 기능의 지원을 종료한다고 발표했으며, 제거 시점은 2021년 6월로 예정되어 있었습니다(<a href="https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626">Plex의 발표, 보관된 사본</a>).</p>
+        <p>Phlix의 카메라 업로드는 이 아이디어를 iPhone과 iPad에서 다시 살려 냅니다. Phlix는 Plex Media Server와 함께 작동하는 독립 앱이며, Plex에서 만든 앱이 아닙니다. <a href="/plex-camera-upload/">전체 이야기(영어)</a>.</p>
+
+        <h2 id="what-you-need">필요한 것</h2>
+        <ul>
+            <li><strong>사진 라이브러리가 있는 Plex Media Server</strong>: Docker 20.10 이상을 실행하는 컴퓨터나 NAS에 있어야 합니다. Linux, Docker Desktop을 설치한 Mac 또는 Windows PC, Synology(Container Manager, DSM 7.2 이상), Unraid, TrueNAS SCALE 24.10 이상에서 사용할 수 있습니다. Docker는 다른 프로그램을 컨테이너라는 닫힌 상자 안에서 실행하는 무료 프로그램입니다. Intel, AMD, Arm 프로세서에서 모두 작동합니다.</li>
+            <li><strong>Phlix 1.0.21 이상</strong>: iPhone 또는 iPad에 설치되어 있어야 합니다. App Store에서 아직 이 버전을 받을 수 없다면 출시 준비 중인 것입니다.</li>
+            <li><strong>휴대폰과 서버가 같은 집 네트워크에 있어야 합니다.</strong></li>
+        </ul>
+        <p>도우미는 무료입니다. 앱에서는 처음 100회의 업로드가 무료이며, 나머지는 <a href="/#pricing">Phlix Pro</a>가 업로드합니다. 카메라 업로드가 베타인 동안에는 대체할 수 없는 항목을 따로 백업해 두세요. <a href="/camera-upload/#beta">베타에서 되는 것과 안 되는 것(영어)</a>.</p>
+
+        <h2 id="install">1단계: 도우미 설치하기</h2>
+        <p class="note">휴대폰으로 보고 계신가요? 1단계는 서버에서 진행합니다. 명령어를 복사할 수 있도록 컴퓨터에서 이 페이지를 여세요.</p>
+        <p>Plex Media Server를 실행하는 컴퓨터에서 한 번만 하면 됩니다. 먼저 휴대폰의 사진이 들어갈 폴더인 <strong>업로드 폴더</strong>를 정하세요. 이 폴더는 반드시 <strong>Plex 사진 라이브러리 중 하나에 포함된 폴더 안에</strong> 있어야 합니다. 그렇지 않으면 Plex에 사진이 표시되지 않습니다. 라이브러리 폴더가 <code>/mnt/media/Photos</code>라면 <code>/mnt/media/Photos/Camera Uploads</code>를 사용하는 것이 좋습니다.</p>
+        <p>라이브러리의 폴더를 확인하려면 브라우저에서 Plex를 열고 <em>Settings › Manage › Libraries</em>로 이동한 다음, 사진 라이브러리에서 <em>Edit Library</em>를 선택하고 <em>Add folders</em>를 선택하세요. (이는 Plex의 영어 메뉴 이름이며, 사용 중인 Plex에서는 한국어로 표시될 수 있습니다.)</p>
+        <p><strong>Plex도 Docker에서 실행되나요?</strong> Unraid와 TrueNAS SCALE에서는 흔한 경우입니다. 이때 Plex는 자체 컨테이너 안의 폴더 경로(예: <code>/data/Photos</code>)를 보여 줍니다. 도우미에는 서버상의 폴더 경로(예: <code>/mnt/media/Photos</code>)가 필요합니다. <a href="/camera-upload/#sys-plex-docker">두 경로를 찾는 방법(영어)</a>.</p>
+        <p>도우미를 설치하는 방법은 세 가지입니다. 방법 B는 모든 시스템에서 작동합니다. Unraid, Synology, TrueNAS SCALE에서는 방법 A와 C 대신 아래의 <a href="#other-systems">시스템별 안내</a>를 따르세요.</p>
+        <p>명령어는 서버의 터미널에 입력합니다. Mac에서는 터미널 앱, Windows에서는 PowerShell, Linux에서는 터미널 프로그램을 사용하거나 다른 컴퓨터에서 SSH로 접속합니다. 상자 안의 명령어에는 복사 버튼이 있습니다. Docker가 “permission denied”라고 응답하면 모든 <code>docker</code> 명령어 앞에 <code>sudo</code>를 붙이세요.</p>
+
+        <div class="choice best" id="install-one-command">
+            <h3>A. 명령어 하나로 <span class="tag">빠름</span></h3>
+            <p class="for">Linux 컴퓨터나 서버, 그리고 Docker Desktop을 설치한 Mac에서 사용할 수 있습니다. Windows, Unraid, TrueNAS SCALE에서는 사용할 수 없습니다.</p>
+            <p>서버의 터미널에 다음 명령어를 붙여 넣으세요:</p>
+            <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh</code></pre></div>
+            <p>설치 프로그램은 Docker를 확인하고 업로드 폴더를 묻습니다. 그런 다음 홈 폴더에 <code>phlix-camera-upload</code>라는 새 폴더를 만들어 Compose 파일(<code>docker-compose.yml</code>)을 저장하고, 도우미를 시작한 뒤 점검을 실행합니다. 모두 정상이면 <code>Phlix Camera Upload is running.</code>을 출력하고, 그 아래에 도우미 상태 페이지의 주소와 함께 <code>Status page:</code>로 시작하는 줄을 출력합니다.</p>
+            <p>이 스크립트는 <code>sudo</code>를 사용하는 일도, Plex를 변경하는 일도, 사진을 삭제하는 일도 없습니다. 실행하기 전에 <a href="/camera-upload/install.sh">스크립트를 읽어 볼</a> 수 있으며, 아무것도 변경하지 않는 <code>--dry-run</code>으로 먼저 시험해 볼 수도 있습니다:</p>
+            <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh -s -- --dry-run</code></pre></div>
+            <p>도우미를 업데이트하려면 언제든지 설치 프로그램을 다시 실행하세요. 같은 스크립트가 <a href="https://github.com/jrl8085/phlix-camera-upload">GitHub 저장소</a>에도 있습니다.</p>
+        </div>
+
+        <div class="choice" id="install-with-ai">
+            <h3>B. AI 어시스턴트에게 맡기기</h3>
+            <p><a href="/camera-upload/SETUP-WITH-AI.md">SETUP-WITH-AI.md</a> 파일에는 AI 어시스턴트를 위해 작성된 전체 안내가 담겨 있습니다. Plex 라이브러리 폴더를 찾는 방법, 도우미를 설치하고 점검하는 방법, 문제가 생겼을 때 해결하는 방법이 들어 있습니다. 어시스턴트는 도우미 자체 폴더 밖의 것을 변경하기 전에 먼저 묻습니다. 파일은 영어로 되어 있지만, 어시스턴트는 한국어로 대화할 수 있습니다.</p>
+            <p>서버에서 명령을 실행할 수 있는 어시스턴트(Claude Code, Codex, Gemini CLI, Cursor 및 비슷한 도구)를 사용한다면, 서버의 비어 있는 새 폴더에서 다음을 실행하세요:</p>
+            <div class="cmd"><pre><code>curl -fsSLO https://phlixapp.com/camera-upload/SETUP-WITH-AI.md</code></pre></div>
+            <p>그런 다음 그 폴더에서 어시스턴트를 시작하고 이렇게 말하세요: <kbd>SETUP-WITH-AI.md의 안내대로 진행해 주세요</kbd></p>
+            <p>Claude Code에서는 터미널에서 한 번만 실행해 설정을 스킬로 추가할 수도 있습니다:</p>
+            <div class="cmd"><pre><code>claude plugin marketplace add jrl8085/phlix-camera-upload
+claude plugin install phlix-camera-upload@phlix</code></pre></div>
+            <p>그런 다음 서버에서 Claude Code를 시작하고 이렇게 말하세요: <kbd>이 서버에 Phlix Camera Upload를 설정해 주세요</kbd></p>
+            <p>ChatGPT나 Claude 앱 같은 채팅 어시스턴트를 사용한다면 <a href="/camera-upload/SETUP-WITH-AI.md">SETUP-WITH-AI.md</a> 파일을 전달하고 <kbd>한 단계씩 차근차근 안내해 주세요</kbd>라고 말하세요. 어시스턴트가 명령어를 하나씩 알려 주면 서버에서 실행하고, 출력된 내용을 다시 붙여 넣으면 됩니다.</p>
+        </div>
+
+        <div class="choice" id="install-by-hand">
+            <h3>C. Docker Compose로 직접 설치하기</h3>
+            <p class="for">Linux, Mac 또는 Windows PC에서 모든 단계를 직접 확인하고 싶은 분을 위한 방법입니다. 6단계로 되어 있으며, 수정할 줄은 하나뿐입니다.</p>
+            <ol>
+                <li>사진을 소유한 사용자로 업로드 폴더를 만드세요. 도우미는 이 폴더의 소유자로 파일을 저장합니다.
+                    <div class="cmd"><pre><code>mkdir &quot;/mnt/media/Photos/Camera Uploads&quot;</code></pre></div></li>
+                <li>도우미용 폴더를 만들고 그 폴더로 이동하세요.
+                    <div class="cmd"><pre><code>mkdir phlix-camera-upload
+cd phlix-camera-upload</code></pre></div></li>
+                <li>Compose 파일 <code>docker-compose.yml</code>을 다운로드하세요. Docker에 도우미를 실행하는 방법을 알려 주는 작은 텍스트 파일입니다.
+                    <div class="cmd"><pre><code>curl -fsSLO https://phlixapp.com/camera-upload/docker-compose.yml</code></pre></div></li>
+                <li>텍스트 편집기에서 <code>docker-compose.yml</code>을 여세요. <code>CHANGE THE NEXT LINE</code> 주석을 찾으세요. 그 아래 줄에서 <code>/CHANGE/THIS/Photos/Camera Uploads</code>를 업로드 폴더 경로로 바꾸세요. 파일을 저장하세요.</li>
+                <li>도우미를 시작하세요. 처음에는 Docker가 이미지를 다운로드합니다. 이미지는 Docker용으로 패키징된 도우미입니다.
+                    <div class="cmd"><pre><code>docker compose up -d</code></pre></div></li>
+                <li>모든 것이 정상인지 도우미에게 확인하세요.
+                    <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div></li>
+            </ol>
+            <details class="compose" id="compose-file">
+                <summary>다운로드되는 그대로의 Compose 파일</summary>
+                <div class="inner">
+                    <p>파일 안의 주석은 영어로 되어 있습니다. <code>CHANGE THE NEXT LINE</code> 아래의 줄만 수정하세요.</p>
+<pre><code># Phlix Camera Upload
+#
+# This file starts the helper that receives the photos and videos the Phlix
+# app uploads from your iPhone or iPad, and writes them into a folder of your
+# Plex photo library.
+#
+# How to use this file:
+#   1. Change the one line marked CHANGE THE NEXT LINE below.
+#   2. In the folder that holds this file, run:  docker compose up -d
+#   3. Open https://YOUR-SERVER:7459 in a browser to check that it runs.
+#      The browser warns about the certificate. That is expected.
+#
+# If something does not work, ask the helper what is wrong:
+#   docker exec phlix-camera-upload python -m phlix_upload doctor
+#
+# Setup guide: https://phlixapp.com/camera-upload/
+# If the app cannot find the helper:
+#   https://github.com/jrl8085/phlix-camera-upload/blob/main/NETWORKING.md
+
+services:
+  phlix-camera-upload:
+    image: ghcr.io/jrl8085/phlix-camera-upload:1
+    container_name: phlix-camera-upload
+
+    # Start again by itself when the server or Docker restarts.
+    restart: unless-stopped
+
+    # The Phlix app looks for the helper on port 7459 of your server.
+    ports:
+      - &quot;7459:7459&quot;
+
+    volumes:
+      # Your upload folder: the folder on this server where the photos go.
+      #
+      # It must be inside a folder that one of your Plex photo libraries
+      # includes. If it is not, Plex never shows the photos.
+      #
+      # Make the folder before you start the helper. Docker refuses to start
+      # the helper if the folder is missing. The helper writes files as the
+      # user who owns the folder.
+      #
+      # Write the path as it is on the server itself. If Plex runs in Docker,
+      # do not use the path from inside the Plex container.
+      #
+      # Examples:
+      #   Linux      /mnt/media/Photos/Camera Uploads
+      #   Synology   /volume1/photo/Camera Uploads
+      #   TrueNAS    /mnt/tank/media/Photos/Camera Uploads
+      #   Mac        /Users/you/Pictures/Camera Uploads
+      #   Windows    C:\Users\you\Pictures\Camera Uploads
+      #
+      # Spaces in the path are fine. If the path has a &quot;#&quot; after a space, or
+      # a &quot;:&quot; before a space, put the whole path in &#x27;single quotes&#x27;.
+      - type: bind
+        # CHANGE THE NEXT LINE. Keep &quot;source: &quot; and write your folder after it.
+        source: /CHANGE/THIS/Photos/Camera Uploads
+        target: /photos
+        bind:
+          create_host_path: false
+
+      # The helper&#x27;s own data: the list of paired phones, the list of files
+      # it has received, and its certificate. No photos are kept here.
+      # Docker makes a folder named &quot;config&quot; next to this file. Keep it: if
+      # it is lost, every phone has to pair again.
+      # If your tool has no &quot;next to this file&quot; (TrueNAS, Portainer), write a
+      # full path in place of ./config, for example:
+      #   /mnt/tank/apps/phlix-camera-upload:/config
+      - ./config:/config
+
+    # Lets the helper find Plex Media Server on this machine.
+    extra_hosts:
+      - &quot;host.docker.internal:host-gateway&quot;
+
+    # The helper can never gain more rights than it was started with.
+    security_opt:
+      - &quot;no-new-privileges:true&quot;
+
+    # Optional settings. The helper works without any of them.
+    #
+    # To use one, remove the &quot;# &quot; in front of &quot;environment:&quot; and in front of
+    # the setting you want. Leave the other spaces as they are. Then run
+    # &quot;docker compose up -d&quot; again.
+    #
+    # environment:
+    #   # Where Plex Media Server is. Set this if the helper&#x27;s status page
+    #   # says &quot;Plex Media Server: Not found&quot;, or to make sure that the helper
+    #   # asks your own server and no other.
+    #   PLEX_URL: &quot;http://192.168.1.10:32400&quot;
+    #
+    #   # Write files as this user and group. Without these, the helper uses
+    #   # the owner of the upload folder.
+    #   PUID: &quot;1000&quot;
+    #   PGID: &quot;1000&quot;
+    #
+    #   # Permissions for new files and folders. With 022, other users may
+    #   # read them. With 002, the group may also change them.
+    #   UMASK: &quot;022&quot;
+    #
+    #   # The name that the app and the status page show for this helper.
+    #   NAME: &quot;Phlix Camera Upload&quot;
+    #
+    #   # Who may pair. auto: the owner of the Plex server pairs without a
+    #   # code and everyone else types the pairing code. code: everyone types
+    #   # the code. plex: only the owner of the Plex server may pair.
+    #   PAIRING: &quot;auto&quot;
+    #
+    #   # Your own pairing code, in place of the one the helper makes. Write
+    #   # at least 6 letters or digits between the quotes.
+    #   PAIRING_CODE: &quot;&quot;
+    #
+    #   # The folders the helper makes inside the upload folder. You can use
+    #   # {device}, {year}, {month} and {day}.
+    #   PATH_TEMPLATE: &quot;{device}/{year}/{year}-{month}&quot;
+    #
+    #   # Refuse uploads that would leave less than this many GB free. Uploads
+    #   # that are still arriving count too.
+    #   MIN_FREE_GB: &quot;2&quot;
+    #
+    #   # The largest single file the helper accepts, in GB.
+    #   MAX_UPLOAD_GB: &quot;50&quot;
+    #
+    #   # More file types to accept, besides the usual photo and video types.
+    #   # Separate them with commas.
+    #   EXTRA_EXTENSIONS: &quot;insp,lrv&quot;
+    #
+    #   # How much the log says: debug, info, warning or error.
+    #   LOG_LEVEL: &quot;info&quot;
+    #
+    #   # Write &quot;off&quot; only if your own reverse proxy adds HTTPS in front of
+    #   # the helper. Phlix talks HTTPS only: with &quot;off&quot; and no such proxy,
+    #   # the app cannot use the helper.
+    #   TLS: &quot;on&quot;
+    #
+    #   # Your own certificate and its key, as paths inside the container.
+    #   # Set both. A file you put in the config folder is at /config/...
+    #   TLS_CERT: &quot;/config/my-cert.pem&quot;
+    #   TLS_KEY: &quot;/config/my-key.pem&quot;
+    #
+    # PORT, BIND, UPLOAD_DIR and CONFIG_DIR exist too. With Docker you do not
+    # need them. To use another port on your server, change only the first
+    # number in the &quot;ports&quot; line above, for example &quot;8443:7459&quot;. The app
+    # looks for port 7459 by itself, so with another port you type the
+    # helper&#x27;s address into the app.</code></pre>
+                </div>
+            </details>
+        </div>
+
+        <h3 id="other-systems">Unraid, Synology, TrueNAS SCALE 및 Windows</h3>
+        <ul>
+            <li><strong>Unraid</strong>에는 Docker Compose가 없습니다. Plex 사진 라이브러리에 포함된 공유 폴더 안에 업로드 폴더를 만들고, <code>chown 99:100</code>으로 Unraid 기본 사용자에게 소유권을 넘긴 다음, 아래 명령어로 템플릿을 다운로드하세요. 그런 다음 Docker 탭에서 <em>Add Container</em>를 선택하고 <code>phlix-camera-upload</code>를 고르세요. <a href="/camera-upload/#sys-unraid">Unraid 설치 단계(영어)</a>.
+                <div class="cmd"><pre><code>mkdir &quot;/mnt/user/Photos/Camera Uploads&quot;
+chown 99:100 &quot;/mnt/user/Photos/Camera Uploads&quot;</code></pre></div>
+                <div class="cmd"><pre><code>wget -O /boot/config/plugins/dockerMan/templates-user/my-phlix-camera-upload.xml https://raw.githubusercontent.com/jrl8085/phlix-camera-upload/main/unraid/phlix-camera-upload.xml</code></pre></div></li>
+            <li><strong>Synology:</strong> Container Manager에서 <code>phlix-camera-upload</code>라는 이름의 프로젝트를 만들고 <a href="/camera-upload/docker-compose.yml">docker-compose.yml</a>의 내용을 붙여 넣으세요. 업로드 폴더는 <code>/volume1/photo/Camera Uploads</code>처럼 전체 경로로 적으세요. <a href="/camera-upload/#sys-synology">Synology 설치 단계(영어)</a>.</li>
+            <li><strong>TrueNAS SCALE:</strong> 방법 A는 사용하지 마세요. <em>Apps › Discover Apps</em>로 이동해 <em>Install via YAML</em>을 선택하고, Compose 파일을 붙여 넣은 다음 전체 경로를 입력하세요. <a href="/camera-upload/#sys-truenas">TrueNAS SCALE 설치 단계(영어)</a>.</li>
+            <li><strong>Docker Desktop을 사용하는 Mac 또는 Windows PC:</strong> Windows에서는 방법 B나 C를 사용하고, 이 페이지에 <code>curl</code>이라고 적힌 곳에는 <code>curl.exe</code>를 입력하세요. 업로드는 Docker Desktop이 실행 중이고 컴퓨터가 잠자기 상태가 아닐 때만 진행됩니다. <a href="/camera-upload/#sys-desktop">Mac 및 Windows 참고 사항(영어)</a>.</li>
+        </ul>
+
+        <h2 id="check">실행 확인하기</h2>
+        <p>집 네트워크에 있는 다른 기기의 브라우저에서 도우미의 상태 페이지를 여세요. <code>SERVER</code>는 서버 주소로 바꾸세요(예: <code>https://192.168.1.10:7459</code>):</p>
+        <div class="cmd"><pre><code>https://SERVER:7459</code></pre></div>
+        <p>브라우저에 연결이 비공개 연결이 아니라는 경고가 표시됩니다. <strong>이는 정상입니다.</strong> 가정용 서버에는 인증 기관이 보증할 수 있는 공개 이름이 없기 때문에 도우미가 자체 인증서를 만듭니다. 그대로 페이지로 이동하세요. Phlix는 브라우저의 확인에 의존하지 않고, 페어링할 때 도우미의 인증서를 정확히 기억합니다.</p>
+        <p>페이지에 <code>Upload folder: Ready</code>와 <code>Plex Media Server: Found</code>가 표시되어야 합니다. 다른 내용이 표시되면 <code>doctor</code> 명령어가 해결 방법을 알려 줍니다:</p>
+        <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
+<pre><code>Phlix Camera Upload 1.0.1
+OK       The helper is running on port 7459
+OK       The upload folder /photos can be written to.
+OK       223.6 GB free on the upload disk.
+OK       Plex Media Server found: its owner can pair from Phlix without a code.
+OK       1 paired, 37 files stored (33.0 MB).
+NOTE     Pairing code: run `python -m phlix_upload code` the same way to see it.
+Nothing needs fixing.</code></pre>
+        <p><code>PROBLEM</code>으로 시작하는 줄 다음에는 <code>Fix:</code>로 시작하는 줄이 이어집니다.</p>
+        <div class="note"><p><strong>Plex 설정 하나.</strong> Plex는 스캔을 마친 후에야 새 파일을 표시합니다. Plex 계정이 서버의 소유자라면 사진이 도착한 후 Phlix가 Plex에 스캔을 요청합니다. 집의 다른 모든 사용자를 위해, 그리고 확실히 하기 위해 Plex에서 <em>Settings › Library › Scan my library automatically</em>를 켜세요. 기본적으로 꺼져 있습니다.</p></div>
+
+        <h2 id="connect">2단계: iPhone 연결하기</h2>
+        <ol>
+            <li>iPhone이나 iPad를 집 Wi-Fi에 연결하세요.</li>
+            <li>Phlix를 열고 <strong>설정</strong> › <strong>카메라 업로드</strong>로 이동하세요. <strong>설정</strong>에 <strong>카메라 업로드</strong> 항목이 없다면 사용 중인 Phlix가 1.0.21보다 이전 버전입니다. 버전 번호는 <strong>설정</strong>의 <strong>버전</strong> 항목에서 확인할 수 있습니다.</li>
+            <li><strong>도우미 찾기</strong>를 탭한 다음 <strong>네트워크 확인</strong>을 탭하세요. Phlix가 Plex 서버의 주소에서 도우미를 찾습니다. 도우미를 찾을 때까지는 아무것도 켜지지 않고 아무것도 업로드되지 않습니다. iOS에서 Phlix가 로컬 네트워크의 기기를 찾도록 허용할지 물으면 허용하세요.</li>
+            <li>Phlix에 <strong>도우미를 찾았습니다</strong>라고 표시되면 이 기기의 폴더 이름(예: “지민의 iPhone”)을 정하고 <strong>연결</strong>을 탭하세요. 이름은 신중하게 정하세요. 기기는 처음 페어링할 때 받은 폴더를 계속 사용합니다.</li>
+            <li>이제 Phlix에 <strong>페어링 코드를 입력하세요</strong>라는 화면이 나타나면 도우미의 페어링 코드를 입력하고 <strong>페어링</strong>을 탭하세요. 개인 Plex 계정이 있는 가족 구성원에게 이 단계가 표시됩니다. 코드를 찾는 위치는 아래의 <a href="#pairing">코드가 필요한 사람</a>에서 확인하세요.</li>
+            <li>Phlix에 <strong>연결됨</strong>이 표시됩니다. 백업할 항목으로 <strong>이 기기의 모든 항목</strong> 또는 <strong>새로운 사진만</strong>을 선택하고 <strong>카메라 업로드 켜기</strong>를 탭하세요.</li>
+            <li>iOS에서 Phlix가 사진을 읽어도 되는지 묻습니다. 모든 사진을 백업할 수 있도록 ‘전체 접근 허용’을 선택하세요.</li>
+        </ol>
+        <p>초록색 점과 함께 도우미 이름이 들어간 <strong>…에 연결됨</strong>이 표시되면 연결 상태가 좋은 것입니다. 회색은 집 밖에 있다는 뜻이며, 이때 Phlix는 기다립니다. 주황색은 확인이 필요한 문제가 있다는 뜻이며, 화면에 그 내용이 표시됩니다.</p>
+
+        <h3 id="pairing">페어링 코드가 필요한 사람</h3>
+        <ul>
+            <li><strong>Plex 서버의 소유자:</strong> 도우미의 상태 페이지에 <code>Plex Media Server: Found</code>가 표시되어 있으면 Phlix는 코드 없이 페어링합니다. 앱이 Plex 서버에서 받은 수명이 짧은 토큰을 도우미에게 보여 주면, 도우미는 이 토큰이 서버 소유자의 것인지 Plex에 확인한 다음 토큰을 잊어버립니다.</li>
+            <li><strong>그 외의 모든 사용자</strong>(예: 개인 Plex 계정이 있는 가족 구성원)는 도우미의 페어링 코드를 입력합니다. 서버 소유자는 이 명령어로 코드를 찾거나, 도우미가 시작할 때마다 남기는 로그에서 찾을 수 있습니다. 대소문자, 공백, 대시는 상관없습니다:
+                <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload code</code></pre></div></li>
+        </ul>
+        <p>Phlix에 <strong>도우미를 찾지 못했습니다</strong>라고 표시되면 카메라 업로드는 꺼진 상태로 유지되며, 어디로도 아무것도 전송되지 않습니다. <a href="/camera-upload/#ts-not-found">앱이 도우미를 찾지 못하는 경우(영어)</a>.</p>
+
+        <h2 id="after">그다음에 일어나는 일</h2>
+        <ul>
+            <li><strong>Phlix를 열어 두면</strong> 업로드가 바로 시작되고 Wi-Fi가 허용하는 만큼 빠르게 진행됩니다. 처음에 대량으로 백업할 때는 휴대폰을 충전기에 연결하고 카메라 업로드 화면을 열어 두면 더 빠르게 진행됩니다.</li>
+            <li><strong>Phlix를 닫으면</strong> iOS가 주로 휴대폰을 충전하는 동안 짧게 여러 번에 걸쳐 작업을 이어 가도록 허용합니다. iOS는 모든 앱을 이렇게 처리하므로, 보관함이 크면 백그라운드에서 며칠이 걸립니다. 새로 찍은 사진은 그 뒤로 자동으로 업로드됩니다.</li>
+            <li><strong>집 밖에서는</strong> 아무것도 전송되지 않으며, Phlix는 서버를 찾지도 않습니다. 휴대폰이 집 Wi-Fi에 다시 연결되면 백업이 계속됩니다.</li>
+            <li><strong>모든 항목이 백업되면</strong> 화면에 <strong>모든 항목 백업됨</strong>이라고 표시됩니다. 알림도 받으려면 <strong>백업 완료 시 알림</strong>을 켜세요.</li>
+        </ul>
+        <p>Phlix는 사진 보관함에 있는 사진과 비디오를 각각 한 번씩, 그 시점에 사진 앱에 보이는 모습 그대로 업로드합니다. 비디오는 선택 사항이며(<strong>비디오 포함</strong>), 스크린샷은 <strong>스크린샷 포함</strong>을 켜지 않으면 제외됩니다. Live Photo는 스틸 사진으로 업로드됩니다. 가려진 사진, 공유 앨범, 컴퓨터에서 동기화한 사진은 업로드되지 않습니다.</p>
+
+        <h2 id="where">사진이 저장되는 위치</h2>
+        <p>휴대폰이나 태블릿마다 업로드 폴더 안에 자체 폴더가 있으며, 그 안에 연도별, 월별 폴더가 있습니다:</p>
+<pre class="tree"><code>Camera Uploads/
+  Anna&#x27;s iPhone/
+    2026/
+      2026-11/
+        IMG_1234.HEIC
+        IMG_1235.MOV
+  Ben&#x27;s iPad/
+    2026/
+      2026-10/</code></pre>
+        <ul>
+            <li>연도와 월은 사진 자체의 날짜를 따릅니다. 파일 이름은 휴대폰에서 쓰던 이름이 그대로 유지됩니다.</li>
+            <li>이름이 같은 서로 다른 사진 두 장은 모두 보관됩니다. 어떤 파일도 덮어쓰지 않습니다.</li>
+            <li>두 휴대폰에 있는 같은 사진은 한 번만 저장됩니다.</li>
+        </ul>
+
+        <h2 id="privacy">개인정보 보호 및 보안</h2>
+        <ul>
+            <li><strong>사진은 집 네트워크 안에 머뭅니다.</strong> 휴대폰이 사진을 서버로 바로 전송합니다. 개발자인 Phlix는 사진을 절대 받지 않으며 사진에 접근할 수도 없습니다. 도우미는 인터넷의 어떤 곳에도 접속하지 않으며, 유일하게 연결하는 대상은 직접 운영하는 Plex Media Server입니다.</li>
+            <li><strong>연결은 암호화됩니다.</strong> 휴대폰을 페어링할 때 Phlix는 도우미의 인증서를 정확히 기억합니다. 그 후로는 그 인증서를 제시하는 서버와만 통신합니다.</li>
+            <li><strong>페어링에는 증명이 필요합니다.</strong> Plex 서버 소유자는 Plex를 통해 소유자임을 증명하며, 도우미는 Plex 토큰을 절대 저장하지 않습니다. 그 외의 모든 사용자는 페어링 코드가 필요하며, 도우미는 코드를 추측하려는 사람의 시도를 지연시킵니다.</li>
+            <li><strong>페어링된 휴대폰은 추가만 할 수 있습니다.</strong> 도우미는 저장된 파일을 나열하거나, 읽거나, 다운로드하거나, 덮어쓰거나, 삭제하는 방법을 제공하지 않습니다. 사진과 비디오 파일만 받습니다.</li>
+            <li><strong>코드를 직접 확인할 수 있습니다.</strong> 도우미의 소스 코드는 <a href="https://github.com/jrl8085/phlix-camera-upload">GitHub</a>에 공개되어 있으며, <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/SECURITY.md">보안 참고 사항</a>도 함께 있습니다. 자세한 설명은 <a href="/privacy/#camera-upload">개인정보 처리방침(영어)</a>에 있습니다.</li>
+        </ul>
+
+        <h2 id="help">도움말 및 문제 해결</h2>
+        <p>먼저 도우미의 자체 점검을 실행하세요. 설치 상태를 테스트하고 잘못된 부분을 고치는 방법을 알려 줍니다:</p>
+        <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
+        <p>Phlix의 카메라 업로드 화면에는 발견된 문제가 표시되며, <strong>연결 확인</strong>을 탭하면 다시 시도합니다. 문제마다 전체 가이드(영어)에 별도의 섹션이 있습니다:</p>
+        <ul>
+            <li><a href="/camera-upload/#ts-not-found">앱이 도우미를 찾지 못함</a></li>
+            <li><a href="/camera-upload/#ts-plex">Plex에 사진이 표시되지 않음</a></li>
+            <li><a href="/camera-upload/#ts-pairing">페어링이 되지 않음</a></li>
+            <li><a href="/camera-upload/#ts-permissions">파일 소유자가 잘못되었거나 도우미가 파일을 쓸 수 없음</a></li>
+            <li><a href="/camera-upload/#ts-start">도우미가 시작되지 않음</a></li>
+            <li><a href="/camera-upload/#networking">네트워크 도움말: 방화벽, 게스트 Wi-Fi, VPN, Docker에서 실행하는 Plex</a></li>
+            <li><a href="/camera-upload/#changing">나중에 변경하기: 도우미 업데이트, 이동, 제거</a></li>
+        </ul>
+        <p>GitHub에 있는 한국어 도우미 안내: <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/docs/ko/README.md">README</a>. 도우미 관련 문제는 <a href="https://github.com/jrl8085/phlix-camera-upload/issues">GitHub Issues</a>에, 그 밖의 문의는 <a href="/support/">지원 페이지</a>에 남겨 주세요.</p>
+
+        <h2 id="faq">자주 묻는 질문</h2>
+        <details id="faq-1">
+            <summary>카메라 업로드는 베타 기능인가요?</summary>
+            <div class="inner"><p>네. 카메라 업로드는 Phlix 1.0.21 이상의 베타 기능입니다. 대체할 수 없는 항목은 따로 백업해 두시고, 문제가 생기면 알려 주세요. Phlix에서 <strong>설정</strong>을 열고 <strong>피드백 보내기</strong>를 탭하면 됩니다.</p></div>
+        </details>
+        <details id="faq-2">
+            <summary>Plex 자체의 Camera Upload는 어떻게 되었나요?</summary>
+            <div class="inner"><p>Plex는 2021년 3월에 자체 Camera Upload 기능의 지원을 종료한다고 발표했으며, 제거 시점은 2021년 6월로 예정되어 있었습니다. Phlix의 카메라 업로드는 독립 앱의 별개 기능으로, 직접 운영하는 서버의 도우미를 통해 Plex 사진 라이브러리의 폴더로 사진을 복사합니다.</p></div>
+        </details>
+        <details id="faq-3">
+            <summary>iPhone에서 사진이 삭제되나요?</summary>
+            <div class="inner"><p>아니요. Phlix는 사진과 비디오를 서버로 복사합니다. 사진 보관함에 있는 어떤 항목도 절대 삭제하거나 변경하지 않습니다.</p></div>
+        </details>
+        <details id="faq-4">
+            <summary>집 밖이나 셀룰러 데이터로도 작동하나요?</summary>
+            <div class="inner"><p>아니요, 의도적으로 그렇게 설계되었습니다. Phlix는 휴대폰이 집 Wi-Fi에 연결되어 있을 때만 업로드합니다. 집 밖에서는 아무것도 전송하지 않으며 서버를 찾지도 않습니다. 여행 중에 찍은 사진은 집에 돌아오면 업로드됩니다.</p></div>
+        </details>
+        <details id="faq-5">
+            <summary>Plex Pass가 필요한가요?</summary>
+            <div class="inner"><p>아니요. 도우미는 Plex 사진 라이브러리의 폴더에 일반 파일을 저장하므로 모든 Plex Media Server에서 작동합니다.</p></div>
+        </details>
+        <details id="faq-6">
+            <summary>비용은 얼마인가요?</summary>
+            <div class="inner"><p>서버용 도우미는 무료입니다. 앱에서는 처음 100회의 업로드가 무료이며, 나머지는 Phlix Pro가 업로드합니다.</p></div>
+        </details>
+        <details id="faq-7">
+            <summary>가족 모두가 사용할 수 있나요?</summary>
+            <div class="inner"><p>네. iPhone과 iPad는 각각 따로 페어링하며 각자 자체 폴더를 받습니다. Plex 서버 소유자는 코드 없이 페어링하고, 그 외의 모든 사용자는 도우미의 페어링 코드를 입력합니다. 두 휴대폰에 같은 사진이 있으면 서버에는 한 번만 저장됩니다.</p></div>
+        </details>
+        <details id="faq-8">
+            <summary>동기화인가요? 사진을 삭제하면 어떻게 되나요?</summary>
+            <div class="inner"><p>휴대폰에서 서버로 가는 단방향 복사입니다. 휴대폰에서 사진을 삭제해도 서버의 사본은 그대로 남습니다. 각 사진은 한 번만 업로드됩니다.</p></div>
+        </details>
+        <details id="faq-9">
+            <summary>iCloud 사진과 함께 작동하나요?</summary>
+            <div class="inner"><p>네. Phlix는 iOS가 사진을 어디에 보관하든 사진 보관함의 사진을 읽습니다. ‘iPhone 저장 공간 최적화’를 사용하는 경우, Phlix가 요청하면 iOS가 iCloud에서 원본 크기의 사진을 다운로드합니다. 공유 앨범은 포함되지 않습니다.</p></div>
+        </details>
+        <details id="faq-10">
+            <summary>Phlix는 Plex에서 만든 앱인가요?</summary>
+            <div class="inner"><p>아니요. Phlix는 Plex Media Server와 함께 작동하는 독립 앱입니다. Plex, Inc.와 제휴 관계가 없으며 Plex, Inc.의 보증이나 후원을 받지 않습니다.</p></div>
+        </details>
+
+        <div class="cta-box" data-page-section="l10n-cta">
+            <h3>Phlix: Plex 사진을 제대로 감상하세요</h3>
+            <p>시간순 타임라인과 TV 큰 화면 슬라이드쇼를 제공합니다. 버전 1.0.21부터는 카메라 업로드(베타)로 카메라 롤을 개인 서버에 백업할 수도 있습니다.</p>
+            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Phlix 무료 다운로드</a>
+            <p class="sub">iPhone 및 iPad · iOS 17 이상. 카메라 업로드를 사용하려면 Phlix 1.0.21 이상이 필요합니다. App Store에서 아직 이 버전을 받을 수 없다면 출시 준비 중인 것입니다.</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">홈</a>
+            <a href="/camera-upload/" hreflang="en">설정 가이드(영어)</a>
+            <a href="/blog/">Blog</a>
+            <a href="/privacy">개인정보 보호</a>
+            <a href="/terms">이용 약관</a>
+            <a href="/support">지원</a>
+        </div>
+        <p class="legal-note">아래 두 줄은 영어로 된 법적 고지입니다.</p>
+        <p class="trademark" lang="en">
+            Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
+        </p>
+        <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
+    </footer>
+    <script>
+    /* A Copy button on each command, and a link to a closed section opens it. */
+    (function () {
+        'use strict';
+        var COPY = "복사", COPIED = "복사됨";
+        var blocks = document.querySelectorAll('.cmd');
+        for (var i = 0; i < blocks.length; i++) {
+            (function (block) {
+                var code = block.querySelector('code');
+                if (!code || !navigator.clipboard) { return; }
+                var button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = COPY;
+                button.setAttribute('aria-label', COPY);
+                button.addEventListener('click', function () {
+                    navigator.clipboard.writeText(code.textContent).then(function () {
+                        button.textContent = COPIED;
+                        button.className = 'done';
+                        setTimeout(function () { button.textContent = COPY; button.className = ''; }, 1600);
+                    });
+                });
+                block.appendChild(button);
+            })(blocks[i]);
+        }
+        function openTarget() {
+            var id = location.hash.slice(1);
+            if (!id) { return; }
+            var el = document.getElementById(id);
+            while (el) {
+                if (el.tagName === 'DETAILS') { el.open = true; }
+                el = el.parentElement;
+            }
+        }
+        window.addEventListener('hashchange', openTarget);
+        openTarget();
+    })();
+    </script>
+    <script src="/blog/track.js" defer></script>
+</body>
+</html>
