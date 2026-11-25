@@ -244,7 +244,7 @@ If a command fails, find the message in [Troubleshooting](#troubleshooting). Do 
    It must end with `Nothing needs fixing.`, like this:
 
    ```
-   Phlix Camera Upload 1.0.1
+   Phlix Camera Upload 1.0.2
    OK       The helper is running on port 7459
    OK       The upload folder /photos can be written to.
    OK       224.7 GB free on the upload disk.
@@ -371,7 +371,7 @@ If Phlix does not find the helper, Camera Upload stays off and Phlix says so. Go
   3. In that file, find the `Config` element with `Name="Photos"`. Make the host path of the upload folder its text. In XML, write `&` as `&amp;` and `<` as `&lt;`.
   4. Ask the owner: "Please open the Docker tab in Unraid. Choose Add Container. Choose phlix-camera-upload in the Template list. Check that Photos is HOST_PATH_OF_UPLOAD_FOLDER. Choose Apply. Tell me when it is done."
   5. Go on with Step 8. Skip `docker compose ps`.
-- If the download fails, ask the owner to add the container by hand on the Docker tab: name `phlix-camera-upload`, repository `ghcr.io/jrl8085/phlix-camera-upload:1`, network type `bridge`, extra parameters `--add-host=host.docker.internal:host-gateway`, port `7459` to `7459` (TCP), path `/photos` to the upload folder, path `/config` to `/mnt/user/appdata/phlix-camera-upload`, and the variables `PUID` = `99`, `PGID` = `100`, `UMASK` = `022`.
+- If the download fails, ask the owner to add the container by hand on the Docker tab: name `phlix-camera-upload`, repository `ghcr.io/jrl8085/phlix-camera-upload:1`, network type `bridge`, extra parameters `--add-host=host.docker.internal:host-gateway --restart=unless-stopped`, port `7459` to `7459` (TCP), path `/photos` to the upload folder, path `/config` to `/mnt/user/appdata/phlix-camera-upload`, and the variables `PUID` = `99`, `PGID` = `100`, `UMASK` = `022`.
 - To update: the owner chooses Check for Updates on the Docker tab.
 
 ### Synology
@@ -430,7 +430,8 @@ Each `PROBLEM` line has a `Fix:` line under it. Then find what you see in this t
 | The pull fails with `denied`, `unauthorized`, `manifest unknown` or a timeout | The server cannot reach `ghcr.io`, or the image line is wrong. | Compare the image line with [Facts](#facts). If it is right, stop and tell the owner the exact message. |
 | The container exits or keeps restarting. The log says `Nothing is mounted at /photos.` or `Nothing is mounted at /config.` | A volume is missing. | Compare `docker-compose.yml` with Step 6. Run `docker compose up -d` again. |
 | The same message, and both folders are in the Compose file | Docker on this server stores containers without a file system of their own, so the helper cannot see the mounts. This is rare. | Run `docker info --format '{{.Driver}}'`. If it prints `vfs`, ask the owner. With a yes, add `ALLOW_UNMOUNTED: "1"` under `environment:`, and run `docker compose up -d`. Then number 7 of Step 8 must pass. If it prints something else, stop and ask the owner. |
-| The container exits or keeps restarting. The log says `Phlix Camera Upload cannot start:` | A setting has a value the helper cannot use. The message names it. | Correct the setting in `docker-compose.yml`. Run `docker compose up -d`. |
+| The container exits or keeps restarting. The log says `Phlix Camera Upload cannot start:`, then that the upload folder `is empty, and the helper stored` files there before | The share or disk that holds the upload folder is not mounted, so the helper waits for it. More rarely, the owner emptied the folder. | Run `ls -la "HOST_PATH_OF_UPLOAD_FOLDER"`. If it is empty, check that the share or disk is mounted, and tell the owner. Only if the owner emptied the folder on purpose, and with a yes, run `mkdir "HOST_PATH_OF_UPLOAD_FOLDER/.phlix-upload-tmp"`. Then run `docker compose up -d`. |
+| The container exits or keeps restarting. The log says `Phlix Camera Upload cannot start:` and another reason | A setting has a value the helper cannot use. The message names it. | Correct the setting in `docker-compose.yml`. Run `docker compose up -d`. |
 | `Upload folder` is not `Ready` | The helper's user may not write to the upload folder. | Compare `Running as user` in the log with `stat -c '%u:%g %a'` of the upload folder. Repeat numbers 6 to 9 of Step 5. Then run `docker compose restart`. |
 | The container keeps restarting and the log says `it cannot use its own data folder`, or `Upload folder` is not `Ready`. In both cases `getenforce` prints `Enforcing`. | SELinux keeps the container out of folders that are not labelled for containers. | Ask the owner. With a yes, run `sudo chcon -R -t container_file_t "HOST_PATH_OF_UPLOAD_FOLDER" "INSTALL_FOLDER/config"`. Then run `docker compose restart`. Do not change the Compose file. |
 | The log says `Running as root, so uploaded files will belong to root`, and `doctor` has a NOTE that says `The helper runs as root` | Root owns the upload folder. | On Docker Desktop this is expected. Elsewhere, repeat number 8 of Step 5, then run `docker compose restart`. |

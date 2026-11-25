@@ -48,7 +48,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"TechArticle","headline":"Camera Upload (Beta): back up your iPhone photos to your own Plex server","description":"Set up Camera Upload (Beta) in Phlix: a free Docker helper next to Plex Media Server that receives your iPhone's photos over your home Wi-Fi. With a list of what the beta does and what it does not do.","datePublished":"2026-11-22","dateModified":"2026-11-24","inLanguage":"en","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/camera-upload/"}
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"Camera Upload (Beta): back up your iPhone photos to your own Plex server","description":"Set up Camera Upload (Beta) in Phlix: a free Docker helper next to Plex Media Server that receives your iPhone's photos over your home Wi-Fi. With a list of what the beta does and what it does not do.","datePublished":"2026-11-22","dateModified":"2026-11-25","inLanguage":"en","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/camera-upload/"}
     </script>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Camera Upload (Beta)","item":"https://phlixapp.com/camera-upload/"}]}
@@ -63,7 +63,7 @@
     {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The helper for your server is free. In the app, the first 100 uploads are free, so you can see it work from end to end. Phlix Pro uploads the rest, and what you take from then on."}},
     {"@type":"Question","name":"Can the whole family use it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each iPhone and iPad pairs by itself and gets its own folder. The owner of the Plex server pairs without a code; everyone else types the helper's pairing code. If two phones hold the same photo, the server stores it once."}},
     {"@type":"Question","name":"How long does the first backup take?","acceptedAnswer":{"@type":"Answer","text":"With Phlix open on the Camera Upload screen and the phone on its charger, it runs as fast as your Wi-Fi allows. With Phlix closed, iOS gives it short bursts, mostly while the phone charges, so a large library takes a few days. Either way you can see the count rise in the app."}},
-    {"@type":"Question","name":"Is this a sync? What if I delete a photo?","acceptedAnswer":{"@type":"Answer","text":"It is a one-way copy, from the phone to the server. Deleting a photo on the phone leaves the copy on the server. Deleting or moving a file on the server does not bring it back from the phone: each photo is uploaded once."}},
+    {"@type":"Question","name":"Is this a sync? What if I delete a photo?","acceptedAnswer":{"@type":"Answer","text":"It is a one-way copy, from the phone to the server. Deleting a photo on the phone leaves the copy on the server, and nothing comes back to the phone. If you delete a file on the server and the photo is still on the phone, Phlix uploads it again."}},
     {"@type":"Question","name":"Does it work with iCloud Photos?","acceptedAnswer":{"@type":"Answer","text":"Yes. Phlix reads the photos in your Photo Library, wherever iOS keeps them. With \"Optimize iPhone Storage\", iOS downloads the full-size original from iCloud when Phlix asks for it, and Phlix needs about 300 MB free on the phone to get each file ready. Shared albums are not included."}},
     {"@type":"Question","name":"Is there an Android version?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an app for iPhone and iPad."}}
     ]}
@@ -175,7 +175,7 @@
     <article class="guide">
         <span class="category beta">Beta &middot; Setup guide</span>
         <h1>Camera Upload (Beta): back up your iPhone photos to your own Plex server</h1>
-        <p class="meta">Updated November 24, 2026 &middot; About 10 minutes to set up</p>
+        <p class="meta">Updated November 25, 2026 &middot; About 10 minutes to set up</p>
 
         <div class="hero-row">
             <div class="hero-text">
@@ -231,7 +231,7 @@
         <ul>
             <li>It backs up the photos and videos in the Photo Library of your iPhone or iPad to a folder of your Plex photo library, on your own server.</li>
             <li>You choose what to back up: <em>Include Videos</em> (on at first), <em>Include Screenshots</em> (off at first), and <em>Everything on this device</em> or <em>Only new photos</em>.</li>
-            <li>Each photo is uploaded once, as it looks in Photos at that moment. An edited photo uploads edited. A Live Photo uploads as its still photo.</li>
+            <li>Each photo is uploaded as it looks in Photos at that moment. An edited photo uploads edited. A Live Photo uploads as its still photo.</li>
             <li>It never deletes or changes anything on the device. It is a one-way copy.</li>
         </ul>
         <h4>How it connects</h4>
@@ -496,7 +496,7 @@ chown 99:100 "/mnt/user/Photos/Camera Uploads"</code></pre></div></li>
         <p>Your browser warns that the connection is not private. <strong>That is expected.</strong> A home server has no public name that a certificate authority could vouch for, so the helper makes its own certificate, and browsers warn about every certificate made that way. Choose Advanced or Show Details, then continue to the page. Phlix does not rely on the browser's check: it remembers the helper's exact certificate when it pairs.</p>
         <p>The page should say <strong>Upload folder: Ready</strong> and <strong>Plex Media Server: Found</strong>. If it says something else, the <code>doctor</code> command tells you what to do:</p>
         <div class="cmd"><pre><code>docker exec phlix-camera-upload python -m phlix_upload doctor</code></pre></div>
-<pre><code>Phlix Camera Upload 1.0.1
+<pre><code>Phlix Camera Upload 1.0.2
 OK       The helper is running on port 7459
 OK       The upload folder /photos can be written to.
 OK       223.6 GB free on the upload disk.
@@ -520,7 +520,7 @@ Nothing needs fixing.</code></pre>
             <li>Connect your iPhone or iPad to your home Wi-Fi.</li>
             <li>Open Phlix and go to <strong>Settings &rsaquo; Camera Upload</strong>. If Settings has no Camera Upload row, your Phlix is older than 1.0.21. The Version row in Settings shows the number.</li>
             <li>Tap <strong>Check for the Helper</strong>, then <strong>Check My Network</strong>. Phlix looks for the helper at your Plex server's address. Nothing is switched on, and nothing is uploaded, until it is found. If iOS asks whether Phlix may find devices on your local network, allow it. Without that, Phlix cannot reach anything in your home.</li>
-            <li>When Phlix says <strong>Helper found</strong>, choose a folder name for this device, such as "Anna's iPhone", and tap <strong>Connect</strong>. Choose the name with care: a device keeps the folder it gets the first time it pairs.</li>
+            <li>When Phlix says <strong>Helper found</strong>, choose a folder name for this device, such as "Anna's iPhone", and tap <strong>Connect</strong>. If this device was connected to this helper before, leave the name as Phlix shows it: the device keeps its folder. With another name, its new photos go into a folder of that name.</li>
             <li>If Phlix now shows <strong>Enter the pairing code</strong>, type the helper's pairing code and tap <strong>Pair</strong>. Family members with their own Plex account see this step. If you own the Plex server and see it too, Phlix could not pair through Plex this time, and the code works just as well. The helper's status page usually says why, next to Plex Media Server. <a href="#pairing">Pairing: who needs a code</a>, below, says where the code is.</li>
             <li>Phlix says <strong>Connected</strong>. Choose what to back up, <strong>Everything on this device</strong> or <strong>Only new photos</strong>, and tap <strong>Turn On Camera Upload</strong>.</li>
             <li>iOS asks whether Phlix may read your photos. Choose <strong>Full Access</strong>, so that it can back up all of them.</li>
@@ -548,12 +548,12 @@ Nothing needs fixing.</code></pre>
             <li><strong>Away from home</strong>, Phlix does not start uploads or look for your server, apart from rare cases that the <a href="/privacy/#camera-upload">privacy policy</a> lists; even then, your photos go only to your own helper. Backing up carries on when the phone is back on your home Wi-Fi.</li>
             <li><strong>When everything is backed up</strong>, the screen says so with a green tick. Switch on <em>Notify Me When Backed Up</em> to get a notification as well.</li>
         </ul>
-        <p>The Camera Upload screen always shows where you stand: how many photos are backed up out of how many, what is uploading now, what was backed up recently, and how many items cannot be backed up. Those are items that Photos holds no file for, or that are larger than your server accepts.</p>
+        <p>The Camera Upload screen always shows where you stand: how many photos are backed up out of how many, what is uploading now, what was backed up recently, and how many items cannot be backed up. Those are items that Photos holds no file for, that are larger than your server accepts, or that keep disappearing from your server.</p>
         <h3>What is uploaded</h3>
         <ul>
             <li>The photos and videos in your own Photo Library. Videos are optional (<em>Include Videos</em>).</li>
             <li>Screenshots and screen recordings are left out unless you switch on <em>Include Screenshots</em>.</li>
-            <li>Each photo is uploaded once, as it looks in Photos at that moment. An edited photo uploads edited. A Live Photo uploads as its still photo.</li>
+            <li>Each photo is uploaded as it looks in Photos at that moment. An edited photo uploads edited. A Live Photo uploads as its still photo.</li>
             <li>With iCloud Photos and "Optimize iPhone Storage", iOS fetches the full-size original from iCloud when Phlix asks for it.</li>
             <li>Not uploaded: hidden photos, shared albums and photos synced from a computer.</li>
             <li>Phlix 1.0.21 or later keeps a list of the photos it saves from Plex to Photos. The list is kept in the app, on the phone or tablet that saved them, and that device does not upload them. Photos that an earlier version of Phlix saved are not on the list. Neither are photos saved before you deleted Phlix and installed it again. Those are uploaded like any other photo.</li>
@@ -574,7 +574,9 @@ Nothing needs fixing.</code></pre>
             <li>The year and month come from the photo's own date. The file keeps its name from the phone, and its modification time is set to the photo's date.</li>
             <li>Two different photos with the same name are both kept: the second becomes <code>IMG_1234 (2).HEIC</code>. Nothing is ever overwritten.</li>
             <li>The same photo from two phones is stored once.</li>
-            <li>Files you move or delete on the server are not asked for again.</li>
+            <li>With helper 1.0.2 or later (see <a href="#update-helper">Update the helper</a>), a photo counts as backed up only while its file is in the upload folder. If you delete a file, or a device's whole folder, and the photo is still on the device, Phlix uploads it again. It checks when you open the Camera Upload screen, and from time to time while it backs up at home.</li>
+            <li>Sort files into any folders inside the upload folder, keeping their names: Phlix finds them there. A device's folder you rename is followed, and new photos go into it. A file you rename, or move out of the upload folder, is uploaded again. A file you edit still counts. Nothing is ever overwritten.</li>
+            <li>If a file keeps leaving the upload folder soon after each upload, for example because a program on the server moves new files away, Phlix sends it again three times at most, then lists it under <em>Can't Be Backed Up</em>. When you connect the phone again, or delete its whole folder, Phlix sends those photos again too. To keep a photo off the server, hide it in the Photos app: Phlix never uploads hidden photos.</li>
             <li>To change the layout, set <code>PATH_TEMPLATE</code>. See <a href="#settings">All the settings</a>.</li>
         </ul>
 
@@ -602,7 +604,7 @@ Nothing needs fixing.</code></pre>
                     <li>Set <code>PLEX_URL</code> to your Plex server's address, for example <code>http://192.168.1.10:32400</code>, so that the server's owner can pair without a code. Without it, everyone pairs with the pairing code, which works just as well.</li>
                 </ul>
                 <p>To use another port on the same machine, change only the first number in the <code>ports:</code> line of the Compose file, for example <code>"8443:7459"</code>.</p>
-                <p>A phone that is already paired does not find the helper at a new port, or on another machine than Plex, by itself. It says <em>Can't reach the helper</em>. On that phone, choose <em>Disconnect</em>, tap <em>Check for the Helper</em>, then <em>Enter the Helper's Address</em>, type the new address and tap <em>Check This Address</em>. If the helper still has its <code>config</code> folder, the phone gets the same folder as before, whatever name you type, and nothing is uploaded twice. Phlix asks again what to back up, with the choices you made before already set.</p>
+                <p>A phone that is already paired does not find the helper at a new port, or on another machine than Plex, by itself. It says <em>Can't reach the helper</em>. On that phone, choose <em>Disconnect</em>, tap <em>Check for the Helper</em>, then <em>Enter the Helper's Address</em>, type the new address and tap <em>Check This Address</em>. If the helper still has its <code>config</code> folder, leave the folder name as Phlix shows it: the phone keeps its folder, and nothing is uploaded twice. Phlix asks again what to back up, with the choices you made before already set.</p>
             </div>
         </details>
         <details id="net-plex-docker">
@@ -649,7 +651,7 @@ Nothing needs fixing.</code></pre>
             <div class="inner">
                 <p>Phlix knows your home by the address range of the Wi-Fi network your phone was on when you paired, for example <code>192.168.1.0/24</code>. It never reads the Wi-Fi's name and needs no location permission. If you changed your router, moved to another network at home, or have two networks, the range no longer matches.</p>
                 <p>Open Settings &rsaquo; Camera Upload and tap <strong>This Is My Home Network</strong>. Phlix adds the network you are on, but only if your helper answers from it, with the certificate it had when you paired. A network where your helper does not answer is never added.</p>
-                <p>A new router usually gives the server a new address as well. Phlix then says "The helper didn't answer". In that case choose <strong>Disconnect</strong>, then connect again, as in <a href="#connect">Connect your iPhone</a>. The phone keeps its folder, and nothing is uploaded twice.</p>
+                <p>A new router usually gives the server a new address as well. Phlix then says "The helper didn't answer". In that case choose <strong>Disconnect</strong>, then connect again, as in <a href="#connect">Connect your iPhone</a>. Leave the folder name as Phlix shows it: the phone keeps its folder, and nothing is uploaded twice.</p>
             </div>
         </details>
         <details id="net-ios">
@@ -771,6 +773,7 @@ Nothing needs fixing.</code></pre>
             <tr><td>"bind source path does not exist"</td><td>The upload folder in <code>docker-compose.yml</code> does not exist, or the line still says <code>/CHANGE/THIS</code>. Make the folder, check the path, and run <code>docker compose up -d</code> again.</td></tr>
             <tr><td>"bind source path does not exist", and the folder is there, or "operation not permitted"</td><td>Docker may have come as a Snap, which Ubuntu Server offers while it installs. To check, run <code>snap list docker</code>. If it lists docker, that Docker cannot start the helper. It sees only some of your folders, and it cannot start a container with the helper's setting <code>no-new-privileges</code>. Replace it. First remove the Snap with <code>sudo snap remove docker</code>. That deletes everything this Docker holds: its containers, images and volumes. Your upload folder and the helper's folder stay. If other programs run in this Docker, such as Plex, make sure that you can set them up again before you remove it. Then install Docker with <a href="https://docs.docker.com/engine/install/">Docker's own instructions</a>, and run <code>docker compose up -d</code> again.</td></tr>
             <tr><td>"Nothing is mounted at /photos"</td><td>The container was started without its folders. The helper refuses to start then, so that uploads can never land inside the container and be lost. Start it with the Compose file as it is.</td></tr>
+            <tr><td>The helper does not start; its log says the upload folder is empty</td><td>It stored photos there before, so it waits for a share or disk that is not mounted yet, and starts by itself once it is. If you emptied the folder on purpose, make a folder named <code>.phlix-upload-tmp</code> in it. On Unraid, start the container again on the Docker tab.</td></tr>
             <tr><td>"permission denied" from Docker itself</td><td>Put <code>sudo</code> in front of each <code>docker</code> command.</td></tr>
             <tr><td>"port is already allocated", "address already in use" or "Ports are not available"</td><td>Docker cannot use port 7459 on the server. Usually another program or another container uses it. Give the helper another port. In <code>docker-compose.yml</code>, change only the first number in the <code>ports:</code> line, for example to <code>"7460:7459"</code>, and run <code>docker compose up -d</code> again. If you used way A, run the installer again with the new port instead, and answer y when it asks whether to replace the Compose file: <code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh -s -- --port 7460</code>. Phlix looks for port 7459 by itself, so type the helper's address with the new port into Phlix, for example <code>192.168.1.10:7460</code>. See <a href="#net-other-machine">The helper is on a different machine than Plex, or on another port</a>.</td></tr>
         </table>
@@ -788,7 +791,7 @@ Nothing needs fixing.</code></pre>
         <details>
             <summary>The name of a device's folder</summary>
             <div class="inner">
-                <p>A device keeps the folder it got when it first paired. Leave it as it is. Pairing the device again does not change the folder, whatever name you type. Phlix shows the folder in use on the Camera Upload screen, next to <em>Folder</em>. If you rename the folder on the server, the helper makes the old name again for the next photo.</p>
+                <p>Phlix shows the folder in use on the Camera Upload screen, next to <em>Folder</em>. To rename it, rename the folder on the server: the helper finds it there and puts new photos in it. Or choose <em>Disconnect</em>, connect again and type a new name: new photos go into a folder of that name, and photos already on the server stay where they are.</p>
             </div>
         </details>
         <details id="settings">
@@ -824,7 +827,7 @@ docker restart phlix-camera-upload</code></pre></div>
                 <p>If you set <code>PAIRING_CODE</code> yourself, change the code there instead, and run <code>docker compose up -d</code>.</p>
             </div>
         </details>
-        <details>
+        <details id="update-helper">
             <summary>Update the helper</summary>
             <div class="inner">
                 <div class="cmd"><pre><code>docker compose pull
@@ -886,7 +889,7 @@ docker compose up -d</code></pre></div>
         </details>
         <details>
             <summary>Is this a sync? What if I delete a photo?</summary>
-            <div class="inner"><p>It is a one-way copy, from the phone to the server. Deleting a photo on the phone leaves the copy on the server. Deleting or moving a file on the server does not bring it back from the phone: each photo is uploaded once.</p></div>
+            <div class="inner"><p>It is a one-way copy, from the phone to the server. Deleting a photo on the phone leaves the copy on the server, and nothing comes back to the phone. If you delete a file on the server and the photo is still on the phone, Phlix uploads it again.</p></div>
         </details>
         <details>
             <summary>Does it work with iCloud Photos?</summary>
