@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use - Phlix</title>
-    <meta name="description" content="Phlix Terms of Use. Rules governing your use of the Phlix iOS app, including its independence from Plex, purchase terms, and intellectual property notices.">
+    <meta name="description" content="Phlix Terms of Use. Rules governing your use of the Phlix iOS app, including its independence from Plex, purchase terms, Camera Upload (Beta), and intellectual property notices.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://phlixapp.com/terms/">
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://phlixapp.com/terms/">
     <meta property="og:title" content="Terms of Use — Phlix">
-    <meta property="og:description" content="Terms of Use for the Phlix iOS app. Independence from Plex, purchase terms, and intellectual property notices.">
+    <meta property="og:description" content="Terms of Use for the Phlix iOS app. Independence from Plex, purchase terms, Camera Upload (Beta), and intellectual property notices.">
     <meta property="og:site_name" content="Phlix">
     <meta property="og:image" content="https://phlixapp.com/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -41,7 +41,7 @@
     <div class="container">
         <a href="/" class="back">&larr; Back to Phlix</a>
         <h1>Terms of Use</h1>
-        <p class="updated">Last updated: November 24, 2026</p>
+        <p class="updated">Last updated: November 25, 2026</p>
 
         <h2>1. Acceptance of Terms</h2>
         <p>By downloading, installing, or using Phlix ("the App"), you ("you" or "User") agree to be bound by these Terms of Use ("Terms") and the <a href="/privacy">Phlix Privacy Policy</a>, which is incorporated by reference. If you do not agree to these Terms, do not download, install, or use the App.</p>
@@ -91,55 +91,78 @@
         </ul>
         <p>The developer takes no position on, and accepts no responsibility for, the content you access through your Plex Media Server.</p>
 
-        <h2>8. Account Security</h2>
+        <h2 id="camera-upload">8. Camera Upload (Beta)</h2>
+        <p>Camera Upload is an optional feature of the App, from version 1.0.21. It is off unless you turn it on in Settings &rarr; Camera Upload. When it is on, the App copies the photos and videos in your device's Photo Library to the free Phlix Camera Upload helper ("the helper"). The helper is a program that you install and run on your own server on your home network, usually as a Docker container next to your Plex Media Server. It stores what it receives in the upload folder that you choose. The <a href="/camera-upload/">Camera Upload setup guide</a> explains how it works and how to install the helper.</p>
+        <p>Camera Upload is designed to work as follows:</p>
+        <ul>
+            <li>It is a one-way copy from your device to your server, not a sync. Camera Upload does not delete or change anything in your Photo Library, and the helper does not delete or overwrite files on your server. Deleting a photo or video on your device does not delete its copy on your server, and nothing is copied back to your device.</li>
+            <li>Camera Upload sends the photos and videos it copies only to your helper, over an encrypted connection (HTTPS), and not to the developer, to Plex, or to any other third party. The developer does not receive or store them, and has no access to them, to your helper, or to your server.</li>
+            <li>Apart from the rare cases listed in the Camera Upload section of the <a href="/privacy/#camera-upload">Phlix Privacy Policy</a>, the App uploads only while your device is on your home network: the Wi-Fi network it was on when you paired it with the helper, or one that you add. The App never uploads over mobile data.</li>
+            <li>Each photo or video is uploaded once, as it looks in Photos at that moment. A file that you move or delete on your server is not uploaded again.</li>
+            <li>Not everything in your Photo Library is uploaded. For example, a Live Photo is uploaded as its still photo, screenshots are left out unless you switch on "Include Screenshots", and hidden photos, shared albums, and photos synced from a computer are not uploaded.</li>
+            <li>While the App is closed, iOS decides when the App may run, so uploads can be delayed.</li>
+            <li>The first 100 uploads are free. Uploads beyond that need Phlix Pro, described in Section 4.</li>
+        </ul>
+        <p>Camera Upload is a beta. It is new and may contain errors, it may not always work as described in this Section, and the developer may change, suspend, or withdraw it at any time, as Section 17 provides.</p>
+        <p>If you use Camera Upload, you are solely responsible for:</p>
+        <ul>
+            <li>the helper, including installing, setting up, updating, and running it;</li>
+            <li>the server that the helper runs on, including its storage and its security, and your home network;</li>
+            <li>keeping your own backup of any photo or video that you cannot replace, because uploads can be delayed, incomplete, or fail;</li>
+            <li>any decision to delete a photo or video from your device.</li>
+        </ul>
+        <p>The helper is separate software. It is not part of the App, and your use of it is governed by its own <a href="https://github.com/jrl8085/phlix-camera-upload/blob/main/LICENSE">license</a>. Under that license, you may download, install, and run the helper free of charge, to receive uploads from the App, on servers you own or manage; you may read its source code, which is public, and change it for your own use on those servers; and you may not sell it, or distribute it or a changed version of it, without written permission. The helper is provided "as is", without warranty of any kind. The license sets out the full terms.</p>
+        <p>Sections 12 (Disclaimer of Warranties) and 13 (Limitation of Liability) apply to Camera Upload, including to any loss or corruption of photos, videos, or other content.</p>
+
+        <h2>9. Account Security</h2>
         <p>The App relies on your Plex account credentials, which are stored locally on your device in the iOS Keychain. You are responsible for maintaining the confidentiality of those credentials and for all activity that occurs in connection with them.</p>
 
-        <h2>9. Intellectual Property</h2>
+        <h2>10. Intellectual Property</h2>
         <p>The App, including all software, source code, object code, designs, graphics, branding (excluding Plex trademarks and other third-party trademarks), text, and documentation, is owned by the developer or its licensors and is protected by United States and international intellectual-property laws. No rights are granted by implication, estoppel, or otherwise except as expressly set forth in these Terms.</p>
         <p>If you believe that content accessible through the App infringes a copyright you own or control, please direct your notice to the operator of the Plex Media Server on which the content is stored. The developer does not host, control, or have any ability to remove user content.</p>
 
-        <h2>10. Third-Party Services</h2>
+        <h2>11. Third-Party Services</h2>
         <p>The App relies on third-party services and platforms, including the Apple App Store, iOS, AirPlay, and Plex Media Server and Plex APIs. The developer is not responsible for the availability, accuracy, content, functionality, or terms of any third-party service, and the developer makes no representation or warranty regarding any of them. Your use of those services is governed by their respective terms.</p>
 
-        <h2>11. Disclaimer of Warranties</h2>
+        <h2>12. Disclaimer of Warranties</h2>
         <p class="allcaps">The App is provided "as is" and "as available," with all faults and without warranty of any kind. To the maximum extent permitted by applicable law, the developer disclaims all warranties and conditions, express, implied, or statutory, including without limitation any implied warranties of merchantability, fitness for a particular purpose, title, quiet enjoyment, accuracy, and non-infringement.</p>
         <p class="allcaps">The developer does not warrant that the App will be uninterrupted, error-free, secure, or free of viruses or other harmful components; that defects will be corrected; that the App will be compatible with your device, your Plex Media Server, or any future version of Plex's APIs; or that any content accessed through the App will be accurate, complete, or preserved.</p>
         <p>No advice or information, whether oral or written, obtained from the developer or through the App shall create any warranty not expressly stated in these Terms.</p>
 
-        <h2>12. Limitation of Liability</h2>
+        <h2>13. Limitation of Liability</h2>
         <p class="allcaps">To the maximum extent permitted by applicable law, in no event shall the developer be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, revenue, data, goodwill, or other intangible losses, arising out of or in connection with these Terms or your use of (or inability to use) the App, whether based on contract, tort (including negligence), strict liability, or any other legal theory, and whether or not the developer has been advised of the possibility of such damages.</p>
         <p class="allcaps">To the maximum extent permitted by applicable law, the developer's total cumulative liability arising out of or relating to these Terms or the App, regardless of the cause of action or legal theory, shall not exceed the greater of (a) the amount you actually paid Apple for the App in the twelve (12) months preceding the event giving rise to the liability, or (b) five United States dollars (US $5.00).</p>
         <p>Some jurisdictions do not allow the exclusion or limitation of certain damages; in those jurisdictions the foregoing limitations apply only to the maximum extent permitted by law.</p>
 
-        <h2>13. Indemnification</h2>
+        <h2>14. Indemnification</h2>
         <p>You agree to defend, indemnify, and hold harmless the developer and the developer's affiliates, officers, agents, and contractors from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or related to: (a) your use or misuse of the App; (b) your violation of these Terms; (c) your violation of any applicable law or the rights of any third party, including intellectual-property, privacy, or publicity rights; (d) any content stored on or accessed through your Plex Media Server; or (e) your violation of Plex's or Apple's terms.</p>
 
-        <h2>14. Apple-Specific Terms</h2>
+        <h2>15. Apple-Specific Terms</h2>
         <p>You acknowledge that these Terms are between you and the developer, and not with Apple Inc. ("Apple"). Apple is not responsible for the App or its content. To the extent any of these Terms conflict with the Apple Standard EULA, the Apple Standard EULA shall apply to the extent of the conflict only. Apple has no obligation to provide maintenance or support for the App. In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price for the App; to the maximum extent permitted by applicable law, Apple will have no other warranty obligation with respect to the App. You and the developer acknowledge that Apple and Apple's subsidiaries are third-party beneficiaries of these Terms, and that upon your acceptance of these Terms, Apple shall have the right (and shall be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.</p>
         <p>You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a "terrorist supporting" country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.</p>
 
-        <h2>15. Termination</h2>
-        <p>These Terms remain in effect until terminated. You may terminate these Terms at any time by uninstalling the App and ceasing all use. The developer may suspend or terminate your license to the App immediately, without notice, if you breach these Terms. Sections 3, 6 through 14, and 16 through 21 survive any termination of these Terms.</p>
+        <h2>16. Termination</h2>
+        <p>These Terms remain in effect until terminated. You may terminate these Terms at any time by uninstalling the App and ceasing all use. The developer may suspend or terminate your license to the App immediately, without notice, if you breach these Terms. Sections 3, 6 through 15, and 17 through 22 survive any termination of these Terms.</p>
 
-        <h2>16. Changes to the App and the Terms</h2>
+        <h2>17. Changes to the App and the Terms</h2>
         <p>The developer may modify, update, suspend, or discontinue the App or any portion of it at any time, with or without notice, and without liability to you. The developer may also revise these Terms from time to time. Material changes will be posted on this page with an updated "Last updated" date. Your continued use of the App after the effective date of any change constitutes acceptance of the revised Terms.</p>
 
-        <h2>17. Governing Law and Venue</h2>
-        <p>These Terms are governed by, and shall be construed in accordance with, the laws of the United States of America and the laws of the State of California, without regard to its conflict-of-laws principles. Subject to Section 18, the exclusive venue for any action arising out of or relating to these Terms shall be the state or federal courts located in the State of California, and you consent to the personal jurisdiction of those courts. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
+        <h2>18. Governing Law and Venue</h2>
+        <p>These Terms are governed by, and shall be construed in accordance with, the laws of the United States of America and the laws of the State of California, without regard to its conflict-of-laws principles. Subject to Section 19, the exclusive venue for any action arising out of or relating to these Terms shall be the state or federal courts located in the State of California, and you consent to the personal jurisdiction of those courts. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
 
-        <h2>18. Informal Dispute Resolution</h2>
-        <p>Before filing any claim against the developer, you agree to first contact the developer through the <a href="/support">support page</a> and attempt to resolve the dispute informally for at least thirty (30) days. If the dispute cannot be resolved informally, either party may pursue the dispute in the courts identified in Section 17.</p>
+        <h2>19. Informal Dispute Resolution</h2>
+        <p>Before filing any claim against the developer, you agree to first contact the developer through the <a href="/support">support page</a> and attempt to resolve the dispute informally for at least thirty (30) days. If the dispute cannot be resolved informally, either party may pursue the dispute in the courts identified in Section 18.</p>
 
-        <h2>19. Force Majeure</h2>
+        <h2>20. Force Majeure</h2>
         <p>The developer is not liable for any failure or delay in performance caused by events beyond its reasonable control, including without limitation acts of God, war, terrorism, civil unrest, labor disputes, internet or telecommunications failures, third-party service outages (including Apple or Plex), or governmental action.</p>
 
-        <h2>20. Severability and Entire Agreement</h2>
+        <h2>21. Severability and Entire Agreement</h2>
         <p>If any provision of these Terms is held unenforceable, that provision shall be enforced to the maximum extent permitted by law and the remaining provisions shall remain in full force and effect. These Terms, together with the Apple Standard EULA and the Phlix Privacy Policy, constitute the entire agreement between you and the developer regarding the App and supersede all prior agreements and understandings.</p>
 
-        <h2>21. No Waiver; Assignment</h2>
+        <h2>22. No Waiver; Assignment</h2>
         <p>The developer's failure to enforce any right or provision of these Terms is not a waiver of that right or provision. You may not assign or transfer these Terms, by operation of law or otherwise, without the developer's prior written consent. The developer may freely assign these Terms.</p>
 
-        <h2>22. Contact</h2>
+        <h2>23. Contact</h2>
         <p>For questions about these Terms, please visit the <a href="/support">support page</a>.</p>
     </div>
 </body>
