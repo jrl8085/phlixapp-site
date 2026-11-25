@@ -44,7 +44,7 @@
     {"@type":"Question","name":"Does it upload away from home or over mobile data?","acceptedAnswer":{"@type":"Answer","text":"No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the privacy policy lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back."}},
     {"@type":"Question","name":"Does it delete photos from my iPhone?","acceptedAnswer":{"@type":"Answer","text":"No. It is a one-way copy. Phlix never deletes or changes anything in your Photo Library, and deleting a photo on the phone leaves the copy on the server."}},
     {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The helper is free, and its source code is public. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you."}},
-    {"@type":"Question","name":"What do I need?","acceptedAnswer":{"@type":"Answer","text":"Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid or TrueNAS SCALE); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network."}},
+    {"@type":"Question","name":"What do I need?","acceptedAnswer":{"@type":"Answer","text":"Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid, TrueNAS SCALE or QNAP); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network."}},
     {"@type":"Question","name":"Is Phlix made by Plex?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It works with Plex Media Server."}},
     {"@type":"Question","name":"Is there an Android version?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an app for iPhone and iPad."}}
     ]}
@@ -147,7 +147,7 @@
         </div>
         <p>On a Linux computer or server, or a Mac with Docker Desktop, step 1 is one command in a terminal on the server. The installer checks Docker, asks for your upload folder and starts the helper:</p>
         <div class="cmd"><pre><code>curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh</code></pre></div>
-        <p>On Windows, Unraid, Synology and TrueNAS SCALE, or to let an AI assistant do it, follow <a href="/camera-upload/#install">the setup guide's Step 1</a>. Then, in Phlix, tap <strong>Check for the Helper</strong>, then <strong>Check My Network</strong>. Nothing is switched on, and nothing is uploaded, until the helper is found. When Phlix says <strong>Helper found</strong>, name this device's folder and tap <strong>Connect</strong>. The owner of the Plex server pairs without a code; family members type the helper's pairing code. <a href="/camera-upload/#connect">All the steps, with screenshots</a>.</p>
+        <p>On Windows, Unraid, Synology, TrueNAS SCALE and QNAP, or to let an AI assistant do it, follow <a href="/camera-upload/#install">the setup guide's Step 1</a>. Then, in Phlix, tap <strong>Check for the Helper</strong>, then <strong>Check My Network</strong>. Nothing is switched on, and nothing is uploaded, until the helper is found. When Phlix says <strong>Helper found</strong>, name this device's folder and tap <strong>Connect</strong>. The owner of the Plex server pairs without a code; family members type the helper's pairing code. <a href="/camera-upload/#connect">All the steps, with screenshots</a>.</p>
 
         <h2 id="where">Where the photos go</h2>
         <p>Each phone or tablet gets its own folder inside the upload folder, with one folder for each year and one for each month:</p>
@@ -209,7 +209,7 @@
         </details>
         <details>
             <summary>What do I need?</summary>
-            <div class="inner"><p>Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid or TrueNAS SCALE); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network.</p></div>
+            <div class="inner"><p>Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid, TrueNAS SCALE or QNAP); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network.</p></div>
         </details>
         <details>
             <summary>Is Phlix made by Plex?</summary>
