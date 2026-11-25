@@ -1,11 +1,11 @@
 # Phlix
 
-> Phlix (App Store name "Phlix Photos") is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows; with Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) backs up the photos and videos on an iPhone or iPad to the user's own Plex photo library, on the home Wi-Fi only. Phlix is not made by Plex.
+> Phlix (App Store name "Phlix Photos") is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) backs up the photos and videos on an iPhone or iPad to the user's own Plex photo library, on the home Wi-Fi only. Phlix is not made by Plex.
 
 Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.
 Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
 
-A longer version of this file, with every feature, the Camera Upload setup and the FAQ: https://phlixapp.com/llms-full.txt
+This is the long version of https://phlixapp.com/llms.txt: the same facts, then the full text of the key English pages.
 
 ## Answers
 
@@ -27,7 +27,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - Category: Photo & Video
 - Current App Store version: 1.0.20. Camera Upload (Beta) comes with version 1.0.21. If the App Store does not offer that version yet, it is on its way.
 - Languages: English, German, French, Spanish, Italian, Portuguese (Brazil), Dutch, Swedish, Danish, Norwegian Bokmål, Finnish, Polish, Japanese, Korean, Chinese (Simplified and Traditional)
-- Needs: a Plex Media Server with at least one photo library, and a Plex account. No Plex Pass on the home network. Away from home, Plex may require the server owner to have a Plex Pass (or the user a Remote Watch Pass) before it serves files remotely to any app, including Phlix.
+- Needs: a Plex Media Server with at least one photo library, and a Plex account. No Plex Pass on the home network. For video, Plex requires a Plex Pass (the server owner's or the user's own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy.
 
 ## Features
 
@@ -62,27 +62,41 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 
 ## Camera Upload helper
 
-- Source code (public): https://github.com/jrl8085/phlix-camera-upload
-- README: https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md
-- Releases: https://github.com/jrl8085/phlix-camera-upload/releases
-- Issues: https://github.com/jrl8085/phlix-camera-upload/issues
-- Docker image: ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.1, latest; amd64, arm64, armv7): https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload
-- Unraid template: https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml
-- One-command install (Linux, Mac with Docker Desktop): curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
-- Compose file: https://phlixapp.com/camera-upload/docker-compose.yml
-- Instructions for an AI assistant: https://phlixapp.com/camera-upload/SETUP-WITH-AI.md
+- [Source code (public)](https://github.com/jrl8085/phlix-camera-upload)
+- [README](https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md)
+- [Releases](https://github.com/jrl8085/phlix-camera-upload/releases)
+- [Issues](https://github.com/jrl8085/phlix-camera-upload/issues)
+- [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.1, latest; amd64, arm64, armv7)
+- [Unraid template](https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml)
+- [One-command installer](https://phlixapp.com/camera-upload/install.sh): for Linux and a Mac with Docker Desktop, run curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
+- [Compose file](https://phlixapp.com/camera-upload/docker-compose.yml)
+- [Instructions for an AI assistant](https://phlixapp.com/camera-upload/SETUP-WITH-AI.md)
 
 ## Pages
 
-- Homepage: https://phlixapp.com/
-- Plex Camera Upload, what happened and what to use now: https://phlixapp.com/plex-camera-upload/
-- Plex Photos alternative: https://phlixapp.com/plex-photos-alternative/
-- Camera Upload (Beta) setup guide (English): https://phlixapp.com/camera-upload/
-- Camera Upload pages in other languages: https://phlixapp.com/de/camera-upload/ , /fr/camera-upload/ , /es/camera-upload/ , /it/camera-upload/ , /pt-br/camera-upload/ , /nl/camera-upload/ , /sv/camera-upload/ , /da/camera-upload/ , /nb/camera-upload/ , /fi/camera-upload/ , /pl/camera-upload/ , /ja/camera-upload/ , /ko/camera-upload/ , /zh-hans/camera-upload/ , /zh-hant/camera-upload/
-- Blog (guides about Plex photo libraries and Plex Media Server): https://phlixapp.com/blog/
-- Support: https://phlixapp.com/support/
-- Privacy Policy: https://phlixapp.com/privacy/
-- Terms of Use: https://phlixapp.com/terms/
+- [Homepage](https://phlixapp.com/)
+- [What happened to Plex Camera Upload, and what to use now](https://phlixapp.com/plex-camera-upload/)
+- [Plex Photos alternative](https://phlixapp.com/plex-photos-alternative/)
+- [Camera Upload (Beta) setup guide](https://phlixapp.com/camera-upload/): in English
+- [Camera Upload (Beta), Deutsch](https://phlixapp.com/de/camera-upload/)
+- [Camera Upload (Beta), Français](https://phlixapp.com/fr/camera-upload/)
+- [Camera Upload (Beta), Español](https://phlixapp.com/es/camera-upload/)
+- [Camera Upload (Beta), Italiano](https://phlixapp.com/it/camera-upload/)
+- [Camera Upload (Beta), Português (Brasil)](https://phlixapp.com/pt-br/camera-upload/)
+- [Camera Upload (Beta), Nederlands](https://phlixapp.com/nl/camera-upload/)
+- [Camera Upload (Beta), Svenska](https://phlixapp.com/sv/camera-upload/)
+- [Camera Upload (Beta), Dansk](https://phlixapp.com/da/camera-upload/)
+- [Camera Upload (Beta), Norsk bokmål](https://phlixapp.com/nb/camera-upload/)
+- [Camera Upload (Beta), Suomi](https://phlixapp.com/fi/camera-upload/)
+- [Camera Upload (Beta), Polski](https://phlixapp.com/pl/camera-upload/)
+- [Camera Upload (Beta), 日本語](https://phlixapp.com/ja/camera-upload/)
+- [Camera Upload (Beta), 한국어](https://phlixapp.com/ko/camera-upload/)
+- [Camera Upload (Beta), 简体中文](https://phlixapp.com/zh-hans/camera-upload/)
+- [Camera Upload (Beta), 繁體中文](https://phlixapp.com/zh-hant/camera-upload/)
+- [Blog](https://phlixapp.com/blog/): guides about Plex photo libraries and Plex Media Server
+- [Support](https://phlixapp.com/support/)
+- [Privacy Policy](https://phlixapp.com/privacy/)
+- [Terms of Use](https://phlixapp.com/terms/)
 
 ---
 
@@ -96,7 +110,7 @@ The sections below are the text of these English pages of phlixapp.com, as of No
 
 #### What is Phlix?
 
-Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves photos to the Photos app or straight into an album, and plays slideshows of a folder, a year or the whole library. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) backs up your camera roll to your own server.
+Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves photos to the Photos app or straight into an album, and plays slideshows of a folder, a year or the whole library. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) backs up your camera roll to your own server.
 
 #### What happened to Plex's Camera Upload?
 
@@ -112,7 +126,7 @@ Plex Photos is Plex's own free app for photo libraries. Phlix is an independent 
 
 #### Do I need Plex Pass to use Phlix?
 
-No Plex Pass is needed on your home network. Away from home, Plex requires the server owner to have a Plex Pass (or you a Remote Watch Pass) to stream personal video — including clips in Phlix — and Plex's photo exemption is stated only for its own Plex Photos app, so photos may be affected too. Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either.
+No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/)). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either.
 
 #### How much does Phlix cost?
 
@@ -140,7 +154,7 @@ Phlix is one app for iPhone and iPad; on iPad, a sidebar lists your libraries. O
 
 #### Is my data private with Phlix?
 
-Yes. Phlix has no ads, no tracking pixels and no session replay. It sends anonymous usage, error and crash statistics tied to a random ID on your device, never your name, Plex account, photos, file names or server address, and you can turn that off in Settings. Camera Upload sends your photos only to the helper on your own server. See the Privacy Policy (https://phlixapp.com/privacy) for full details.
+Yes. Phlix has no ads, no tracking pixels and no session replay. It sends anonymous usage, error and crash statistics tied to a random ID on your device, never your name, Plex account, photos, file names or server address, and you can turn that off in Settings. Camera Upload sends your photos only to the helper on your own server. See the Privacy Policy (https://phlixapp.com/privacy/) for full details.
 
 #### What makes Phlix different from Plex Photos?
 
@@ -148,7 +162,7 @@ Plex Photos is Plex's own app; its App Store page lists a recommended view, a ti
 
 #### Can I use Phlix outside my home network?
 
-Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. Note that Plex may require the server owner to have a Plex Pass (or you a Remote Watch Pass) before it serves files remotely to any app, including Phlix. Camera Upload is different on purpose: it uploads only on your home Wi-Fi.
+Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. For video, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/)). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy. Camera Upload is different on purpose: it uploads only on your home Wi-Fi.
 
 #### Does the lifetime purchase include Family Sharing?
 
@@ -207,25 +221,19 @@ The helper is free. In the app, the first 100 uploads are free, and Phlix Pro (h
 Without an app, copy the photos yourself, then let Plex scan:
 - From the iPhone. In the Files app, connect to a shared folder on your server (Browse, then the ••• button, then Connect to Server). Then in the Photos app, select the photos, tap Share, and choose Save to Files with that folder.
 - From a computer. Import the photos from the iPhone to the computer, then copy them into the folder of your Plex photo library.
-- Then, in Plex, scan the photo library, or switch on Settings › Library › Scan my library automatically so that Plex picks up new files by itself.
+- Then, in Plex, scan the photo library, or switch on Settings › Library › Scan my library automatically so that Plex picks up new files by itself. That setting depends on the server noticing new files, which typically fails for folders mounted over the network; then also switch on Scan my library periodically (Plex: Library settings (https://support.plex.tv/articles/200289526-library/)).
 
 That works, and it needs nothing new on your server. It is also easy to forget, which is what Camera Upload is for.
 
 ### Camera Upload (Beta) in three steps
 
-1
-
 #### Install the helper
 
 One Docker container on the machine that runs Plex Media Server, pointed at a folder inside your Plex photo library.
 
-2
-
 #### Connect your iPhone
 
 In Phlix, open Settings › Camera Upload. Phlix finds the helper on your network and pairs with it.
-
-3
 
 #### At home
 
@@ -256,7 +264,21 @@ A file keeps its name and its date. The same photo from two phones is stored onc
 
 ### In your language
 
- Deutsch (https://phlixapp.com/de/camera-upload/) Français (https://phlixapp.com/fr/camera-upload/) Español (https://phlixapp.com/es/camera-upload/) Italiano (https://phlixapp.com/it/camera-upload/) Português (Brasil) (https://phlixapp.com/pt-br/camera-upload/) Nederlands (https://phlixapp.com/nl/camera-upload/) Svenska (https://phlixapp.com/sv/camera-upload/) Dansk (https://phlixapp.com/da/camera-upload/) Norsk bokmål (https://phlixapp.com/nb/camera-upload/) Suomi (https://phlixapp.com/fi/camera-upload/) Polski (https://phlixapp.com/pl/camera-upload/) 日本語 (https://phlixapp.com/ja/camera-upload/) 한국어 (https://phlixapp.com/ko/camera-upload/) 简体中文 (https://phlixapp.com/zh-hans/camera-upload/) 繁體中文 (https://phlixapp.com/zh-hant/camera-upload/)
+- Deutsch (https://phlixapp.com/de/camera-upload/)
+- Français (https://phlixapp.com/fr/camera-upload/)
+- Español (https://phlixapp.com/es/camera-upload/)
+- Italiano (https://phlixapp.com/it/camera-upload/)
+- Português (Brasil) (https://phlixapp.com/pt-br/camera-upload/)
+- Nederlands (https://phlixapp.com/nl/camera-upload/)
+- Svenska (https://phlixapp.com/sv/camera-upload/)
+- Dansk (https://phlixapp.com/da/camera-upload/)
+- Norsk bokmål (https://phlixapp.com/nb/camera-upload/)
+- Suomi (https://phlixapp.com/fi/camera-upload/)
+- Polski (https://phlixapp.com/pl/camera-upload/)
+- 日本語 (https://phlixapp.com/ja/camera-upload/)
+- 한국어 (https://phlixapp.com/ko/camera-upload/)
+- 简体中文 (https://phlixapp.com/zh-hans/camera-upload/)
+- 繁體中文 (https://phlixapp.com/zh-hant/camera-upload/)
 
 ### Questions
 
@@ -278,7 +300,7 @@ No. The helper writes ordinary files into a folder of your Plex photo library, w
 
 #### Does it upload away from home or over mobile data?
 
-No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back.
+No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the privacy policy (https://phlixapp.com/privacy/#camera-upload) lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back.
 
 #### Does it delete photos from my iPhone?
 
@@ -286,7 +308,7 @@ No. It is a one-way copy. Phlix never deletes or changes anything in your Photo 
 
 #### What does it cost?
 
-The helper is free and open source. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you.
+The helper is free, and its source code is public. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you.
 
 #### What do I need?
 
@@ -322,7 +344,7 @@ Updated November 24, 2026 · 4 min read
 
 Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows of a folder (with the folders inside it), a year or the whole library.
 
-With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) also backs up your camera roll to your Plex server at home.
+With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) also backs up your camera roll to your Plex server at home.
 
 Phlix is free to browse, so you can try it on your own library. Camera Upload needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.
 
@@ -386,7 +408,7 @@ Yes. Both read the same photo libraries on your Plex Media Server. Phlix never c
 
 #### Do I need Plex Pass?
 
-No Plex Pass is needed on your home network. Away from home, Plex may require the server owner to have a Plex Pass, or you a Remote Watch Pass, before it serves files remotely to any app, including Phlix.
+No Plex Pass is needed on your home network. For video, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/)). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy.
 
 #### Does Phlix work with a Plex server that someone shared with me?
 
@@ -433,19 +455,13 @@ Plex had a Camera Upload of its own, and announced in March 2021 that it was end
 
 ### How it works
 
-1
-
 #### Install the helper
 
 One Docker container on the machine that runs Plex Media Server. You point it at a folder inside your Plex photo library.
 
-2
-
 #### Connect your iPhone
 
 In Phlix, open Settings › Camera Upload. Phlix finds the helper on your network and pairs with it.
-
-3
 
 #### At home
 
@@ -543,7 +559,7 @@ A command in a box has a Copy button. Paste the command into the terminal and pr
 
 If Docker answers "permission denied", put sudo in front of each docker command. sudo runs one command as the administrator and may ask for your password. If the one-command installer needs this, it stops and shows the command to use.
 
-#### A. One command Quickest
+#### A. One command (Quickest)
 
 For a Linux computer or server, and for a Mac with Docker Desktop. Not for Windows, Unraid or TrueNAS SCALE: find your system in the list above.
 
@@ -753,7 +769,7 @@ If the page does not open at all:
 - Run the doctor command above on the server. If it says The helper is running on port 7459, the helper is running, and something stands between your device and the server: a firewall on the server, or a guest Wi-Fi. See Networking help (https://phlixapp.com/camera-upload/#networking).
 - If Docker says that the container is not running, read the log: docker logs phlix-camera-upload. See The helper does not start (https://phlixapp.com/camera-upload/#ts-start).
 
-One setting in Plex. Plex shows new files only after it scans. When your Plex account owns the server, Phlix asks Plex for a scan once your photos have arrived. For everyone else in your home, and to be sure, switch on Settings › Library › Scan my library automatically in Plex. It is off by default.
+One setting in Plex. Plex shows new files only after it scans. When your Plex account owns the server, Phlix asks Plex for a scan once your photos have arrived. For everyone else in your home, and to be sure, switch on Settings › Library › Scan my library automatically in Plex. It depends on the server noticing new files, which typically fails for folders mounted over the network; then also switch on Scan my library periodically (Plex: Library settings (https://support.plex.tv/articles/200289526-library/)).
 
 ### Step 2: Connect your iPhone
 - Connect your iPhone or iPad to your home Wi-Fi.
@@ -780,7 +796,7 @@ If Phlix says Helper not found, Camera Upload stays off, and nothing is sent any
 ### What happens next
 - With Phlix open, uploads start straight away and run as fast as your Wi-Fi allows. The screen stays awake while the Camera Upload screen is uploading, so a first big backup is quickest with the phone on its charger and that screen open.
 - With Phlix closed, iOS lets it carry on in short bursts, mostly while the phone charges. That is how iOS treats every app, and it means a large library takes a few days in the background. New photos follow by themselves.
-- Away from home, nothing is sent, and Phlix does not even look for your server. Backing up carries on when the phone is back on your home Wi-Fi.
+- Away from home, Phlix does not start uploads or look for your server, apart from rare cases that the privacy policy (https://phlixapp.com/privacy/#camera-upload) lists; even then, your photos go only to your own helper. Backing up carries on when the phone is back on your home Wi-Fi.
 - When everything is backed up, the screen says so with a green tick. Switch on Notify Me When Backed Up to get a notification as well.
 
 The Camera Upload screen always shows where you stand: how many photos are backed up out of how many, what is uploading now, what was backed up recently, and how many items cannot be backed up. Those are items that Photos holds no file for, or that are larger than your server accepts.
@@ -836,7 +852,7 @@ Phlix asks nothing of your network except one thing: it must be able to open a c
 In Phlix, type the helper's address into the field under Helper not found, for example 192.168.1.20, or 192.168.1.20:8443 for another port, and tap Check This Address. Before a search, tap Enter the Helper's Address to open the field.
 
 On another machine, two more things matter:
-- The upload folder must still be inside your Plex photo library. Usually that means a network share that both machines mount. The helper writes files as the owner of the folder, or as PUID and PGID.
+- The upload folder must still be inside your Plex photo library. Usually that means a network share that both machines mount. The helper writes files as the owner of the folder, or as PUID and PGID. Plex may not notice new files on a share by itself. In Plex, also switch on Settings › Library › Scan my library periodically (Plex: Library settings (https://support.plex.tv/articles/200289526-library/)).
 - Set PLEX_URL to your Plex server's address, for example http://192.168.1.10:32400, so that the server's owner can pair without a code. Without it, everyone pairs with the pairing code, which works just as well.
 
 To use another port on the same machine, change only the first number in the ports: line of the Compose file, for example "8443:7459".
@@ -936,22 +952,22 @@ If it says that the container is not running, read the log instead: docker logs 
 #### What the Camera Upload screen says
 
 | Phlix says | What to do |
-| "Paused: not on your home network" | That is normal away from home. At home, check that the phone is on your Wi-Fi. If it is, see Phlix says "Paused: not on your home network", but I am at homehttps://phlixapp.com/camera-upload/#net-home. |
-| "Can't reach the helper" | If Phlix also says "iOS is keeping Phlix off your local network", see the iPhone's own settingshttps://phlixapp.com/camera-upload/#net-ios. If not, the phone is on your home network and the helper does not answer. Open https://SERVER:7459 in a browser, or run doctor, to see whether the helper is running. Then tap Check Connection. If the helper is running and Phlix still cannot reach it, see Networking helphttps://phlixapp.com/camera-upload/#networking. If you moved the helper to another port or another machine, see The helper is on a different machine than Plex, or on another porthttps://phlixapp.com/camera-upload/#net-other-machine. |
-| "Your server's disk is too full" | The upload disk has too little room for the next file. The helper always keeps some space free: 2 GB, unless you changed MIN_FREE_GB. Free some space on that disk, or lower MIN_FREE_GB (see All the settingshttps://phlixapp.com/camera-upload/#settings). Backing up carries on by itself. |
-| "The helper can't write to its folder" | See Files are owned by the wrong user, or the helper cannot writehttps://phlixapp.com/camera-upload/#ts-permissions. |
-| "The helper no longer knows this device" | See Pairing does not workhttps://phlixapp.com/camera-upload/#ts-pairing. |
-| "The server's identity has changed" | See Pairing does not workhttps://phlixapp.com/camera-upload/#ts-pairing. |
+| "Paused: not on your home network" | That is normal away from home. At home, check that the phone is on your Wi-Fi. If it is, see Phlix says "Paused: not on your home network", but I am at home (https://phlixapp.com/camera-upload/#net-home). |
+| "Can't reach the helper" | If Phlix also says "iOS is keeping Phlix off your local network", see the iPhone's own settings (https://phlixapp.com/camera-upload/#net-ios). If not, the phone is on your home network and the helper does not answer. Open https://SERVER:7459 in a browser, or run doctor, to see whether the helper is running. Then tap Check Connection. If the helper is running and Phlix still cannot reach it, see Networking help (https://phlixapp.com/camera-upload/#networking). If you moved the helper to another port or another machine, see The helper is on a different machine than Plex, or on another port (https://phlixapp.com/camera-upload/#net-other-machine). |
+| "Your server's disk is too full" | The upload disk has too little room for the next file. The helper always keeps some space free: 2 GB, unless you changed MIN_FREE_GB. Free some space on that disk, or lower MIN_FREE_GB (see All the settings (https://phlixapp.com/camera-upload/#settings)). Backing up carries on by itself. |
+| "The helper can't write to its folder" | See Files are owned by the wrong user, or the helper cannot write (https://phlixapp.com/camera-upload/#ts-permissions). |
+| "The helper no longer knows this device" | See Pairing does not work (https://phlixapp.com/camera-upload/#ts-pairing). |
+| "The server's identity has changed" | See Pairing does not work (https://phlixapp.com/camera-upload/#ts-pairing). |
 | "Some uploads didn't go through" | Phlix tries them again by itself. Tap Check Connection to try now. |
 | "This device is almost out of space" | Phlix makes a copy of each file on the phone before it sends it. It needs about 300 MB free, and more for a long video: room for a copy of the whole file. Free some space on the phone. |
 
 #### The app does not find the helper
 
 | Cause | Fix |
-| The helper is not running. | Open https://SERVER:7459 in a browser. If the page does not open, run docker compose ps in the helper's folderhttps://phlixapp.com/camera-upload/#changing, then read the log with docker logs phlix-camera-upload. |
-| The phone is not on your home network. It may be on mobile data, a guest Wi-Fi or a VPN. | Connect the phone to the same network as the server. See Networking helphttps://phlixapp.com/camera-upload/#networking. |
+| The helper is not running. | Open https://SERVER:7459 in a browser. If the page does not open, run docker compose ps in the helper's folder (https://phlixapp.com/camera-upload/#changing), then read the log with docker logs phlix-camera-upload. |
+| The phone is not on your home network. It may be on mobile data, a guest Wi-Fi or a VPN. | Connect the phone to the same network as the server. See Networking help (https://phlixapp.com/camera-upload/#networking). |
 | iOS is keeping Phlix off your local network. | On the iPhone, open Settings › Apps › Phlix and switch on Local Network. |
-| A firewall on the server blocks the port. | Allow TCP port 7459https://phlixapp.com/camera-upload/#net-firewall from your home network. |
+| A firewall on the server blocks the port. | Allow TCP port 7459 (https://phlixapp.com/camera-upload/#net-firewall) from your home network. |
 | The helper is on another address or port than Plex. | In Phlix, type its address into the field under Helper not found, for example 192.168.1.10:7459, and tap Check This Address. |
 | Phlix is older than 1.0.21. Settings then has no Camera Upload row. | Update Phlix to 1.0.21 or later. If the App Store does not offer that version yet, it is on its way. The Version row in Phlix's Settings shows what you have. |
 
@@ -960,7 +976,7 @@ If it says that the container is not running, read the log instead: docker logs 
 First find out whether the files arrive: the status page shows Files stored, and you can look in the upload folder.
 
 | Cause | Fix |
-| The files arrive, and Plex has not scanned yet. | In Plex, switch on Settings › Library › Scan my library automatically. To scan now, open the photo library's menu and choose Scan Library Files. |
+| The files arrive, and Plex has not scanned yet. | In Plex, switch on Settings › Library › Scan my library automatically. If the upload folder is on a network share, Plex may not notice new files by itself: also switch on Scan my library periodically (Plex: Library settings (https://support.plex.tv/articles/200289526-library/)). To scan now, open the photo library's menu and choose Scan Library Files. |
 | The files arrive, and the upload folder is not inside a folder of a Plex photo library. | In Plex, add the upload folder to your photo library: Edit Library, then Add folders. Or choose another upload folder, change the line in docker-compose.yml, and run docker compose up -d. |
 | The files arrive, and Plex runs in Docker without that folder. | Choose an upload folder inside a folder that the Plex container has. |
 | No files arrive. | Open Phlix on your home Wi-Fi and look at Settings › Camera Upload. It says what it is waiting for. After the first 100 uploads, the rest need Phlix Pro. |
@@ -993,7 +1009,7 @@ First find out whether the files arrive: the status page shows Files stored, and
 | "Nothing is mounted at /photos" | The container was started without its folders. The helper refuses to start then, so that uploads can never land inside the container and be lost. Start it with the Compose file as it is. |
 | "permission denied" from Docker itself | Put sudo in front of each docker command. |
 
-Still stuck? Write to support (https://phlixapp.com/support) and paste what doctor printed. It holds no passwords and no file names.
+Still stuck? Write to support (https://phlixapp.com/support/) and paste what doctor printed. It holds no passwords and no file names.
 
 ### Changing things later
 
@@ -1024,7 +1040,7 @@ In docker-compose.yml, remove the #  in front of environment: and in front of th
 | MIN_FREE_GB | 2 | The helper refuses uploads that would leave less free space than this. |
 | MAX_UPLOAD_GB | 50 | The largest single file the helper accepts. |
 | EXTRA_EXTENSIONS | none | More file types to accept, besides the usual photo and video types. |
-| TLS, TLS_CERT, TLS_KEY | on, own certificate | For a reverse proxy or your own certificate. See A reverse proxy, your own domain name, or your own certificatehttps://phlixapp.com/camera-upload/#net-proxy. |
+| TLS, TLS_CERT, TLS_KEY | on, own certificate | For a reverse proxy or your own certificate. See A reverse proxy, your own domain name, or your own certificate (https://phlixapp.com/camera-upload/#net-proxy). |
 
 The README (https://github.com/jrl8085/phlix-camera-upload#settings) describes each one in full.
 
@@ -1092,11 +1108,11 @@ No. Phlix copies your photos and videos to your server. It never deletes or chan
 
 #### Does it work away from home, or over mobile data?
 
-No, on purpose. Phlix uploads only while the phone is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back.
+No, on purpose. Phlix uploads only while the phone is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the privacy policy (https://phlixapp.com/privacy/#camera-upload) lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back.
 
 #### Do I need Plex Pass?
 
-No. The helper writes ordinary files into a folder of your Plex photo library, and that works with every Plex Media Server. The photos then show in every Plex app, and in Phlix.
+No. The helper writes ordinary files into a folder of your Plex photo library, and that works with every Plex Media Server. The photos then show in your Plex photo library, and in Phlix.
 
 #### What does it cost?
 
@@ -1126,15 +1142,25 @@ No. Phlix is an app for iPhone and iPad.
 
 #### Files to download
 
- docker-compose.ymlThe Compose file. One line to change. (https://phlixapp.com/camera-upload/docker-compose.yml) SETUP-WITH-AI.mdInstructions for an AI assistant. (https://phlixapp.com/camera-upload/SETUP-WITH-AI.md) install.shThe one-command installer. (https://phlixapp.com/camera-upload/install.sh)
+- docker-compose.yml: The Compose file. One line to change. (https://phlixapp.com/camera-upload/docker-compose.yml)
+- SETUP-WITH-AI.md: Instructions for an AI assistant. (https://phlixapp.com/camera-upload/SETUP-WITH-AI.md)
+- install.sh: The one-command installer. (https://phlixapp.com/camera-upload/install.sh)
 
 #### The helper on GitHub
 
- GitHub repositorySource code, README, Unraid template, the skill. (https://github.com/jrl8085/phlix-camera-upload) READMEAll the instructions in one document. (https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md) Networking guideEach way to set up the network, with examples. (https://github.com/jrl8085/phlix-camera-upload/blob/main/NETWORKING.md) Security notesHow the helper is built to be safe, and how to report a security problem. (https://github.com/jrl8085/phlix-camera-upload/blob/main/SECURITY.md) ReleasesWhat changed in each version of the helper. (https://github.com/jrl8085/phlix-camera-upload/releases) Docker imageghcr.io/jrl8085/phlix-camera-upload:1, for Intel, AMD and Arm. (https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload) Unraid templateThe file that adds the helper on Unraid's Docker tab. (https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml) IssuesProblems reported with the helper, and a place to report one. For a security problem, read the security notes first. (https://github.com/jrl8085/phlix-camera-upload/issues)
+- GitHub repository: Source code, README, Unraid template, the skill. (https://github.com/jrl8085/phlix-camera-upload)
+- README: All the instructions in one document. (https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md)
+- Networking guide: Each way to set up the network, with examples. (https://github.com/jrl8085/phlix-camera-upload/blob/main/NETWORKING.md)
+- Security notes: How the helper is built to be safe, and how to report a security problem. (https://github.com/jrl8085/phlix-camera-upload/blob/main/SECURITY.md)
+- Releases: What changed in each version of the helper. (https://github.com/jrl8085/phlix-camera-upload/releases)
+- Docker image: ghcr.io/jrl8085/phlix-camera-upload:1, for Intel, AMD and Arm. (https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload)
+- Unraid template: The file that adds the helper on Unraid's Docker tab. (https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml)
+- Issues: Problems reported with the helper, and a place to report one. For a security problem, read the security notes first. (https://github.com/jrl8085/phlix-camera-upload/issues)
 
 #### On this site
 
- SupportAnswers to common questions, and a form to write to us. (https://phlixapp.com/support/) Privacy policy: Camera Upload (Beta)What Camera Upload stores and sends, and to whom. (https://phlixapp.com/privacy/#camera-upload)
+- Support: Answers to common questions, and a form to write to us. (https://phlixapp.com/support/)
+- Privacy policy: Camera Upload (Beta): What Camera Upload stores and sends, and to whom. (https://phlixapp.com/privacy/#camera-upload)
 
 #### Phlix: your Plex photos, the way they deserve
 

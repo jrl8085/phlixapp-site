@@ -123,7 +123,7 @@
           "name": "What is Phlix?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves photos to the Photos app or straight into an album, and plays slideshows of a folder, a year or the whole library. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) backs up your camera roll to your own server."
+            "text": "Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves photos to the Photos app or straight into an album, and plays slideshows of a folder, a year or the whole library. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) backs up your camera roll to your own server."
           }
         },
         {
@@ -155,7 +155,7 @@
           "name": "Do I need Plex Pass to use Phlix?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No Plex Pass is needed on your home network. Away from home, Plex requires the server owner to have a Plex Pass (or you a Remote Watch Pass) to stream personal video — including clips in Phlix — and Plex's photo exemption is stated only for its own Plex Photos app, so photos may be affected too. Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either."
+            "text": "No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either."
           }
         },
         {
@@ -227,7 +227,7 @@
           "name": "Can I use Phlix outside my home network?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. Note that Plex may require the server owner to have a Plex Pass (or you a Remote Watch Pass) before it serves files remotely to any app, including Phlix. Camera Upload is different on purpose: it uploads only on your home Wi-Fi."
+            "text": "Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. For video, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy. Camera Upload is different on purpose: it uploads only on your home Wi-Fi."
           }
         },
         {
@@ -513,6 +513,8 @@
             padding: 36px 28px;
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .price-card.featured {
             border-color: var(--gold);
@@ -550,6 +552,7 @@
             list-style: none;
             text-align: left;
             margin-bottom: 28px;
+            flex-grow: 1;
         }
         .price-card ul li {
             color: var(--text-2);
@@ -693,6 +696,10 @@
         @media (max-width: 700px) {
             .features-grid, .dev-grid { grid-template-columns: 1fr; }
             .trust-inner { grid-template-columns: repeat(2, 1fr); }
+            .compare-table { font-size: 0.85rem; }
+            .compare-table thead th, .compare-table tbody td { padding: 10px 12px; }
+        }
+        @media (max-width: 800px) {
             .menu-btn { display: block; }
             .nav-links {
                 display: none;
@@ -708,8 +715,6 @@
             }
             #menu-toggle:checked ~ .nav-links { display: flex; }
             .nav-cta { text-align: center; width: 100%; padding: 12px; }
-            .compare-table { font-size: 0.85rem; }
-            .compare-table thead th, .compare-table tbody td { padding: 10px 12px; }
         }
 
         /* ─── Added 2026-11: Camera Upload first, then downloads ─── */
@@ -757,7 +762,7 @@
         }
         @media (max-width: 700px) {
             .cu-facts, .dl-grid { grid-template-columns: 1fr; }
-            .hero-links a { display: inline-block; margin: 6px 10px; }
+            .hero-links a { display: inline-block; margin: 6px 10px; white-space: normal; }
         }
     </style>
 </head>
@@ -846,7 +851,7 @@
                     <li><strong>Only at home.</strong> Phlix uploads on your home Wi-Fi and nowhere else. Never over mobile data.</li>
                     <li><strong>Only to you.</strong> Photos go from your phone straight to your server, encrypted. None of them go to Phlix.</li>
                     <li><strong>Only copies.</strong> Nothing is ever deleted or changed on your phone. It is a one-way copy, not a sync.</li>
-                    <li><strong>Free to try.</strong> The helper is free and open source. The first 100 uploads are free, and Phlix Pro uploads the rest.</li>
+                    <li><strong>Free to try.</strong> The helper is free, and its source code is public. The first 100 uploads are free, and Phlix Pro uploads the rest.</li>
                 </ul>
                 <div class="cu-more">
                     <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Get Phlix on the App Store</a>
@@ -877,7 +882,7 @@
         <section class="section section-alt" id="downloads">
             <div class="wrap">
                 <h2 class="section-title">Save to Photos, or straight into an album</h2>
-                <p class="section-sub">Any photo or clip on your Plex server can go into the Photos app on your iPhone or iPad, where it stays whether or not your server is reachable.</p>
+                <p class="section-sub">The photos and clips on your Plex server can go into the Photos app on your iPhone or iPad, where they stay whether or not your server is reachable. A file in a format Photos cannot store can go to the Files app instead.</p>
                 <div class="dl-grid">
                     <div class="feature-card">
                         <span class="icon" aria-hidden="true">&#128229;</span>
@@ -952,7 +957,7 @@
                     <div class="feature-card">
                         <span class="icon" aria-hidden="true">&#128274;</span>
                         <h3>Yours, Not Ours</h3>
-                        <span class="accent grad-text">No account to create.</span>
+                        <span class="accent grad-text">No Phlix account to create.</span>
                         <p>You sign in on Plex's own sign-in page, so Phlix never sees your password. Phlix never changes or deletes what is on your server; Camera Upload only adds new files, in the folder you choose for it.</p>
                     </div>
                 </div>
@@ -1056,7 +1061,7 @@
                             <li>Search &amp; favorites</li>
                             <li>On-device slideshow</li>
                             <li>25 saves to Photos</li>
-                            <li>First 100 camera uploads (Beta)</li>
+                            <li>First 100 camera uploads (Beta, from 1.0.21)</li>
                         </ul>
                         <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="card-cta secondary">Download Free</a>
                     </div>
@@ -1069,7 +1074,7 @@
                             <li>Everything in Free</li>
                             <li>Unlimited saves to Photos</li>
                             <li>Big-screen slideshows on your TV</li>
-                            <li>Unlimited camera uploads (Beta)</li>
+                            <li>Unlimited camera uploads (Beta, from 1.0.21)</li>
                             <li>Family Sharing included</li>
                             <li>All future Pro features</li>
                             <li>Pay once, own it forever</li>
@@ -1084,10 +1089,9 @@
                             <li>Everything in Free</li>
                             <li>Unlimited saves to Photos</li>
                             <li>Big-screen slideshows on your TV</li>
-                            <li>Unlimited camera uploads (Beta)</li>
+                            <li>Unlimited camera uploads (Beta, from 1.0.21)</li>
                             <li>All future Pro features</li>
                             <li>Cancel anytime</li>
-                            <li>&nbsp;</li>
                         </ul>
                         <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="card-cta secondary">Subscribe Yearly</a>
                     </div>
@@ -1110,7 +1114,7 @@
                 <div class="faq-list">
                     <details>
                         <summary>What is Phlix?</summary>
-                        <p>Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves photos to the Photos app or straight into an album, and plays slideshows of a folder, a year or the whole library. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) backs up your camera roll to your own server.</p>
+                        <p>Phlix is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves photos to the Photos app or straight into an album, and plays slideshows of a folder, a year or the whole library. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) backs up your camera roll to your own server.</p>
                     </details>
                     <details>
                         <summary>What happened to Plex's Camera Upload?</summary>
@@ -1126,7 +1130,7 @@
                     </details>
                     <details>
                         <summary>Do I need Plex Pass to use Phlix?</summary>
-                        <p>No Plex Pass is needed on your home network. Away from home, Plex requires the server owner to have a Plex Pass (or you a Remote Watch Pass) to stream personal video &mdash; including clips in Phlix &mdash; and Plex's photo exemption is stated only for its own Plex Photos app, so photos may be affected too. Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either.</p>
+                        <p>No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (<a href="https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/">Plex: Requirements for Remote Playback of Personal Media</a>). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either.</p>
                     </details>
                     <details>
                         <summary>How much does Phlix cost?</summary>
@@ -1162,7 +1166,7 @@
                     </details>
                     <details>
                         <summary>Can I use Phlix outside my home network?</summary>
-                        <p>Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. Note that Plex may require the server owner to have a Plex Pass (or you a Remote Watch Pass) before it serves files remotely to any app, including Phlix. Camera Upload is different on purpose: it uploads only on your home Wi-Fi.</p>
+                        <p>Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. For video, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (<a href="https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/">Plex: Requirements for Remote Playback of Personal Media</a>). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy. Camera Upload is different on purpose: it uploads only on your home Wi-Fi.</p>
                     </details>
                     <details>
                         <summary>Does the lifetime purchase include Family Sharing?</summary>
@@ -1184,7 +1188,7 @@
         <section class="final-cta" id="final-cta">
             <div class="wrap">
                 <h2><span class="grad-text">Start browsing your Plex photos today.</span></h2>
-                <p class="sub">Free to download. Free to browse. No account to create.</p>
+                <p class="sub">Free to download. Free to browse. No Phlix account to create.</p>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Download Free on the App Store</a>
                 <p class="req">Requires iOS 17 or later. Works with any Plex Media Server with a photo library.</p>
             </div>
@@ -1200,7 +1204,7 @@
                 <a href="/terms">Terms of Use</a>
                 <a href="/blog/">Blog</a>
                 <a href="/camera-upload/">Camera Upload (Beta)</a>
-                <a href="/plex-camera-upload/">Plex Camera Upload</a>
+                <a href="/plex-camera-upload/">What happened to Plex Camera Upload</a>
                 <a href="/plex-photos-alternative/">Plex Photos alternative</a>
                 <a href="/support">Support</a>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208">App Store</a>

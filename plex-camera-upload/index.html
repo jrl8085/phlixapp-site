@@ -41,9 +41,9 @@
     {"@type":"Question","name":"How do I back up my iPhone photos to Plex automatically?","acceptedAnswer":{"@type":"Answer","text":"Camera Upload (Beta) in Phlix does it. Install the free Phlix Camera Upload helper, one Docker container, on the machine that runs Plex Media Server, and point it at a folder inside your Plex photo library. Then turn on Settings > Camera Upload in Phlix. At home, on your Wi-Fi, new photos copy to your server by themselves. It needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way."}},
     {"@type":"Question","name":"Can I put iPhone photos into Plex without an app?","acceptedAnswer":{"@type":"Answer","text":"Yes, by hand. Copy the photos into a folder that one of your Plex photo libraries includes, then let Plex scan the library. From an iPhone, the Files app can connect to a shared folder on your server, and in the Photos app, Share > Save to Files copies the selected photos there. From a computer, import the photos from the iPhone and copy them into that folder."}},
     {"@type":"Question","name":"Does Phlix Camera Upload need Plex Pass?","acceptedAnswer":{"@type":"Answer","text":"No. The helper writes ordinary files into a folder of your Plex photo library, which works with every Plex Media Server."}},
-    {"@type":"Question","name":"Does it upload away from home or over mobile data?","acceptedAnswer":{"@type":"Answer","text":"No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back."}},
+    {"@type":"Question","name":"Does it upload away from home or over mobile data?","acceptedAnswer":{"@type":"Answer","text":"No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the privacy policy lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back."}},
     {"@type":"Question","name":"Does it delete photos from my iPhone?","acceptedAnswer":{"@type":"Answer","text":"No. It is a one-way copy. Phlix never deletes or changes anything in your Photo Library, and deleting a photo on the phone leaves the copy on the server."}},
-    {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The helper is free and open source. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you."}},
+    {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The helper is free, and its source code is public. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you."}},
     {"@type":"Question","name":"What do I need?","acceptedAnswer":{"@type":"Answer","text":"Plex Media Server with a photo library, on a computer or NAS that runs Docker (Linux, a Mac or Windows PC with Docker Desktop, Synology, Unraid or TrueNAS SCALE); Phlix 1.0.21 or later on an iPhone or iPad; and the phone and the server on the same home network."}},
     {"@type":"Question","name":"Is Phlix made by Plex?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It works with Plex Media Server."}},
     {"@type":"Question","name":"Is there an Android version?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix is an app for iPhone and iPad."}}
@@ -135,7 +135,7 @@
         <ul>
             <li><strong>From the iPhone.</strong> In the Files app, connect to a shared folder on your server (Browse, then the &bull;&bull;&bull; button, then Connect to Server). Then in the Photos app, select the photos, tap Share, and choose Save to Files with that folder.</li>
             <li><strong>From a computer.</strong> Import the photos from the iPhone to the computer, then copy them into the folder of your Plex photo library.</li>
-            <li><strong>Then, in Plex,</strong> scan the photo library, or switch on Settings &rsaquo; Library &rsaquo; <em>Scan my library automatically</em> so that Plex picks up new files by itself.</li>
+            <li><strong>Then, in Plex,</strong> scan the photo library, or switch on Settings &rsaquo; Library &rsaquo; <em>Scan my library automatically</em> so that Plex picks up new files by itself. That setting depends on the server noticing new files, which typically fails for folders mounted over the network; then also switch on <em>Scan my library periodically</em> (<a href="https://support.plex.tv/articles/200289526-library/">Plex: Library settings</a>).</li>
         </ul>
         <p>That works, and it needs nothing new on your server. It is also easy to forget, which is what Camera Upload is for.</p>
 
@@ -197,7 +197,7 @@
         </details>
         <details>
             <summary>Does it upload away from home or over mobile data?</summary>
-            <div class="inner"><p>No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back.</p></div>
+            <div class="inner"><p>No, on purpose. Phlix uploads only while the iPhone or iPad is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the <a href="/privacy/#camera-upload">privacy policy</a> lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back.</p></div>
         </details>
         <details>
             <summary>Does it delete photos from my iPhone?</summary>
@@ -205,7 +205,7 @@
         </details>
         <details>
             <summary>What does it cost?</summary>
-            <div class="inner"><p>The helper is free and open source. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you.</p></div>
+            <div class="inner"><p>The helper is free, and its source code is public. In the app, the first 100 uploads are free, and Phlix Pro uploads the rest: $19.99 once, with Family Sharing, or $6.99 a year, with a 14-day free trial that never charges you.</p></div>
         </details>
         <details>
             <summary>What do I need?</summary>

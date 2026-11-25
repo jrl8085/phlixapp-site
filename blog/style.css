@@ -100,4 +100,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: cente
 @media (max-width: 600px) {
     .blog-grid, .related-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    article table { display: block; overflow-x: auto; }
+    article code { overflow-wrap: anywhere; }
 }
+@media (max-width: 760px) { nav[data-page-section="l10n-nav"] .nav-links { display: none; } }

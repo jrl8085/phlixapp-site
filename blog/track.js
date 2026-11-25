@@ -1,5 +1,7 @@
 /*
- * Phlix blog: GA4 tracking for App Store link clicks.
+ * Phlix blog: GA4 tracking for clicks on links to Phlix's own App Store
+ * page (app ID 6796820208). Links to other apps on the App Store, such as
+ * a citation of another app's listing, send nothing.
  *
  * Shared by every blog page (the index and all posts), which load it once
  * with a deferred script tag placed just before the closing body tag.
@@ -24,7 +26,7 @@
 (function () {
     'use strict';
 
-    var APP_STORE_LINK = 'a[href*="apps.apple.com"]';
+    var APP_STORE_LINK = 'a[href*="apps.apple.com"][href*="id6796820208"]';
 
     function pageSection(link) {
         var named = link.closest('[data-page-section]');

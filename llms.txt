@@ -1,6 +1,6 @@
 # Phlix
 
-> Phlix (App Store name "Phlix Photos") is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows; with Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. From version 1.0.21, Camera Upload (Beta) backs up the photos and videos on an iPhone or iPad to the user's own Plex photo library, on the home Wi-Fi only. Phlix is not made by Plex.
+> Phlix (App Store name "Phlix Photos") is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) backs up the photos and videos on an iPhone or iPad to the user's own Plex photo library, on the home Wi-Fi only. Phlix is not made by Plex.
 
 Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.
 Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
@@ -27,7 +27,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - Category: Photo & Video
 - Current App Store version: 1.0.20. Camera Upload (Beta) comes with version 1.0.21. If the App Store does not offer that version yet, it is on its way.
 - Languages: English, German, French, Spanish, Italian, Portuguese (Brazil), Dutch, Swedish, Danish, Norwegian Bokmål, Finnish, Polish, Japanese, Korean, Chinese (Simplified and Traditional)
-- Needs: a Plex Media Server with at least one photo library, and a Plex account. No Plex Pass on the home network. Away from home, Plex may require the server owner to have a Plex Pass (or the user a Remote Watch Pass) before it serves files remotely to any app, including Phlix.
+- Needs: a Plex Media Server with at least one photo library, and a Plex account. No Plex Pass on the home network. For video, Plex requires a Plex Pass (the server owner's or the user's own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy.
 
 ## Features
 
@@ -62,24 +62,38 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 
 ## Camera Upload helper
 
-- Source code (public): https://github.com/jrl8085/phlix-camera-upload
-- README: https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md
-- Releases: https://github.com/jrl8085/phlix-camera-upload/releases
-- Issues: https://github.com/jrl8085/phlix-camera-upload/issues
-- Docker image: ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.1, latest; amd64, arm64, armv7): https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload
-- Unraid template: https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml
-- One-command install (Linux, Mac with Docker Desktop): curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
-- Compose file: https://phlixapp.com/camera-upload/docker-compose.yml
-- Instructions for an AI assistant: https://phlixapp.com/camera-upload/SETUP-WITH-AI.md
+- [Source code (public)](https://github.com/jrl8085/phlix-camera-upload)
+- [README](https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md)
+- [Releases](https://github.com/jrl8085/phlix-camera-upload/releases)
+- [Issues](https://github.com/jrl8085/phlix-camera-upload/issues)
+- [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.1, latest; amd64, arm64, armv7)
+- [Unraid template](https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml)
+- [One-command installer](https://phlixapp.com/camera-upload/install.sh): for Linux and a Mac with Docker Desktop, run curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
+- [Compose file](https://phlixapp.com/camera-upload/docker-compose.yml)
+- [Instructions for an AI assistant](https://phlixapp.com/camera-upload/SETUP-WITH-AI.md)
 
 ## Pages
 
-- Homepage: https://phlixapp.com/
-- Plex Camera Upload, what happened and what to use now: https://phlixapp.com/plex-camera-upload/
-- Plex Photos alternative: https://phlixapp.com/plex-photos-alternative/
-- Camera Upload (Beta) setup guide (English): https://phlixapp.com/camera-upload/
-- Camera Upload pages in other languages: https://phlixapp.com/de/camera-upload/ , /fr/camera-upload/ , /es/camera-upload/ , /it/camera-upload/ , /pt-br/camera-upload/ , /nl/camera-upload/ , /sv/camera-upload/ , /da/camera-upload/ , /nb/camera-upload/ , /fi/camera-upload/ , /pl/camera-upload/ , /ja/camera-upload/ , /ko/camera-upload/ , /zh-hans/camera-upload/ , /zh-hant/camera-upload/
-- Blog (guides about Plex photo libraries and Plex Media Server): https://phlixapp.com/blog/
-- Support: https://phlixapp.com/support/
-- Privacy Policy: https://phlixapp.com/privacy/
-- Terms of Use: https://phlixapp.com/terms/
+- [Homepage](https://phlixapp.com/)
+- [What happened to Plex Camera Upload, and what to use now](https://phlixapp.com/plex-camera-upload/)
+- [Plex Photos alternative](https://phlixapp.com/plex-photos-alternative/)
+- [Camera Upload (Beta) setup guide](https://phlixapp.com/camera-upload/): in English
+- [Camera Upload (Beta), Deutsch](https://phlixapp.com/de/camera-upload/)
+- [Camera Upload (Beta), Français](https://phlixapp.com/fr/camera-upload/)
+- [Camera Upload (Beta), Español](https://phlixapp.com/es/camera-upload/)
+- [Camera Upload (Beta), Italiano](https://phlixapp.com/it/camera-upload/)
+- [Camera Upload (Beta), Português (Brasil)](https://phlixapp.com/pt-br/camera-upload/)
+- [Camera Upload (Beta), Nederlands](https://phlixapp.com/nl/camera-upload/)
+- [Camera Upload (Beta), Svenska](https://phlixapp.com/sv/camera-upload/)
+- [Camera Upload (Beta), Dansk](https://phlixapp.com/da/camera-upload/)
+- [Camera Upload (Beta), Norsk bokmål](https://phlixapp.com/nb/camera-upload/)
+- [Camera Upload (Beta), Suomi](https://phlixapp.com/fi/camera-upload/)
+- [Camera Upload (Beta), Polski](https://phlixapp.com/pl/camera-upload/)
+- [Camera Upload (Beta), 日本語](https://phlixapp.com/ja/camera-upload/)
+- [Camera Upload (Beta), 한국어](https://phlixapp.com/ko/camera-upload/)
+- [Camera Upload (Beta), 简体中文](https://phlixapp.com/zh-hans/camera-upload/)
+- [Camera Upload (Beta), 繁體中文](https://phlixapp.com/zh-hant/camera-upload/)
+- [Blog](https://phlixapp.com/blog/): guides about Plex photo libraries and Plex Media Server
+- [Support](https://phlixapp.com/support/)
+- [Privacy Policy](https://phlixapp.com/privacy/)
+- [Terms of Use](https://phlixapp.com/terms/)

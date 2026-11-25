@@ -51,12 +51,15 @@
     {"@context":"https://schema.org","@type":"TechArticle","headline":"Camera Upload (Beta): back up your iPhone photos to your own Plex server","description":"Set up Camera Upload (Beta) in Phlix: a free Docker helper next to Plex Media Server that receives your iPhone's photos over your home Wi-Fi. With a list of what the beta does and what it does not do.","datePublished":"2026-11-22","dateModified":"2026-11-24","inLanguage":"en","author":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/camera-upload/"}
     </script>
     <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Camera Upload (Beta)","item":"https://phlixapp.com/camera-upload/"}]}
+    </script>
+    <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"Is Camera Upload a beta?","acceptedAnswer":{"@type":"Answer","text":"Yes. Camera Upload is a beta in Phlix 1.0.21 or later. It does what the list on this page says. Keep your own backup of anything you cannot replace, and tell us what goes wrong: in Phlix, open Settings and tap Send Feedback, or use the support page."}},
     {"@type":"Question","name":"What happened to Plex's own Camera Upload?","acceptedAnswer":{"@type":"Answer","text":"Plex announced in March 2021 that it was ending support for its Camera Upload, with removal targeted for June 2021. Camera Upload in Phlix is a separate feature of an independent app: it copies your photos into a folder of your Plex photo library through the helper on your own server. The whole story, with Plex's announcement."}},
     {"@type":"Question","name":"Does it delete photos from my iPhone?","acceptedAnswer":{"@type":"Answer","text":"No. Phlix copies your photos and videos to your server. It never deletes or changes anything in your Photo Library. Freeing space on the phone stays your decision."}},
-    {"@type":"Question","name":"Does it work away from home, or over mobile data?","acceptedAnswer":{"@type":"Answer","text":"No, on purpose. Phlix uploads only while the phone is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back."}},
-    {"@type":"Question","name":"Do I need Plex Pass?","acceptedAnswer":{"@type":"Answer","text":"No. The helper writes ordinary files into a folder of your Plex photo library, and that works with every Plex Media Server. The photos then show in every Plex app, and in Phlix."}},
+    {"@type":"Question","name":"Does it work away from home, or over mobile data?","acceptedAnswer":{"@type":"Answer","text":"No, on purpose. Phlix uploads only while the phone is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the privacy policy lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back."}},
+    {"@type":"Question","name":"Do I need Plex Pass?","acceptedAnswer":{"@type":"Answer","text":"No. The helper writes ordinary files into a folder of your Plex photo library, and that works with every Plex Media Server. The photos then show in your Plex photo library, and in Phlix."}},
     {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The helper for your server is free. In the app, the first 100 uploads are free, so you can see it work from end to end. Phlix Pro uploads the rest, and what you take from then on."}},
     {"@type":"Question","name":"Can the whole family use it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each iPhone and iPad pairs by itself and gets its own folder. The owner of the Plex server pairs without a code; everyone else types the helper's pairing code. If two phones hold the same photo, the server stores it once."}},
     {"@type":"Question","name":"How long does the first backup take?","acceptedAnswer":{"@type":"Answer","text":"With Phlix open on the Camera Upload screen and the phone on its charger, it runs as fast as your Wi-Fi allows. With Phlix closed, iOS gives it short bursts, mostly while the phone charges, so a large library takes a few days. Either way you can see the count rise in the app."}},
@@ -142,6 +145,9 @@
         .langs a { color: var(--text-2); margin-right: 10px; white-space: nowrap; }
         .langs a[aria-current="page"] { color: var(--gold); font-weight: 700; }
         .langs-label { margin-right: 8px; }
+        @media (max-width: 600px) {
+            .guide kbd { white-space: normal; }
+        }
         @media (max-width: 700px) {
             .hero-row { flex-direction: column; }
             .hero-row figure { flex-basis: auto; width: 100%; max-width: 240px; margin: 0 auto; }
@@ -473,7 +479,7 @@ Nothing needs fixing.</code></pre>
             <li>If Docker says that the container is not running, read the log: <code>docker logs phlix-camera-upload</code>. See <a href="#ts-start">The helper does not start</a>.</li>
         </ul>
         <div class="note">
-            <p><strong>One setting in Plex.</strong> Plex shows new files only after it scans. When your Plex account owns the server, Phlix asks Plex for a scan once your photos have arrived. For everyone else in your home, and to be sure, switch on Settings &rsaquo; Library &rsaquo; <em>Scan my library automatically</em> in Plex. It is off by default.</p>
+            <p><strong>One setting in Plex.</strong> Plex shows new files only after it scans. When your Plex account owns the server, Phlix asks Plex for a scan once your photos have arrived. For everyone else in your home, and to be sure, switch on Settings &rsaquo; Library &rsaquo; <em>Scan my library automatically</em> in Plex. It depends on the server noticing new files, which typically fails for folders mounted over the network; then also switch on <em>Scan my library periodically</em> (<a href="https://support.plex.tv/articles/200289526-library/">Plex: Library settings</a>).</p>
         </div>
 
         <h2 id="connect">Step 2: Connect your iPhone</h2>
@@ -506,7 +512,7 @@ Nothing needs fixing.</code></pre>
         <ul>
             <li><strong>With Phlix open</strong>, uploads start straight away and run as fast as your Wi-Fi allows. The screen stays awake while the Camera Upload screen is uploading, so a first big backup is quickest with the phone on its charger and that screen open.</li>
             <li><strong>With Phlix closed</strong>, iOS lets it carry on in short bursts, mostly while the phone charges. That is how iOS treats every app, and it means a large library takes a few days in the background. New photos follow by themselves.</li>
-            <li><strong>Away from home</strong>, nothing is sent, and Phlix does not even look for your server. Backing up carries on when the phone is back on your home Wi-Fi.</li>
+            <li><strong>Away from home</strong>, Phlix does not start uploads or look for your server, apart from rare cases that the <a href="/privacy/#camera-upload">privacy policy</a> lists; even then, your photos go only to your own helper. Backing up carries on when the phone is back on your home Wi-Fi.</li>
             <li><strong>When everything is backed up</strong>, the screen says so with a green tick. Switch on <em>Notify Me When Backed Up</em> to get a notification as well.</li>
         </ul>
         <p>The Camera Upload screen always shows where you stand: how many photos are backed up out of how many, what is uploading now, what was backed up recently, and how many items cannot be backed up. Those are items that Photos holds no file for, or that are larger than your server accepts.</p>
@@ -559,7 +565,7 @@ Nothing needs fixing.</code></pre>
                 <p>In Phlix, type the helper's address into the field under <em>Helper not found</em>, for example <code>192.168.1.20</code>, or <code>192.168.1.20:8443</code> for another port, and tap <em>Check This Address</em>. Before a search, tap <em>Enter the Helper's Address</em> to open the field.</p>
                 <p>On another machine, two more things matter:</p>
                 <ul>
-                    <li>The upload folder must still be inside your Plex photo library. Usually that means a network share that both machines mount. The helper writes files as the owner of the folder, or as <code>PUID</code> and <code>PGID</code>.</li>
+                    <li>The upload folder must still be inside your Plex photo library. Usually that means a network share that both machines mount. The helper writes files as the owner of the folder, or as <code>PUID</code> and <code>PGID</code>. Plex may not notice new files on a share by itself. In Plex, also switch on Settings &rsaquo; Library &rsaquo; <em>Scan my library periodically</em> (<a href="https://support.plex.tv/articles/200289526-library/">Plex: Library settings</a>).</li>
                     <li>Set <code>PLEX_URL</code> to your Plex server's address, for example <code>http://192.168.1.10:32400</code>, so that the server's owner can pair without a code. Without it, everyone pairs with the pairing code, which works just as well.</li>
                 </ul>
                 <p>To use another port on the same machine, change only the first number in the <code>ports:</code> line of the Compose file, for example <code>"8443:7459"</code>.</p>
@@ -693,7 +699,7 @@ Nothing needs fixing.</code></pre>
         <p>First find out whether the files arrive: the status page shows <strong>Files stored</strong>, and you can look in the upload folder.</p>
         <table>
             <tr><th>Cause</th><th>Fix</th></tr>
-            <tr><td>The files arrive, and Plex has not scanned yet.</td><td>In Plex, switch on Settings &rsaquo; Library &rsaquo; Scan my library automatically. To scan now, open the photo library's menu and choose Scan Library Files.</td></tr>
+            <tr><td>The files arrive, and Plex has not scanned yet.</td><td>In Plex, switch on Settings &rsaquo; Library &rsaquo; Scan my library automatically. If the upload folder is on a network share, Plex may not notice new files by itself: also switch on Scan my library periodically (<a href="https://support.plex.tv/articles/200289526-library/">Plex: Library settings</a>). To scan now, open the photo library's menu and choose Scan Library Files.</td></tr>
             <tr><td>The files arrive, and the upload folder is not inside a folder of a Plex photo library.</td><td>In Plex, add the upload folder to your photo library: Edit Library, then Add folders. Or choose another upload folder, change the line in <code>docker-compose.yml</code>, and run <code>docker compose up -d</code>.</td></tr>
             <tr><td>The files arrive, and Plex runs in Docker without that folder.</td><td>Choose an upload folder inside a folder that the Plex container has.</td></tr>
             <tr><td>No files arrive.</td><td>Open Phlix on your home Wi-Fi and look at Settings &rsaquo; Camera Upload. It says what it is waiting for. After the first 100 uploads, the rest need Phlix Pro.</td></tr>
@@ -821,11 +827,11 @@ docker compose up -d</code></pre></div>
         </details>
         <details>
             <summary>Does it work away from home, or over mobile data?</summary>
-            <div class="inner"><p>No, on purpose. Phlix uploads only while the phone is on your home Wi-Fi. Away from home it sends nothing and does not look for your server. Photos you take on a trip upload when you are back.</p></div>
+            <div class="inner"><p>No, on purpose. Phlix uploads only while the phone is on your home Wi-Fi. Away from home it does not start uploads or look for your server, apart from rare cases that the <a href="/privacy/#camera-upload">privacy policy</a> lists; even then, your photos go only to your own helper. Photos you take on a trip upload when you are back.</p></div>
         </details>
         <details>
             <summary>Do I need Plex Pass?</summary>
-            <div class="inner"><p>No. The helper writes ordinary files into a folder of your Plex photo library, and that works with every Plex Media Server. The photos then show in every Plex app, and in Phlix.</p></div>
+            <div class="inner"><p>No. The helper writes ordinary files into a folder of your Plex photo library, and that works with every Plex Media Server. The photos then show in your Plex photo library, and in Phlix.</p></div>
         </details>
         <details>
             <summary>What does it cost?</summary>
