@@ -40,7 +40,7 @@
     <div class="container">
         <a href="/" class="back">&larr; Back to Phlix</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: November 25, 2026</p>
+        <p class="updated">Last updated: November 26, 2026</p>
 
         <h2>Overview</h2>
         <p>Phlix ("the App") is an independent photo and video app that works with a Plex Media Server that you own, operate, or are authorized to access. This Privacy Policy explains what information the App processes, how it is processed, and what choices you have. By using the App you agree to the processing described below; if you do not agree, do not use the App.</p>
@@ -63,7 +63,7 @@
         <p>What is <strong>never</strong> collected:</p>
         <ul>
             <li>Your name, email address, phone number, or any contact information.</li>
-            <li>Your Plex username, authentication tokens, server name, server address, or any server configuration.</li>
+            <li>Your Plex username, authentication tokens, server name, server address, or how your Plex Media Server is set up. (The version number of your Camera Upload helper is the one thing about your server that is collected: see "Camera Upload" below.)</li>
             <li>Photos, videos, filenames, album names, or any content from your Plex library or from your device's Photo Library.</li>
             <li>Apple advertising identifiers (IDFA) or cross-app tracking data.</li>
             <li>Payment information or billing details. App Store transaction records are not part of these analytics; RevenueCat keeps them for the developer (see "Network Communication" below).</li>
@@ -112,7 +112,7 @@
             <li><strong>Pairing.</strong> If the helper runs next to the Plex Media Server the App is connected to, and can pair through Plex, the App asks that server for a short-lived token that works on that server only, and shows it to the helper when you pair. The helper asks Plex whether the token belongs to the server's owner, and does not keep it. If the token is the owner's, your device is paired without a code. If it is not, or if the helper cannot ask Plex, your device is not paired this way. The other way to pair is a code that the helper shows to the server's owner. Your Plex account's own sign-in token is never sent to the helper.</li>
             <li><strong>What the helper keeps on your server.</strong> The files you upload. For each device that has paired: the folder name you chose and any other folder its photos have gone into (a name you typed when it paired again, or a folder you renamed on the server), a random identifier, the device's name as iOS gives it (for example "iPhone"), how and when it paired, when it last connected, and, while it is paired, a hash of its pairing token (not the token itself). The helper keeps this record after a device is unpaired, so that the device gets the same folder if it pairs again, unless you type another folder name. A record of each file it has received: an identifier, where the file is stored, its size, its kind (photo or video), its date, when it arrived, a checksum of its content, and, when its file was found gone from the upload folder, when that was and how many times the device sent it again. The helper's log also shows each file as it is stored, and the address a device paired from. All of this stays on your server; the developer has no access to it. The helper's source code is public at <a href="https://github.com/jrl8085/phlix-camera-upload">github.com/jrl8085/phlix-camera-upload</a>.</li>
             <li><strong>Nothing is deleted.</strong> The App copies. It never deletes or changes anything in your Photo Library.</li>
-            <li><strong>Analytics.</strong> If you share anonymous usage data, Camera Upload adds counts and outcomes to it: for example that it was switched on and with which options, how many items there are to back up and how many are left, how many a run uploaded or could not upload, and why it paused. Never a file name, a folder name, an address, or the name of a server, a device or a network.</li>
+            <li><strong>Analytics.</strong> If you share anonymous usage data, Camera Upload adds counts and outcomes to it: for example that it was switched on and with which options, how many items there are to back up and how many are left, how many a run uploaded or could not upload, how many the helper confirmed or found missing, and why it paused. This usage data also includes the version number of your Camera Upload helper (for example 1.0.3) and whether that helper can check which files it still has. Each backup run also says whether Low Power Mode was on and whether iOS lets Phlix refresh in the background, and switching Camera Upload on says how much of your Photo Library Phlix may read (all of it, part of it or none). Never a file name, a folder name, an address, or the name of a server, a device or a network.</li>
             <li><strong>Notifications.</strong> If you ask to be told when everything is backed up, the App creates that notification on your device. No push-notification service is involved.</li>
         </ul>
         <p>To stop, switch Camera Upload off, or choose Disconnect on its screen to remove the pairing from your device. Files already on your server stay there until you delete them.</p>

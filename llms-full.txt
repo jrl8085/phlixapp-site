@@ -38,7 +38,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - Big-screen slideshows (Pro): with Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. Without Pro, the TV mirrors the phone.
 - Save to Photos: 25 free saves, unlimited with Pro. The original file when the server sends it; otherwise a copy the server converted, which may be smaller.
 - Save to Album: pick an album once (Settings > Storage > Save to Album, or ••• on a photo > Save to Album…) and every save goes into it
-- Camera Upload (Beta, from version 1.0.21): backs up the device's photos and videos to a folder of the user's Plex photo library through a free helper next to Plex Media Server; home Wi-Fi only; encrypted (HTTPS, pinned certificate); the Plex server's owner pairs without a code, others with the helper's pairing code; first 100 uploads free
+- Camera Upload (Beta, from version 1.0.21): backs up the device's photos and videos to a folder of the user's Plex photo library through a free helper next to Plex Media Server; home Wi-Fi only; encrypted (HTTPS, pinned certificate); the Plex server's owner pairs without a code, others with the helper's pairing code; first 100 uploads free. A photo counts as backed up only while its file is in the helper's upload folder: Phlix asks the helper which files are there (each time the Camera Upload screen opens, every half minute while it is open, and on Check Connection), and uploads again a photo whose file was deleted on the server. This needs helper 1.0.2 or later; Phlix says "Your helper needs an update" for an older one.
 - Search photo and video titles, tags and collections; favorites saved on the device
 - Your own server or one shared with you; switch between its photo libraries
 - On cellular and in Low Data Mode, Phlix stops loading ahead
@@ -66,7 +66,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - [README](https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md)
 - [Releases](https://github.com/jrl8085/phlix-camera-upload/releases)
 - [Issues](https://github.com/jrl8085/phlix-camera-upload/issues)
-- [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.1, latest; amd64, arm64, armv7)
+- [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.3, latest; amd64, arm64, armv7; also on Docker Hub as zeusdorydana/phlix-camera-upload)
 - [Unraid template](https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml)
 - [One-command installer](https://phlixapp.com/camera-upload/install.sh): for Linux and a Mac with Docker Desktop, run curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
 - [Compose file](https://phlixapp.com/camera-upload/docker-compose.yml)
@@ -102,7 +102,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 
 # Full text of the key pages
 
-The sections below are the text of these English pages of phlixapp.com, as of November 25, 2026.
+The sections below are the text of these English pages of phlixapp.com, as of November 26, 2026.
 
 ## Homepage: frequently asked questions (https://phlixapp.com/#faq)
 
@@ -440,7 +440,7 @@ iPhone and iPad · iOS 17 or later
 
 Beta · Setup guide
 
-Updated November 25, 2026 · About 10 minutes to set up
+Updated November 26, 2026 · About 10 minutes to set up
 
 Camera Upload backs up the photos and videos on your iPhone or iPad to the server in your home, while the device is on your home Wi-Fi. They show up in Plex, and in Phlix, next to everything else. No cloud and no storage subscription. Your photos go to your own server and to no one else.
 
@@ -798,7 +798,7 @@ docker exec phlix-camera-upload python -m phlix_upload doctor
 ```
 
 ```
-Phlix Camera Upload 1.0.2
+Phlix Camera Upload 1.0.3
 OK       The helper is running on port 7459
 OK       The upload folder /photos can be written to.
 OK       223.6 GB free on the upload disk.
@@ -853,7 +853,7 @@ The Camera Upload screen always shows where you stand: how many photos are backe
 - Each photo is uploaded as it looks in Photos at that moment. An edited photo uploads edited. A Live Photo uploads as its still photo.
 - With iCloud Photos and "Optimize iPhone Storage", iOS fetches the full-size original from iCloud when Phlix asks for it.
 - Not uploaded: hidden photos, shared albums and photos synced from a computer.
-- Phlix 1.0.21 or later keeps a list of the photos it saves from Plex to Photos. The list is kept in the app, on the phone or tablet that saved them, and that device does not upload them. Photos that an earlier version of Phlix saved are not on the list. Neither are photos saved before you deleted Phlix and installed it again. Those are uploaded like any other photo.
+- Phlix 1.0.21 or later keeps a list of the photos it saves from Plex to Photos. The list is kept in the app, on the phone or tablet that saved them, and that device does not upload them. They count as backed up without the helper being asked, because they came from your server. Photos that an earlier version of Phlix saved are not on the list. Neither are photos saved before you deleted Phlix and installed it again. Those are uploaded like any other photo.
 
 ### Where your photos go
 
@@ -874,9 +874,10 @@ Camera Uploads/
 - The year and month come from the photo's own date. The file keeps its name from the phone, and its modification time is set to the photo's date.
 - Two different photos with the same name are both kept: the second becomes IMG_1234 (2).HEIC. Nothing is ever overwritten.
 - The same photo from two phones is stored once.
-- With helper 1.0.2 or later (see Update the helper (https://phlixapp.com/camera-upload/#update-helper)), a photo counts as backed up only while its file is in the upload folder. If you delete a file, or a device's whole folder, and the photo is still on the device, Phlix uploads it again. It checks when you open the Camera Upload screen, and from time to time while it backs up at home.
+- With helper 1.0.2 or later (see Update the helper (https://phlixapp.com/camera-upload/#update-helper)), a photo counts as backed up only while its file is in the upload folder. If you delete a file, or a device's whole folder, and the photo is still on the device, Phlix uploads it again. Phlix asks the helper which files are there each time you open the Camera Upload screen, every half minute while that screen is open, at once when you tap Check Connection, and from time to time while it backs up at home. After you connect a device again, nothing that device uploaded counts as backed up until the helper has confirmed it: the screen says Checking… for a moment, then shows the count.
 - Sort files into any folders inside the upload folder, keeping their names: Phlix finds them there. A device's folder you rename is followed, and new photos go into it. A file you rename, or move out of the upload folder, is uploaded again. A file you edit still counts. Nothing is ever overwritten.
-- If a file keeps leaving the upload folder soon after each upload, for example because a program on the server moves new files away, Phlix sends it again three times at most, then lists it under Can't Be Backed Up. When you connect the phone again, or delete its whole folder, Phlix sends those photos again too. To keep a photo off the server, hide it in the Photos app: Phlix never uploads hidden photos.
+- If a file keeps leaving the upload folder soon after each upload, for example because a program on the server moves new files away, Phlix sends it again three times at most, then lists it under Can't Be Backed Up. A photo whose folder you deleted is never listed there: Phlix sends it again each time (helper 1.0.3 or later). So if such a program also removes the folders it empties, the three-times limit never applies, and Phlix uploads the same photos again each time it backs up. Set the program to leave the folders in place. When you connect the phone again, or delete the folder that held a listed photo, Phlix sends that photo again too. To keep a photo off the server, hide it in the Photos app: Phlix never uploads hidden photos.
+- A recycle bin is not the upload folder. If your upload folder is a whole drive on Windows, a folder you delete goes to that drive's $RECYCLE.BIN. Helper 1.0.3 or later never counts a photo there as backed up; helper 1.0.2 could.
 - To change the layout, set PATH_TEMPLATE. See All the settings (https://phlixapp.com/camera-upload/#settings).
 
 ### Networking help
@@ -1015,6 +1016,7 @@ If it says that the container is not running, read the log instead: docker logs 
 | "The helper no longer knows this device" | See Pairing does not work (https://phlixapp.com/camera-upload/#ts-pairing). |
 | "The server's identity has changed" | See Pairing does not work (https://phlixapp.com/camera-upload/#ts-pairing). |
 | "Some uploads didn't go through" | Phlix tries them again by itself. Tap Check Connection to try now. |
+| "Your helper needs an update" | The helper on your server is older than 1.0.2. It cannot tell Phlix which photos it still has, so a photo deleted on the server would keep counting as backed up. Update the helper (https://phlixapp.com/camera-upload/#update-helper). The Helper Version row, under Server on the Camera Upload screen, shows which version is running. |
 | "This device is almost out of space" | Phlix makes a copy of each file on the phone before it sends it. It needs about 300 MB free, and more for a long video: room for a copy of the whole file. Free some space on the phone. |
 
 #### The app does not find the helper
@@ -1131,7 +1133,7 @@ docker compose pull
 docker compose up -d
 ```
 
-Run both in the helper's folder. Phones stay paired: the helper keeps its data in the config folder, and an update does not touch it. On Unraid, use Check for Updates on the Docker tab. What changed in each version is on the releases page on GitHub (https://github.com/jrl8085/phlix-camera-upload/releases).
+Run both in the helper's folder. Phones stay paired: the helper keeps its data in the config folder, and an update does not touch it. On Unraid, use Check for Updates on the Docker tab. In Phlix, the Helper Version row on the Camera Upload screen shows which version is running, and the screen says Your helper needs an update for a helper older than 1.0.2. What changed in each version is on the releases page on GitHub (https://github.com/jrl8085/phlix-camera-upload/releases).
 
 #### Remove the helper
 
@@ -1223,7 +1225,7 @@ No. Phlix is an app for iPhone and iPad.
 
 #### Phlix: your Plex photos, the way they deserve
 
-A chronological timeline and big-screen slideshows on your TV. From version 1.0.21, also Camera Upload (Beta): a backup of your camera roll to your own server. Download Phlix Free (https://apps.apple.com/app/phlix-photos/id6796820208)
+Camera Upload (Beta) backs up your camera roll to your own server, on your home Wi-Fi only. Phlix also saves any photo from your server to the Photos app, and shows your whole library on a date timeline, with slideshows on your TV. Download Phlix Free (https://apps.apple.com/app/phlix-photos/id6796820208)
 
 iPhone and iPad · iOS 17 or later
 Camera Upload needs Phlix 1.0.21 or later. If the App Store does not offer that version yet, it is on its way.

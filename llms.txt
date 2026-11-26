@@ -38,7 +38,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - Big-screen slideshows (Pro): with Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. Without Pro, the TV mirrors the phone.
 - Save to Photos: 25 free saves, unlimited with Pro. The original file when the server sends it; otherwise a copy the server converted, which may be smaller.
 - Save to Album: pick an album once (Settings > Storage > Save to Album, or ••• on a photo > Save to Album…) and every save goes into it
-- Camera Upload (Beta, from version 1.0.21): backs up the device's photos and videos to a folder of the user's Plex photo library through a free helper next to Plex Media Server; home Wi-Fi only; encrypted (HTTPS, pinned certificate); the Plex server's owner pairs without a code, others with the helper's pairing code; first 100 uploads free
+- Camera Upload (Beta, from version 1.0.21): backs up the device's photos and videos to a folder of the user's Plex photo library through a free helper next to Plex Media Server; home Wi-Fi only; encrypted (HTTPS, pinned certificate); the Plex server's owner pairs without a code, others with the helper's pairing code; first 100 uploads free. A photo counts as backed up only while its file is in the helper's upload folder: Phlix asks the helper which files are there (each time the Camera Upload screen opens, every half minute while it is open, and on Check Connection), and uploads again a photo whose file was deleted on the server. This needs helper 1.0.2 or later; Phlix says "Your helper needs an update" for an older one.
 - Search photo and video titles, tags and collections; favorites saved on the device
 - Your own server or one shared with you; switch between its photo libraries
 - On cellular and in Low Data Mode, Phlix stops loading ahead
@@ -66,7 +66,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - [README](https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md)
 - [Releases](https://github.com/jrl8085/phlix-camera-upload/releases)
 - [Issues](https://github.com/jrl8085/phlix-camera-upload/issues)
-- [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.1, latest; amd64, arm64, armv7)
+- [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.3, latest; amd64, arm64, armv7; also on Docker Hub as zeusdorydana/phlix-camera-upload)
 - [Unraid template](https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml)
 - [One-command installer](https://phlixapp.com/camera-upload/install.sh): for Linux and a Mac with Docker Desktop, run curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
 - [Compose file](https://phlixapp.com/camera-upload/docker-compose.yml)

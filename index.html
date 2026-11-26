@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phlix Photos — Photo App for iPhone &amp; iPad That Works with Plex</title>
+    <title>Camera Upload &amp; Photo App That Works with Plex | Phlix Photos</title>
     <meta name="description" content="Camera Upload (Beta) in Phlix backs up your iPhone photos to your Plex photo library at home. Browse by date, save to Photos or an album, and show slideshows on your TV.">
     <meta name="keywords" content="plex camera upload, back up iphone photos to plex, plex photos alternative, plex photos iphone, plex photo viewer, plex slideshow, plex photo timeline, save plex photos to iphone, plex photo library, plex ipad photos">
     <meta name="author" content="Jason Loomis">
@@ -741,6 +741,8 @@
             max-width: 860px; margin: 44px auto 0;
         }
         .cu-facts li { position: relative; padding-left: 28px; color: var(--text-2); font-size: 0.95rem; }
+        /* an odd number of facts: the last one takes the whole row instead of half of it */
+        .cu-facts li:last-child:nth-child(odd) { grid-column: 1 / -1; }
         .cu-facts li strong { color: var(--text); }
         .cu-facts li::before { content: "\2713"; position: absolute; left: 0; color: var(--check); font-weight: 700; }
         .cu-more { text-align: center; margin-top: 40px; }
@@ -852,6 +854,7 @@
                     <li><strong>Only to you.</strong> Photos go from your phone straight to your server, encrypted. None of them go to Phlix.</li>
                     <li><strong>Only copies.</strong> Nothing is ever deleted or changed on your phone. It is a one-way copy, not a sync.</li>
                     <li><strong>Free to try.</strong> The helper is free, and its source code is public. The first 100 uploads are free, and Phlix Pro uploads the rest.</li>
+                    <li><strong>Checked against your server.</strong> Phlix asks the helper which photos are really in your upload folder, so the count on screen follows what is really there. If a file is deleted on the server, Phlix sends that photo again.</li>
                 </ul>
                 <div class="cu-more">
                     <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Get Phlix on the App Store</a>
