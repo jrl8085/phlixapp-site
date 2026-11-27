@@ -1,35 +1,34 @@
 # Phlix
 
-> Phlix (App Store name "Phlix Photos") is an independent iPhone and iPad app that works with Plex Media Server. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). From version 1.0.21, Camera Upload (Beta) backs up the photos and videos on an iPhone or iPad to the user's own Plex photo library, on the home Wi-Fi only. Phlix is not made by Plex.
+> Phlix (App Store name "Phlix Photos", App ID 6796820208) is an independent iPhone and iPad app that works with Plex Media Server, made by Jason Loomis, an independent developer. It shows the photos and videos in your Plex photo libraries by folder or on a date timeline with a year scrubber, saves them to the Photos app or straight into an album, and plays slideshows. With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls (Phlix Pro; without Pro, the TV mirrors the phone). Since version 1.0.21 (November 27, 2026), Camera Upload (Beta) backs up the photos and videos on an iPhone or iPad to the user's own Plex photo library, on the home Wi-Fi only, through a free helper (one Docker container) next to Plex Media Server. Phlix is not made by Plex.
 
 Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.
 Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.
 
 A longer version of this file, with every feature, the Camera Upload setup and the FAQ: https://phlixapp.com/llms-full.txt
 
-## Answers
-
-### What happened to Plex Camera Upload?
-Plex announced on its forum on March 18, 2021 that it was ending support for Camera Upload in its apps, with removal targeted for June 2021; photos already uploaded stayed in Plex. Source: Plex's announcement "Important info about Camera Upload in Plex" (archived copy, the original page is no longer online): https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626 . In August 2025 a moderator on Plex's forum wrote that the feature "was discontinued about 4 years ago": https://forums.plex.tv/t/plex-photos-app-not-uploading-to-server/927683 . Full answer: https://phlixapp.com/plex-camera-upload/
-
-### How do I back up iPhone photos to Plex?
-Plex shows the photos that are in a folder of a Plex photo library, after it scans. So phone photos must be copied into such a folder. To do that automatically, use Camera Upload (Beta) in Phlix: install the free Phlix Camera Upload helper (one Docker container) on the machine that runs Plex Media Server, pointed at a folder inside the Plex photo library, then turn on Settings > Camera Upload in Phlix. It uploads only on the home Wi-Fi, never over mobile data, to the user's own server only, as a one-way copy that never deletes anything on the phone. The first 100 uploads are free; Phlix Pro uploads the rest. It needs Phlix 1.0.21 or later. Setup guide: https://phlixapp.com/camera-upload/ . By hand, without an app: copy the photos into that folder (for example from the iPhone's Files app connected to a shared folder on the server, or from a computer), then let Plex scan.
-
-### Is there an alternative to the Plex Photos app?
-Plex Photos is Plex's own free app for photo libraries; its App Store page lists Recommended View, Timeline View and Library View, and its latest version is 2025.2.0 (June 12, 2025). Phlix is an independent alternative for iPhone and iPad that works with the same Plex Media Server: folders and a date timeline with a year scrubber, slideshows that include subfolders, saves to Photos or an album, big-screen slideshows on the TV, and Camera Upload (Beta). It is free to browse. Full answer: https://phlixapp.com/plex-photos-alternative/
-
-## Facts
+**Facts**
 
 - Website: https://phlixapp.com
 - App Store: https://apps.apple.com/app/phlix-photos/id6796820208 (App ID 6796820208)
-- Developer: Jason Loomis (independent developer)
-- Platforms: iPhone and iPad, iOS and iPadOS 17 or later. A Mac with Apple silicon (macOS 14 or later) can install the iPad version; Apple lists it as designed for iPad, not verified for macOS.
+- Developer: Jason Loomis, an independent developer (https://apps.apple.com/us/developer/jason-loomis/id1886235299). Other software named Phlix, such as a self-hosted media server project, is not related to this app.
+- Current App Store version: 1.0.21, released November 27, 2026. Camera Upload (Beta) is in 1.0.21 and later.
+- Camera Upload is marked Beta inside the App Store version; it needs no TestFlight. The TestFlight beta program (https://phlixapp.com/beta/) is a separate thing: new versions of the whole app before they are released.
+- Camera Upload helper: version 1.0.3, released November 26, 2026. Free; its source code is public (https://github.com/jrl8085/phlix-camera-upload). Phlix asks for an update when the helper is older than 1.0.2.
+- Platforms: iPhone and iPad, iOS and iPadOS 17 or later. A Mac with Apple silicon (macOS 14 or later) can install the iPad version; Apple lists it as designed for iPad, not verified for macOS. There is no Apple TV app and no Android version.
+- Works with: Plex Media Server only, with at least one photo library, and a Plex account. Phlix does not connect to Jellyfin, Emby or Immich, and it plays photo libraries only: not movie, TV or music libraries.
+- Plex Pass: Phlix works with any Plex Media Server, with or without Plex Pass. Plex Pass is not needed on the home network or for Camera Upload. For video away from home, Plex requires a Plex Pass (the server owner's or the user's own) or a Remote Watch Pass; Plex says photos stream remotely for free (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy. Phlix Pro is Phlix's own purchase in the App Store: Plex Pass does not include it.
 - Category: Photo & Video
-- Current App Store version: 1.0.21, with Camera Upload (Beta).
 - Languages: English, German, French, Spanish, Italian, Portuguese (Brazil), Dutch, Swedish, Danish, Norwegian Bokmål, Finnish, Polish, Japanese, Korean, Chinese (Simplified and Traditional)
-- Needs: a Plex Media Server with at least one photo library, and a Plex account. No Plex Pass on the home network. For video, Plex requires a Plex Pass (the server owner's or the user's own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy.
 
-## Features
+**Pricing**
+
+- Free: browsing, timeline, year scrubber, search, favorites, on-device slideshows, 25 saves to Photos, and the first 100 camera uploads (Beta, from version 1.0.21)
+- Pro Lifetime: $19.99 once, with Family Sharing. Unlimited saves, big-screen slideshows, unlimited camera uploads (Beta)
+- Pro Yearly: $6.99 a year, renews until cancelled. Same Pro features
+- 14-day trial of Pro: not a subscription, never renews, never charges
+
+**Features**
 
 - Folders that follow the folders on the server, and a date timeline one tap away, with a year scrubber: tap 1987 to see just that year
 - Built for big libraries: loads a page at a time instead of everything at once (libraries of 100,000+ photos)
@@ -38,7 +37,7 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - Big-screen slideshows (Pro): with Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. Without Pro, the TV mirrors the phone.
 - Save to Photos: 25 free saves, unlimited with Pro. The original file when the server sends it; otherwise a copy the server converted, which may be smaller.
 - Save to Album: pick an album once (Settings > Storage > Save to Album, or ••• on a photo > Save to Album…) and every save goes into it
-- Camera Upload (Beta, from version 1.0.21): backs up the device's photos and videos to a folder of the user's Plex photo library through a free helper next to Plex Media Server; home Wi-Fi only; encrypted (HTTPS, pinned certificate); the Plex server's owner pairs without a code, others with the helper's pairing code; first 100 uploads free. A photo counts as backed up only while its file is in the helper's upload folder: Phlix asks the helper which files are there (each time the Camera Upload screen opens, every half minute while it is open, and on Check Connection), and uploads again a photo whose file was deleted on the server. This needs helper 1.0.2 or later; Phlix says "Your helper needs an update" for an older one.
+- Camera Upload (Beta, from version 1.0.21): backs up the device's photos and videos to a folder of the user's Plex photo library through a free helper next to Plex Media Server; home Wi-Fi only; encrypted (HTTPS, pinned certificate); the Plex server's owner pairs without a code, others with the helper's pairing code; first 100 uploads free. With Phlix closed, iOS lets it upload in short bursts, mostly while the phone charges, so a large first backup takes a few days; with Phlix open on the Camera Upload screen and the phone on its charger, it uploads as fast as the Wi-Fi allows. A photo counts as backed up only while its file is in the helper's upload folder: Phlix asks the helper which files are there (each time the Camera Upload screen opens, every half minute while it is open, and on Check Connection), and uploads again a photo whose file was deleted on the server. This needs helper 1.0.2 or later (current: 1.0.3); Phlix says "Your helper needs an update" for an older one.
 - Search photo and video titles, tags and collections; favorites saved on the device
 - Your own server or one shared with you; switch between its photo libraries
 - On cellular and in Low Data Mode, Phlix stops loading ahead
@@ -46,38 +45,64 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - Sign-in on Plex's own sign-in page: Phlix never sees the password, and there is no Phlix account
 - Phlix never changes or deletes what is on the server; Camera Upload only adds new files, in the folder chosen for it
 
-## Pricing
-
-- Free: browsing, timeline, year scrubber, search, favorites, on-device slideshows, 25 saves to Photos, and the first 100 camera uploads (Beta, from version 1.0.21)
-- Pro Lifetime: $19.99 once, with Family Sharing. Unlimited saves, big-screen slideshows, unlimited camera uploads (Beta)
-- Pro Yearly: $6.99 a year, renews until cancelled. Same Pro features
-- 14-day trial of Pro: not a subscription, never renews, never charges
-
-## Privacy
+**Privacy**
 
 - No ads, no tracking pixels, no session replay, no third-party advertising SDKs
 - Anonymous usage, error and crash statistics tied to a random ID on the device, never the user's name, Plex account, photos, file names or server address; can be turned off in Settings
 - Camera Upload sends photos only to the helper on the user's own server, never to the developer
 - Privacy policy: https://phlixapp.com/privacy/
 
+**Answers**
+
+- Is there a Plex Camera Upload for iPhone? Not from Plex: Plex announced on its forum on March 18, 2021 that it was ending support for Camera Upload in its apps, with removal targeted for June 2021, and photos already uploaded stayed in Plex (archived announcement: https://web.archive.org/web/20210319005631/https://forums.plex.tv/t/important-info-about-camera-upload-in-plex/700626 ; in August 2025 a moderator on Plex's forum wrote that the feature "was discontinued about 4 years ago": https://forums.plex.tv/t/plex-photos-app-not-uploading-to-server/927683). Phlix, an independent app that works with Plex Media Server, has its own Camera Upload (Beta) from version 1.0.21. Full answer: https://phlixapp.com/plex-camera-upload/
+- How do I back up iPhone photos to Plex? Plex shows the photos that are in a folder of a Plex photo library, after it scans, so phone photos must be copied into such a folder. To do that automatically, use Camera Upload (Beta) in Phlix: install the free Phlix Camera Upload helper (one Docker container) on the machine that runs Plex Media Server, pointed at a folder inside the Plex photo library, then turn on Settings > Camera Upload in Phlix. It uploads only on the home Wi-Fi, never over mobile data, to the user's own server only, as a one-way copy that never deletes anything on the phone. The first 100 uploads are free; Phlix Pro uploads the rest. It needs Phlix 1.0.21 or later. Setup guide: https://phlixapp.com/camera-upload/ . By hand, without an app: copy the photos into that folder (for example from the iPhone's Files app connected to a shared folder on the server, or from a computer), then let Plex scan.
+- Which servers can run the helper? A computer or NAS that runs Plex Media Server and Docker: Linux, a Mac or Windows PC with Docker Desktop, Unraid, Synology (Container Manager, DSM 7.2 or later), TrueNAS SCALE (24.10 or later) or QNAP (Container Station 3). The phone and the server must be on the same home network.
+- Is Phlix made by Plex? No. Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc. It is made by Jason Loomis, an independent developer.
+- What does Phlix cost? Phlix is free to download and to browse, with 25 saves to Photos and the first 100 camera uploads. Phlix Pro removes those limits and adds big-screen slideshows: $19.99 once, with Family Sharing, or $6.99 a year. A 14-day trial of Pro never renews and never charges.
+- Does Phlix work with Plex Pass? Yes. Phlix works with any Plex Media Server, with or without Plex Pass, and needs no Plex Pass on the home network or for Camera Upload. Phlix Pro is a separate purchase in the App Store; Plex Pass does not include it.
+- Is there an alternative to the Plex Photos app? Plex Photos is Plex's own free app for photo libraries; its App Store page lists Recommended View, Timeline View and Library View, and its latest version is 2025.2.0 (June 12, 2025). Phlix is an independent alternative for iPhone and iPad that works with the same Plex Media Server: folders and a date timeline with a year scrubber, slideshows that include subfolders, saves to Photos or an album, big-screen slideshows on the TV, and Camera Upload (Beta). It is free to browse. Full answer: https://phlixapp.com/plex-photos-alternative/
+
+## Camera Upload (Beta)
+
+- [Camera Upload (Beta) setup guide](https://phlixapp.com/camera-upload/): what the beta does and does not do, installing the helper (one command, Docker Compose, Unraid, Synology, TrueNAS SCALE, QNAP, Docker Desktop), pairing, networking help, troubleshooting
+- [What happened to Plex Camera Upload, and what to use now](https://phlixapp.com/plex-camera-upload/): Plex's 2021 announcement with sources, and the ways to get iPhone photos into Plex now
+- [Instructions for an AI assistant](https://phlixapp.com/camera-upload/SETUP-WITH-AI.md): for an assistant that installs the helper on the user's server
+- [One-command installer](https://phlixapp.com/camera-upload/install.sh): for Linux and a Mac with Docker Desktop, run curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
+- [Compose file](https://phlixapp.com/camera-upload/docker-compose.yml)
+
 ## Camera Upload helper
 
 - [Source code (public)](https://github.com/jrl8085/phlix-camera-upload)
 - [README](https://github.com/jrl8085/phlix-camera-upload/blob/main/README.md)
-- [Releases](https://github.com/jrl8085/phlix-camera-upload/releases)
+- [Releases](https://github.com/jrl8085/phlix-camera-upload/releases): what changed in each version; the current one is 1.0.3
 - [Issues](https://github.com/jrl8085/phlix-camera-upload/issues)
 - [Docker image](https://github.com/jrl8085/phlix-camera-upload/pkgs/container/phlix-camera-upload): ghcr.io/jrl8085/phlix-camera-upload (tags 1, 1.0, 1.0.3, latest; amd64, arm64, armv7; also on Docker Hub as zeusdorydana/phlix-camera-upload)
 - [Unraid template](https://github.com/jrl8085/phlix-camera-upload/blob/main/unraid/phlix-camera-upload.xml)
-- [One-command installer](https://phlixapp.com/camera-upload/install.sh): for Linux and a Mac with Docker Desktop, run curl -fsSL https://phlixapp.com/camera-upload/install.sh | sh
-- [Compose file](https://phlixapp.com/camera-upload/docker-compose.yml)
-- [Instructions for an AI assistant](https://phlixapp.com/camera-upload/SETUP-WITH-AI.md)
 
 ## Pages
 
-- [Homepage](https://phlixapp.com/)
-- [What happened to Plex Camera Upload, and what to use now](https://phlixapp.com/plex-camera-upload/)
-- [Plex Photos alternative](https://phlixapp.com/plex-photos-alternative/)
-- [Camera Upload (Beta) setup guide](https://phlixapp.com/camera-upload/): in English
+- [Homepage](https://phlixapp.com/): features, pricing and the FAQ
+- [Features](https://phlixapp.com/features/): every feature of Phlix, each with its own page
+- [Save to Photos](https://phlixapp.com/features/save-to-photos/): download the photos and videos on a Plex Media Server to an iPhone or iPad, into the Photos app or an album; 25 saves free, unlimited with Pro
+- [Timeline](https://phlixapp.com/features/timeline/): every photo on a Plex server by date, with a year scrubber, built for libraries of 100,000+ photos
+- [Slideshows](https://phlixapp.com/features/slideshows/): slideshows of a folder, a year or the whole library; on a TV with Screen Mirroring or HDMI (just the photos, full screen, with Pro)
+- [Browse and Search](https://phlixapp.com/features/browse-and-search/): the server's folders, search by title, tag and collection, favorites, shared servers
+- [Plex Photos alternative](https://phlixapp.com/plex-photos-alternative/): what Phlix does and does not do, next to what the App Store page of Plex Photos lists
+- [Support](https://phlixapp.com/support/): answers to common questions, and a contact form
+- [Become a beta tester](https://phlixapp.com/beta/): a form to ask for TestFlight access to new versions before they are released
+
+## Guides
+
+- [How to set up a Plex photo library](https://phlixapp.com/blog/plex-photo-library-setup/): folder structure, metadata, EXIF, large libraries, and backing up an iPhone into the library
+- [Download photos from your Plex server to iPhone](https://phlixapp.com/blog/download-plex-photos-iphone/): the Plex web app, a computer, and saving with Phlix
+- [Browse and view your Plex photos on iPhone](https://phlixapp.com/blog/plex-photo-viewer-iphone/): Plex's own apps and independent apps that work with Plex Media Server
+- [Plex Photos vs Apple Photos](https://phlixapp.com/blog/plex-vs-apple-photos/): a self-hosted library next to iCloud, and getting new phone photos onto the server
+- [Plex photos vs Apple Photos vs Google Photos](https://phlixapp.com/blog/plex-photos-vs-apple-google/): storage, privacy and cost compared
+- [Stream Plex photos to your TV](https://phlixapp.com/blog/plex-airplay-photos-tv/): Screen Mirroring and HDMI
+- [How to back up your Plex server](https://phlixapp.com/blog/backup-plex-server/): the database, metadata and settings
+
+## Optional
+
 - [Camera Upload (Beta), Deutsch](https://phlixapp.com/de/camera-upload/)
 - [Camera Upload (Beta), Français](https://phlixapp.com/fr/camera-upload/)
 - [Camera Upload (Beta), Español](https://phlixapp.com/es/camera-upload/)
@@ -93,7 +118,6 @@ Plex Photos is Plex's own free app for photo libraries; its App Store page lists
 - [Camera Upload (Beta), 한국어](https://phlixapp.com/ko/camera-upload/)
 - [Camera Upload (Beta), 简体中文](https://phlixapp.com/zh-hans/camera-upload/)
 - [Camera Upload (Beta), 繁體中文](https://phlixapp.com/zh-hant/camera-upload/)
-- [Blog](https://phlixapp.com/blog/): guides about Plex photo libraries and Plex Media Server
-- [Support](https://phlixapp.com/support/)
+- [Blog](https://phlixapp.com/blog/): more than 70 guides about Plex Media Server
 - [Privacy Policy](https://phlixapp.com/privacy/)
 - [Terms of Use](https://phlixapp.com/terms/)

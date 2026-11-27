@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Upload &amp; Photo App That Works with Plex | Phlix Photos</title>
-    <meta name="description" content="Camera Upload (Beta) in Phlix backs up your iPhone photos to your Plex photo library at home. Browse by date, save to Photos or an album, and show slideshows on your TV.">
+    <title>Phlix Photos: Camera Upload &amp; Photo App That Works with Plex</title>
+    <meta name="description" content="Phlix Photos works with Plex: back up your iPhone photos with Camera Upload, save Plex photos and videos to your iPhone, browse by date, and play slideshows on your TV.">
     <meta name="keywords" content="plex camera upload, back up iphone photos to plex, plex photos alternative, plex photos iphone, plex photo viewer, plex slideshow, plex photo timeline, save plex photos to iphone, plex photo library, plex ipad photos">
     <meta name="author" content="Jason Loomis">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -20,17 +20,17 @@
     <meta property="og:description" content="Phlix, an independent iPhone and iPad app that works with Plex Media Server, backs up your camera roll to your Plex photo library on your home Wi-Fi. Plus a date timeline, saves to Photos, and slideshows on your TV.">
     <meta property="og:site_name" content="Phlix">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image" content="https://phlixapp.com/og-camera-upload.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta property="og:image:alt" content="Camera Upload (Beta) in Phlix: back up your iPhone photos to your own Plex server, shown on the Camera Upload screen with everything backed up">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Plex Camera Upload Is Back, in Phlix (Beta)">
     <meta name="twitter:description" content="Phlix, an independent iPhone and iPad app that works with Plex Media Server, backs up your camera roll to your Plex photo library on your home Wi-Fi. Plus a date timeline, saves to Photos, and slideshows on your TV.">
-    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
-    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta name="twitter:image" content="https://phlixapp.com/og-camera-upload.jpg">
+    <meta name="twitter:image:alt" content="Camera Upload (Beta) in Phlix: back up your iPhone photos to your own Plex server, shown on the Camera Upload screen with everything backed up">
 
     <!-- Apple Smart Banner -->
     <meta name="apple-itunes-app" content="app-id=6796820208">
@@ -46,9 +46,13 @@
 
     <!-- Structured Data: SoftwareApplication -->
     <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "WebSite", "@id": "https://phlixapp.com/#website", "name": "Phlix", "alternateName": ["Phlix Photos", "phlixapp.com"], "url": "https://phlixapp.com/", "inLanguage": "en", "about": {"@id": "https://phlixapp.com/#app"}, "publisher": {"@id": "https://phlixapp.com/#developer"}}
+    </script>
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
+      "@id": "https://phlixapp.com/#app",
       "name": "Phlix Photos",
       "alternateName": "Phlix",
       "applicationCategory": "MultimediaApplication",
@@ -60,7 +64,7 @@
       "installUrl": "https://apps.apple.com/app/phlix-photos/id6796820208",
       "softwareVersion": "1.0.21",
       "datePublished": "2026-08-19",
-      "dateModified": "2026-11-21",
+      "dateModified": "2026-11-27",
       "inLanguage": ["en", "de", "fr", "es", "it", "pt-BR", "nl", "sv", "da", "nb", "fi", "pl", "ja", "ko", "zh-Hans", "zh-Hant"],
       "offers": [
         {
@@ -85,14 +89,9 @@
           "description": "Yearly subscription with the same Pro features. It renews each year until you cancel."
         }
       ],
-      "author": {
-        "@type": "Person",
-        "name": "Jason Loomis"
-      },
-      "publisher": {
-        "@type": "Person",
-        "name": "Jason Loomis"
-      },
+      "sameAs": ["https://apps.apple.com/app/phlix-photos/id6796820208"],
+      "author": {"@id": "https://phlixapp.com/#developer"},
+      "publisher": {"@id": "https://phlixapp.com/#developer"},
       "featureList": [
         "Camera Upload (Beta, from version 1.0.21): backs up the photos and videos on your iPhone or iPad to a folder of your Plex photo library, on your home Wi-Fi only, through a free helper that runs in Docker next to Plex Media Server",
         "Save photos and videos to the Photos app (25 free, unlimited with Pro)",
@@ -110,6 +109,11 @@
         "14-day free trial of Pro that never renews and never charges you"
       ]
     }
+    </script>
+
+    <!-- Structured Data: the developer -->
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Person", "@id": "https://phlixapp.com/#developer", "name": "Jason Loomis", "description": "Independent developer of Phlix Photos, an iPhone and iPad app that works with Plex Media Server, and of its Camera Upload helper.", "url": "https://phlixapp.com/", "sameAs": ["https://apps.apple.com/us/developer/jason-loomis/id1886235299", "https://github.com/jrl8085"]}
     </script>
 
     <!-- Structured Data: FAQPage (the same questions and answers as the FAQ section below) -->
@@ -131,7 +135,7 @@
           "name": "What happened to Plex's Camera Upload?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Plex announced on its forum on March 18, 2021 that it was ending support for Camera Upload, with removal targeted for June 2021. Photos that were already uploaded stayed in Plex. Phlix, an independent app, has its own Camera Upload (Beta) from version 1.0.21: it copies the photos and videos on your iPhone or iPad into a folder of your Plex photo library, on your home Wi-Fi, through a free helper you run next to Plex Media Server. The whole story, with Plex's announcement."
+            "text": "Plex announced on its forum on March 18, 2021 that it was ending support for Camera Upload, with removal targeted for June 2021. Photos that were already uploaded stayed in Plex. Phlix, an independent app, has its own Camera Upload (Beta) from version 1.0.21: it copies the photos and videos on your iPhone or iPad into a folder of your Plex photo library, on your home Wi-Fi, through a free helper you run next to Plex Media Server. The whole story, with Plex's announcement (https://phlixapp.com/plex-camera-upload/)."
           }
         },
         {
@@ -139,7 +143,7 @@
           "name": "How do I back up my iPhone photos to Plex?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Put them in a folder that one of your Plex photo libraries includes, and let Plex scan it. Camera Upload (Beta) in Phlix does that for you: install the free Phlix Camera Upload helper, one Docker container, on the machine that runs Plex Media Server, then turn it on in Phlix under Settings › Camera Upload. At home, on your Wi-Fi, it backs up new photos by itself. The first 100 uploads are free, and Phlix Pro uploads the rest. It needs Phlix 1.0.21 or later. The setup guide has every step."
+            "text": "Put them in a folder that one of your Plex photo libraries includes, and let Plex scan it. Camera Upload (Beta) in Phlix does that for you: install the free Phlix Camera Upload helper, one Docker container, on the machine that runs Plex Media Server, then turn it on in Phlix under Settings › Camera Upload. At home, on your Wi-Fi, it backs up new photos by itself. The first 100 uploads are free, and Phlix Pro uploads the rest. It needs Phlix 1.0.21 or later. The setup guide (https://phlixapp.com/camera-upload/) has every step."
           }
         },
         {
@@ -147,7 +151,7 @@
           "name": "Is there an alternative to the Plex Photos app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Plex Photos is Plex's own free app for photo libraries. Phlix is an independent alternative for iPhone and iPad that works with the same Plex Media Server: folders and a date timeline with a year scrubber, slideshows that include subfolders, saves to Photos or into an album, big-screen slideshows on your TV, and Camera Upload (Beta). Phlix is free to browse, so you can try it on your own library. Phlix as a Plex Photos alternative."
+            "text": "Plex Photos is Plex's own free app for photo libraries. Phlix is an independent alternative for iPhone and iPad that works with the same Plex Media Server: folders and a date timeline with a year scrubber, slideshows that include subfolders, saves to Photos or into an album, big-screen slideshows on your TV, and Camera Upload (Beta). Phlix is free to browse, so you can try it on your own library. Phlix as a Plex Photos alternative (https://phlixapp.com/plex-photos-alternative/)."
           }
         },
         {
@@ -155,7 +159,7 @@
           "name": "Do I need Plex Pass to use Phlix?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either."
+            "text": "No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/)). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library, and it works with any Plex Media Server, with or without Plex Pass. Camera Upload needs no Plex Pass either. Phlix Pro is Phlix's own purchase in the App Store: Plex Pass does not include it."
           }
         },
         {
@@ -208,10 +212,34 @@
         },
         {
           "@type": "Question",
+          "name": "Is there a Phlix app for Apple TV or Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Phlix is an app for iPhone and iPad, and a Mac with Apple silicon can run the iPad version. To show your photos on a TV, turn on Screen Mirroring or use an HDMI adapter: with Phlix Pro, the TV shows just the photos while your iPhone shows the controls; without Pro, the TV mirrors your iPhone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Phlix work with Jellyfin, Emby or Immich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Phlix works with Plex Media Server only. It shows the photo libraries on your Plex server, and Camera Upload (Beta) backs up your iPhone or iPad into a folder of a Plex photo library."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Camera Upload work in the background?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as far as iOS allows. With Phlix closed, iOS gives it short bursts, mostly while the phone charges, so a large first backup takes a few days. With Phlix open on the Camera Upload screen and the phone on its charger, it uploads as fast as your Wi-Fi allows. It uploads only on your home Wi-Fi."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Is my data private with Phlix?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Phlix has no ads, no tracking pixels and no session replay. It sends anonymous usage, error and crash statistics tied to a random ID on your device, never your name, Plex account, photos, file names or server address, and you can turn that off in Settings. Camera Upload sends your photos only to the helper on your own server. See the Privacy Policy for full details."
+            "text": "Yes. Phlix has no ads, no tracking pixels and no session replay. It sends anonymous usage, error and crash statistics tied to a random ID on your device, never your name, Plex account, photos, file names or server address, and you can turn that off in Settings. Camera Upload sends your photos only to the helper on your own server. See the Privacy Policy (https://phlixapp.com/privacy/) for full details."
           }
         },
         {
@@ -227,7 +255,7 @@
           "name": "Can I use Phlix outside my home network?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. For video, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy. Camera Upload is different on purpose: it uploads only on your home Wi-Fi."
+            "text": "Yes, for browsing, as long as your Plex server allows remote access. Phlix connects to whichever server address is reachable, local or remote. For video, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass to stream remotely; Plex says photos stream remotely for free (Plex: Requirements for Remote Playback of Personal Media (https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/)). Some servers send only smaller copies of photos over the internet, so away from home a photo or a save can be a converted copy. Camera Upload is different on purpose: it uploads only on your home Wi-Fi."
           }
         },
         {
@@ -269,13 +297,14 @@
             --border: #222;
             --text: #F0F0F0;
             --text-2: #999;
-            --text-3: #666;
+            --text-3: #8a8a8a;
             --check: #4CAF50;
             --cross: #555;
             --nav-h: 64px;
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: var(--bg);
@@ -321,8 +350,9 @@
             transition: opacity 0.2s;
         }
         .nav-cta:hover { opacity: 0.9; }
-        #menu-toggle { display: none; }
-        .menu-btn { display: none; cursor: pointer; padding: 8px; color: var(--text); font-size: 1.5rem; line-height: 1; }
+        .menu-btn { display: none; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0; background: none; border: 0; border-radius: 8px; color: var(--text); font: inherit; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+        .menu-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+        .nav-links[popover] { position: static; inset: auto; width: auto; height: auto; margin: 0; padding: 0; border: 0; overflow: visible; color: inherit; background: none; }
 
         /* ─── Hero ─── */
         .hero {
@@ -415,11 +445,6 @@
         .feature-card:hover {
             border-color: rgba(240, 180, 41, 0.3);
             transform: translateY(-4px);
-        }
-        .feature-card .icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            display: block;
         }
         .feature-card h3 {
             font-size: 1.15rem;
@@ -700,22 +725,31 @@
             .compare-table thead th, .compare-table tbody td { padding: 10px 12px; }
         }
         @media (max-width: 800px) {
-            .menu-btn { display: block; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: var(--nav-h);
-                left: 0; right: 0;
-                background: rgba(10, 10, 10, 0.95);
-                backdrop-filter: blur(20px);
+            .menu-btn { display: inline-flex; }
+            .nav-links:not(:popover-open) { display: none; }
+            .nav-links:popover-open {
+                display: flex;
+                position: fixed;
+                inset: var(--nav-h) 0 auto 0;
+                max-height: calc(100vh - var(--nav-h));
+                max-height: calc(100dvh - var(--nav-h));
+                overflow-y: auto;
+                background: var(--bg);
                 flex-direction: column;
                 padding: 20px 24px;
                 gap: 16px;
                 border-bottom: 1px solid var(--border);
             }
-            #menu-toggle:checked ~ .nav-links { display: flex; }
+            .nav-links::backdrop { background: rgba(0, 0, 0, 0.5); }
             .nav-cta { text-align: center; width: 100%; padding: 12px; }
         }
+        @supports not selector(:popover-open) {
+            @media (max-width: 800px) {
+                .menu-btn { display: none; }
+                .nav-links { display: flex; min-width: 0; margin-left: 16px; gap: 18px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+            }
+        }
+        @media (pointer: coarse) { .footer-links a { padding: 12px 6px; } }
 
         /* ─── Added 2026-11: Camera Upload first, then downloads ─── */
         .kicker {
@@ -766,23 +800,26 @@
             .cu-facts, .dl-grid { grid-template-columns: 1fr; }
             .hero-links a { display: inline-block; margin: 6px 10px; white-space: normal; }
         }
+        /* A feature card leads to the feature's own page */
+        .feature-card .card-link { display: inline-block; margin-top: 12px; font-weight: 600; font-size: 0.92rem; }
+        /* A footer link never breaks across two rows; links inside running text are underlined, not told apart by color alone */
+        .footer-links a { display: inline-block; }
+        .dev-card p a, .faq-list details p a, .section-sub a, .lead-2 a { text-decoration: underline; text-underline-offset: 2px; }
     </style>
 </head>
 <body>
 
     <!-- ─── Navigation ─── -->
-    <nav>
+    <nav aria-label="Main">
         <div class="nav-inner">
             <a href="/" class="nav-logo grad-text">PHLIX</a>
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-btn" aria-label="Toggle menu">&#9776;</label>
-            <div class="nav-links">
-                <a href="#camera-upload">Camera Upload</a>
-                <a href="#features">Features</a>
-                <a href="#compare">Compare</a>
+            <button type="button" class="menu-btn" popovertarget="site-links" aria-label="Menu">&#9776;</button>
+            <div class="nav-links" id="site-links" popover>
+                <a href="/features/">Features</a>
+                <a href="/camera-upload/">Camera Upload</a>
                 <a href="#pricing">Pricing</a>
                 <a href="/blog/">Blog</a>
-                <a href="/support">Support</a>
+                <a href="/support/">Support</a>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
             </div>
         </div>
@@ -796,8 +833,8 @@
                 <span class="kicker">New in Phlix 1.0.21 &middot; Beta</span>
                 <h1>Plex Camera Upload <span class="grad-text">Is Back</span></h1>
                 <p class="subtitle">Camera Upload (Beta) in Phlix backs up the photos and videos on your <strong>iPhone or iPad</strong> to your <strong>Plex photo library</strong>, at home, on your own Wi-Fi. No cloud in between, and nothing is deleted from your phone.</p>
-                <p class="lead-2">Plex ended its own Camera Upload in 2021. Phlix is an independent app that works with Plex Media Server: a date timeline for the photos on your server, saves to Photos or straight into an album, and slideshows on your TV.</p>
-                <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Download Free on the App Store</a>
+                <p class="lead-2"><strong>And the other way round:</strong> Phlix downloads the photos and videos on your Plex server straight to your iPhone, into the Photos app or an album you choose. Plus a date timeline for your whole library, and slideshows on your TV. Phlix is an independent app that works with Plex Media Server.</p>
+                <a href="https://apps.apple.com/app/phlix-photos/id6796820208?ppid=ac65ec1b-2558-4773-9352-ad5f5355c4b8" class="cta-btn">Download Free on the App Store</a>
                 <p class="cta-sub">Camera Upload needs Phlix 1.0.21 or later.<br>Free to browse forever. Pro from $6.99/yr. Try Pro free for 14 days, no subscription required.</p>
                 <p class="hero-links"><a href="#camera-upload">How Camera Upload works</a> <a href="/camera-upload/">Setup guide</a> <a href="/plex-camera-upload/">What happened to Plex's Camera Upload?</a></p>
             </div>
@@ -817,7 +854,7 @@
                     </div>
                     <div class="trust-stat">
                         <div class="num grad-text">Family</div>
-                        <div class="label">Sharing included</div>
+                        <div class="label">Sharing with Pro Lifetime</div>
                     </div>
                     <div class="trust-stat">
                         <div class="num grad-text">16</div>
@@ -857,7 +894,7 @@
                     <li><strong>Checked against your server.</strong> Phlix asks the helper which photos are really in your upload folder, so the count on screen follows what is really there. If a file is deleted on the server, Phlix sends that photo again.</li>
                 </ul>
                 <div class="cu-more">
-                    <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="cta-btn">Get Phlix on the App Store</a>
+                    <a href="https://apps.apple.com/app/phlix-photos/id6796820208?ppid=ac65ec1b-2558-4773-9352-ad5f5355c4b8" class="cta-btn">Get Phlix on the App Store</a>
                     <a href="/camera-upload/" class="ghost-btn">Read the setup guide</a>
                 </div>
                 <p class="cu-note">Camera Upload is a beta in Phlix 1.0.21 or later. Keep your own backup of anything you cannot replace. <a href="/camera-upload/#beta">What the beta does, and what it does not do</a>.</p>
@@ -884,20 +921,20 @@
         <!-- ─── Downloads: Save to Photos, Save to Album ─── -->
         <section class="section section-alt" id="downloads">
             <div class="wrap">
-                <h2 class="section-title">Save to Photos, or straight into an album</h2>
+                <h2 class="section-title">Download your Plex photos and videos to your iPhone</h2>
                 <p class="section-sub">The photos and clips on your Plex server can go into the Photos app on your iPhone or iPad, where they stay whether or not your server is reachable. A file in a format Photos cannot store can go to the Files app instead.</p>
                 <div class="dl-grid">
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128229;</span>
                         <h3>Save to Photos</h3>
                         <span class="accent grad-text">25 free, unlimited with Pro.</span>
                         <p>Open a photo or video and tap &bull;&bull;&bull; to save it. You get the original file when your server sends it. When it cannot, you get a copy your server has converted, which may be smaller. The app shows how many free saves you have left.</p>
+                        <a class="card-link" href="/features/save-to-photos/">How Save to Photos works &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128193;</span>
                         <h3>Save to Album</h3>
                         <span class="accent grad-text">Pick an album once.</span>
                         <p>Every photo you save from Phlix then goes straight into it. Find it under Settings &rsaquo; Storage &rsaquo; Save to Album, or tap &bull;&bull;&bull; on any photo and choose Save to Album. Pick one of your albums, or make a new one. Choosing an album asks iOS for full access to Photos, because albums need it.</p>
+                        <a class="card-link" href="/features/save-to-photos/#albums">Saving into an album &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -907,58 +944,55 @@
         <section class="section" id="features">
             <div class="wrap">
                 <h2 class="section-title">Everything else your Plex photo library needs</h2>
-                <p class="section-sub">Built from scratch for people with big photo libraries on Plex Media Server. Free to browse, with no ads.</p>
+                <p class="section-sub">Built from scratch for people with big photo libraries on Plex Media Server. Free to browse, with no ads. <a href="/features/">See every feature</a>.</p>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128197;</span>
                         <h3>Chronological Timeline</h3>
                         <span class="accent grad-text">Tap 1987, you're there.</span>
                         <p>Folders that follow the folders on your server, and a date timeline one tap away, with a year scrubber down the side. Navigate decades of memories in seconds, the way Apple Photos works, with the photos on your own server.</p>
+                        <a class="card-link" href="/features/timeline/">More about the timeline &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128640;</span>
                         <h3>Built for Scale</h3>
                         <span class="accent grad-text">100,000+ photos. The first screen in seconds.</span>
                         <p>Phlix loads a page at a time instead of everything at once. Server-side year filtering, virtual paging, and prefetching mean the first screen appears in seconds and the year index fills in behind it, even in a very large library.</p>
+                        <a class="card-link" href="/features/timeline/#big-libraries">How Phlix handles big libraries &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128250;</span>
                         <h3>Big-Screen Slideshows on Your TV</h3>
                         <span class="accent grad-text">Your phone is the remote. Your TV is the canvas.</span>
                         <p>With Screen Mirroring on, or over an HDMI adapter, the TV shows just the photos while your iPhone shows the controls. A Pro feature; without Pro, the TV mirrors your phone.</p>
+                        <a class="card-link" href="/features/slideshows/#tv">Slideshows on your TV &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#127902;</span>
                         <h3>Slideshows That Go Deep</h3>
                         <span class="accent grad-text">A folder, a year, or everything.</span>
                         <p>A folder's slideshow also plays the folders inside it, however many levels deep. Turn that off with Include Subfolders. 2, 4, 6 or 10 seconds a slide, with shuffle and loop.</p>
+                        <a class="card-link" href="/features/slideshows/">More about slideshows &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128225;</span>
                         <h3>Cellular Data Saver</h3>
                         <span class="accent grad-text">Smart about your cell plan.</span>
                         <p>Automatic thumbnail compression and paused prefetching on cellular or in Low Data Mode. Full quality on Wi-Fi. On by default, with two switches in Settings (Use Mobile Data, Reduce Data on Cellular) if you want it different.</p>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128269;</span>
                         <h3>Search &amp; Organize</h3>
                         <span class="accent grad-text">Find anything, instantly.</span>
                         <p>Search photo and video titles, tags, and collections. Mark favorites, saved on your device. Use your own server or one shared with you, and switch between its photo libraries.</p>
+                        <a class="card-link" href="/features/browse-and-search/">Browse and search &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128241;</span>
                         <h3>iPhone, iPad and Mac</h3>
                         <span class="accent grad-text">One app, every screen.</span>
                         <p>On iPad, a sidebar lists your libraries, so switching takes one tap. A Mac with Apple silicon can run the iPad version from the App Store. VoiceOver support throughout.</p>
+                        <a class="card-link" href="/features/browse-and-search/#servers">Servers, libraries and devices &rarr;</a>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#127760;</span>
                         <h3>In Your Language</h3>
                         <span class="accent grad-text">English and 15 more.</span>
                         <p>German, French, Spanish, Italian, Portuguese, Dutch, Swedish, Danish, Norwegian, Finnish, Polish, Japanese, Korean and Chinese, Simplified and Traditional. Phlix follows the language your device is set to.</p>
                     </div>
                     <div class="feature-card">
-                        <span class="icon" aria-hidden="true">&#128274;</span>
                         <h3>Yours, Not Ours</h3>
                         <span class="accent grad-text">No Phlix account to create.</span>
                         <p>You sign in on Plex's own sign-in page, so Phlix never sees your password. Phlix never changes or deletes what is on your server; Camera Upload only adds new files, in the folder you choose for it.</p>
@@ -1037,7 +1071,7 @@
                     </div>
                     <div class="dev-card">
                         <h3 class="grad-text">Your feedback, heard</h3>
-                        <p>Every feature request and bug report goes directly to the person writing the code. No support tickets lost in a queue. No corporate layers between you and a fix.</p>
+                        <p>Every feature request and bug report goes directly to the person writing the code. No support tickets lost in a queue. No corporate layers between you and a fix. Want new versions early? <a href="/beta/">Become a beta tester</a>.</p>
                     </div>
                     <div class="dev-card">
                         <h3 class="grad-text">No ads. No cross-app tracking.</h3>
@@ -1133,7 +1167,7 @@
                     </details>
                     <details>
                         <summary>Do I need Plex Pass to use Phlix?</summary>
-                        <p>No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (<a href="https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/">Plex: Requirements for Remote Playback of Personal Media</a>). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library. Camera Upload needs no Plex Pass either.</p>
+                        <p>No Plex Pass is needed on your home network. Away from home, Plex requires a Plex Pass (the server owner's or your own) or a Remote Watch Pass on your account to stream personal video remotely; Plex says music and photos stream remotely for free (<a href="https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/">Plex: Requirements for Remote Playback of Personal Media</a>). Phlix itself needs only a Plex account and a Plex Media Server with at least one photo library, and it works with any Plex Media Server, with or without Plex Pass. Camera Upload needs no Plex Pass either. Phlix Pro is Phlix's own purchase in the App Store: Plex Pass does not include it.</p>
                     </details>
                     <details>
                         <summary>How much does Phlix cost?</summary>
@@ -1160,8 +1194,20 @@
                         <p>Phlix is one app for iPhone and iPad; on iPad, a sidebar lists your libraries. On a Mac with Apple silicon (M1 or later, macOS 14 or later), the App Store offers the iPad version. Apple lists it as designed for iPad and not verified for macOS.</p>
                     </details>
                     <details>
+                        <summary>Is there a Phlix app for Apple TV or Android?</summary>
+                        <p>No. Phlix is an app for iPhone and iPad, and a Mac with Apple silicon can run the iPad version. To show your photos on a TV, turn on Screen Mirroring or use an HDMI adapter: with Phlix Pro, the TV shows just the photos while your iPhone shows the controls; without Pro, the TV mirrors your iPhone.</p>
+                    </details>
+                    <details>
+                        <summary>Does Phlix work with Jellyfin, Emby or Immich?</summary>
+                        <p>No. Phlix works with Plex Media Server only. It shows the photo libraries on your Plex server, and Camera Upload (Beta) backs up your iPhone or iPad into a folder of a Plex photo library.</p>
+                    </details>
+                    <details>
+                        <summary>Does Camera Upload work in the background?</summary>
+                        <p>Yes, as far as iOS allows. With Phlix closed, iOS gives it short bursts, mostly while the phone charges, so a large first backup takes a few days. With Phlix open on the Camera Upload screen and the phone on its charger, it uploads as fast as your Wi-Fi allows. It uploads only on your home Wi-Fi.</p>
+                    </details>
+                    <details>
                         <summary>Is my data private with Phlix?</summary>
-                        <p>Yes. Phlix has no ads, no tracking pixels and no session replay. It sends anonymous usage, error and crash statistics tied to a random ID on your device, never your name, Plex account, photos, file names or server address, and you can turn that off in Settings. Camera Upload sends your photos only to the helper on your own server. See the <a href="/privacy">Privacy Policy</a> for full details.</p>
+                        <p>Yes. Phlix has no ads, no tracking pixels and no session replay. It sends anonymous usage, error and crash statistics tied to a random ID on your device, never your name, Plex account, photos, file names or server address, and you can turn that off in Settings. Camera Upload sends your photos only to the helper on your own server. See the <a href="/privacy/">Privacy Policy</a> for full details.</p>
                     </details>
                     <details>
                         <summary>What makes Phlix different from Plex Photos?</summary>
@@ -1203,13 +1249,14 @@
     <footer>
         <div class="wrap">
             <div class="footer-links">
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Use</a>
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/terms/">Terms of Use</a>
                 <a href="/blog/">Blog</a>
                 <a href="/camera-upload/">Camera Upload (Beta)</a>
                 <a href="/plex-camera-upload/">What happened to Plex Camera Upload</a>
                 <a href="/plex-photos-alternative/">Plex Photos alternative</a>
-                <a href="/support">Support</a>
+                <a href="/support/">Support</a>
+                <a href="/beta/">Test new versions</a>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208">App Store</a>
             </div>
             <p class="trademark">
@@ -1220,11 +1267,12 @@
         </div>
     </footer>
 
-    <!-- Close mobile menu when a link is clicked -->
+    <!-- Close the phone menu when one of its links is tapped (Pricing stays on this page) -->
     <script>
-    document.querySelectorAll('.nav-links a').forEach(function(link) {
+    document.querySelectorAll('#site-links a').forEach(function(link) {
         link.addEventListener('click', function() {
-            document.getElementById('menu-toggle').checked = false;
+            var menu = document.getElementById('site-links');
+            if (menu.hidePopover) { try { menu.hidePopover(); } catch (error) { /* already closed */ } }
         });
     });
     </script>

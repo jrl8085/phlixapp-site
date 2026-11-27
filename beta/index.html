@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Beta Tester - Phlix</title>
+    <meta name="description" content="Try new versions of Phlix before they reach the App Store. Ask to join the beta through TestFlight, Apple's app for beta versions, with your name and email.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://phlixapp.com/beta/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://phlixapp.com/beta/">
+    <meta property="og:title" content="Become a Beta Tester — Phlix">
+    <meta property="og:description" content="Try new versions of Phlix before they reach the App Store. Ask to join the beta through TestFlight.">
+    <meta property="og:site_name" content="Phlix">
+    <meta property="og:image" content="https://phlixapp.com/og-image.jpg">
+    <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Become a Beta Tester — Phlix">
+    <meta name="twitter:description" content="Try new versions of Phlix before they reach the App Store. Ask to join the beta through TestFlight.">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.jpg">
+    <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
+    <meta name="apple-itunes-app" content="app-id=6796820208">
+    <style>
+        :root { --dark-bg: #0F0F0F; --surface: #1A1A1A; --text: #F0F0F0; --text-secondary: #888888; --gold: #F0B429; --orange: #E8850C; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; background: var(--dark-bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 700px; margin: 0 auto; padding: 60px 24px; }
+        h1 { font-size: 2rem; margin-bottom: 16px; }
+        h2 { font-size: 1.2rem; margin: 32px 0 12px; color: var(--gold); }
+        p, li { color: var(--text-secondary); margin-bottom: 12px; }
+        ul, ol { padding-left: 24px; }
+        a { color: var(--gold); }
+        .back { display: inline-block; margin-bottom: 24px; color: var(--text-secondary); text-decoration: none; }
+        .lead { font-size: 1.05rem; color: #B5B5B5; margin-bottom: 8px; }
+        .steps { background: var(--surface); border-radius: 12px; padding: 20px 20px 8px 44px; }
+        .steps li strong, .know li strong { color: var(--text); }
+
+        /* The form (same look as the support page's) */
+        .contact-form { background: var(--surface); border-radius: 12px; padding: 32px; margin-top: 16px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.9rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+        .form-group .optional { font-weight: 400; color: var(--text-secondary); }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--dark-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { outline: none; border-color: var(--gold); }
+        .form-group textarea { resize: vertical; min-height: 96px; }
+        .form-group select option { background: var(--dark-bg); }
+        .form-group ::placeholder { color: #888; opacity: 1; }
+        .consent input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+        .hint { font-size: 0.85rem; color: var(--text-secondary); margin: 6px 0 0; }
+        .consent { display: flex; gap: 12px; align-items: flex-start; }
+        .consent input { width: 20px; height: 20px; margin-top: 3px; flex: none; accent-color: var(--gold); }
+        .consent label { font-weight: 400; color: #B5B5B5; margin: 0; }
+        .submit-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #000;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: opacity 0.2s;
+        }
+        .submit-btn:hover { opacity: 0.9; }
+        .submit-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .success-msg { display: none; background: #1a3a1a; border: 1px solid #2d5a2d; border-radius: 8px; padding: 16px; margin-top: 16px; color: #8fd08f; }
+        .error-msg { display: none; background: #3a1a1a; border: 1px solid #5a2d2d; border-radius: 8px; padding: 16px; margin-top: 16px; color: #e09a9a; }
+        .h-captcha { margin-top: 4px; }
+        .small { font-size: 0.85rem; }
+        footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #222; }
+        footer p { font-size: 0.78rem; color: #888; }
+        @media (max-width: 520px) { .contact-form { padding: 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back">&larr; Back to Phlix</a>
+        <h1>Become a beta tester</h1>
+        <p class="lead">Before a new version of Phlix reaches the App Store, a small group of testers can try it. Testers get beta versions through TestFlight, Apple's app for beta versions, and tell the developer what works and what doesn't.</p>
+        <p>Ask to join with the form below. It is free, and you can leave at any time.</p>
+
+        <h2>How it works</h2>
+        <ol class="steps">
+            <li><strong>Send the form.</strong> Your request goes to the developer, who reads every one.</li>
+            <li><strong>Apple sends the invitation.</strong> When you are added and a beta version is ready, TestFlight emails an invitation to the address you gave. It comes from Apple, and it can take a few days: testers are added a few at a time.</li>
+            <li><strong>Install the beta.</strong> Get the free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight app</a> from the App Store, open the invitation on your iPhone or iPad, and install Phlix from TestFlight. New beta versions then arrive there.</li>
+        </ol>
+
+        <h2>Good to know</h2>
+        <ul class="know">
+            <li><strong>Camera Upload needs no beta.</strong> Camera Upload (Beta) is already in the App Store version of Phlix, 1.0.21 or later. TestFlight is only for trying new versions before they are released.</li>
+            <li><strong>What you need.</strong> An iPhone or iPad with iOS 17 or later, and a Plex Media Server with a photo library. You must be 13 or older: that is Apple's rule for TestFlight. Phlix is an independent app that works with Plex Media Server.</li>
+            <li><strong>Betas are unfinished.</strong> Something may not work. Keep your own backup of anything you cannot replace, as you would anyway.</li>
+            <li><strong>Your photos are not touched.</strong> Phlix never changes or deletes what is on your server, in a beta as in the App Store version. A beta installs over the App Store version and keeps your settings and favorites, which are stored on your device. To go back, choose Stop Testing in TestFlight and install Phlix from the App Store again. If you have to delete the beta first, its settings and favorites go with it.</li>
+            <li><strong>Your Phlix Pro, in a beta.</strong> A beta uses Apple's test store and does not see what you bought on the App Store. If you own Phlix Pro or are in the 14-day trial, the beta shows the free version until you choose Pro again inside the beta. Apple does not charge for that, and nothing chosen in a beta carries over. Choose the one-time purchase there: a yearly plan bought in a beta ends after a short time. Your real purchase is there again when you go back to the App Store version.</li>
+            <li><strong>Each beta expires.</strong> A beta version stops opening 90 days after it was made; TestFlight shows the days left. Install the next beta, or the App Store version, before then.</li>
+            <li><strong>Telling us what you find.</strong> In a beta, Send Feedback in Phlix's Settings reaches the developer, and so does a screenshot shared through TestFlight.</li>
+        </ul>
+
+        <h2>Ask to join</h2>
+        <div class="contact-form">
+            <form id="beta-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms access key: the same one as the support form, so requests reach the same inbox. The email address is never in the page. -->
+                <input type="hidden" name="access_key" value="200886f1-fddf-41c5-87df-1794996576fe">
+
+                <!-- Spam protection: a field that people never see or fill in -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
+
+                <!-- What the email to the developer says -->
+                <input type="hidden" name="subject" value="Phlix Beta Tester Request">
+                <input type="hidden" name="from_name" value="Phlix Beta Sign-up">
+                <input type="hidden" name="redirect" value="https://phlixapp.com/beta/#success">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required maxlength="100" placeholder="Your name" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required maxlength="200" placeholder="your@email.com" autocomplete="email" aria-describedby="email-hint" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="An email address, such as name@example.com">
+                    <p class="hint" id="email-hint">TestFlight sends your invitation to this address.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="device">Which device will you test on?</label>
+                    <select id="device" name="device" required>
+                        <option value="" disabled selected>Choose one</option>
+                        <option value="iPhone">iPhone</option>
+                        <option value="iPad">iPad</option>
+                        <option value="iPhone and iPad">iPhone and iPad</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="camera-upload">Do you use Camera Upload (Beta)? <span class="optional">(optional)</span></label>
+                    <select id="camera-upload" name="camera_upload">
+                        <option value="" selected>No answer</option>
+                        <option value="Yes, the helper runs on my server">Yes, I run the helper</option>
+                        <option value="Not yet, but I would like to try it">Not yet, but I'd like to</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Anything we should know? <span class="optional">(optional)</span></label>
+                    <textarea id="notes" name="notes" maxlength="2000" placeholder="For example: what your server runs on, how many photos you have, what you would like to try."></textarea>
+                </div>
+
+                <div class="form-group consent">
+                    <input type="checkbox" id="consent" name="consent" value="Agreed to TestFlight invitations and beta emails" required>
+                    <label for="consent">Add me to the Phlix beta: give my name and email address to Apple's TestFlight, and email me invitations and messages about Phlix beta versions. (<a href="#your-details">What happens with your details</a>)</label>
+                </div>
+
+                <div class="form-group">
+                    <div class="h-captcha" data-captcha="true" data-size="compact"></div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">Request Access</button>
+            </form>
+
+            <div class="success-msg" id="success-msg" role="status" tabindex="-1">
+                <strong>Thanks. Your request is in.</strong><br>
+                Watch for an email from TestFlight (Apple). It can take a few days, because testers are added a few at a time.<br>
+                <span id="success-address"></span>
+            </div>
+            <div class="error-msg" id="error-msg" role="alert">That did not go through. Please try again, or write to us through the support page.</div>
+        </div>
+
+        <h2 id="your-details">What happens with your details</h2>
+        <p class="small">This page loads Web3Forms and hCaptcha when you open it, so both see your IP address and browser details; hCaptcha checks that you are a person. The form sends your name, email address and answers, with your IP address, to the developer by email through Web3Forms, the same service as the <a href="/support/">support form</a>. Web3Forms also keeps a copy of what you send on its servers.</p>
+        <p class="small">To invite you, the developer enters your name and email address in Apple's TestFlight. While you use a beta, Apple collects the following automatically and shows it to the developer next to your name and email address, and you cannot switch it off: whether you accepted the invitation and installed a beta, which version, your device model, iOS version and language, how many times you opened the beta, how many times it crashed, and the crash logs. Feedback you choose to send through TestFlight, such as a screenshot or a comment, reaches the developer with a few more details of the device, such as its time zone, carrier, battery level and free storage. See Apple's <a href="https://www.apple.com/legal/privacy/data/en/test-flight/">TestFlight &amp; Privacy</a>.</p>
+        <p class="small">A beta also sends the same anonymous usage data as the App Store version, marked as coming from a beta, unless you turn it off in Phlix's Settings. With few testers, the device model and iOS version that TestFlight shows next to your name can be matched to those records, and the developer may look at them to investigate what you report.</p>
+        <p class="small">Your details are used for the beta program only. To leave, choose Stop Testing in TestFlight. To have your request and details deleted, at Web3Forms and in TestFlight too, write through the <a href="/support/">support page</a>. More in the <a href="/privacy/">privacy policy</a>.</p>
+
+        <footer>
+            <p>Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>
+            Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license. TestFlight is a trademark of Apple Inc.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Send the form in the page, so the visitor stays here and sees the answer
+        const form = document.getElementById('beta-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-msg');
+        const errorMsg = document.getElementById('error-msg');
+        const successAddress = document.getElementById('success-address');
+
+        function showSuccess(address) {
+            form.style.display = 'none';
+            errorMsg.style.display = 'none';
+            if (address) { successAddress.textContent = 'The invitation will go to ' + address + '. Wrong address? Reload the page and send the form again.'; }
+            successMsg.style.display = 'block';
+            successMsg.focus();
+        }
+        function showError(text) {
+            errorMsg.textContent = text;
+            errorMsg.style.display = 'block';
+            if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (e) { /* the widget is gone: nothing to reset */ } }
+        }
+
+        // Sent without JavaScript, the form comes back here with #success
+        if (window.location.hash === '#success') { showSuccess(''); }
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            // The redirect is only for a form sent without JavaScript: with it, Web3Forms does not answer in JSON
+            data.delete('redirect');
+            if (!data.get('h-captcha-response')) {
+                showError('Tick "I am human" first. If you do not see it, reload the page.');
+                return;
+            }
+            // A subject of its own for each request, so each one is its own email thread
+            data.set('subject', 'Phlix Beta Tester Request: ' + String(data.get('name') || '').trim());
+            const address = String(data.get('email') || '').trim();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+                const result = await response.json();
+                if (result.success) {
+                    form.reset();
+                    showSuccess(address);
+                } else {
+                    showError((result.message ? result.message + ' ' : '') + 'Please try again, or write to us through the support page.');
+                }
+            } catch {
+                showError('That did not go through. Please try again, or write to us through the support page.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Request Access';
+            }
+        });
+    </script>
+    <!-- Web3Forms' script draws the hCaptcha check into the form: after the form, so it is always there to find. This page carries no analytics. -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+</body>
+</html>

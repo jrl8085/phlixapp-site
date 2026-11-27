@@ -15,32 +15,35 @@
     <meta property="og:title" content="How to Set Up a Plex Photo Library — Complete Guide">
     <meta property="og:description" content="Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.">
     <meta property="og:site_name" content="Phlix">
-    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image" content="https://phlixapp.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Set Up a Plex Photo Library — Complete Guide">
     <meta name="twitter:description" content="Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.">
-    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.jpg">
     <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Photo Library — Complete Guide","description":"Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.","datePublished":"2026-09-01","dateModified":"2026-11-24","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Photo Library — Complete Guide","description":"Add your photo collection to Plex Media Server. Folder structure, metadata, EXIF support, and tips for 100K+ libraries.","datePublished":"2026-09-01","dateModified":"2026-11-27","author":{"@type":"Person","@id":"https://phlixapp.com/#developer","name":"Jason Loomis","sameAs":["https://apps.apple.com/us/developer/jason-loomis/id1886235299","https://github.com/jrl8085"]},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/blog/plex-photo-library-setup/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://phlixapp.com/blog/"},{"@type":"ListItem","position":3,"name":"How to Set Up a Plex Photo Library","item":"https://phlixapp.com/blog/plex-photo-library-setup/"}]}
     </script>
 </head>
 <body>
-    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+    <nav class="site-nav" aria-label="Main"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><button type="button" class="menu-btn" popovertarget="site-links" aria-label="Menu">&#9776;</button><div class="nav-links" id="site-links" popover><a href="/features/">Features</a><a href="/camera-upload/">Camera Upload</a><a href="/blog/">Blog</a><a href="/support/">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
 
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; How to Set Up a Plex Photo Library</div>
 
     <article>
         <span class="category getting-started">Getting Started</span>
         <h1>How to Set Up a Plex Photo Library — Complete Guide</h1>
-        <p class="meta">Published September 1, 2026 &middot; 11 min read</p>
+        <p class="meta">Published September 1, 2026 &middot; Updated November 27, 2026 &middot; 11 min read</p>
 
         <p>Plex is not just for movies and TV shows. It can also serve as the backbone of a self-hosted photo library, giving you access to your entire photo collection from any device, anywhere, without uploading a single image to the cloud. If you value privacy and ownership over your photos, a Plex photo library lets you keep everything on hardware you control while still getting the convenience of browsing from your phone or TV.</p>
 
@@ -176,9 +179,9 @@
             <li><strong>Big libraries:</strong> Phlix loads a page at a time instead of everything at once.</li>
         </ul>
 
-        <p>Phlix connects directly to your Plex server — no additional setup required beyond what you have already configured in Plex. It is free to browse, with Pro features (unlimited downloads, external display slideshows) available from $6.99/year or $19.99 for a lifetime license.</p>
+        <p>Phlix connects directly to your Plex server — no additional setup required beyond what you have already configured in Plex. It is free to browse, with 25 saves to Photos and the first 100 camera uploads free; Phlix Pro (unlimited saves and camera uploads, and big-screen slideshows on your TV) is $6.99/year or $19.99 for a lifetime license.</p>
 
-        <p>To get the photos on your iPhone or iPad into this library, Camera Upload (Beta) in Phlix copies them, videos included, into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server. The <a href="/camera-upload/">setup guide</a> walks you through it. It needs Phlix 1.0.21 or later.</p>
+        <p>To get the photos on your iPhone or iPad into this library, Camera Upload (Beta) in Phlix copies them, videos included, into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server. The <a href="/camera-upload/">Camera Upload setup guide</a> walks you through it. It needs Phlix 1.0.21 or later.</p>
 
         <h2>Tips for the Best Photo Library Experience</h2>
 
@@ -196,6 +199,7 @@
         <div class="cta-box">
             <h3>Phlix — A Photo App That Works with Plex</h3>
             <p>Phlix is an independent app that works with Plex Media Server: a chronological timeline, year scrubber, big-screen slideshows on your TV, and saves to the Photos app, built for big libraries. Free to browse — no subscription required.</p>
+                <p>Camera Upload (Beta) in Phlix backs up the photos and videos on your iPhone or iPad to your own Plex server, on your home Wi-Fi. <a href="/camera-upload/">How Camera Upload works</a>.</p>
             <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
             <p class="sub">iOS 17+ &middot; Works with any Plex Media Server &middot; Pro from $6.99/yr</p>
         </div>
@@ -221,11 +225,17 @@
 
     <footer>
         <div class="footer-links">
-            <a href="/">Home</a>
+            <a href="/features/">Features</a>
+            <a href="/camera-upload/">Camera Upload (Beta)</a>
+            <a href="/features/save-to-photos/">Save to Photos</a>
+            <a href="/features/timeline/">Timeline</a>
+            <a href="/features/slideshows/">Slideshows</a>
+            <a href="/features/browse-and-search/">Browse and Search</a>
             <a href="/blog/">Blog</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="/support">Support</a>
+            <a href="/beta/">Test new versions</a>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
         </div>
         <p class="trademark">
             Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>

@@ -15,56 +15,35 @@
     <meta property="og:title" content="Plex Photos vs Apple Photos — Managing Your Photo Library">
     <meta property="og:description" content="Compare Plex's photo features with Apple Photos for managing your photo library. Self-hosted vs cloud, storage costs, and how Phlix bridges the gap.">
     <meta property="og:site_name" content="Phlix">
-    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image" content="https://phlixapp.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Plex Photos vs Apple Photos — Managing Your Photo Library">
     <meta name="twitter:description" content="Compare Plex's photo features with Apple Photos for managing your photo library. Self-hosted vs cloud, storage costs, and how Phlix bridges the gap.">
-    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.jpg">
     <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Plex Photos vs Apple Photos — Managing Your Photo Library",
-        "description": "Compare Plex's photo features with Apple Photos for managing your photo library. Self-hosted vs cloud, storage costs, and how Phlix bridges the gap.",
-        "datePublished": "2026-09-01",
-        "dateModified": "2026-11-24",
-        "author": {
-            "@type": "Person",
-            "name": "Jason Loomis"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Phlix",
-            "url": "https://phlixapp.com"
-        }
-    }
+    {"@context":"https://schema.org","@type":"Article","headline":"Plex Photos vs Apple Photos — Managing Your Photo Library","description":"Compare Plex's photo features with Apple Photos for managing your photo library. Self-hosted vs cloud, storage costs, and how Phlix bridges the gap.","datePublished":"2026-09-01","dateModified":"2026-11-27","author":{"@type":"Person","@id":"https://phlixapp.com/#developer","name":"Jason Loomis","sameAs":["https://apps.apple.com/us/developer/jason-loomis/id1886235299","https://github.com/jrl8085"]},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/blog/plex-vs-apple-photos/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://phlixapp.com/blog/"},{"@type":"ListItem","position":3,"name":"Plex Photos vs Apple Photos","item":"https://phlixapp.com/blog/plex-vs-apple-photos/"}]}
     </script>
 </head>
 <body>
-    <nav><div class="nav-inner">
-        <a href="/" class="nav-logo grad-text">PHLIX</a>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/blog/">Blog</a>
-            <a href="/support">Support</a>
-            <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a>
-        </div>
-    </div></nav>
+    <nav class="site-nav" aria-label="Main"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><button type="button" class="menu-btn" popovertarget="site-links" aria-label="Menu">&#9776;</button><div class="nav-links" id="site-links" popover><a href="/features/">Features</a><a href="/camera-upload/">Camera Upload</a><a href="/blog/">Blog</a><a href="/support/">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
 
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Photos vs Apple Photos</div>
 
     <article>
         <span class="category comparison">Comparison</span>
         <h1>Plex Photos vs Apple Photos &mdash; Managing Your Photo Library</h1>
-        <p class="meta">By Jason Loomis &middot; September 1, 2026 &middot; 10 min read</p>
+        <p class="meta">By Jason Loomis &middot; September 1, 2026 &middot; Updated November 27, 2026 &middot; 10 min read</p>
 
         <p>If you have thousands (or hundreds of thousands) of photos, you have two fundamentally different approaches to managing them: let Apple handle everything in the cloud with <strong>Apple Photos</strong>, or keep full control with <strong>Plex Media Server</strong> on your own hardware. Both work. Both have serious trade-offs. And as someone who has run both systems simultaneously, I can tell you that neither is complete on its own -- but the gap between them is shrinking, especially with apps like <strong><a href="https://phlixapp.com">Phlix</a></strong>, an independent photo app that works with Plex Media Server.</p>
 
@@ -127,6 +106,9 @@
         <h3>Save to Photos</h3>
         <p>Save photos from your Plex server to your Photos app, one at a time. No Plex Pass is needed on your home network. The free tier includes 25 saves, and Phlix Pro unlocks unlimited saves.</p>
 
+        <h3>Camera Upload (Beta)</h3>
+        <p>Plex's own apps no longer upload your camera roll. Camera Upload (Beta) in Phlix does: on your home Wi-Fi, it backs up the photos and videos on your iPhone or iPad to a folder of your Plex photo library, through a free helper you run in Docker next to Plex Media Server. The first 100 uploads are free, and Phlix Pro uploads the rest (<a href="/camera-upload/">Camera Upload setup guide</a>).</p>
+
         <h3>Performance with Large Libraries</h3>
         <p>Phlix is built for big libraries: it loads a page at a time instead of everything at once, and on cellular or in Low Data Mode it stops loading ahead of you.</p>
 
@@ -168,17 +150,18 @@
         </ul>
 
         <h3>Use both if:</h3>
-        <p>There is nothing stopping you from using Apple Photos for day-to-day capture and editing while maintaining a Plex library as your long-term archive. Sync new photos from your camera roll to your NAS periodically (using Syncthing, rsync, or a similar tool), add them to your Plex library, and browse them with Phlix. Or let Phlix do the copying: Camera Upload (Beta) in Phlix copies the photos and videos on your iPhone or iPad into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server (<a href="/camera-upload/">setup guide</a>). It needs Phlix 1.0.21 or later. You get the best of both worlds: Apple's polish for everyday use and self-hosted permanence for your archive.</p>
+        <p>There is nothing stopping you from using Apple Photos for day-to-day capture and editing while maintaining a Plex library as your long-term archive. Copy new photos from your camera roll to your NAS now and then (with a transfer app such as PhotoSync, or by hand through the Files app), add them to your Plex library, and browse them with Phlix. Or let Phlix do the copying: Camera Upload (Beta) in Phlix copies the photos and videos on your iPhone or iPad into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server (<a href="/camera-upload/">Camera Upload setup guide</a>). It needs Phlix 1.0.21 or later. You get the best of both worlds: Apple's polish for everyday use and self-hosted permanence for your archive.</p>
 
         <h2>The Bottom Line</h2>
 
         <p>Apple Photos is a better photo management tool in almost every way -- if you are willing to pay for iCloud storage and trust Apple with your data. Plex is a better photo storage and ownership strategy -- if you are willing to manage your own hardware and accept fewer features.</p>
 
-        <p>With Phlix, the browsing experience gap between the two narrows: you get a date timeline with a year scrubber, big-screen slideshows, and saves to the Photos app on iPhone and iPad. It does not replace Apple's smart search or editing tools, but it gives your self-hosted library a photo app that feels at home on iOS.</p>
+        <p>With Phlix, the gap between the two narrows: Camera Upload (Beta) backs up your iPhone photos to your server at home, and you get a date timeline with a year scrubber, big-screen slideshows, and saves to the Photos app on iPhone and iPad. It does not replace Apple's smart search or editing tools, but it gives your self-hosted library a photo app that feels at home on iOS.</p>
 
         <div class="cta-box">
             <h3>Phlix — A Photo App That Works with Plex</h3>
-            <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, big-screen slideshows on your TV, and saves to the Photos app. Free to browse, Pro from $6.99/yr.</p>
+            <p>If you use Plex for photos, Phlix backs up your iPhone photos to your Plex server at home with Camera Upload (Beta), and gives you a chronological timeline, big-screen slideshows on your TV, and saves to the Photos app. Free to browse, Pro from $6.99/yr.</p>
+                <p>Camera Upload (Beta) in Phlix backs up the photos and videos on your iPhone or iPad to your own Plex server, on your home Wi-Fi. <a href="/camera-upload/">How Camera Upload works</a>.</p>
             <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
             <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
         </div>
@@ -195,11 +178,17 @@
 
     <footer>
         <div class="footer-links">
-            <a href="/">Home</a>
+            <a href="/features/">Features</a>
+            <a href="/camera-upload/">Camera Upload (Beta)</a>
+            <a href="/features/save-to-photos/">Save to Photos</a>
+            <a href="/features/timeline/">Timeline</a>
+            <a href="/features/slideshows/">Slideshows</a>
+            <a href="/features/browse-and-search/">Browse and Search</a>
             <a href="/blog/">Blog</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="/support">Support</a>
+            <a href="/beta/">Test new versions</a>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
         </div>
         <p class="trademark">
             Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>

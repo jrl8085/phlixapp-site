@@ -15,32 +15,35 @@
     <meta property="og:title" content="How to Back Up Your Plex Server — Protect Your Setup">
     <meta property="og:description" content="Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.">
     <meta property="og:site_name" content="Phlix">
-    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image" content="https://phlixapp.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Back Up Your Plex Server — Protect Your Setup">
     <meta name="twitter:description" content="Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.">
-    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.jpg">
     <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Back Up Your Plex Server — Protect Your Setup","description":"Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.","datePublished":"2026-09-01","dateModified":"2026-11-24","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Back Up Your Plex Server — Protect Your Setup","description":"Back up your Plex database, metadata, settings, and watch history. Automated backup scripts, restore process, and disaster recovery planning.","datePublished":"2026-09-01","dateModified":"2026-11-27","author":{"@type":"Person","@id":"https://phlixapp.com/#developer","name":"Jason Loomis","sameAs":["https://apps.apple.com/us/developer/jason-loomis/id1886235299","https://github.com/jrl8085"]},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/blog/backup-plex-server/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://phlixapp.com/blog/"},{"@type":"ListItem","position":3,"name":"Back Up Your Plex Server","item":"https://phlixapp.com/blog/backup-plex-server/"}]}
     </script>
 </head>
 <body>
-    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+    <nav class="site-nav" aria-label="Main"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><button type="button" class="menu-btn" popovertarget="site-links" aria-label="Menu">&#9776;</button><div class="nav-links" id="site-links" popover><a href="/features/">Features</a><a href="/camera-upload/">Camera Upload</a><a href="/blog/">Blog</a><a href="/support/">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
 
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Back Up Your Plex Server</div>
 
     <article>
         <span class="category features">Features</span>
         <h1>How to Back Up Your Plex Server — Protect Your Setup</h1>
-        <p class="meta">Published September 1, 2026 &middot; 9 min read</p>
+        <p class="meta">Published September 1, 2026 &middot; Updated November 27, 2026 &middot; 9 min read</p>
 
         <p>You have spent hours setting up Plex. Library organization, custom metadata edits, watched statuses, user accounts, poster overrides, playlist curation. All of that configuration lives in a database on your server. If a drive fails, an OS update goes wrong, or you accidentally delete the wrong folder, it is all gone. Your media files can be re-downloaded or re-ripped, but the Plex database, your watch history, and your configuration are unique to your server.</p>
 
@@ -76,7 +79,7 @@
         <h3>4. Media Files</h3>
         <p>Your actual movies, TV shows, music, and photos are not part of the Plex data directory. They live wherever you store them. Backing up media files is a separate concern and depends on your storage setup (RAID, cloud backup, offsite copies). This guide focuses on the Plex-specific data, not the media itself.</p>
 
-        <p>For the photos on your phone, Camera Upload (Beta) in Phlix copies the photos and videos on an iPhone or iPad into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server. It is a one-way copy, and nothing is deleted from the phone (<a href="/plex-camera-upload/">how it works</a>). It needs Phlix 1.0.21 or later.</p>
+        <p>For the photos on your phone, Camera Upload (Beta) in Phlix copies the photos and videos on an iPhone or iPad into a folder of your Plex photo library on your home Wi-Fi, using a free helper you run in Docker next to Plex Media Server. It is a one-way copy, and nothing is deleted from the phone (<a href="/plex-camera-upload/">how Camera Upload in Phlix works</a>). It needs Phlix 1.0.21 or later.</p>
 
         <h2>Where the Plex Data Directory Lives</h2>
 
@@ -178,6 +181,7 @@ find "$BACKUP_DIR" -name "plex-backup-*.tar.gz" -mtime +30 -delete</code></pre>
         <div class="cta-box">
             <h3>Phlix — A Photo App That Works with Plex</h3>
             <p>For the photos on your Plex server, Phlix offers a chronological timeline, saves to the Photos app, and big-screen slideshows on your TV. Free to browse, Pro from $6.99/yr.</p>
+                <p>Camera Upload (Beta) in Phlix backs up the photos and videos on your iPhone or iPad to your own Plex server, on your home Wi-Fi. <a href="/camera-upload/">How Camera Upload works</a>.</p>
             <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
             <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
         </div>
@@ -203,11 +207,17 @@ find "$BACKUP_DIR" -name "plex-backup-*.tar.gz" -mtime +30 -delete</code></pre>
 
     <footer>
         <div class="footer-links">
-            <a href="/">Home</a>
+            <a href="/features/">Features</a>
+            <a href="/camera-upload/">Camera Upload (Beta)</a>
+            <a href="/features/save-to-photos/">Save to Photos</a>
+            <a href="/features/timeline/">Timeline</a>
+            <a href="/features/slideshows/">Slideshows</a>
+            <a href="/features/browse-and-search/">Browse and Search</a>
             <a href="/blog/">Blog</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="/support">Support</a>
+            <a href="/beta/">Test new versions</a>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
         </div>
         <p class="trademark">
             Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>

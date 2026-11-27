@@ -15,25 +15,28 @@
     <meta property="og:title" content="How to Set Up a Plex Reverse Proxy with Nginx">
     <meta property="og:description" content="Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.">
     <meta property="og:site_name" content="Phlix">
-    <meta property="og:image" content="https://phlixapp.com/og-image.png">
+    <meta property="og:image" content="https://phlixapp.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Set Up a Plex Reverse Proxy with Nginx">
     <meta name="twitter:description" content="Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.">
-    <meta name="twitter:image" content="https://phlixapp.com/og-image.png">
+    <meta name="twitter:image" content="https://phlixapp.com/og-image.jpg">
     <meta name="twitter:image:alt" content="Phlix — a chronological photo timeline that works with Plex Media Server">
     <meta name="apple-itunes-app" content="app-id=6796820208">
     <link rel="stylesheet" href="/blog/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBXHBYYTL8"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XBXHBYYTL8');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Reverse Proxy with Nginx","description":"Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.","datePublished":"2026-09-01","dateModified":"2026-11-24","author":{"@type":"Person","name":"Jason Loomis"},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Set Up a Plex Reverse Proxy with Nginx","description":"Configure Nginx as a reverse proxy for Plex with SSL/TLS and custom domain. Complete nginx.conf example with WebSocket support and security headers.","datePublished":"2026-09-01","dateModified":"2026-11-24","author":{"@type":"Person","@id":"https://phlixapp.com/#developer","name":"Jason Loomis","sameAs":["https://apps.apple.com/us/developer/jason-loomis/id1886235299","https://github.com/jrl8085"]},"publisher":{"@type":"Organization","name":"Phlix","url":"https://phlixapp.com"},"mainEntityOfPage":"https://phlixapp.com/blog/plex-reverse-proxy-nginx/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://phlixapp.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://phlixapp.com/blog/"},{"@type":"ListItem","position":3,"name":"Plex Reverse Proxy with Nginx","item":"https://phlixapp.com/blog/plex-reverse-proxy-nginx/"}]}
     </script>
 </head>
 <body>
-    <nav><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/support">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
+    <nav class="site-nav" aria-label="Main"><div class="nav-inner"><a href="/" class="nav-logo grad-text">PHLIX</a><button type="button" class="menu-btn" popovertarget="site-links" aria-label="Menu">&#9776;</button><div class="nav-links" id="site-links" popover><a href="/features/">Features</a><a href="/camera-upload/">Camera Upload</a><a href="/blog/">Blog</a><a href="/support/">Support</a><a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="nav-cta">Download Free</a></div></div></nav>
 
     <main>
         <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Plex Reverse Proxy with Nginx</div>
@@ -43,7 +46,7 @@
                 <span class="cat" style="color:#FFA726">Advanced</span>
                 <h1>How to Set Up a Plex Reverse Proxy with Nginx</h1>
                 <p class="subtitle">Configure Nginx as a reverse proxy for Plex with SSL/TLS, custom domain, WebSocket proxying, and security headers.</p>
-                <time datetime="2026-09-01">September 1, 2026</time>
+                <time datetime="2026-09-01">September 1, 2026</time> &middot; Updated <time datetime="2026-11-24">November 24, 2026</time>
             </div>
 
             <p>Running Plex behind a reverse proxy gives you control over how your media server faces the internet. Instead of exposing port 32400 directly, you can serve Plex through a custom domain with a valid SSL certificate, add security headers, and consolidate multiple services behind a single IP address. Nginx is the most popular choice for this role, and configuring it for Plex is straightforward once you understand the handful of quirks involved.</p>
@@ -120,7 +123,7 @@ server {
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header Referrer-Policy "no-referrer-when-downgrade" always;
 
-    # Large uploads (for camera upload feature)
+    # Allow request bodies up to 100 MB (nginx's default is 1 MB), for example a poster uploaded in Plex Web
     client_max_body_size 100M;
 
     # Disable buffering for streaming
@@ -198,7 +201,8 @@ location / {
 
             <div class="cta-box">
                 <h3>Phlix -- A Photo App That Works with Plex</h3>
-                <p>If you use Plex for photos, Phlix gives you a chronological timeline, year scrubber, big-screen slideshows on your TV, and saves to the Photos app. Free to browse, Pro from $6.99/yr.</p>
+                <p>If you use Plex for photos, Phlix backs up your iPhone photos to your Plex server at home with Camera Upload (Beta), and gives you a chronological timeline, big-screen slideshows on your TV, and saves to the Photos app. Free to browse, Pro from $6.99/yr.</p>
+                <p>Camera Upload (Beta) in Phlix backs up the photos and videos on your iPhone or iPad to your own Plex server, on your home Wi-Fi. <a href="/camera-upload/">How Camera Upload works</a>.</p>
                 <a href="https://apps.apple.com/app/phlix-photos/id6796820208" class="btn">Download Phlix Free</a>
                 <p class="sub">iOS 17+ &middot; Works with any Plex Media Server</p>
             </div>
@@ -214,7 +218,17 @@ location / {
 
     <footer>
         <div class="footer-links">
-            <a href="/">Home</a><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a>
+            <a href="/features/">Features</a>
+            <a href="/camera-upload/">Camera Upload (Beta)</a>
+            <a href="/features/save-to-photos/">Save to Photos</a>
+            <a href="/features/timeline/">Timeline</a>
+            <a href="/features/slideshows/">Slideshows</a>
+            <a href="/features/browse-and-search/">Browse and Search</a>
+            <a href="/blog/">Blog</a>
+            <a href="/beta/">Test new versions</a>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
         </div>
         <p class="trademark">Phlix is an independent application and is not affiliated with, endorsed, or sponsored by Plex, Inc.<br>Plex, the Plex Play logo, and Plex Media Server are trademarks of Plex GmbH and used under a license.</p>
         <p class="copyright">&copy; 2026 Phlix. All rights reserved.</p>
